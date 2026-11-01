@@ -56,6 +56,15 @@ Tout champ inconnu fait échouer le build (pour détecter les fautes de frappe).
 :::
 ```
 
+- Réglages techniques : fenêtre de configuration, une ligne par réglage au format `réglage = valeur | explication` :
+
+```markdown
+:::config php.ini
+memory_limit = 256M | Mémoire maximale qu'un script PHP peut utiliser.
+:::
+```
+
+- Les blocs de code (```` ``` ```` ou indentation de 4 espaces) sont **refusés** par le build : utiliser `:::config` ou du texte.
 - Le HTML brut est désactivé : il s'affiche comme du texte.
 
 ## Règles éditoriales (articles d'actualité)

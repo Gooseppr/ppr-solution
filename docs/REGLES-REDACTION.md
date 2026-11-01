@@ -41,6 +41,7 @@ Objectif : qu'il **comprenne sa situation** et **sache quoi faire** après la le
 - Pas de « simple », « facile », « il suffit de » si ce n'est pas vrai pour un non-spécialiste.
 - Exemples concrets : `votre-site.fr`, un message d'hébergeur, une capture décrite en mots.
 - Les tableaux servent à comparer (versions, symptômes) ; ils ont toujours une légende.
+- **Jamais de bloc de code** (fond noir, syntaxe brute) : le build le refuse. Pour montrer des réglages, utiliser une fenêtre `:::config`, où chaque ligne est expliquée en français. Un nom de fichier ou de réglage isolé peut s'écrire en `code` dans la phrase.
 
 ## 5. Exactitude (actualités)
 

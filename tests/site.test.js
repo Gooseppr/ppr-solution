@@ -113,3 +113,13 @@ test("sécurité et partage : CSP, referrer et image de partage sur chaque page"
   }
   assert.ok(fs.existsSync(path.join(ROOT, "assets/img/og-default.png")));
 });
+
+test("articles : blocs de code refusés, fenêtre :::config rendue et échappée", () => {
+  const { renderMarkdown } = require("../scripts/blog-markdown");
+  assert.throws(() => renderMarkdown("Intro.\n\n```ini\nx = 1\n```\n", "t.md", ROOT), /code blocks are not allowed/);
+  assert.throws(() => renderMarkdown("Intro.\n\n    code indenté\n", "t.md", ROOT), /code blocks are not allowed/);
+  const { html } = renderMarkdown("Intro.\n\n:::config php.ini\nmemory_limit = 256M | Mémoire <maximale>\n:::\n", "t.md", ROOT);
+  assert.match(html, /class="config-window"/);
+  assert.match(html, /<span class="config-key">memory_limit<\/span><span class="config-value">256M<\/span>/);
+  assert.match(html, /Mémoire &lt;maximale&gt;/);
+});

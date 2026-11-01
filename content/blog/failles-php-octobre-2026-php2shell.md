@@ -4,7 +4,7 @@ slug: "failles-php-octobre-2026-php2shell"
 description: "Deux failles critiques de PHP, surnommées « PHP2Shell », ont été corrigées en urgence le 21 octobre 2026 et sont déjà exploitées. Ce qu'il faut vérifier sur votre site, selon votre version de PHP."
 meta_description: "CVE-2026-109618 et CVE-2026-109619 (PHP2Shell) : failles critiques de PHP exploitées, versions corrigées 8.2.35 à 8.5.12, situation des versions 7.4, 8.0 et 8.1, et vérifications à faire."
 date: "2026-11-01"
-updated: "2026-11-02"
+updated: "2026-11-03"
 category: "Actualité"
 tags: ["PHP", "Sécurité", "Mise à jour"]
 service:
@@ -90,16 +90,19 @@ Cette partie concerne celles et ceux qui administrent eux-mêmes un serveur priv
 > Un serveur privé virtuel : une part de machine louée et administrée par vous-même, y compris ses mises à jour.
 
 - Installez les paquets corrigés de votre distribution, reconstruisez vos images de conteneurs, puis **redémarrez tous les processus PHP** (PHP-FPM, Apache). Tant qu'un processus lancé avant la mise à jour tourne, l'ancienne version reste active.
-- Si la mise à jour doit attendre, le projet PHP propose des réglages temporaires, à placer dans la configuration du serveur. Ils réduisent le risque sans le supprimer et ont des effets de bord, par exemple sur la taille des fichiers que le site accepte :
+- Si la mise à jour doit attendre, le projet PHP propose des réglages temporaires, à placer dans la configuration du serveur (fichier `php.ini` ou configuration PHP-FPM), puis à activer en redémarrant les processus PHP.
 
-```ini
-; Atténuation seulement : la mise à jour reste la seule vraie solution.
-memory_limit = -1
-post_max_size = 8M          ; 32M si le site accepte des envois de fichiers
-upload_max_filesize = 8M    ; doit rester inférieur à post_max_size
-session.upload_progress.enabled = 0
-fatal_error_backtraces = 0  ; PHP 8.5 uniquement
-```
+:::config php.ini
+memory_limit = -1 | Supprime la limite de mémoire de PHP. À compléter par une limite au niveau du serveur ou du conteneur.
+post_max_size = 8M | Taille maximale d'une requête envoyée au site. 32M si le site accepte des envois de fichiers.
+upload_max_filesize = 8M | Taille maximale d'un fichier envoyé. Doit rester inférieure à post_max_size.
+session.upload_progress.enabled = 0 | Désactive le suivi de progression des envois de fichiers, utilisé par l'une des failles.
+fatal_error_backtraces = 0 | PHP 8.5 uniquement : n'ajoute plus le détail technique aux erreurs graves.
+:::
+
+> **Attention**
+>
+> Ces réglages réduisent le risque sans le supprimer, et ils ont des effets de bord, par exemple sur la taille des fichiers que le site accepte. Seule la mise à jour de PHP corrige réellement les failles.
 
 ## À ne pas confondre : la troisième faille
 

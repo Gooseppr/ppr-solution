@@ -103,10 +103,10 @@ function checkTarget(value, filename, siteRoot, generated = new Map(), currentPa
 function renderMarkdown(body, filename, siteRoot) {
   const md = new MarkdownIt({ html: false, linkify: false, typographer: false });
   const escape = md.utils.escapeHtml;
-  // One small, controlled component; labels are always text, never raw HTML.
+  // Two small, controlled components; labels are always text, never raw HTML.
   md.block.ruler.before("fence", "ppr_container", (state, start, end, silent) => {
     const line = state.src.slice(state.bMarks[start] + state.tShift[start], state.eMarks[start]);
-    const match = line.match(/^:::(table)(?:[ \t]+(.+))?$/);
+    const match = line.match(/^:::(table|config)(?:[ \t]+(.+))?$/);
     if (!match || state.sCount[start] - state.blkIndent >= 4) return false;
     if (silent) return true;
     let close = start + 1;
@@ -114,7 +114,16 @@ function renderMarkdown(body, filename, siteRoot) {
     if (close === end) fail(filename, "unclosed :::" + match[1] + " block");
     const inner = state.getLines(start + 1, close, state.blkIndent, false).trim();
     let html;
-    {
+    if (match[1] === "config") {
+      // Fenêtre de configuration : « réglage = valeur | explication en français », une ligne par réglage.
+      if (!match[2] || !inner) fail(filename, ":::config expects a file name and at least one setting");
+      const rows = inner.split(/\r?\n/).filter((row) => row.trim()).map((row) => {
+        const parts = row.match(/^\s*([^=|]+?)\s*=\s*([^|]+?)\s*\|\s*(.+?)\s*$/);
+        if (!parts) fail(filename, ":::config line must be 'setting = value | explanation': " + row.trim());
+        return '<li class="config-row"><span class="config-key">' + escape(parts[1]) + '</span><span class="config-value">' + escape(parts[2]) + '</span><span class="config-help">' + escape(parts[3]) + "</span></li>";
+      });
+      html = '<figure class="config-window"><figcaption class="config-window-bar"><span class="config-file">' + escape(match[2]) + '</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows">' + rows.join("") + "</ul></figure>\n";
+    } else {
       if (!match[2] || inner.includes(":::")) fail(filename, "table expects a caption and a single Markdown table");
       const tokens = md.parse(inner, state.env);
       if (tokens[0]?.type !== "table_open" || tokens.at(-1)?.type !== "table_close" ||
@@ -157,6 +166,9 @@ function renderMarkdown(body, filename, siteRoot) {
     return imageRenderer(tokens, index, options, env, renderer);
   };
   const tokens = md.parse(body, {});
+  // Pas de bloc de code brut dans les articles : utiliser :::config pour présenter des réglages.
+  const rawCode = tokens.find((token) => token.type === "fence" || token.type === "code_block");
+  if (rawCode) fail(filename, "code blocks are not allowed in articles (line " + ((rawCode.map?.[0] ?? 0) + 1) + "); use a :::config block or plain text");
   let previous = 1;
   for (const token of tokens) {
     if (token.type !== "heading_open") continue;
