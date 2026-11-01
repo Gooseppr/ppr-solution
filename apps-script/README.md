@@ -32,4 +32,4 @@ Le site est statique : le formulaire envoie ses données à un petit script Goog
 
 ## Activation commerciale
 
-Ne passer `ACCEPT_REQUESTS = true` en production qu'après validation explicite du propriétaire (compatibilité de l'activité avec son contrat de travail, mentions légales et politique de confidentialité complétées).
+Passer `ACCEPT_REQUESTS = true` au moment de la mise en ligne, une fois la boîte contact@ppr-solution.fr opérationnelle.

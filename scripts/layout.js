@@ -115,6 +115,7 @@ function footer(prefix) {
         <ul class="footer-links">
           <li><a href="${prefix}mentions-legales.html">Mentions légales</a></li>
           <li><a href="${prefix}confidentialite.html">Confidentialité</a></li>
+          <li><a href="${prefix}cgv.html">Conditions générales de vente</a></li>
         </ul>
       </div>
     </div>

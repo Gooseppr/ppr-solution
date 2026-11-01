@@ -875,3 +875,9 @@ code { font-family: var(--font-mono); font-size: 0.88em; background: var(--ivory
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+/* 19 CGV */
+.cgv { max-width: 52rem; }
+.cgv h2 { font-size: var(--text-xl); }
+.cgv-form { padding: var(--s-5); border: 1px dashed var(--line-strong); border-radius: var(--r-md); background: var(--white); font-size: 0.97rem; }
+.cgv-form p + p { margin-top: var(--s-2); }
