@@ -12,7 +12,7 @@ const { SITE, escapeHtml, absoluteUrl, renderPage } = require("./layout");
 
 const ROOT = path.join(__dirname, "..");
 const WORDS_PER_MINUTE = 220;
-const PAGE_FIELDS = new Set(["title", "description", "output", "nav", "robots", "scripts", "sitemap"]);
+const PAGE_FIELDS = new Set(["title", "description", "output", "nav", "robots", "scripts", "sitemap", "prefix"]);
 
 function formatDateFr(date) {
   return new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T00:00:00Z`));
@@ -173,7 +173,7 @@ function build(root = ROOT) {
 
   for (const pageSource of loadPages()) {
     const body = pageSource.body.replace("<!-- build:latest-posts -->", latestPosts(posts));
-    outputs.set(pageSource.meta.output, renderPage({ meta: pageSource.meta, body }));
+    outputs.set(pageSource.meta.output, renderPage({ meta: pageSource.meta, body, prefix: pageSource.meta.prefix || "" }));
     pageSource.pageMeta = pageSource.meta;
   }
   outputs.set("blog.html", renderBlogIndex(posts));

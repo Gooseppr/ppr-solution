@@ -4,6 +4,7 @@ slug: "hebergeur-demande-mise-a-jour-php"
 description: "Un email annonce la fin de prise en charge de votre version de PHP ? Pourquoi c'est important, ce que vous risquez à attendre, et comment préparer le changement sans casser votre site."
 meta_description: "Fin de support d'une version PHP : comprendre l'email de l'hébergeur, connaître les risques des versions anciennes (PHP 7, 5, 4) et préparer une mise à jour sans casser son site."
 date: "2026-10-30"
+updated: "2026-11-02"
 category: "Guide"
 tags: ["PHP", "Hébergement", "Mise à jour"]
 service:
@@ -17,11 +18,22 @@ contact:
 
 Vous avez reçu un email de votre hébergeur : la version de PHP utilisée par votre site « arrive en fin de vie » ou « n'est plus prise en charge », et il vous demande d'en choisir une plus récente. Ce message n'est pas une formalité. Voici ce qu'il signifie et comment y répondre sans mettre votre site en panne.
 
+> **En bref**
+>
+> - PHP est le langage qui fait fonctionner votre site ; chaque version n'est entretenue que quelques années.
+> - Une version qui n'est plus entretenue ne reçoit plus de corrections de sécurité : votre site devient une cible.
+> - PHP 5.6 n'est plus entretenu depuis 2018, PHP 7.4 depuis 2022 : ces sites sont à mettre à jour en priorité.
+> - Changer de version peut casser un site ancien : on vérifie avant, on sauvegarde, on teste.
+
 ## PHP, c'est quoi exactement ?
 
 PHP est le langage de programmation qui fait fonctionner une grande partie des sites internet, dont ceux construits avec WordPress, PrestaShop, Joomla ou Drupal. À chaque visite, le serveur de votre hébergeur exécute le code PHP de votre site pour fabriquer la page affichée.
 
 Comme tout logiciel, PHP évolue par versions. Chaque version reçoit des corrections de sécurité pendant quelques années, puis plus rien.
+
+> **Définition : fin de support**
+>
+> La date après laquelle les créateurs d'un logiciel ne publient plus aucune correction pour une version. Le logiciel continue de fonctionner, mais ses failles ne sont plus réparées.
 
 ## Pourquoi votre hébergeur vous le demande
 
@@ -52,7 +64,11 @@ Une version qui ne reçoit plus de mises à jour reste exposée à toutes les fa
 
 ## Pourquoi on ne change pas de version d'un simple clic
 
-Chaque nouvelle version de PHP retire ou modifie des fonctions. Un thème, une extension ou un module écrit pour une ancienne version peut alors provoquer une page blanche, une « erreur 500 » ou un dysfonctionnement discret. Plus l'écart entre deux versions est grand, plus le risque augmente : passer de PHP 8.2 à 8.4 est en général plus simple que de passer de PHP 5.6 à 8.4.
+Chaque nouvelle version de PHP retire ou modifie certaines instructions. Un thème, une extension ou un module écrit pour une ancienne version peut alors provoquer une page blanche, une « erreur 500 » (le message générique d'un serveur qui n'arrive pas à construire la page) ou un dysfonctionnement discret.
+
+> **Définition : extension (ou plugin)**
+>
+> Un module ajouté à un site WordPress, PrestaShop ou autre pour lui donner une fonction supplémentaire : formulaire, boutique, galerie… Chaque extension est écrite par un auteur différent et n'est pas toujours mise à jour. Plus l'écart entre deux versions est grand, plus le risque augmente : passer de PHP 8.2 à 8.4 est en général plus simple que de passer de PHP 5.6 à 8.4.
 
 ## Les étapes d'une mise à jour réussie
 
@@ -60,11 +76,11 @@ Chaque nouvelle version de PHP retire ou modifie des fonctions. Un thème, une e
 2. **Faire l'inventaire** : logiciel utilisé (WordPress, PrestaShop…), sa version, ses thèmes et extensions.
 3. **Vérifier la compatibilité** de chacun avec la version visée, en commençant par mettre à jour le logiciel du site lui-même.
 4. **Sauvegarder** les fichiers et la base de données, et vérifier que la sauvegarde est exploitable.
-5. **Tester** si possible sur une copie du site, ou au moment le plus calme, en sachant comment revenir en arrière.
+5. **Tester** si possible sur une copie du site, ou au moment le plus calme, en sachant comment revenir à la version précédente si quelque chose ne va pas.
 6. **Changer la version**, puis vérifier les pages importantes : formulaires, panier, espace d'administration.
-7. **Surveiller** les journaux d'erreurs dans les jours suivants.
+7. **Surveiller** les journaux d'erreurs (le fichier où le serveur note les problèmes qu'il rencontre) dans les jours suivants.
 
-> **Note**
+> **À retenir**
 >
 > Si votre site est très ancien ou a été développé sur mesure, la mise à jour de PHP peut nécessiter de corriger ou de remplacer une partie de l'application. Mieux vaut le savoir avant de changer de version.
 

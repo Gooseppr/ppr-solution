@@ -882,3 +882,26 @@ code { font-family: var(--font-mono); font-size: 0.88em; background: var(--ivory
 .cgv h2 { font-size: var(--text-xl); }
 .cgv-form { padding: var(--s-5); border: 1px dashed var(--line-strong); border-radius: var(--r-md); background: var(--white); font-size: 0.97rem; }
 .cgv-form p + p { margin-top: var(--s-2); }
+
+/* 20 RÉSEAU (À propos) */
+.network-points { list-style: none; display: grid; gap: var(--s-6); }
+@media (min-width: 860px) { .network-points { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-8); } }
+.network-points li { padding: var(--s-5); border: var(--border); border-radius: var(--r-lg); background: var(--white); }
+.network-points li:first-child { border-color: var(--ink); }
+.network-points h3 { margin-bottom: var(--s-2); }
+.network-points p { margin: 0; color: var(--ink-soft); }
+
+/* 21 ENCADRÉS PÉDAGOGIQUES DU BLOG */
+.note-summary { background: var(--white); border: var(--stroke) solid var(--ink); border-left-width: var(--stroke); border-radius: var(--r-lg); }
+.note-summary ul { padding-left: 1.2rem; }
+.note-definition { position: relative; padding-left: calc(var(--s-5) + 1.6rem); background: var(--white); border: 1px dashed var(--line-strong); border-left: 1px dashed var(--line-strong); }
+.note-definition::before {
+  content: "?"; position: absolute; left: var(--s-4); top: var(--s-4);
+  width: 1.3rem; height: 1.3rem; display: grid; place-items: center; border-radius: 50%;
+  border: var(--stroke) solid var(--ink); font: 600 0.75rem/1 var(--font-mono);
+}
+.note-definition strong:first-child { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 500; color: var(--vermilion-ink); }
+.prose .note-definition { font-size: 0.98rem; }
+
+/* 22 PAGE 404 */
+.not-found-window { max-width: 20rem; margin-bottom: var(--s-8); font-size: 0.95rem; }

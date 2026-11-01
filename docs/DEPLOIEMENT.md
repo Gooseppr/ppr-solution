@@ -24,7 +24,7 @@ Le domaine et les emails restent chez Hostinger dans tous les cas : seul l'enreg
 ## Checklist de publication
 
 - [ ] Régime de TVA confirmé (espace professionnel impots.gouv.fr) : si franchise en base, la mention « TVA non applicable, art. 293 B du CGI » des CGV est correcte et doit figurer sur chaque facture ; sinon, adapter l'article 4 des CGV.
-- [ ] Adhésion à un médiateur de la consommation (obligatoire pour vendre à des particuliers) et coordonnées ajoutées à l'article 11 des CGV.
+- [ ] Adhésion à un médiateur de la consommation (obligatoire pour vendre à des particuliers) et coordonnées ajoutées à l'article 12 des CGV.
 - [ ] Relecture des CGV par un professionnel du droit recommandée.
 - [ ] Boîte `contact@ppr-solution.fr` créée et testée chez Hostinger.
 - [ ] Apps Script déployé, URL copiée dans `src/pages/contact.html` (`data-endpoint`), test avec données fictives réussi, puis `ACCEPT_REQUESTS = true`.

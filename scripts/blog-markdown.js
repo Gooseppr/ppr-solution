@@ -167,8 +167,14 @@ function renderMarkdown(body, filename, siteRoot) {
   }
   let html = md.renderer.render(tokens, md.options, {});
   html = html.replace(/^<p>/, '<p class="lead">')
-    .replace(/<blockquote>\s*<p><strong>(À retenir|Note|Attention|Limite|Exemple)<\/strong><\/p>\s*([\s\S]*?)<\/blockquote>/g,
-      (all, label, inner) => '<div class="note' + (label === "Attention" ? " note-warning" : "") + '"><strong>' + label + "</strong>" + inner + "</div>")
+    .replace(/<blockquote>\s*<p><strong>(À retenir|Note|Attention|Limite|Exemple|En bref|Définition&nbsp;: [^<]+|Définition : [^<]+)<\/strong><\/p>\s*([\s\S]*?)<\/blockquote>/g,
+      (all, label, inner) => {
+        const definition = label.startsWith("Définition");
+        const kind = label === "Attention" ? " note-warning" : label === "En bref" ? " note-summary" : definition ? " note-definition" : "";
+        const title = definition ? "Définition — " + label.replace(/^Définition(?:&nbsp;| ):\s*/, "") : label;
+        const tag = definition ? "aside" : "div";
+        return "<" + tag + ' class="note' + kind + '"><strong>' + title + "</strong>" + inner + "</" + tag + ">";
+      })
     .replace(/<tr>\s*<td><strong>([^<]+)<\/strong><\/td>/g, '<tr><th scope="row">$1</th>');
   const links = [];
   html = html.replace(/href="([^"]+)"/g, (attribute, href) => {

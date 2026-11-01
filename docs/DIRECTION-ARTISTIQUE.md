@@ -17,7 +17,7 @@ Concept : **l'atelier visuel du web**. Le site explique et situe les problèmes 
 
 ## Exactitude technique
 
-- Hero : PHP 7.4 (fin des mises à jour le 28/11/2022, source php.net/eol.php), ton volontairement plus alarmant à la demande du propriétaire. Versions proposées 8.4 / 8.5 (maintenues jusqu'en 2028 / 2029).
+- Hero : PHP 5.6 (fin des mises à jour le 31/12/2018, source php.net/eol.php), version ancienne très répandue, ton volontairement alarmant à la demande du propriétaire. Versions proposées 8.4 / 8.5 (maintenues jusqu'en 2028 / 2029).
 - La compatibilité est présentée comme « à vérifier » ; l'étape suivante est une étude préalable puis un devis, jamais une réparation automatique.
 - Exemple DNS du guide de style : adresse IP de documentation `203.0.113.10` (RFC 5737).
 

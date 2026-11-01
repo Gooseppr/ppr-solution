@@ -4,6 +4,7 @@ slug: "domaine-hebergement-difference"
 description: "Le nom de domaine, le DNS et l'hébergement sont trois choses différentes, parfois chez trois prestataires. Les distinguer permet de savoir où chercher quand le site ne répond plus."
 meta_description: "Comprendre la différence entre nom de domaine, DNS et hébergement web, et savoir à qui s'adresser quand votre site ou vos emails ne fonctionnent plus."
 date: "2026-10-28"
+updated: "2026-11-02"
 category: "Guide"
 tags: ["Domaine", "DNS", "Hébergement"]
 service:
@@ -17,23 +18,39 @@ contact:
 
 Quand un site ne s'affiche plus, la première question est souvent : « à qui dois-je m'adresser ? ». Pour y répondre, il faut distinguer trois éléments qui travaillent ensemble mais qui peuvent être gérés par des prestataires différents : le nom de domaine, le DNS et l'hébergement.
 
+> **En bref**
+>
+> - Le nom de domaine est votre adresse (`votre-site.fr`) ; il se loue et doit être renouvelé.
+> - Le DNS est l'annuaire qui relie cette adresse à vos serveurs (site et emails).
+> - L'hébergement est l'ordinateur qui stocke et fait fonctionner votre site.
+> - Ces trois éléments peuvent être chez trois prestataires différents : savoir où est chacun accélère tout dépannage.
+
 ## Le nom de domaine : votre adresse
 
-Le nom de domaine, c'est `votre-site.fr`. Il ne contient ni pages, ni fichiers : c'est un droit d'usage d'une adresse, loué pour une durée déterminée (souvent un an) auprès d'un **registraire**. S'il n'est pas renouvelé, il expire, et le site comme les emails associés cessent de fonctionner.
+Le nom de domaine, c'est `votre-site.fr`. Il ne contient ni pages, ni fichiers : c'est un droit d'usage d'une adresse, loué pour une durée déterminée (souvent un an) auprès d'un **registraire**.
+
+> **Définition : registraire**
+>
+> L'entreprise auprès de laquelle vous louez votre nom de domaine (par exemple votre hébergeur, ou un prestataire spécialisé). C'est elle qui vous rappelle la date de renouvellement.
+ S'il n'est pas renouvelé, il expire, et le site comme les emails associés cessent de fonctionner.
 
 ## Le DNS : l'annuaire
 
-Le DNS fait le lien entre le nom de domaine et les serveurs. Il contient des **enregistrements** qui indiquent, par exemple :
+Le DNS (pour *Domain Name System*, « système de noms de domaine ») fait le lien entre le nom de domaine et les serveurs. Il fonctionne comme un annuaire : il contient des **enregistrements**, c'est-à-dire des lignes qui indiquent, par exemple :
 
 - où se trouve le site (enregistrements `A` ou `CNAME`) ;
 - quel serveur reçoit les emails (enregistrements `MX`) ;
 - des informations de vérification ou de sécurité (enregistrements `TXT`).
 
-Une erreur ou un oubli dans ces enregistrements, typiquement lors d'un changement d'hébergeur, suffit à rendre le site ou la messagerie injoignable. Après une modification, la prise en compte peut demander un certain temps : c'est la propagation.
+Une erreur ou un oubli dans ces enregistrements, typiquement lors d'un changement d'hébergeur, suffit à rendre le site ou la messagerie injoignable. Après une modification, la prise en compte n'est pas immédiate partout.
+
+> **Définition : propagation**
+>
+> Le délai pendant lequel les ordinateurs du monde entier mettent à jour leur copie de l'annuaire DNS. Il va de quelques minutes à 48 heures ; pendant ce temps, certains visiteurs voient encore l'ancienne version.
 
 ## L'hébergement : là où vit le site
 
-L'hébergement, c'est le serveur qui stocke les fichiers du site, exécute PHP et interroge la base de données. C'est aussi là qu'est installé le certificat HTTPS qui chiffre la connexion avec les visiteurs.
+L'hébergement, c'est le serveur qui stocke les fichiers du site, exécute PHP et interroge la base de données. C'est aussi là qu'est installé le certificat HTTPS, l'équivalent d'une pièce d'identité numérique du site : il permet au navigateur d'afficher le cadenas et de chiffrer les échanges avec vos visiteurs.
 
 ## Trois prestataires, ou un seul
 
