@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guide de style · PPR-Solution</title>
+  <meta name="description" content="Design system initial de PPR-Solution (document interne de préproduction).">
+  <!-- Préproduction : ne pas indexer tant que la publication n'est pas validée. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F8F7F3">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <div class="preview-banner" role="note">
+    <div class="container">Préproduction — jalon de validation visuelle. Le formulaire n'envoie encore aucune demande.</div>
+  </div>
+
+  <header class="site-header" data-header>
+    <div class="container nav-inner">
+      <a class="brand" href="./" aria-label="PPR-Solution, accueil">
+        <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
+          <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
+          <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
+          <path d="M27 13h9" stroke="#171717" stroke-width="2"/>
+          <circle cx="41" cy="13" r="5.5" fill="#171717"/>
+        </svg>
+        <span>
+          <span class="brand-name">PPR-Solution</span>
+          <span class="brand-sub">assistance technique web</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
+        <span class="nav-icon" aria-hidden="true"></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+      <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
+        <a href="./#prestations">Prestations</a>
+        <a href="./#fonctionnement">Comment ça marche</a>
+        <a href="conseils.html">Conseils</a>
+        <a href="a-propos.html">À propos</a>
+        <a class="btn btn-primary btn-sm" href="contact.html">Décrire mon problème</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="g-hebergement" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="12" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="10" y="26" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="51" cy="31" r="2.6" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-php" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M2.8 14h62.4" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="9" cy="8.6" r="2" fill="#F05B3F"/>
+        <rect x="9" y="21" width="20" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="19.5" width="22" height="8" rx="4" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.1"/>
+        <rect x="9" y="33" width="14" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="33" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-dns" viewBox="0 0 68 48">
+        <path d="M34 24 12 9M34 24 12 39M34 24h22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <circle cx="12" cy="9" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="39" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="58" cy="24" r="5.5" fill="#F05B3F" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="34" cy="24" r="9" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="g-https" viewBox="0 0 68 48">
+        <path d="M4 30h60" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <circle cx="6" cy="30" r="3" fill="currentColor"/>
+        <circle cx="62" cy="30" r="3" fill="currentColor"/>
+        <rect x="24" y="20" width="20" height="18" rx="4" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M28.5 20v-4.5a5.5 5.5 0 0 1 11 0V20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="34" cy="29" r="2.4" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-migration" viewBox="0 0 68 48">
+        <rect x="2" y="20" width="24" height="24" rx="7" fill="#F8F7F3" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="42" y="20" width="24" height="24" rx="7" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 18C16 6 52 6 54 17" fill="none" stroke="#B8391F" stroke-width="1.6"/>
+        <path d="m50 13.5 4 4.5 4-4.8" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="8" y="27" width="12" height="4" rx="2" fill="#B7B7B2"/>
+        <rect x="8" y="34" width="9" height="4" rx="2" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-configuration" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="16" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="31" y="12" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="10" y="22" width="12" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="27" y="22" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+        <rect x="10" y="32" width="18" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="33" y="32" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-bilan" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m10 15 3 3 5-6M10 27l3 3 5-6" fill="none" stroke="#1E6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="37" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <rect x="24" y="13" width="32" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="25" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="35" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 12 14">
+        <rect x="1" y="5.5" width="10" height="7.5" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M3.4 5.5V4a2.6 2.6 0 0 1 5.2 0v1.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main id="contenu">
+  <div class="container">
+    <section class="section" style="padding-bottom:var(--s-8)">
+      <p class="tag-eyebrow" aria-hidden="true">design-system</p>
+      <h1>Guide de style</h1>
+      <p class="lead">Jetons et composants du jalon visuel. Document interne, non indexé&nbsp;; la source de vérité reste <code>assets/css/style.css</code>.</p>
+    </section>
+    <section class="sg-section"><h2>Couleurs de marque</h2><ul class="sg-swatches"><li class="sg-swatch"><span style="background:#F8F7F3"></span><p><strong>Ivoire</strong><code>--ivory · #F8F7F3</code>Fond de page</p></li><li class="sg-swatch"><span style="background:#FFFFFF"></span><p><strong>Blanc</strong><code>--white · #FFFFFF</code>Planches, fenêtres</p></li><li class="sg-swatch"><span style="background:#171717"></span><p><strong>Anthracite</strong><code>--ink · #171717</code>Texte, traits</p></li><li class="sg-swatch"><span style="background:#F05B3F"></span><p><strong>Vermillon</strong><code>--vermilion · #F05B3F</code>Aplats d'action (texte encre 5,4:1)</p></li><li class="sg-swatch"><span style="background:#B8391F"></span><p><strong>Vermillon texte</strong><code>--vermilion-ink · #B8391F</code>Texte accentué (5,4:1)</p></li><li class="sg-swatch"><span style="background:#B7B7B2"></span><p><strong>Gris doux</strong><code>--grey · #B7B7B2</code>Traits décoratifs, jamais du texte</p></li><li class="sg-swatch"><span style="background:#5C5B56"></span><p><strong>Gris texte</strong><code>--grey-ink · #5C5B56</code>Texte secondaire (6,3:1)</p></li><li class="sg-swatch"><span style="background:#8A8983"></span><p><strong>Contour</strong><code>--line-strong · #8A8983</code>Bordures de champs (3,3:1)</p></li></ul></section>
+    <section class="sg-section"><h2>Couleurs sémantiques</h2><ul class="sg-swatches"><li class="sg-swatch"><span style="background:#8A5A00"></span><p><strong>Avertissement</strong><code>--warning · #8A5A00</code>+ repère #E0A21B</p></li><li class="sg-swatch"><span style="background:#1E6B45"></span><p><strong>Succès</strong><code>--success · #1E6B45</code></p></li><li class="sg-swatch"><span style="background:#A3194A"></span><p><strong>Erreur</strong><code>--error · #A3194A</code>Distinct du vermillon de marque</p></li></ul>
+      <p class="sg-row" style="margin-top:var(--s-5)"><span class="status status-warning">à examiner</span><span class="status status-success">vérifié</span><span class="status status-error">erreur</span><span class="status status-neutral">à vérifier</span><span class="status status-accent">étape suivante</span></p>
+    </section>
+    <section class="sg-section sg-type"><h2>Typographie</h2>
+      <p class="display" style="font-size:var(--text-3xl);line-height:1.02">Bricolage Grotesque</p>
+      <p class="muted">Titres H1/H2 uniquement (variable, graisse 620–680). Donne la voix « atelier »&nbsp;: chaleureuse, un peu irrégulière.</p>
+      <p style="font-size:var(--text-lg)">IBM Plex Sans — texte courant, interfaces, formulaires. Héritée de l'ancien site pour sa lisibilité et son sérieux technique.</p>
+      <p class="mono">IBM Plex Mono — fichiers, versions, balises-eyebrows, valeurs techniques.</p>
+      <table class="sg-table"><thead><tr><th>Jeton</th><th>Valeur</th><th>Usage</th></tr></thead><tbody>
+      <tr><td><code>--text-3xl</code></td><td>2,35 → 4,35 rem</td><td>H1</td></tr><tr><td><code>--text-2xl</code></td><td>1,85 → 2,75 rem</td><td>H2</td></tr><tr><td><code>--text-xl</code></td><td>1,35 → 1,6 rem</td><td>Titres de prestation</td></tr><tr><td><code>--text-lg</code></td><td>1,2 rem</td><td>Chapô, H3</td></tr><tr><td><code>--text-base</code></td><td>1,0625 rem</td><td>Texte</td></tr><tr><td><code>--text-sm</code></td><td>0,9 rem</td><td>Notes, libellés</td></tr></tbody></table>
+    </section>
+    <section class="sg-section"><h2>Rayons et formes</h2>
+      <ul class="sg-radii"><li style="border-radius:6px">r-xs 6</li><li style="border-radius:10px">r-sm 10</li><li style="border-radius:14px">r-md 14</li><li style="border-radius:22px">r-lg 22</li><li style="border-radius:32px">r-xl 32</li><li style="border-radius:999px">pill</li></ul>
+      <p class="muted" style="margin-top:var(--s-4)">Plus un objet est grand, plus il est doux. Traits de 1,5 px en encre pour les objets du schéma, 1 px clair pour les séparations.</p>
+    </section>
+    <section class="sg-section"><h2>Actions</h2>
+      <p class="sg-row"><a class="btn btn-primary" href="contact.html"><span class="btn-node" aria-hidden="true"></span>Décrire mon problème</a><a class="btn btn-secondary" href="./#prestations">Découvrir les prestations</a><a class="btn btn-primary btn-sm" href="contact.html">Obtenir de l'aide</a><a class="link" href="./#php">Lien de texte</a></p>
+      <p class="sg-row" style="margin-top:var(--s-4)"><button class="chip-btn" type="button" aria-pressed="false">Choix</button><button class="chip-btn" type="button" aria-pressed="true">Choix actif</button><span class="capsule"><span class="capsule-dot" aria-hidden="true"></span>Capsule d'engagement</span></p>
+    </section>
+    <section class="sg-section"><h2>Langage graphique</h2>
+      <div class="sg-grid2" style="font-size:0.95rem">
+        <div class="sg-type"><div class="ui-domain"><span><span class="sc-label">domaine</span><strong>votre-site.fr</strong></span></div><div class="ui-node" style="width:4.5rem">DNS</div>
+          <div class="ui-env"><div class="ui-env-head"><b>Hébergement</b></div><ul class="ui-modules"><li class="ui-module"><span>Fichiers</span><code>public_html/</code></li><li class="ui-module is-flagged"><span>PHP</span><code>8.1</code><span class="ui-flag" aria-hidden="true">!</span></li></ul></div></div>
+        <div class="sg-type"><div class="tech-window"><div class="tech-window-bar"><span class="tech-window-title">zone-dns · votre-site.fr</span><span class="tech-window-dots" aria-hidden="true"><i></i><i></i><i></i></span></div><ul class="tech-rows"><li class="tech-row"><span class="tech-row-key"><code>@</code> A</span><span class="tech-row-val">203.0.113.10</span></li><li class="tech-row"><span class="tech-row-key"><code>www</code> CNAME</span><span class="tech-row-val">votre-site.fr.</span></li><li class="tech-row"><span class="tech-row-key"><code>@</code> MX 10</span><span class="tech-row-val">mx1.exemple-mail.fr.</span></li></ul></div>
+          <p class="illustration-note">Fenêtre de configuration (motif XML n°2). Adresse IP de documentation (RFC 5737), jamais une vraie valeur.</p>
+          <div class="ui-mail"><span class="ui-mail-from">Message de votre hébergeur</span><p class="ui-mail-subject">Problème rapporté par le client</p></div></div>
+      </div>
+    </section>
+    <section class="sg-section"><h2>Règles de mouvement</h2>
+      <table class="sg-table"><tbody>
+      <tr><th scope="row">Récit du hero</th><td>Une seule séquence (≈ 4,5 s), jouée une fois à l'entrée dans l'écran. État final = état par défaut sans JS.</td></tr>
+      <tr><th scope="row">Schéma</th><td>Mise en évidence d'un segment à la demande (clic), flux pointillé joué deux fois puis arrêt.</td></tr>
+      <tr><th scope="row">États interactifs</th><td>160 ms (couleurs), 280 ms (formes), courbe <code>cubic-bezier(.22,1,.36,1)</code>.</td></tr>
+      <tr><th scope="row">Interdits</th><td>Animation continue, parallaxe, apparition de chaque bloc au défilement, scroll-jacking.</td></tr>
+      <tr><th scope="row">Mouvement réduit</th><td><code>prefers-reduced-motion: reduce</code> → aucune animation, contenu complet immédiatement.</td></tr>
+      </tbody></table>
+    </section>
+  </div>
+</main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p><strong>PPR-Solution</strong><br>Assistance technique · Hébergement web · Configuration</p>
+        <p><a class="link" href="mailto:contact@ppr-solution.fr">contact@ppr-solution.fr</a></p>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul class="footer-links">
+          <li><a href="./#prestations">Prestations</a></li>
+          <li><a href="conseils.html">Conseils</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul class="footer-links">
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

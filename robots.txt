@@ -1,0 +1,4 @@
+# Préproduction : aucune exploration tant que la publication n'est pas validée.
+# À remplacer au lancement par : Allow: / + Sitemap: https://ppr-solution.fr/sitemap.xml
+User-agent: *
+Disallow: /

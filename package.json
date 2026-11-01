@@ -1,0 +1,10 @@
+{
+  "name": "ppr-solution",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Site statique PPR-Solution — assistance technique, hébergement web, configuration.",
+  "scripts": {
+    "serve": "python3 -m http.server 8000",
+    "screenshots": "node scripts/screenshots.js http://localhost:8000/ docs/preview"
+  }
+}

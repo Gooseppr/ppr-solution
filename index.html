@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PPR-Solution · Assistance technique pour votre site et son hébergement</title>
+  <meta name="description" content="Version PHP à mettre à jour, problème d'hébergement, de domaine, de DNS ou de certificat HTTPS : PPR-Solution prend en charge les petites interventions techniques de votre site. Premier échange gratuit, devis avant intervention.">
+  <!-- Préproduction : ne pas indexer tant que la publication n'est pas validée. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F8F7F3">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <div class="preview-banner" role="note">
+    <div class="container">Préproduction — jalon de validation visuelle. Le formulaire n'envoie encore aucune demande.</div>
+  </div>
+
+  <header class="site-header" data-header>
+    <div class="container nav-inner">
+      <a class="brand" href="./" aria-label="PPR-Solution, accueil">
+        <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
+          <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
+          <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
+          <path d="M27 13h9" stroke="#171717" stroke-width="2"/>
+          <circle cx="41" cy="13" r="5.5" fill="#171717"/>
+        </svg>
+        <span>
+          <span class="brand-name">PPR-Solution</span>
+          <span class="brand-sub">assistance technique web</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
+        <span class="nav-icon" aria-hidden="true"></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+      <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
+        <a href="#prestations">Prestations</a>
+        <a href="#fonctionnement">Comment ça marche</a>
+        <a href="conseils.html">Conseils</a>
+        <a href="a-propos.html">À propos</a>
+        <a class="btn btn-primary btn-sm" href="contact.html">Décrire mon problème</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="g-hebergement" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="12" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="10" y="26" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="51" cy="31" r="2.6" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-php" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M2.8 14h62.4" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="9" cy="8.6" r="2" fill="#F05B3F"/>
+        <rect x="9" y="21" width="20" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="19.5" width="22" height="8" rx="4" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.1"/>
+        <rect x="9" y="33" width="14" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="33" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-dns" viewBox="0 0 68 48">
+        <path d="M34 24 12 9M34 24 12 39M34 24h22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <circle cx="12" cy="9" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="39" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="58" cy="24" r="5.5" fill="#F05B3F" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="34" cy="24" r="9" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="g-https" viewBox="0 0 68 48">
+        <path d="M4 30h60" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <circle cx="6" cy="30" r="3" fill="currentColor"/>
+        <circle cx="62" cy="30" r="3" fill="currentColor"/>
+        <rect x="24" y="20" width="20" height="18" rx="4" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M28.5 20v-4.5a5.5 5.5 0 0 1 11 0V20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="34" cy="29" r="2.4" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-migration" viewBox="0 0 68 48">
+        <rect x="2" y="20" width="24" height="24" rx="7" fill="#F8F7F3" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="42" y="20" width="24" height="24" rx="7" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 18C16 6 52 6 54 17" fill="none" stroke="#B8391F" stroke-width="1.6"/>
+        <path d="m50 13.5 4 4.5 4-4.8" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="8" y="27" width="12" height="4" rx="2" fill="#B7B7B2"/>
+        <rect x="8" y="34" width="9" height="4" rx="2" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-configuration" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="16" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="31" y="12" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="10" y="22" width="12" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="27" y="22" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+        <rect x="10" y="32" width="18" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="33" y="32" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-bilan" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m10 15 3 3 5-6M10 27l3 3 5-6" fill="none" stroke="#1E6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="37" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <rect x="24" y="13" width="32" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="25" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="35" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 12 14">
+        <rect x="1" y="5.5" width="10" height="7.5" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M3.4 5.5V4a2.6 2.6 0 0 1 5.2 0v1.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main id="contenu">
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1 id="hero-title">Votre site internet a besoin d'un coup de main&nbsp;?</h1>
+          <p class="lead">Version PHP à mettre à jour, problème d'hébergement, de domaine ou de configuration&nbsp;: nous prenons en charge vos petites interventions techniques.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="contact.html"><span class="btn-node" aria-hidden="true"></span>Décrire mon problème</a>
+            <a class="btn btn-secondary" href="#prestations">Découvrir les prestations</a>
+          </div>
+          <ul class="hero-promises" aria-label="Nos engagements">
+            <li class="capsule"><span class="capsule-dot" aria-hidden="true"></span>Premier échange gratuit</li>
+            <li class="capsule"><span class="capsule-dot" aria-hidden="true"></span>Devis avant toute intervention payante</li>
+          </ul>
+        </div>
+
+        <figure class="scene" data-scene aria-labelledby="scene-caption">
+          <div class="scene-stage">
+            <svg class="scene-links" viewBox="0 0 600 560" preserveAspectRatio="none" aria-hidden="true">
+              <path pathLength="1" style="--d:350" d="M195 67H233"/>
+              <path pathLength="1" style="--d:550" d="M270 103C270 130 232 124 232 152"/>
+              <path pathLength="1" style="--d:750" d="M351 200C373 200 365 96 387 96"/>
+              <path class="link-signal" style="--d:1500" d="M375 286C356 286 358 297 338 297"/>
+              <path class="link-diag" pathLength="1" style="--d:2700" d="M185 316V352"/>
+            </svg>
+
+            <ol class="scene-chain-mobile" aria-hidden="true">
+              <li><b>Domaine</b></li>
+              <li><b>DNS</b></li>
+              <li class="is-flagged"><b>Hébergement</b></li>
+              <li><b>Site</b></li>
+            </ol>
+
+            <div class="sc-domain" data-step style="--d:0">
+              <div class="ui-domain"><span><span class="sc-label">domaine</span><strong>votre-site.fr</strong></span></div>
+            </div>
+
+            <div class="sc-dns" data-step style="--d:250">
+              <div class="ui-node">DNS</div>
+            </div>
+
+            <div class="sc-browser" data-step style="--d:650">
+              <div class="ui-browser">
+                <div class="ui-browser-bar">
+                  <span class="ui-browser-url"><svg class="ui-lock" aria-hidden="true"><use href="#i-lock"/></svg>votre-site.fr</span>
+                </div>
+                <div class="ui-page"><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+
+            <div class="sc-host" data-step style="--d:450">
+              <div class="ui-env">
+                <div class="ui-env-head"><b>Hébergement</b><span class="sc-label">serveur mutualisé</span></div>
+                <ul class="ui-modules">
+                  <li class="ui-module"><span>Fichiers du site</span><code>public_html/</code></li>
+                  <li class="ui-module"><span>Base de données</span><code>MySQL</code></li>
+                  <li class="ui-module is-flagged"><span>PHP</span><code>8.1</code><span class="ui-flag" aria-hidden="true">!</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sc-mail" data-step style="--d:1300">
+              <div class="ui-mail">
+                <span class="ui-mail-from">Message de votre hébergeur</span>
+                <p class="ui-mail-subject">PHP 8.1 n'est plus pris en charge</p>
+                <p class="sc-label">Merci de choisir une version plus récente.</p>
+              </div>
+            </div>
+
+            <div class="sc-diag" data-step style="--d:2900">
+              <div class="tech-window">
+                <div class="tech-window-bar">
+                  <span class="tech-window-title">Panneau d'hébergement › PHP</span>
+                  <span class="tech-window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                </div>
+                <ul class="tech-rows">
+                  <li class="tech-row" style="--i:0"><span class="tech-row-key">Version actuelle</span><span class="tech-row-val"><span class="tech-chip">8.1</span><span class="status status-warning">fin de support</span></span></li>
+                  <li class="tech-row" style="--i:1"><span class="tech-row-key">Versions proposées</span><span class="tech-row-val"><span class="tech-chip">8.3</span><span class="tech-chip">8.4</span></span></li>
+                  <li class="tech-row" style="--i:2"><span class="tech-row-key">Compatibilité du site</span><span class="tech-row-val"><span class="status status-neutral">à vérifier</span></span></li>
+                  <li class="tech-row tech-row-next" style="--i:3"><span class="tech-row-key">Étape suivante</span><span class="tech-row-val"><span class="status status-accent">étude préalable, puis devis</span></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <figcaption id="scene-caption" class="illustration-note">
+            Illustration d'une situation fréquente&nbsp;: l'hébergeur annonce la fin de prise en charge de PHP&nbsp;8.1. Avant de changer de version, la compatibilité du site doit être vérifiée. Ce schéma n'est pas un outil de diagnostic.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- =========================== PRESTATIONS =========================== -->
+    <section class="section plate" id="prestations" aria-labelledby="prestations-title">
+      <div class="container services-layout">
+        <div class="services-aside">
+          <div class="section-head">
+            <p class="tag-eyebrow" aria-hidden="true">prestations</p>
+            <h2 id="prestations-title">Les petites interventions que l'on hésite à faire soi-même</h2>
+            <p class="lead">Vous n'avez pas besoin de connaître PHP, le DNS ou le FTP. Décrivez ce que vous constatez&nbsp;: nous étudions la situation, puis nous vous proposons une intervention claire.</p>
+          </div>
+          <div class="scope-note">
+            <h3>Ce que nous ne faisons pas</h3>
+            <p>Création ou refonte complète de site, développement sur mesure, correction approfondie de code, audit de sécurité certifié, infogérance 24&nbsp;h/24. Si votre demande sort de ce périmètre, nous vous le disons dès le premier échange.</p>
+          </div>
+        </div>
+
+        <ul class="service-list">
+          <li class="service" id="hebergement">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-hebergement"/></svg>
+            <div class="service-body">
+              <h3>Assistance à l'hébergement</h3>
+              <p class="service-problem">Votre site ne s'affiche plus, vous n'arrivez plus à accéder à votre espace, ou votre hébergeur vous demande une action que vous ne comprenez pas.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Diagnostiquer le problème et en expliquer la cause</li>
+                    <li>Corriger des erreurs de configuration simples</li>
+                    <li>Traduire en clair ce que demande votre hébergeur</li>
+                  </ul>
+                </div>
+                <div class="service-limit">
+                  <h4>Limites</h4>
+                  <ul><li>L'hébergeur reste responsable de son infrastructure</li></ul>
+                </div>
+              </div>
+              <a class="link service-cta" href="contact.html?sujet=hebergement">Décrire un problème d'hébergement</a>
+            </div>
+          </li>
+
+          <li class="service service-featured" id="php">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-php"/></svg>
+            <div class="service-body">
+              <h3>PHP et compatibilité</h3>
+              <p class="service-problem">Votre hébergeur annonce la fin de prise en charge de votre version PHP et vous demande d'en changer.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Identifier la version utilisée et celle visée</li>
+                    <li>Analyser au préalable les contraintes de compatibilité</li>
+                    <li>Préparer le changement et ajuster des paramètres simples</li>
+                    <li>Vérifier le fonctionnement après l'intervention</li>
+                  </ul>
+                </div>
+                <div class="service-limit">
+                  <h4>Limites</h4>
+                  <ul><li>La correction d'un code applicatif obsolète n'est pas incluse</li></ul>
+                </div>
+              </div>
+              <p class="service-caution">Changer de version PHP peut rendre une extension, un thème ou une application incompatible. C'est pourquoi nous vérifions avant d'agir, sans promettre que le changement sera simple.</p>
+              <a class="link service-cta" href="contact.html?sujet=php">Préparer une mise à jour PHP</a>
+            </div>
+          </li>
+
+          <li class="service" id="dns">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-dns"/></svg>
+            <div class="service-body">
+              <h3>Domaine et DNS</h3>
+              <p class="service-problem">Votre adresse ne mène plus à votre site, une redirection tourne en rond ou un nouveau domaine reste à configurer.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Diagnostiquer la résolution DNS</li>
+                    <li>Vérifier les enregistrements courants (A, CNAME, MX, TXT)</li>
+                    <li>Analyser les redirections et accompagner les petits changements</li>
+                  </ul>
+                </div>
+              </div>
+              <a class="link service-cta" href="contact.html?sujet=dns">Décrire un problème de domaine</a>
+            </div>
+          </li>
+
+          <li class="service" id="https">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-https"/></svg>
+            <div class="service-body">
+              <h3>Certificat HTTPS / SSL</h3>
+              <p class="service-problem">Le navigateur affiche «&nbsp;connexion non sécurisée&nbsp;» ou signale un certificat expiré.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Diagnostiquer les erreurs de certificat courantes</li>
+                    <li>Vérifier l'installation et la validité</li>
+                    <li>Accompagner le renouvellement ou la configuration</li>
+                  </ul>
+                </div>
+              </div>
+              <a class="link service-cta" href="contact.html?sujet=https">Décrire un problème de certificat</a>
+            </div>
+          </li>
+
+          <li class="service" id="migration">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-migration"/></svg>
+            <div class="service-body">
+              <h3>Migration simple d'hébergement</h3>
+              <p class="service-problem">Vous changez d'hébergeur et craignez de perdre des fichiers, des données ou vos emails en route.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Étudier la faisabilité et sauvegarder fichiers et données</li>
+                    <li>Préparer l'environnement de destination</li>
+                    <li>Transférer fichiers et bases de données, puis vérifier</li>
+                    <li>Prévoir un retour arrière lorsque c'est possible</li>
+                  </ul>
+                </div>
+                <div class="service-limit">
+                  <h4>Limites</h4>
+                  <ul><li>Une courte interruption ne peut pas toujours être évitée</li></ul>
+                </div>
+              </div>
+              <a class="link service-cta" href="contact.html?sujet=migration">Préparer une migration</a>
+            </div>
+          </li>
+
+          <li class="service" id="configuration">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-configuration"/></svg>
+            <div class="service-body">
+              <h3>Configuration et fichiers</h3>
+              <p class="service-problem">Un accès FTP qui refuse la connexion, un fichier de configuration à modifier, une base de données injoignable.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Configurer un accès FTP / SFTP</li>
+                    <li>Ajuster des fichiers et paramètres techniques courants</li>
+                    <li>Rétablir une connexion à une base de données</li>
+                    <li>Vérifier permissions et chemins de fichiers, selon le contexte</li>
+                  </ul>
+                </div>
+              </div>
+              <a class="link service-cta" href="contact.html?sujet=configuration">Décrire un problème de configuration</a>
+            </div>
+          </li>
+
+          <li class="service" id="bilan">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-bilan"/></svg>
+            <div class="service-body">
+              <h3>Bilan de santé technique</h3>
+              <p class="service-problem">Rien n'est cassé, mais vous voulez savoir si les éléments techniques de votre site sont à jour et cohérents.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Vérifier des points ciblés selon votre site et les accès disponibles</li>
+                    <li>Vous remettre un compte rendu compréhensible</li>
+                  </ul>
+                </div>
+                <div class="service-limit">
+                  <h4>Limites</h4>
+                  <ul><li>Ce n'est pas un audit de cybersécurité exhaustif</li></ul>
+                </div>
+              </div>
+              <a class="link service-cta" href="contact.html?sujet=autre">Demander un bilan</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ======================== SCHÉMA PÉDAGOGIQUE ======================== -->
+    <section class="section" id="fonctionnement" aria-labelledby="chain-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="tag-eyebrow" aria-hidden="true">hebergement</p>
+          <h2 id="chain-title">Comment votre site arrive jusqu'à vos visiteurs</h2>
+          <p class="lead">Quatre étapes simplifiées suffisent à situer la plupart des problèmes. Savoir où il se trouve, c'est déjà comprendre qui peut le résoudre.</p>
+        </div>
+
+        <div class="chain-controls" data-chain-controls>
+          <p id="chain-q">Votre problème concerne plutôt…</p>
+          <ul class="chain-choices" role="group" aria-labelledby="chain-q">
+            <li><button class="chip-btn" type="button" aria-pressed="false" data-topic="domaine">Le nom de domaine</button></li>
+            <li><button class="chip-btn" type="button" aria-pressed="false" data-topic="dns">Le DNS</button></li>
+            <li><button class="chip-btn" type="button" aria-pressed="false" data-topic="hebergement">L'hébergement</button></li>
+            <li><button class="chip-btn" type="button" aria-pressed="false" data-topic="php">La version PHP</button></li>
+            <li><button class="chip-btn" type="button" aria-pressed="false" data-topic="https">Le certificat HTTPS</button></li>
+            <li><button class="chip-btn" type="button" aria-pressed="false" data-topic="inconnu">Je ne sais pas</button></li>
+          </ul>
+        </div>
+
+        <ol class="chain" data-chain>
+          <li class="chain-station" data-station="domaine" data-hl>
+            <div class="chain-visual"><div class="ui-domain"><strong>votre-site.fr</strong></div></div>
+            <div class="chain-step"><span class="chain-step-num" aria-hidden="true">1</span><h3>Le domaine</h3></div>
+            <p>L'adresse que vos visiteurs saisissent. Elle se loue chaque année auprès d'un registraire.</p>
+          </li>
+          <li class="chain-conn" data-conn="1" data-hl aria-hidden="true">
+            <svg viewBox="0 0 100 24" preserveAspectRatio="none" class="conn-h"><path d="M0 12H100"/><circle cx="96" cy="12" r="3.5"/></svg>
+            <svg viewBox="0 0 24 100" preserveAspectRatio="none" class="conn-v"><path d="M12 0V100"/></svg>
+          </li>
+          <li class="chain-station" data-station="dns" data-hl>
+            <div class="chain-visual"><div class="ui-node">DNS</div></div>
+            <div class="chain-step"><span class="chain-step-num" aria-hidden="true">2</span><h3>Le DNS</h3></div>
+            <p>L'annuaire qui indique à quel serveur correspond votre domaine.</p>
+          </li>
+          <li class="chain-conn" data-conn="2" data-hl aria-hidden="true">
+            <svg viewBox="0 0 100 24" preserveAspectRatio="none" class="conn-h"><path d="M0 12H100"/><circle cx="96" cy="12" r="3.5"/></svg>
+            <svg viewBox="0 0 24 100" preserveAspectRatio="none" class="conn-v"><path d="M12 0V100"/></svg>
+          </li>
+          <li class="chain-station" data-station="hebergement" data-hl>
+            <div class="chain-visual">
+              <div class="ui-env">
+                <div class="ui-env-head"><b>Serveur</b></div>
+                <ul class="ui-modules">
+                  <li class="ui-module" data-module="fichiers"><span>Fichiers</span></li>
+                  <li class="ui-module" data-module="php"><span>PHP</span><code>version</code></li>
+                  <li class="ui-module" data-module="bdd"><span>Base de données</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="chain-step"><span class="chain-step-num" aria-hidden="true">3</span><h3>L'hébergement</h3></div>
+            <p>Le serveur qui stocke les fichiers du site, exécute PHP et interroge la base de données.</p>
+          </li>
+          <li class="chain-conn" data-conn="3" data-hl aria-hidden="true">
+            <svg viewBox="0 0 100 24" preserveAspectRatio="none" class="conn-h"><path d="M0 12H100"/><circle cx="96" cy="12" r="3.5"/></svg>
+            <svg viewBox="0 0 24 100" preserveAspectRatio="none" class="conn-v"><path d="M12 0V100"/></svg>
+          </li>
+          <li class="chain-https" data-https data-hl>
+            <svg class="ui-lock" aria-hidden="true"><use href="#i-lock"/></svg>
+            <span><strong>HTTPS</strong> chiffre les échanges entre le serveur et le navigateur. Le certificat est installé sur l'hébergement&nbsp;: il prouve l'identité du site.</span>
+          </li>
+          <li class="chain-station" data-station="site" data-hl>
+            <div class="chain-visual">
+              <div class="ui-browser">
+                <div class="ui-browser-bar"><span class="ui-browser-url"><svg class="ui-lock" aria-hidden="true"><use href="#i-lock"/></svg>votre-site.fr</span></div>
+                <div class="ui-page"><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+            <div class="chain-step"><span class="chain-step-num" aria-hidden="true">4</span><h3>Le site affiché</h3></div>
+            <p>La page que le navigateur reçoit et montre à votre visiteur.</p>
+          </li>
+        </ol>
+
+        <div class="chain-detail" data-chain-detail aria-live="polite">
+          <div>
+            <h3 data-detail-title>Choisissez l'élément qui vous semble concerné</h3>
+            <p data-detail-text>Le schéma met en évidence l'endroit où le problème se situe le plus souvent. Si vous hésitez, choisissez «&nbsp;Je ne sais pas&nbsp;» : c'est une réponse tout à fait valable.</p>
+          </div>
+          <div data-detail-signs-wrap hidden>
+            <h4>Signes fréquents</h4>
+            <ul data-detail-signs></ul>
+          </div>
+          <a class="btn btn-primary" href="contact.html" data-detail-cta>Décrire mon problème</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section plate" aria-labelledby="closing-title">
+      <div class="container closing">
+        <div>
+          <h2 id="closing-title">Expliquez-nous ce que vous constatez</h2>
+          <p>Vous ne connaissez pas les détails techniques&nbsp;? Aucun souci. Décrivez simplement ce que vous voyez ou ce que votre hébergeur vous demande. Le premier échange est gratuit et sans engagement.</p>
+        </div>
+        <a class="btn btn-primary" href="contact.html"><span class="btn-node" aria-hidden="true"></span>Décrire mon problème</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p><strong>PPR-Solution</strong><br>Assistance technique · Hébergement web · Configuration</p>
+        <p><a class="link" href="mailto:contact@ppr-solution.fr">contact@ppr-solution.fr</a></p>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul class="footer-links">
+          <li><a href="#prestations">Prestations</a></li>
+          <li><a href="conseils.html">Conseils</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul class="footer-links">
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
