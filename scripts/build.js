@@ -12,7 +12,7 @@ const { SITE, escapeHtml, absoluteUrl, renderPage } = require("./layout");
 
 const ROOT = path.join(__dirname, "..");
 const WORDS_PER_MINUTE = 220;
-const PAGE_FIELDS = new Set(["title", "description", "output", "nav", "robots", "scripts", "sitemap", "prefix"]);
+const PAGE_FIELDS = new Set(["title", "description", "output", "nav", "robots", "scripts", "sitemap", "prefix", "schema"]);
 
 function formatDateFr(date) {
   return new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T00:00:00Z`));
@@ -106,7 +106,7 @@ function renderArticle(post, others) {
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "BlogPosting", headline: post.title, description: post.meta_description, datePublished: post.date, dateModified: post.updated || post.date, inLanguage: "fr-FR", mainEntityOfPage: absoluteUrl(output), author: { "@type": "Organization", name: SITE.name, url: absoluteUrl("index.html") }, publisher: { "@type": "Organization", name: SITE.name } },
+      { "@type": "BlogPosting", headline: post.title, description: post.meta_description, datePublished: post.date, dateModified: post.updated || post.date, inLanguage: "fr-FR", mainEntityOfPage: absoluteUrl(output), author: { "@id": `${SITE.baseUrl}/#organisation`, "@type": "Organization", name: SITE.name, url: absoluteUrl("index.html") }, publisher: { "@id": `${SITE.baseUrl}/#organisation`, "@type": "Organization", name: SITE.name } },
       { "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "Accueil", item: absoluteUrl("index.html") },
         { "@type": "ListItem", position: 2, name: "Blog", item: absoluteUrl("blog.html") },

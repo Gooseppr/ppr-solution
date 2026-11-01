@@ -3,6 +3,37 @@ title: "PPR-Solution · Assistance technique pour votre site et son hébergement
 description: "Mise à jour PHP urgente, problème d'hébergement, de domaine, de DNS ou de certificat HTTPS : PPR-Solution prend en charge les petites interventions techniques de votre site. Premier échange gratuit, devis avant intervention."
 output: index.html
 nav: accueil
+schema:
+  "@context": "https://schema.org"
+  "@graph":
+    - "@type": "ProfessionalService"
+      "@id": "https://ppr-solution.fr/#organisation"
+      name: "PPR-Solution"
+      url: "https://ppr-solution.fr/"
+      email: "contact@ppr-solution.fr"
+      image: "https://ppr-solution.fr/assets/img/og-default.png"
+      logo: "https://ppr-solution.fr/assets/img/favicon.svg"
+      description: "Assistance technique ponctuelle pour les sites internet : mise à jour PHP, hébergement, domaine et DNS, certificats HTTPS, migration simple et configuration."
+      areaServed: { "@type": "Country", "name": "France" }
+      address: { "@type": "PostalAddress", "addressLocality": "Aubervilliers", "postalCode": "93300", "addressCountry": "FR" }
+      knowsAbout: ["PHP", "Hébergement web", "DNS", "Certificats HTTPS", "Migration de site internet", "WordPress"]
+      hasOfferCatalog:
+        "@type": "OfferCatalog"
+        name: "Prestations"
+        itemListElement:
+          - { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mise à jour PHP et compatibilité", "url": "https://ppr-solution.fr/prestations.html#php" } }
+          - { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Assistance à l'hébergement", "url": "https://ppr-solution.fr/prestations.html#hebergement" } }
+          - { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Domaine et DNS", "url": "https://ppr-solution.fr/prestations.html#dns" } }
+          - { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Certificat HTTPS / SSL", "url": "https://ppr-solution.fr/prestations.html#https" } }
+          - { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Migration simple d'hébergement", "url": "https://ppr-solution.fr/prestations.html#migration" } }
+          - { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Configuration et fichiers", "url": "https://ppr-solution.fr/prestations.html#configuration" } }
+          - { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bilan de santé technique", "url": "https://ppr-solution.fr/prestations.html#bilan" } }
+    - "@type": "WebSite"
+      "@id": "https://ppr-solution.fr/#site"
+      name: "PPR-Solution"
+      url: "https://ppr-solution.fr/"
+      inLanguage: "fr-FR"
+      publisher: { "@id": "https://ppr-solution.fr/#organisation" }
 ---
 
     <!-- ============================== HERO ============================== -->

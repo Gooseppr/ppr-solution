@@ -18,6 +18,25 @@ const NAV = [
   { key: "a-propos", href: "a-propos.html", label: "À propos" }
 ];
 
+// Politique de sécurité du contenu (GitHub Pages ne permet pas d'en-têtes HTTP personnalisés).
+// Le seul script en ligne (bascule no-js → js) est autorisé par son empreinte, calculée au build.
+const INLINE_SCRIPT = 'document.documentElement.classList.replace("no-js", "js");';
+const INLINE_HASH = require("node:crypto").createHash("sha256").update(INLINE_SCRIPT).digest("base64");
+const CSP = [
+  "default-src 'self'",
+  `script-src 'self' 'sha256-${INLINE_HASH}'`,
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data:",
+  "font-src 'self'",
+  "connect-src https://script.google.com https://script.googleusercontent.com",
+  "form-action 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "upgrade-insecure-requests"
+].join("; ");
+
+const SOCIAL_IMAGE = { path: "assets/img/og-default.png", width: 1200, height: 630, alt: "PPR-Solution — assistance technique pour votre site et son hébergement" };
+
 const SPRITE = fs.readFileSync(path.join(__dirname, "..", "src", "partials", "sprite.html"), "utf8").trimEnd();
 
 function escapeHtml(value) {
@@ -34,6 +53,8 @@ function head({ title, description, output, prefix = "", type = "website", publi
   const lines = [
     `<meta charset="utf-8">`,
     `<meta name="viewport" content="width=device-width, initial-scale=1">`,
+    `<meta http-equiv="Content-Security-Policy" content="${CSP}">`,
+    `<meta name="referrer" content="strict-origin-when-cross-origin">`,
     `<title>${escapeHtml(title)}</title>`,
     `<meta name="description" content="${escapeHtml(description)}">`,
     indexable ? `<link rel="canonical" href="${escapeHtml(url)}">` : `<meta name="robots" content="noindex, nofollow">`,
@@ -48,11 +69,16 @@ function head({ title, description, output, prefix = "", type = "website", publi
     `<meta property="og:title" content="${escapeHtml(title)}">`,
     `<meta property="og:description" content="${escapeHtml(description)}">`,
     `<meta property="og:url" content="${escapeHtml(url)}">`,
-    `<meta name="twitter:card" content="summary">`,
+    `<meta property="og:image" content="${SITE.baseUrl}/${SOCIAL_IMAGE.path}">`,
+    `<meta property="og:image:width" content="${SOCIAL_IMAGE.width}">`,
+    `<meta property="og:image:height" content="${SOCIAL_IMAGE.height}">`,
+    `<meta property="og:image:alt" content="${escapeHtml(SOCIAL_IMAGE.alt)}">`,
+    `<meta name="twitter:card" content="summary_large_image">`,
+    `<meta name="twitter:image" content="${SITE.baseUrl}/${SOCIAL_IMAGE.path}">`,
     published ? `<meta property="article:published_time" content="${escapeHtml(published)}">` : "",
     published ? `<meta property="article:modified_time" content="${escapeHtml(updated || published)}">` : "",
     schema ? `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, "\\u003c")}</script>` : "",
-    `<script>document.documentElement.classList.replace("no-js", "js");</script>`,
+    `<script>${INLINE_SCRIPT}</script>`,
     `<script src="${prefix}assets/js/main.js" defer></script>`
   ];
   return lines.filter(Boolean).map((line) => `  ${line}`).join("\n");

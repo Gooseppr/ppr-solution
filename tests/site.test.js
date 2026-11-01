@@ -95,3 +95,21 @@ test("le formulaire de contact garde ses champs obligatoires et son piège à ro
     assert.match(html, new RegExp(`value="${sujet}"`), sujet);
   }
 });
+
+test("sécurité et partage : CSP, referrer et image de partage sur chaque page", () => {
+  const crypto = require("node:crypto");
+  for (const file of htmlFiles) {
+    const html = outputs.get(file);
+    const csp = html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)">/);
+    assert.ok(csp, `${file} : CSP absente`);
+    assert.match(csp[1], /object-src 'none'/);
+    // Chaque script en ligne exécutable doit être autorisé par son empreinte.
+    for (const [, code] of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) {
+      const hash = crypto.createHash("sha256").update(code).digest("base64");
+      assert.ok(csp[1].includes(`'sha256-${hash}'`), `${file} : script en ligne non autorisé par la CSP`);
+    }
+    assert.match(html, /<meta name="referrer" content="strict-origin-when-cross-origin">/, file);
+    assert.match(html, /<meta property="og:image" content="https:\/\/ppr-solution\.fr\/assets\/img\/og-default\.png">/, file);
+  }
+  assert.ok(fs.existsSync(path.join(ROOT, "assets/img/og-default.png")));
+});
