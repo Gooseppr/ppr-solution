@@ -9,7 +9,7 @@ const SITE = {
   baseUrl: "https://ppr-solution.fr",
   email: "contact@ppr-solution.fr",
   // Préproduction : noindex partout, pas de canonical, bandeau visible, robots.txt bloquant.
-  preprod: true
+  preprod: false
 };
 
 const NAV = [

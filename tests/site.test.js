@@ -49,9 +49,23 @@ test("chaque page a un seul h1, un titre et une description uniques", () => {
   }
 });
 
-test("préproduction : aucune page indexable, robots.txt bloquant", () => {
-  for (const file of htmlFiles) assert.match(outputs.get(file), /<meta name="robots" content="noindex, nofollow">/, file);
-  assert.match(fs.readFileSync(path.join(ROOT, "robots.txt"), "utf8"), /Disallow: \//);
+test("production : pages indexables avec canonical, pages internes exclues, robots.txt ouvert", () => {
+  const internal = new Set(["styleguide.html", "404.html"]);
+  for (const file of htmlFiles) {
+    const html = outputs.get(file);
+    if (internal.has(file)) {
+      assert.match(html, /<meta name="robots" content="noindex, nofollow">/, file);
+    } else {
+      assert.doesNotMatch(html, /name="robots"/, file);
+      assert.match(html, /<link rel="canonical" href="https:\/\/ppr-solution\.fr\/[^"]*">/, file);
+      assert.doesNotMatch(html, /Préproduction/, file);
+    }
+  }
+  const robots = fs.readFileSync(path.join(ROOT, "robots.txt"), "utf8");
+  assert.match(robots, /Allow: \//);
+  assert.match(robots, /Sitemap: https:\/\/ppr-solution\.fr\/sitemap\.xml/);
+  const sitemap = outputs.get("sitemap.xml");
+  assert.doesNotMatch(sitemap, /styleguide|404/);
 });
 
 test("CTA : « Décrire mon problème » réservé au hero, « Obtenir de l'aide » dans le menu", () => {

@@ -2,7 +2,7 @@
 
 Site statique de PPR-Solution : assistance technique, hébergement web et configuration pour les propriétaires de sites internet.
 
-> **État : préproduction (phase C en cours).** Pages Accueil, Prestations, Blog (3 articles), À propos, Contact et pages légales générées. Le site n'est pas indexable, le formulaire est désactivé tant que le script d'envoi n'est pas déployé et validé.
+> **État : en production** sur https://ppr-solution.fr (GitHub Pages, branche `main`). Formulaire actif vers contact@ppr-solution.fr.
 
 ## Commandes
 
