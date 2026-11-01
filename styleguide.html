@@ -4,27 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Guide de style · PPR-Solution</title>
-  <meta name="description" content="Design system initial de PPR-Solution (document interne de préproduction).">
-  <!-- Préproduction : ne pas indexer tant que la publication n'est pas validée. -->
+  <meta name="description" content="Design system de PPR-Solution (document interne).">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#F8F7F3">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PPR-Solution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Guide de style · PPR-Solution">
+  <meta property="og:description" content="Design system de PPR-Solution (document interne).">
+  <meta property="og:url" content="https://ppr-solution.fr/styleguide.html">
+  <meta name="twitter:card" content="summary">
   <script>document.documentElement.classList.replace("no-js", "js");</script>
   <script src="assets/js/main.js" defer></script>
+
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
-
-  <div class="preview-banner" role="note">
-    <div class="container">Préproduction — jalon de validation visuelle. Le formulaire n'envoie encore aucune demande.</div>
-  </div>
-
+  <div class="preview-banner" role="note"><div class="container">Préproduction — site non publié, aucune demande réelle n'est traitée.</div></div>
   <header class="site-header" data-header>
     <div class="container nav-inner">
-      <a class="brand" href="./" aria-label="PPR-Solution, accueil">
+      <a class="brand" href="./">
         <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
           <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
           <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
@@ -35,21 +38,20 @@
           <span class="brand-name">PPR-Solution</span>
           <span class="brand-sub">assistance technique web</span>
         </span>
+        <span class="sr-only">(accueil)</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
         <span class="nav-icon" aria-hidden="true"></span>
         <span class="sr-only">Ouvrir le menu</span>
       </button>
       <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
-        <a href="./#prestations">Prestations</a>
-        <a href="./#fonctionnement">Comment ça marche</a>
-        <a href="conseils.html">Conseils</a>
+        <a href="prestations.html">Prestations</a>
+        <a href="blog.html">Blog</a>
         <a href="a-propos.html">À propos</a>
-        <a class="btn btn-primary btn-sm" href="contact.html">Décrire mon problème</a>
+        <a class="btn btn-primary btn-sm" href="contact.html">Obtenir de l'aide</a>
       </nav>
     </div>
   </header>
-
   <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
@@ -116,7 +118,7 @@
   </svg>
 
   <main id="contenu">
-  <div class="container">
+<div class="container">
     <section class="section" style="padding-bottom:var(--s-8)">
       <p class="tag-eyebrow" aria-hidden="true">design-system</p>
       <h1>Guide de style</h1>
@@ -139,7 +141,7 @@
       <p class="muted" style="margin-top:var(--s-4)">Plus un objet est grand, plus il est doux. Traits de 1,5 px en encre pour les objets du schéma, 1 px clair pour les séparations.</p>
     </section>
     <section class="sg-section"><h2>Actions</h2>
-      <p class="sg-row"><a class="btn btn-primary" href="contact.html"><span class="btn-node" aria-hidden="true"></span>Décrire mon problème</a><a class="btn btn-secondary" href="./#prestations">Découvrir les prestations</a><a class="btn btn-primary btn-sm" href="contact.html">Obtenir de l'aide</a><a class="link" href="./#php">Lien de texte</a></p>
+      <p class="sg-row"><a class="btn btn-primary" href="contact.html"><span class="btn-node" aria-hidden="true"></span>Bouton principal</a><a class="btn btn-secondary" href="prestations.html">Découvrir les prestations</a><a class="btn btn-primary btn-sm" href="contact.html">Obtenir de l'aide</a><a class="link" href="prestations.html#php">Lien de texte</a></p>
       <p class="sg-row" style="margin-top:var(--s-4)"><button class="chip-btn" type="button" aria-pressed="false">Choix</button><button class="chip-btn" type="button" aria-pressed="true">Choix actif</button><span class="capsule"><span class="capsule-dot" aria-hidden="true"></span>Capsule d'engagement</span></p>
     </section>
     <section class="sg-section"><h2>Langage graphique</h2>
@@ -151,6 +153,17 @@
           <div class="ui-mail"><span class="ui-mail-from">Message de votre hébergeur</span><p class="ui-mail-subject">Problème rapporté par le client</p></div></div>
       </div>
     </section>
+    <section class="sg-section"><h2>Libellés d'action</h2>
+      <table class="sg-table"><tbody>
+      <tr><th scope="row">Menu</th><td>Obtenir de l'aide</td></tr>
+      <tr><th scope="row">Hero de l'accueil</th><td>Décrire mon problème (unique sur le site)</td></tr>
+      <tr><th scope="row">Prestation</th><td>Libellé propre au service : « Préparer une mise à jour PHP », « Décrire un problème de certificat »…</td></tr>
+      <tr><th scope="row">Schéma</th><td>Adapté au choix ; par défaut « Expliquer ce que je constate »</td></tr>
+      <tr><th scope="row">Fin de page</th><td>« Demander un premier échange », « Demander un devis », « Nous présenter votre situation »</td></tr>
+      <tr><th scope="row">Article</th><td>Défini dans l'article : « Faire vérifier ma version PHP »…</td></tr>
+      <tr><th scope="row">Formulaire</th><td>Envoyer ma demande</td></tr>
+      </tbody></table>
+    </section>
     <section class="sg-section"><h2>Règles de mouvement</h2>
       <table class="sg-table"><tbody>
       <tr><th scope="row">Récit du hero</th><td>Une seule séquence (≈ 4,5 s), jouée une fois à l'entrée dans l'écran. État final = état par défaut sans JS.</td></tr>
@@ -161,7 +174,7 @@
       </tbody></table>
     </section>
   </div>
-</main>
+  </main>
 
   <footer class="site-footer">
     <div class="container footer-grid">
@@ -172,8 +185,9 @@
       <div>
         <h2>Le site</h2>
         <ul class="footer-links">
-          <li><a href="./#prestations">Prestations</a></li>
-          <li><a href="conseils.html">Conseils</a></li>
+          <li><a href="./">Accueil</a></li>
+          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="blog.html">Blog</a></li>
           <li><a href="a-propos.html">À propos</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>

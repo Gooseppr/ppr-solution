@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failles critiques de PHP (octobre 2026) : votre site est-il concerné ? · PPR-Solution</title>
+  <meta name="description" content="CVE-2026-109618 et CVE-2026-109619 (PHP2Shell) : failles critiques de PHP exploitées, versions corrigées 8.2.35 à 8.5.12, situation des versions 7.4, 8.0 et 8.1, et vérifications à faire.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F8F7F3">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="PPR-Solution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Failles critiques de PHP (octobre 2026) : votre site est-il concerné ? · PPR-Solution">
+  <meta property="og:description" content="CVE-2026-109618 et CVE-2026-109619 (PHP2Shell) : failles critiques de PHP exploitées, versions corrigées 8.2.35 à 8.5.12, situation des versions 7.4, 8.0 et 8.1, et vérifications à faire.">
+  <meta property="og:url" content="https://ppr-solution.fr/blog/failles-php-octobre-2026-php2shell/">
+  <meta name="twitter:card" content="summary">
+  <meta property="article:published_time" content="2026-11-01">
+  <meta property="article:modified_time" content="2026-11-01">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Failles critiques de PHP (octobre 2026) : votre site est-il concerné ?","description":"CVE-2026-109618 et CVE-2026-109619 (PHP2Shell) : failles critiques de PHP exploitées, versions corrigées 8.2.35 à 8.5.12, situation des versions 7.4, 8.0 et 8.1, et vérifications à faire.","datePublished":"2026-11-01","dateModified":"2026-11-01","inLanguage":"fr-FR","mainEntityOfPage":"https://ppr-solution.fr/blog/failles-php-octobre-2026-php2shell/","author":{"@type":"Organization","name":"PPR-Solution","url":"https://ppr-solution.fr/"},"publisher":{"@type":"Organization","name":"PPR-Solution"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ppr-solution.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ppr-solution.fr/blog.html"},{"@type":"ListItem","position":3,"name":"Failles critiques de PHP (octobre 2026) : votre site est-il concerné ?","item":"https://ppr-solution.fr/blog/failles-php-octobre-2026-php2shell/"}]}]}</script>
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <script src="../../assets/js/main.js" defer></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="preview-banner" role="note"><div class="container">Préproduction — site non publié, aucune demande réelle n'est traitée.</div></div>
+  <header class="site-header" data-header>
+    <div class="container nav-inner">
+      <a class="brand" href="../../">
+        <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
+          <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
+          <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
+          <path d="M27 13h9" stroke="#171717" stroke-width="2"/>
+          <circle cx="41" cy="13" r="5.5" fill="#171717"/>
+        </svg>
+        <span>
+          <span class="brand-name">PPR-Solution</span>
+          <span class="brand-sub">assistance technique web</span>
+        </span>
+        <span class="sr-only">(accueil)</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
+        <span class="nav-icon" aria-hidden="true"></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+      <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
+        <a href="../../prestations.html">Prestations</a>
+        <a href="../../blog.html" aria-current="page">Blog</a>
+        <a href="../../a-propos.html">À propos</a>
+        <a class="btn btn-primary btn-sm" href="../../contact.html">Obtenir de l'aide</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="g-hebergement" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="12" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="10" y="26" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="51" cy="31" r="2.6" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-php" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M2.8 14h62.4" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="9" cy="8.6" r="2" fill="#F05B3F"/>
+        <rect x="9" y="21" width="20" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="19.5" width="22" height="8" rx="4" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.1"/>
+        <rect x="9" y="33" width="14" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="33" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-dns" viewBox="0 0 68 48">
+        <path d="M34 24 12 9M34 24 12 39M34 24h22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <circle cx="12" cy="9" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="39" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="58" cy="24" r="5.5" fill="#F05B3F" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="34" cy="24" r="9" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="g-https" viewBox="0 0 68 48">
+        <path d="M4 30h60" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <circle cx="6" cy="30" r="3" fill="currentColor"/>
+        <circle cx="62" cy="30" r="3" fill="currentColor"/>
+        <rect x="24" y="20" width="20" height="18" rx="4" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M28.5 20v-4.5a5.5 5.5 0 0 1 11 0V20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="34" cy="29" r="2.4" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-migration" viewBox="0 0 68 48">
+        <rect x="2" y="20" width="24" height="24" rx="7" fill="#F8F7F3" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="42" y="20" width="24" height="24" rx="7" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 18C16 6 52 6 54 17" fill="none" stroke="#B8391F" stroke-width="1.6"/>
+        <path d="m50 13.5 4 4.5 4-4.8" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="8" y="27" width="12" height="4" rx="2" fill="#B7B7B2"/>
+        <rect x="8" y="34" width="9" height="4" rx="2" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-configuration" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="16" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="31" y="12" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="10" y="22" width="12" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="27" y="22" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+        <rect x="10" y="32" width="18" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="33" y="32" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-bilan" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m10 15 3 3 5-6M10 27l3 3 5-6" fill="none" stroke="#1E6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="37" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <rect x="24" y="13" width="32" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="25" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="35" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 12 14">
+        <rect x="1" y="5.5" width="10" height="7.5" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M3.4 5.5V4a2.6 2.6 0 0 1 5.2 0v1.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main id="contenu">
+<article class="article">
+      <header class="article-header">
+        <div class="container article-narrow">
+          <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
+          <p class="post-meta"><span class="post-kind post-kind-news">Actualité</span><span>Publié le <time datetime="2026-11-01">1 novembre 2026</time></span> · <span>5 min de lecture</span></p>
+          <h1>Failles critiques de PHP (octobre 2026) : votre site est-il concerné ?</h1>
+        </div>
+      </header>
+      <div class="container article-layout">
+        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#ce-qui-s-est-passe">Ce qui s&#39;est passé</a></li><li><a href="#pourquoi-ces-failles-sont-serieuses">Pourquoi ces failles sont sérieuses</a></li><li><a href="#votre-site-est-il-concerne">Votre site est-il concerné ?</a></li><li><a href="#que-faire-concretement">Que faire concrètement ?</a></li><li><a href="#a-ne-pas-confondre-la-faille-cve-2026-115560">À ne pas confondre : la faille CVE-2026-115560</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
+        <div class="article-body prose">
+<p class="lead">Le 21 octobre 2026, le projet PHP a publié en urgence des correctifs pour deux failles critiques, enregistrées sous les références CVE-2026-109618 et CVE-2026-109619 et surnommées « PHP2Shell ». Elles permettent à un attaquant, sans aucun identifiant, d'exécuter du code sur le serveur qui héberge un site. Des tentatives d'exploitation ont été observées avant même la publication des correctifs. Voici ce que cela signifie pour un site internet, et ce qu'il faut vérifier.</p>
+<h2 id="ce-qui-s-est-passe">Ce qui s'est passé</h2>
+<ul>
+<li><strong>17 octobre</strong> : des tentatives d'exploitation sont repérées sur des serveurs-pièges d'AWS, quatre jours avant l'annonce publique (selon l'analyse de Datadog Security Labs).</li>
+<li><strong>20 octobre</strong> : le projet PHP annonce une publication de sécurité critique pour le lendemain.</li>
+<li><strong>21 octobre</strong> : publication de PHP 8.5.12, 8.4.27, 8.3.36 et 8.2.35, qui corrigent les deux failles. L'agence américaine de cybersécurité (CISA) publie le même jour une alerte demandant une mise à jour immédiate.</li>
+<li><strong>23 octobre</strong> : le projet PHP publie un avis informatif sur une troisième faille, CVE-2026-115560, beaucoup moins probable (voir plus bas).</li>
+<li><strong>26 octobre</strong> : la CISA ajoute les deux failles à son catalogue des vulnérabilités activement exploitées.</li>
+</ul>
+<h2 id="pourquoi-ces-failles-sont-serieuses">Pourquoi ces failles sont sérieuses</h2>
+<p>Les deux failles sont notées 9,2 sur 10 (CVSS v4.0). Trois éléments les rendent particulièrement dangereuses :</p>
+<ul>
+<li><strong>aucun identifiant n'est nécessaire</strong> : une simple requête envoyée au site suffit ;</li>
+<li><strong>l'attaque a lieu avant que le code du site ne s'exécute</strong> : un mot de passe solide ou une extension de sécurité WordPress ne la bloquent pas ;</li>
+<li><strong>presque tous les hébergements sont concernés</strong> : le projet PHP cite toutes les installations qui servent des pages web, qu'elles utilisent Apache avec mod_php, PHP-FPM, php-cgi, FrankenPHP ou LiteSpeed.</li>
+</ul>
+<p>Un attaquant qui exécute du code sur le serveur peut modifier le site, y cacher des pages frauduleuses, lire la base de données ou s'en servir pour envoyer du spam.</p>
+<h2 id="votre-site-est-il-concerne">Votre site est-il concerné ?</h2>
+<p>Tout dépend de la version de PHP utilisée et de qui l'entretient.</p>
+<div class="table-wrap"><table class="article-table"><caption>Situation selon la version de PHP</caption>
+<thead>
+<tr>
+<th scope="col">Version de PHP</th>
+<th scope="col">Situation</th>
+</tr>
+</thead>
+<tbody>
+<tr><th scope="row">8.2, 8.3, 8.4, 8.5</th>
+<td>Corrigée à partir de 8.2.35, 8.3.36, 8.4.27 et 8.5.12, si votre hébergeur a installé la mise à jour.</td>
+</tr>
+<tr><th scope="row">7.4, 8.0, 8.1</th>
+<td>Plus maintenues. Le projet PHP a publié des correctifs minimaux sous forme de code source : leur application dépend entièrement de votre hébergeur ou de votre distribution.</td>
+</tr>
+<tr><th scope="row">7.3 et antérieures (dont PHP 5 et PHP 4)</th>
+<td>Aucune mise à jour du projet PHP depuis des années, et aucun correctif publié pour ces failles.</td>
+</tr>
+</tbody>
+</table></div>
+<div class="note note-warning"><strong>Attention</strong><p>PHP 8.2 ne recevra plus aucune mise à jour de sécurité après le 31 décembre 2026. Un site en PHP 8.2 est protégé contre ces failles s'il est à jour, mais son passage à une version plus récente doit être planifié dès maintenant.</p>
+</div>
+<h2 id="que-faire-concretement">Que faire concrètement ?</h2>
+<h3 id="1-connaitre-votre-version-de-php">1. Connaître votre version de PHP</h3>
+<p>Elle apparaît généralement dans l'espace client de votre hébergeur, dans une rubrique « PHP », « Configuration PHP » ou « Version PHP ». Notez si possible le numéro complet (par exemple 8.3.36), et pas seulement 8.3.</p>
+<h3 id="2-si-votre-site-est-sur-un-hebergement-mutualise">2. Si votre site est sur un hébergement mutualisé</h3>
+<p>C'est l'hébergeur qui installe les mises à jour de PHP. Consultez ses annonces récentes ou demandez-lui si les versions corrigées sont en place. Si votre site utilise PHP 8.1 ou une version plus ancienne, demandez-lui comment ces failles sont traitées, et prévoyez un passage à une version maintenue.</p>
+<h3 id="3-si-vous-gerez-vous-meme-un-serveur-vps-serveur-dedie-conteneurs">3. Si vous gérez vous-même un serveur (VPS, serveur dédié, conteneurs)</h3>
+<p>Installez les paquets corrigés de votre distribution, reconstruisez vos images de conteneurs, puis <strong>redémarrez tous les processus PHP</strong> (PHP-FPM, Apache) : tant qu'un processus lancé avant la mise à jour tourne, l'ancienne version reste active.</p>
+<h3 id="4-si-la-mise-a-jour-doit-attendre">4. Si la mise à jour doit attendre</h3>
+<p>Le projet PHP propose des mesures temporaires, qui réduisent l'exposition sans protéger complètement. Elles sont à appliquer dans la configuration du serveur, pas dans le code du site :</p>
+<pre><code class="language-ini">; Atténuation seulement : la mise à jour reste la seule vraie solution.
+memory_limit = -1
+post_max_size = 8M          ; 32M si le site accepte des envois de fichiers
+upload_max_filesize = 8M    ; doit rester inférieur à post_max_size
+session.upload_progress.enabled = 0
+fatal_error_backtraces = 0  ; PHP 8.5 uniquement
+</code></pre>
+<p>Ces réglages ont des effets de bord (par exemple sur la taille des fichiers envoyés). Sur un hébergement mutualisé, ils ne sont souvent pas modifiables : c'est alors à l'hébergeur d'agir.</p>
+<h2 id="a-ne-pas-confondre-la-faille-cve-2026-115560">À ne pas confondre : la faille CVE-2026-115560</h2>
+<p>Deux jours après les correctifs, le projet PHP a signalé une troisième faille. Elle ne concerne qu'une combinaison de réglages rare : une application qui change à la volée la façon dont les sessions sont enregistrées, avec la fonction de suivi des envois de fichiers activée. Le projet PHP la juge peu probable en pratique et la corrigera lors d'une mise à jour ordinaire. Elle n'appelle pas d'action d'urgence pour la plupart des sites ; désactiver <code>session.upload_progress.enabled</code>, déjà recommandé ci-dessus, la neutralise.</p>
+<div class="note"><strong>À retenir</strong><p>Une faille de PHP ne concerne pas toujours tous les sites de la même façon. Ici, les failles PHP2Shell touchent presque toutes les installations et sont exploitées : la priorité est de vérifier que votre version est corrigée, ou de quitter une version qui ne l'est plus.</p>
+</div>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://www.php.net/archive/2026.php#2026-10-21-5">PHP — Security advisory: critical remote code execution vulnerabilities (21 octobre 2026)</a></li>
+<li><a href="https://www.php.net/archive/2026.php#2026-10-23-1">PHP — Informational advisory: session upload progress (23 octobre 2026)</a></li>
+<li><a href="https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching">CISA — Critical Vulnerabilities in PHP Require Immediate Patching</a></li>
+<li><a href="https://securitylabs.datadoghq.com/articles/php2shell-critical-vulnerabilities-in-php/">Datadog Security Labs — PHP2Shell: detection, analysis, and remediation</a></li>
+<li><a href="https://www.php.net/supported-versions.php">PHP — Versions prises en charge</a></li>
+</ul>
+
+          <aside class="article-cta" aria-labelledby="article-cta-title">
+            <h2 id="article-cta-title">Besoin d'un coup de main&nbsp;?</h2>
+            <p>Vous ne savez pas quelle version de PHP utilise votre site, ou votre hébergeur vous demande de la changer ? Décrivez-nous la situation : le premier échange est gratuit.</p>
+            <div class="article-cta-actions">
+              <a class="btn btn-primary" href="../../contact.html?sujet=php">Faire vérifier ma version PHP</a>
+              <a class="link" href="../../prestations.html#php">Prestation : PHP et compatibilité</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+      <section class="section section-tight" aria-labelledby="related-title"><div class="container"><h2 id="related-title" class="h-small">À lire aussi</h2><ul class="post-list"><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-10-30">30 octobre 2026</time></p>
+          <h3><a href="../../blog/hebergeur-demande-mise-a-jour-php/">Votre hébergeur demande de mettre à jour PHP : que faire ?</a></h3>
+          <p>Un email annonce la fin de prise en charge de votre version de PHP ? Pourquoi c&#39;est important, ce que vous risquez à attendre, et comment préparer le changement sans casser votre site.</p>
+          <p class="post-reading">3 min de lecture</p>
+        </li><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-10-28">28 octobre 2026</time></p>
+          <h3><a href="../../blog/domaine-hebergement-difference/">Domaine, DNS, hébergement : qui fait quoi pour votre site ?</a></h3>
+          <p>Le nom de domaine, le DNS et l&#39;hébergement sont trois choses différentes, parfois chez trois prestataires. Les distinguer permet de savoir où chercher quand le site ne répond plus.</p>
+          <p class="post-reading">2 min de lecture</p>
+        </li></ul></div></section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p><strong>PPR-Solution</strong><br>Assistance technique · Hébergement web · Configuration</p>
+        <p><a class="link" href="mailto:contact@ppr-solution.fr">contact@ppr-solution.fr</a></p>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul class="footer-links">
+          <li><a href="../../">Accueil</a></li>
+          <li><a href="../../prestations.html">Prestations</a></li>
+          <li><a href="../../blog.html">Blog</a></li>
+          <li><a href="../../a-propos.html">À propos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul class="footer-links">
+          <li><a href="../../mentions-legales.html">Mentions légales</a></li>
+          <li><a href="../../confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

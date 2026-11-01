@@ -1,0 +1,64 @@
+---
+title: "Guide de style · PPR-Solution"
+description: "Design system de PPR-Solution (document interne)."
+output: styleguide.html
+robots: noindex
+sitemap: false
+---
+
+  <div class="container">
+    <section class="section" style="padding-bottom:var(--s-8)">
+      <p class="tag-eyebrow" aria-hidden="true">design-system</p>
+      <h1>Guide de style</h1>
+      <p class="lead">Jetons et composants du jalon visuel. Document interne, non indexé&nbsp;; la source de vérité reste <code>assets/css/style.css</code>.</p>
+    </section>
+    <section class="sg-section"><h2>Couleurs de marque</h2><ul class="sg-swatches"><li class="sg-swatch"><span style="background:#F8F7F3"></span><p><strong>Ivoire</strong><code>--ivory · #F8F7F3</code>Fond de page</p></li><li class="sg-swatch"><span style="background:#FFFFFF"></span><p><strong>Blanc</strong><code>--white · #FFFFFF</code>Planches, fenêtres</p></li><li class="sg-swatch"><span style="background:#171717"></span><p><strong>Anthracite</strong><code>--ink · #171717</code>Texte, traits</p></li><li class="sg-swatch"><span style="background:#F05B3F"></span><p><strong>Vermillon</strong><code>--vermilion · #F05B3F</code>Aplats d'action (texte encre 5,4:1)</p></li><li class="sg-swatch"><span style="background:#B8391F"></span><p><strong>Vermillon texte</strong><code>--vermilion-ink · #B8391F</code>Texte accentué (5,4:1)</p></li><li class="sg-swatch"><span style="background:#B7B7B2"></span><p><strong>Gris doux</strong><code>--grey · #B7B7B2</code>Traits décoratifs, jamais du texte</p></li><li class="sg-swatch"><span style="background:#5C5B56"></span><p><strong>Gris texte</strong><code>--grey-ink · #5C5B56</code>Texte secondaire (6,3:1)</p></li><li class="sg-swatch"><span style="background:#8A8983"></span><p><strong>Contour</strong><code>--line-strong · #8A8983</code>Bordures de champs (3,3:1)</p></li></ul></section>
+    <section class="sg-section"><h2>Couleurs sémantiques</h2><ul class="sg-swatches"><li class="sg-swatch"><span style="background:#8A5A00"></span><p><strong>Avertissement</strong><code>--warning · #8A5A00</code>+ repère #E0A21B</p></li><li class="sg-swatch"><span style="background:#1E6B45"></span><p><strong>Succès</strong><code>--success · #1E6B45</code></p></li><li class="sg-swatch"><span style="background:#A3194A"></span><p><strong>Erreur</strong><code>--error · #A3194A</code>Distinct du vermillon de marque</p></li></ul>
+      <p class="sg-row" style="margin-top:var(--s-5)"><span class="status status-warning">à examiner</span><span class="status status-success">vérifié</span><span class="status status-error">erreur</span><span class="status status-neutral">à vérifier</span><span class="status status-accent">étape suivante</span></p>
+    </section>
+    <section class="sg-section sg-type"><h2>Typographie</h2>
+      <p class="display" style="font-size:var(--text-3xl);line-height:1.02">Bricolage Grotesque</p>
+      <p class="muted">Titres H1/H2 uniquement (variable, graisse 620–680). Donne la voix « atelier »&nbsp;: chaleureuse, un peu irrégulière.</p>
+      <p style="font-size:var(--text-lg)">IBM Plex Sans — texte courant, interfaces, formulaires. Héritée de l'ancien site pour sa lisibilité et son sérieux technique.</p>
+      <p class="mono">IBM Plex Mono — fichiers, versions, balises-eyebrows, valeurs techniques.</p>
+      <table class="sg-table"><thead><tr><th>Jeton</th><th>Valeur</th><th>Usage</th></tr></thead><tbody>
+      <tr><td><code>--text-3xl</code></td><td>2,35 → 4,35 rem</td><td>H1</td></tr><tr><td><code>--text-2xl</code></td><td>1,85 → 2,75 rem</td><td>H2</td></tr><tr><td><code>--text-xl</code></td><td>1,35 → 1,6 rem</td><td>Titres de prestation</td></tr><tr><td><code>--text-lg</code></td><td>1,2 rem</td><td>Chapô, H3</td></tr><tr><td><code>--text-base</code></td><td>1,0625 rem</td><td>Texte</td></tr><tr><td><code>--text-sm</code></td><td>0,9 rem</td><td>Notes, libellés</td></tr></tbody></table>
+    </section>
+    <section class="sg-section"><h2>Rayons et formes</h2>
+      <ul class="sg-radii"><li style="border-radius:6px">r-xs 6</li><li style="border-radius:10px">r-sm 10</li><li style="border-radius:14px">r-md 14</li><li style="border-radius:22px">r-lg 22</li><li style="border-radius:32px">r-xl 32</li><li style="border-radius:999px">pill</li></ul>
+      <p class="muted" style="margin-top:var(--s-4)">Plus un objet est grand, plus il est doux. Traits de 1,5 px en encre pour les objets du schéma, 1 px clair pour les séparations.</p>
+    </section>
+    <section class="sg-section"><h2>Actions</h2>
+      <p class="sg-row"><a class="btn btn-primary" href="contact.html"><span class="btn-node" aria-hidden="true"></span>Bouton principal</a><a class="btn btn-secondary" href="prestations.html">Découvrir les prestations</a><a class="btn btn-primary btn-sm" href="contact.html">Obtenir de l'aide</a><a class="link" href="prestations.html#php">Lien de texte</a></p>
+      <p class="sg-row" style="margin-top:var(--s-4)"><button class="chip-btn" type="button" aria-pressed="false">Choix</button><button class="chip-btn" type="button" aria-pressed="true">Choix actif</button><span class="capsule"><span class="capsule-dot" aria-hidden="true"></span>Capsule d'engagement</span></p>
+    </section>
+    <section class="sg-section"><h2>Langage graphique</h2>
+      <div class="sg-grid2" style="font-size:0.95rem">
+        <div class="sg-type"><div class="ui-domain"><span><span class="sc-label">domaine</span><strong>votre-site.fr</strong></span></div><div class="ui-node" style="width:4.5rem">DNS</div>
+          <div class="ui-env"><div class="ui-env-head"><b>Hébergement</b></div><ul class="ui-modules"><li class="ui-module"><span>Fichiers</span><code>public_html/</code></li><li class="ui-module is-flagged"><span>PHP</span><code>8.1</code><span class="ui-flag" aria-hidden="true">!</span></li></ul></div></div>
+        <div class="sg-type"><div class="tech-window"><div class="tech-window-bar"><span class="tech-window-title">zone-dns · votre-site.fr</span><span class="tech-window-dots" aria-hidden="true"><i></i><i></i><i></i></span></div><ul class="tech-rows"><li class="tech-row"><span class="tech-row-key"><code>@</code> A</span><span class="tech-row-val">203.0.113.10</span></li><li class="tech-row"><span class="tech-row-key"><code>www</code> CNAME</span><span class="tech-row-val">votre-site.fr.</span></li><li class="tech-row"><span class="tech-row-key"><code>@</code> MX 10</span><span class="tech-row-val">mx1.exemple-mail.fr.</span></li></ul></div>
+          <p class="illustration-note">Fenêtre de configuration (motif XML n°2). Adresse IP de documentation (RFC 5737), jamais une vraie valeur.</p>
+          <div class="ui-mail"><span class="ui-mail-from">Message de votre hébergeur</span><p class="ui-mail-subject">Problème rapporté par le client</p></div></div>
+      </div>
+    </section>
+    <section class="sg-section"><h2>Libellés d'action</h2>
+      <table class="sg-table"><tbody>
+      <tr><th scope="row">Menu</th><td>Obtenir de l'aide</td></tr>
+      <tr><th scope="row">Hero de l'accueil</th><td>Décrire mon problème (unique sur le site)</td></tr>
+      <tr><th scope="row">Prestation</th><td>Libellé propre au service : « Préparer une mise à jour PHP », « Décrire un problème de certificat »…</td></tr>
+      <tr><th scope="row">Schéma</th><td>Adapté au choix ; par défaut « Expliquer ce que je constate »</td></tr>
+      <tr><th scope="row">Fin de page</th><td>« Demander un premier échange », « Demander un devis », « Nous présenter votre situation »</td></tr>
+      <tr><th scope="row">Article</th><td>Défini dans l'article : « Faire vérifier ma version PHP »…</td></tr>
+      <tr><th scope="row">Formulaire</th><td>Envoyer ma demande</td></tr>
+      </tbody></table>
+    </section>
+    <section class="sg-section"><h2>Règles de mouvement</h2>
+      <table class="sg-table"><tbody>
+      <tr><th scope="row">Récit du hero</th><td>Une seule séquence (≈ 4,5 s), jouée une fois à l'entrée dans l'écran. État final = état par défaut sans JS.</td></tr>
+      <tr><th scope="row">Schéma</th><td>Mise en évidence d'un segment à la demande (clic), flux pointillé joué deux fois puis arrêt.</td></tr>
+      <tr><th scope="row">États interactifs</th><td>160 ms (couleurs), 280 ms (formes), courbe <code>cubic-bezier(.22,1,.36,1)</code>.</td></tr>
+      <tr><th scope="row">Interdits</th><td>Animation continue, parallaxe, apparition de chaque bloc au défilement, scroll-jacking.</td></tr>
+      <tr><th scope="row">Mouvement réduit</th><td><code>prefers-reduced-motion: reduce</code> → aucune animation, contenu complet immédiatement.</td></tr>
+      </tbody></table>
+    </section>
+  </div>

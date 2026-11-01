@@ -4,27 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PPR-Solution · Assistance technique pour votre site et son hébergement</title>
-  <meta name="description" content="Version PHP à mettre à jour, problème d'hébergement, de domaine, de DNS ou de certificat HTTPS : PPR-Solution prend en charge les petites interventions techniques de votre site. Premier échange gratuit, devis avant intervention.">
-  <!-- Préproduction : ne pas indexer tant que la publication n'est pas validée. -->
+  <meta name="description" content="Mise à jour PHP urgente, problème d&#39;hébergement, de domaine, de DNS ou de certificat HTTPS : PPR-Solution prend en charge les petites interventions techniques de votre site. Premier échange gratuit, devis avant intervention.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#F8F7F3">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PPR-Solution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="PPR-Solution · Assistance technique pour votre site et son hébergement">
+  <meta property="og:description" content="Mise à jour PHP urgente, problème d&#39;hébergement, de domaine, de DNS ou de certificat HTTPS : PPR-Solution prend en charge les petites interventions techniques de votre site. Premier échange gratuit, devis avant intervention.">
+  <meta property="og:url" content="https://ppr-solution.fr/">
+  <meta name="twitter:card" content="summary">
   <script>document.documentElement.classList.replace("no-js", "js");</script>
   <script src="assets/js/main.js" defer></script>
+
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
-
-  <div class="preview-banner" role="note">
-    <div class="container">Préproduction — jalon de validation visuelle. Le formulaire n'envoie encore aucune demande.</div>
-  </div>
-
+  <div class="preview-banner" role="note"><div class="container">Préproduction — site non publié, aucune demande réelle n'est traitée.</div></div>
   <header class="site-header" data-header>
     <div class="container nav-inner">
-      <a class="brand" href="./" aria-label="PPR-Solution, accueil">
+      <a class="brand" href="./" aria-current="page">
         <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
           <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
           <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
@@ -35,21 +38,20 @@
           <span class="brand-name">PPR-Solution</span>
           <span class="brand-sub">assistance technique web</span>
         </span>
+        <span class="sr-only">(accueil)</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
         <span class="nav-icon" aria-hidden="true"></span>
         <span class="sr-only">Ouvrir le menu</span>
       </button>
       <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
-        <a href="#prestations">Prestations</a>
-        <a href="#fonctionnement">Comment ça marche</a>
-        <a href="conseils.html">Conseils</a>
+        <a href="prestations.html">Prestations</a>
+        <a href="blog.html">Blog</a>
         <a href="a-propos.html">À propos</a>
-        <a class="btn btn-primary btn-sm" href="contact.html">Décrire mon problème</a>
+        <a class="btn btn-primary btn-sm" href="contact.html">Obtenir de l'aide</a>
       </nav>
     </div>
   </header>
-
   <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
@@ -116,7 +118,7 @@
   </svg>
 
   <main id="contenu">
-    <!-- ============================== HERO ============================== -->
+<!-- ============================== HERO ============================== -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-copy">
@@ -172,7 +174,7 @@
                 <ul class="ui-modules">
                   <li class="ui-module"><span>Fichiers du site</span><code>public_html/</code></li>
                   <li class="ui-module"><span>Base de données</span><code>MySQL</code></li>
-                  <li class="ui-module is-flagged"><span>PHP</span><code>8.1</code><span class="ui-flag" aria-hidden="true">!</span></li>
+                  <li class="ui-module is-flagged"><span>PHP</span><code>7.4</code><span class="ui-flag" aria-hidden="true">!</span></li>
                 </ul>
               </div>
             </div>
@@ -180,8 +182,8 @@
             <div class="sc-mail" data-step style="--d:1300">
               <div class="ui-mail">
                 <span class="ui-mail-from">Message de votre hébergeur</span>
-                <p class="ui-mail-subject">PHP 8.1 n'est plus pris en charge</p>
-                <p class="sc-label">Merci de choisir une version plus récente.</p>
+                <p class="ui-mail-subject">PHP 7.4 n'est plus pris en charge</p>
+                <p class="sc-label">Merci de passer à une version maintenue.</p>
               </div>
             </div>
 
@@ -192,16 +194,16 @@
                   <span class="tech-window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
                 </div>
                 <ul class="tech-rows">
-                  <li class="tech-row" style="--i:0"><span class="tech-row-key">Version actuelle</span><span class="tech-row-val"><span class="tech-chip">8.1</span><span class="status status-warning">fin de support</span></span></li>
-                  <li class="tech-row" style="--i:1"><span class="tech-row-key">Versions proposées</span><span class="tech-row-val"><span class="tech-chip">8.3</span><span class="tech-chip">8.4</span></span></li>
-                  <li class="tech-row" style="--i:2"><span class="tech-row-key">Compatibilité du site</span><span class="tech-row-val"><span class="status status-neutral">à vérifier</span></span></li>
+                  <li class="tech-row" style="--i:0"><span class="tech-row-key">Version actuelle</span><span class="tech-row-val"><span class="tech-chip">7.4</span><span class="status status-error">sans correctif depuis 2022</span></span></li>
+                  <li class="tech-row" style="--i:1"><span class="tech-row-key">Versions proposées</span><span class="tech-row-val"><span class="tech-chip">8.4</span><span class="tech-chip">8.5</span></span></li>
+                  <li class="tech-row" style="--i:2"><span class="tech-row-key">Compatibilité du site</span><span class="tech-row-val"><span class="status status-warning">à vérifier avant</span></span></li>
                   <li class="tech-row tech-row-next" style="--i:3"><span class="tech-row-key">Étape suivante</span><span class="tech-row-val"><span class="status status-accent">étude préalable, puis devis</span></span></li>
                 </ul>
               </div>
             </div>
           </div>
           <figcaption id="scene-caption" class="illustration-note">
-            Illustration d'une situation fréquente&nbsp;: l'hébergeur annonce la fin de prise en charge de PHP&nbsp;8.1. Avant de changer de version, la compatibilité du site doit être vérifiée. Ce schéma n'est pas un outil de diagnostic.
+            Illustration d'une situation fréquente&nbsp;: le site tourne encore sous PHP&nbsp;7.4, qui ne reçoit plus de mises à jour officielles depuis novembre 2022. Passer à une version maintenue est urgent, mais la compatibilité du site doit être vérifiée avant. Ce schéma n'est pas un outil de diagnostic.
           </figcaption>
         </figure>
       </div>
@@ -209,172 +211,47 @@
 
     <!-- =========================== PRESTATIONS =========================== -->
     <section class="section plate" id="prestations" aria-labelledby="prestations-title">
-      <div class="container services-layout">
-        <div class="services-aside">
-          <div class="section-head">
-            <p class="tag-eyebrow" aria-hidden="true">prestations</p>
-            <h2 id="prestations-title">Les petites interventions que l'on hésite à faire soi-même</h2>
-            <p class="lead">Vous n'avez pas besoin de connaître PHP, le DNS ou le FTP. Décrivez ce que vous constatez&nbsp;: nous étudions la situation, puis nous vous proposons une intervention claire.</p>
-          </div>
-          <div class="scope-note">
-            <h3>Ce que nous ne faisons pas</h3>
-            <p>Création ou refonte complète de site, développement sur mesure, correction approfondie de code, audit de sécurité certifié, infogérance 24&nbsp;h/24. Si votre demande sort de ce périmètre, nous vous le disons dès le premier échange.</p>
-          </div>
+      <div class="container">
+        <div class="section-head">
+          <p class="tag-eyebrow" aria-hidden="true">prestations</p>
+          <h2 id="prestations-title">Les petites interventions que l'on hésite à faire soi-même</h2>
+          <p class="lead">Vous n'avez pas besoin de connaître PHP, le DNS ou le FTP. Décrivez ce que vous constatez&nbsp;: nous étudions la situation, puis nous vous proposons une intervention claire.</p>
         </div>
-
-        <ul class="service-list">
-          <li class="service" id="hebergement">
-            <svg class="service-glyph" aria-hidden="true"><use href="#g-hebergement"/></svg>
-            <div class="service-body">
-              <h3>Assistance à l'hébergement</h3>
-              <p class="service-problem">Votre site ne s'affiche plus, vous n'arrivez plus à accéder à votre espace, ou votre hébergeur vous demande une action que vous ne comprenez pas.</p>
-              <div class="service-detail">
-                <div>
-                  <h4>Ce que nous pouvons faire</h4>
-                  <ul>
-                    <li>Diagnostiquer le problème et en expliquer la cause</li>
-                    <li>Corriger des erreurs de configuration simples</li>
-                    <li>Traduire en clair ce que demande votre hébergeur</li>
-                  </ul>
-                </div>
-                <div class="service-limit">
-                  <h4>Limites</h4>
-                  <ul><li>L'hébergeur reste responsable de son infrastructure</li></ul>
-                </div>
-              </div>
-              <a class="link service-cta" href="contact.html?sujet=hebergement">Décrire un problème d'hébergement</a>
-            </div>
-          </li>
-
-          <li class="service service-featured" id="php">
+        <ul class="service-index">
+          <li class="service-index-item service-index-urgent">
             <svg class="service-glyph" aria-hidden="true"><use href="#g-php"/></svg>
-            <div class="service-body">
-              <h3>PHP et compatibilité</h3>
-              <p class="service-problem">Votre hébergeur annonce la fin de prise en charge de votre version PHP et vous demande d'en changer.</p>
-              <div class="service-detail">
-                <div>
-                  <h4>Ce que nous pouvons faire</h4>
-                  <ul>
-                    <li>Identifier la version utilisée et celle visée</li>
-                    <li>Analyser au préalable les contraintes de compatibilité</li>
-                    <li>Préparer le changement et ajuster des paramètres simples</li>
-                    <li>Vérifier le fonctionnement après l'intervention</li>
-                  </ul>
-                </div>
-                <div class="service-limit">
-                  <h4>Limites</h4>
-                  <ul><li>La correction d'un code applicatif obsolète n'est pas incluse</li></ul>
-                </div>
-              </div>
-              <p class="service-caution">Changer de version PHP peut rendre une extension, un thème ou une application incompatible. C'est pourquoi nous vérifions avant d'agir, sans promettre que le changement sera simple.</p>
-              <a class="link service-cta" href="contact.html?sujet=php">Préparer une mise à jour PHP</a>
+            <div>
+              <h3><a href="prestations.html#php">PHP et compatibilité</a></h3>
+              <p>Votre site tourne en PHP&nbsp;7, 5, voire 4&nbsp;? Ces versions ne reçoivent plus aucune mise à jour officielle&nbsp;: la migration devient urgente.</p>
             </div>
+            <span class="status status-error">prioritaire</span>
           </li>
-
-          <li class="service" id="dns">
+          <li class="service-index-item">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-hebergement"/></svg>
+            <div><h3><a href="prestations.html#hebergement">Assistance à l'hébergement</a></h3><p>Site inaccessible, erreur 500, demande incompréhensible de l'hébergeur.</p></div>
+          </li>
+          <li class="service-index-item">
             <svg class="service-glyph" aria-hidden="true"><use href="#g-dns"/></svg>
-            <div class="service-body">
-              <h3>Domaine et DNS</h3>
-              <p class="service-problem">Votre adresse ne mène plus à votre site, une redirection tourne en rond ou un nouveau domaine reste à configurer.</p>
-              <div class="service-detail">
-                <div>
-                  <h4>Ce que nous pouvons faire</h4>
-                  <ul>
-                    <li>Diagnostiquer la résolution DNS</li>
-                    <li>Vérifier les enregistrements courants (A, CNAME, MX, TXT)</li>
-                    <li>Analyser les redirections et accompagner les petits changements</li>
-                  </ul>
-                </div>
-              </div>
-              <a class="link service-cta" href="contact.html?sujet=dns">Décrire un problème de domaine</a>
-            </div>
+            <div><h3><a href="prestations.html#dns">Domaine et DNS</a></h3><p>L'adresse ne mène plus au site, les emails n'arrivent plus.</p></div>
           </li>
-
-          <li class="service" id="https">
+          <li class="service-index-item">
             <svg class="service-glyph" aria-hidden="true"><use href="#g-https"/></svg>
-            <div class="service-body">
-              <h3>Certificat HTTPS / SSL</h3>
-              <p class="service-problem">Le navigateur affiche «&nbsp;connexion non sécurisée&nbsp;» ou signale un certificat expiré.</p>
-              <div class="service-detail">
-                <div>
-                  <h4>Ce que nous pouvons faire</h4>
-                  <ul>
-                    <li>Diagnostiquer les erreurs de certificat courantes</li>
-                    <li>Vérifier l'installation et la validité</li>
-                    <li>Accompagner le renouvellement ou la configuration</li>
-                  </ul>
-                </div>
-              </div>
-              <a class="link service-cta" href="contact.html?sujet=https">Décrire un problème de certificat</a>
-            </div>
+            <div><h3><a href="prestations.html#https">Certificat HTTPS / SSL</a></h3><p>«&nbsp;Connexion non sécurisée&nbsp;», certificat expiré.</p></div>
           </li>
-
-          <li class="service" id="migration">
+          <li class="service-index-item">
             <svg class="service-glyph" aria-hidden="true"><use href="#g-migration"/></svg>
-            <div class="service-body">
-              <h3>Migration simple d'hébergement</h3>
-              <p class="service-problem">Vous changez d'hébergeur et craignez de perdre des fichiers, des données ou vos emails en route.</p>
-              <div class="service-detail">
-                <div>
-                  <h4>Ce que nous pouvons faire</h4>
-                  <ul>
-                    <li>Étudier la faisabilité et sauvegarder fichiers et données</li>
-                    <li>Préparer l'environnement de destination</li>
-                    <li>Transférer fichiers et bases de données, puis vérifier</li>
-                    <li>Prévoir un retour arrière lorsque c'est possible</li>
-                  </ul>
-                </div>
-                <div class="service-limit">
-                  <h4>Limites</h4>
-                  <ul><li>Une courte interruption ne peut pas toujours être évitée</li></ul>
-                </div>
-              </div>
-              <a class="link service-cta" href="contact.html?sujet=migration">Préparer une migration</a>
-            </div>
+            <div><h3><a href="prestations.html#migration">Migration simple d'hébergement</a></h3><p>Changer d'hébergeur sans perdre fichiers, données ni emails.</p></div>
           </li>
-
-          <li class="service" id="configuration">
+          <li class="service-index-item">
             <svg class="service-glyph" aria-hidden="true"><use href="#g-configuration"/></svg>
-            <div class="service-body">
-              <h3>Configuration et fichiers</h3>
-              <p class="service-problem">Un accès FTP qui refuse la connexion, un fichier de configuration à modifier, une base de données injoignable.</p>
-              <div class="service-detail">
-                <div>
-                  <h4>Ce que nous pouvons faire</h4>
-                  <ul>
-                    <li>Configurer un accès FTP / SFTP</li>
-                    <li>Ajuster des fichiers et paramètres techniques courants</li>
-                    <li>Rétablir une connexion à une base de données</li>
-                    <li>Vérifier permissions et chemins de fichiers, selon le contexte</li>
-                  </ul>
-                </div>
-              </div>
-              <a class="link service-cta" href="contact.html?sujet=configuration">Décrire un problème de configuration</a>
-            </div>
+            <div><h3><a href="prestations.html#configuration">Configuration et fichiers</a></h3><p>FTP, fichiers de configuration, connexion à la base de données.</p></div>
           </li>
-
-          <li class="service" id="bilan">
+          <li class="service-index-item">
             <svg class="service-glyph" aria-hidden="true"><use href="#g-bilan"/></svg>
-            <div class="service-body">
-              <h3>Bilan de santé technique</h3>
-              <p class="service-problem">Rien n'est cassé, mais vous voulez savoir si les éléments techniques de votre site sont à jour et cohérents.</p>
-              <div class="service-detail">
-                <div>
-                  <h4>Ce que nous pouvons faire</h4>
-                  <ul>
-                    <li>Vérifier des points ciblés selon votre site et les accès disponibles</li>
-                    <li>Vous remettre un compte rendu compréhensible</li>
-                  </ul>
-                </div>
-                <div class="service-limit">
-                  <h4>Limites</h4>
-                  <ul><li>Ce n'est pas un audit de cybersécurité exhaustif</li></ul>
-                </div>
-              </div>
-              <a class="link service-cta" href="contact.html?sujet=autre">Demander un bilan</a>
-            </div>
+            <div><h3><a href="prestations.html#bilan">Bilan de santé technique</a></h3><p>Vérifier que les éléments techniques du site sont à jour et cohérents.</p></div>
           </li>
         </ul>
+        <p class="section-foot"><a class="btn btn-secondary" href="prestations.html">Voir le détail et les limites de chaque prestation</a></p>
       </div>
     </section>
 
@@ -461,8 +338,39 @@
             <h4>Signes fréquents</h4>
             <ul data-detail-signs></ul>
           </div>
-          <a class="btn btn-primary" href="contact.html" data-detail-cta>Décrire mon problème</a>
+          <a class="btn btn-primary" href="contact.html?sujet=autre" data-detail-cta>Expliquer ce que je constate</a>
         </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="blog-latest-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="tag-eyebrow" aria-hidden="true">actualites</p>
+          <h2 id="blog-latest-title">Ce qui se passe en ce moment</h2>
+          <p class="lead">Failles, fins de support, changements chez les hébergeurs&nbsp;: nous vérifions les sources officielles et expliquons ce que cela change pour votre site.</p>
+        </div>
+        <ul class="post-list">
+        <li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-news">Actualité</span><time datetime="2026-11-01">1 novembre 2026</time></p>
+          <h3><a href="blog/failles-php-octobre-2026-php2shell/">Failles critiques de PHP (octobre 2026) : votre site est-il concerné ?</a></h3>
+          <p>Deux failles critiques de PHP, surnommées « PHP2Shell », ont été corrigées en urgence le 21 octobre 2026 et sont déjà exploitées. Ce qu&#39;il faut vérifier sur votre site, selon votre version de PHP.</p>
+          <p class="post-reading">5 min de lecture</p>
+        </li>
+        <li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-10-30">30 octobre 2026</time></p>
+          <h3><a href="blog/hebergeur-demande-mise-a-jour-php/">Votre hébergeur demande de mettre à jour PHP : que faire ?</a></h3>
+          <p>Un email annonce la fin de prise en charge de votre version de PHP ? Pourquoi c&#39;est important, ce que vous risquez à attendre, et comment préparer le changement sans casser votre site.</p>
+          <p class="post-reading">3 min de lecture</p>
+        </li>
+        <li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-10-28">28 octobre 2026</time></p>
+          <h3><a href="blog/domaine-hebergement-difference/">Domaine, DNS, hébergement : qui fait quoi pour votre site ?</a></h3>
+          <p>Le nom de domaine, le DNS et l&#39;hébergement sont trois choses différentes, parfois chez trois prestataires. Les distinguer permet de savoir où chercher quand le site ne répond plus.</p>
+          <p class="post-reading">2 min de lecture</p>
+        </li>
+      </ul>
+        <p class="section-foot"><a class="link" href="blog.html">Tous les articles du blog</a></p>
       </div>
     </section>
 
@@ -472,7 +380,7 @@
           <h2 id="closing-title">Expliquez-nous ce que vous constatez</h2>
           <p>Vous ne connaissez pas les détails techniques&nbsp;? Aucun souci. Décrivez simplement ce que vous voyez ou ce que votre hébergeur vous demande. Le premier échange est gratuit et sans engagement.</p>
         </div>
-        <a class="btn btn-primary" href="contact.html"><span class="btn-node" aria-hidden="true"></span>Décrire mon problème</a>
+        <a class="btn btn-primary" href="contact.html"><span class="btn-node" aria-hidden="true"></span>Demander un premier échange</a>
       </div>
     </section>
   </main>
@@ -486,8 +394,9 @@
       <div>
         <h2>Le site</h2>
         <ul class="footer-links">
-          <li><a href="#prestations">Prestations</a></li>
-          <li><a href="conseils.html">Conseils</a></li>
+          <li><a href="./">Accueil</a></li>
+          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="blog.html">Blog</a></li>
           <li><a href="a-propos.html">À propos</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>

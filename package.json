@@ -1,10 +1,17 @@
 {
   "name": "ppr-solution",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Site statique PPR-Solution — assistance technique, hébergement web, configuration.",
   "scripts": {
+    "build": "node scripts/build.js",
+    "test": "node --test tests/*.test.js",
     "serve": "python3 -m http.server 8000",
     "screenshots": "node scripts/screenshots.js http://localhost:8000/ docs/preview"
+  },
+  "engines": { "node": ">=20" },
+  "devDependencies": {
+    "markdown-it": "14.3.2",
+    "yaml": "2.9.1"
   }
 }

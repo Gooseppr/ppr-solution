@@ -1,0 +1,231 @@
+---
+title: "Prestations · Mise à jour PHP, hébergement, DNS, HTTPS, migration · PPR-Solution"
+description: "Mise à jour PHP, assistance hébergement, domaine et DNS, certificat HTTPS, migration simple, configuration et bilan technique : ce que PPR-Solution vérifie, réalise, et ses limites."
+output: prestations.html
+nav: prestations
+---
+    <section class="section page-intro" aria-labelledby="page-title">
+      <div class="container">
+        <p class="tag-eyebrow" aria-hidden="true">prestations</p>
+        <h1 id="page-title">Ce que nous pouvons faire pour votre site</h1>
+        <p class="lead">Des interventions ponctuelles et ciblées, sans contrat mensuel. Pour chacune, vous savez ce qui est vérifié, ce qui est réalisé et ce qui ne l'est pas.</p>
+      </div>
+    </section>
+
+    <section class="section section-tight" aria-label="Liste des prestations">
+      <div class="container services-layout">
+        <div class="services-aside">
+          <nav class="services-toc" aria-label="Prestations">
+            <p class="services-toc-title">Aller à</p>
+            <ul>
+              <li><a href="#php">PHP et compatibilité</a></li>
+              <li><a href="#hebergement">Hébergement</a></li>
+              <li><a href="#dns">Domaine et DNS</a></li>
+              <li><a href="#https">Certificat HTTPS</a></li>
+              <li><a href="#migration">Migration</a></li>
+              <li><a href="#configuration">Configuration</a></li>
+              <li><a href="#bilan">Bilan de santé</a></li>
+            </ul>
+          </nav>
+          <div class="scope-note">
+            <h2>Ce que nous ne faisons pas</h2>
+            <p>Création ou refonte complète de site, développement sur mesure, correction approfondie de code, réparation de plugins complexes, administration système avancée, audit de sécurité certifié, infogérance 24&nbsp;h/24. Si votre demande sort de ce périmètre, nous vous le disons dès le premier échange et, si possible, nous vous orientons.</p>
+          </div>
+        </div>
+
+        <ul class="service-list">
+          <li class="service service-featured service-urgent" id="php">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-php"/></svg>
+            <div class="service-body">
+              <h3>PHP et compatibilité</h3>
+              <p class="service-problem">Votre hébergeur annonce la fin de prise en charge de votre version PHP, ou votre site tourne encore sur une version ancienne (PHP&nbsp;7, 5, voire 4). Ces versions ne reçoivent plus aucune mise à jour officielle&nbsp;: une faille découverte aujourd'hui n'y sera jamais corrigée par le projet PHP.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Identifier la version utilisée et celle visée</li>
+                    <li>Analyser au préalable les contraintes de compatibilité</li>
+                    <li>Préparer le changement et ajuster des paramètres simples</li>
+                    <li>Vérifier le fonctionnement après l'intervention</li>
+                  </ul>
+                </div>
+                <div class="service-limit">
+                  <h4>Limites</h4>
+                  <ul><li>La correction d'un code applicatif obsolète n'est pas incluse</li></ul>
+                </div>
+              </div>
+              <figure class="php-versions">
+                <figcaption>Support officiel des versions de PHP <span class="muted">(source&nbsp;: php.net, novembre 2026)</span></figcaption>
+                <table>
+                  <thead><tr><th scope="col">Version</th><th scope="col">Mises à jour de sécurité</th><th scope="col">Situation</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">4.4</th><td>terminées le 7 août 2008</td><td><span class="status status-error">migration urgente</span></td></tr>
+                    <tr><th scope="row">5.6</th><td>terminées le 31 décembre 2018</td><td><span class="status status-error">migration urgente</span></td></tr>
+                    <tr><th scope="row">7.4</th><td>terminées le 28 novembre 2022</td><td><span class="status status-error">migration urgente</span></td></tr>
+                    <tr><th scope="row">8.0 et 8.1</th><td>terminées fin 2023 et fin 2025</td><td><span class="status status-error">à migrer</span></td></tr>
+                    <tr><th scope="row">8.2</th><td>jusqu'au 31 décembre 2026</td><td><span class="status status-warning">à planifier</span></td></tr>
+                    <tr><th scope="row">8.3 · 8.4 · 8.5</th><td>jusqu'à fin 2027, 2028, 2029</td><td><span class="status status-success">maintenue</span></td></tr>
+                  </tbody>
+                </table>
+              </figure>
+              <p class="service-caution">Plus l'écart entre deux versions est grand, plus le passage est délicat&nbsp;: une extension, un thème ou une application peut devenir incompatible. Nous vérifions avant d'agir et vous disons franchement si une simple mise à jour suffit ou si l'application elle-même doit évoluer.</p>
+              <p><a class="link" href="blog/failles-php-octobre-2026-php2shell/">Lire&nbsp;: les failles critiques de PHP corrigées en octobre 2026</a></p>
+              <a class="link service-cta" href="contact.html?sujet=php">Préparer une mise à jour PHP</a>
+            </div>
+          </li>
+
+          <li class="service" id="hebergement">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-hebergement"/></svg>
+            <div class="service-body">
+              <h3>Assistance à l'hébergement</h3>
+              <p class="service-problem">Votre site ne s'affiche plus, vous n'arrivez plus à accéder à votre espace, ou votre hébergeur vous demande une action que vous ne comprenez pas.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Diagnostiquer le problème et en expliquer la cause</li>
+                    <li>Corriger des erreurs de configuration simples</li>
+                    <li>Traduire en clair ce que demande votre hébergeur</li>
+                  </ul>
+                </div>
+                <div class="service-limit">
+                  <h4>Limites</h4>
+                  <ul><li>L'hébergeur reste responsable de son infrastructure</li></ul>
+                </div>
+              </div>
+              <a class="link service-cta" href="contact.html?sujet=hebergement">Décrire un problème d'hébergement</a>
+            </div>
+          </li>
+
+          <li class="service" id="dns">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-dns"/></svg>
+            <div class="service-body">
+              <h3>Domaine et DNS</h3>
+              <p class="service-problem">Votre adresse ne mène plus à votre site, une redirection tourne en rond ou un nouveau domaine reste à configurer.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Diagnostiquer la résolution DNS</li>
+                    <li>Vérifier les enregistrements courants (A, CNAME, MX, TXT)</li>
+                    <li>Analyser les redirections et accompagner les petits changements</li>
+                  </ul>
+                </div>
+              </div>
+              <a class="link service-cta" href="contact.html?sujet=dns">Décrire un problème de domaine</a>
+            </div>
+          </li>
+
+          <li class="service" id="https">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-https"/></svg>
+            <div class="service-body">
+              <h3>Certificat HTTPS / SSL</h3>
+              <p class="service-problem">Le navigateur affiche «&nbsp;connexion non sécurisée&nbsp;» ou signale un certificat expiré.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Diagnostiquer les erreurs de certificat courantes</li>
+                    <li>Vérifier l'installation et la validité</li>
+                    <li>Accompagner le renouvellement ou la configuration</li>
+                  </ul>
+                </div>
+              </div>
+              <a class="link service-cta" href="contact.html?sujet=https">Décrire un problème de certificat</a>
+            </div>
+          </li>
+
+          <li class="service" id="migration">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-migration"/></svg>
+            <div class="service-body">
+              <h3>Migration simple d'hébergement</h3>
+              <p class="service-problem">Vous changez d'hébergeur et craignez de perdre des fichiers, des données ou vos emails en route.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Étudier la faisabilité et sauvegarder fichiers et données</li>
+                    <li>Préparer l'environnement de destination</li>
+                    <li>Transférer fichiers et bases de données, puis vérifier</li>
+                    <li>Prévoir un retour arrière lorsque c'est possible</li>
+                  </ul>
+                </div>
+                <div class="service-limit">
+                  <h4>Limites</h4>
+                  <ul><li>Une courte interruption ne peut pas toujours être évitée</li></ul>
+                </div>
+              </div>
+              <a class="link service-cta" href="contact.html?sujet=migration">Préparer une migration</a>
+            </div>
+          </li>
+
+          <li class="service" id="configuration">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-configuration"/></svg>
+            <div class="service-body">
+              <h3>Configuration et fichiers</h3>
+              <p class="service-problem">Un accès FTP qui refuse la connexion, un fichier de configuration à modifier, une base de données injoignable.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Configurer un accès FTP / SFTP</li>
+                    <li>Ajuster des fichiers et paramètres techniques courants</li>
+                    <li>Rétablir une connexion à une base de données</li>
+                    <li>Vérifier permissions et chemins de fichiers, selon le contexte</li>
+                  </ul>
+                </div>
+              </div>
+              <a class="link service-cta" href="contact.html?sujet=configuration">Décrire un problème de configuration</a>
+            </div>
+          </li>
+
+          <li class="service" id="bilan">
+            <svg class="service-glyph" aria-hidden="true"><use href="#g-bilan"/></svg>
+            <div class="service-body">
+              <h3>Bilan de santé technique</h3>
+              <p class="service-problem">Rien n'est cassé, mais vous voulez savoir si les éléments techniques de votre site sont à jour et cohérents.</p>
+              <div class="service-detail">
+                <div>
+                  <h4>Ce que nous pouvons faire</h4>
+                  <ul>
+                    <li>Vérifier des points ciblés selon votre site et les accès disponibles</li>
+                    <li>Vous remettre un compte rendu compréhensible</li>
+                  </ul>
+                </div>
+                <div class="service-limit">
+                  <h4>Limites</h4>
+                  <ul><li>Ce n'est pas un audit de cybersécurité exhaustif</li></ul>
+                </div>
+              </div>
+              <a class="link service-cta" href="contact.html?sujet=autre">Demander un bilan</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section plate" id="deroulement" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="tag-eyebrow" aria-hidden="true">diagnostic</p>
+          <h2 id="process-title">Comment se déroule une demande</h2>
+          <p class="lead">Rien n'est facturé sans votre accord préalable.</p>
+        </div>
+        <ol class="process">
+          <li><span class="process-num" aria-hidden="true">1</span><h3>Vous décrivez la situation</h3><p>Avec vos mots, sans détails techniques obligatoires. Copiez le message de votre hébergeur s'il y en a un, mais jamais un mot de passe.</p></li>
+          <li><span class="process-num" aria-hidden="true">2</span><h3>Premier échange gratuit</h3><p>Nous qualifions le besoin et vous expliquons ce qui se passe. Si la demande sort de notre périmètre, nous vous le disons.</p></li>
+          <li><span class="process-num" aria-hidden="true">3</span><h3>Devis avant intervention</h3><p>Périmètre, prix et limites sont écrits avant toute intervention payante. Si un diagnostic approfondi est nécessaire, il fait lui-même l'objet d'un devis.</p></li>
+          <li><span class="process-num" aria-hidden="true">4</span><h3>Intervention et vérification</h3><p>Sauvegarde préalable lorsque c'est possible, intervention, vérification du fonctionnement et explications claires sur ce qui a été fait.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="tarifs-title">
+      <div class="container closing">
+        <div>
+          <h2 id="tarifs-title">Combien ça coûte&nbsp;?</h2>
+          <p>Chaque intervention fait l'objet d'un devis adapté à sa taille réelle&nbsp;: une petite intervention reste une petite facture. Le premier échange est toujours gratuit et sans engagement.</p>
+        </div>
+        <a class="btn btn-primary" href="contact.html">Demander un devis</a>
+      </div>
+    </section>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog · Actualités PHP, hébergement et conseils · PPR-Solution</title>
+  <meta name="description" content="Actualités vérifiées sur PHP, l&#39;hébergement web et la sécurité des sites, et guides pratiques pour comprendre domaine, DNS, HTTPS et migrations.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F8F7F3">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PPR-Solution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Blog · Actualités PHP, hébergement et conseils · PPR-Solution">
+  <meta property="og:description" content="Actualités vérifiées sur PHP, l&#39;hébergement web et la sécurité des sites, et guides pratiques pour comprendre domaine, DNS, HTTPS et migrations.">
+  <meta property="og:url" content="https://ppr-solution.fr/blog.html">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Blog PPR-Solution","url":"https://ppr-solution.fr/blog.html","inLanguage":"fr-FR","blogPost":[{"@type":"BlogPosting","headline":"Failles critiques de PHP (octobre 2026) : votre site est-il concerné ?","url":"https://ppr-solution.fr/blog/failles-php-octobre-2026-php2shell/","datePublished":"2026-11-01"},{"@type":"BlogPosting","headline":"Votre hébergeur demande de mettre à jour PHP : que faire ?","url":"https://ppr-solution.fr/blog/hebergeur-demande-mise-a-jour-php/","datePublished":"2026-10-30"},{"@type":"BlogPosting","headline":"Domaine, DNS, hébergement : qui fait quoi pour votre site ?","url":"https://ppr-solution.fr/blog/domaine-hebergement-difference/","datePublished":"2026-10-28"}]}</script>
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <script src="assets/js/main.js" defer></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="preview-banner" role="note"><div class="container">Préproduction — site non publié, aucune demande réelle n'est traitée.</div></div>
+  <header class="site-header" data-header>
+    <div class="container nav-inner">
+      <a class="brand" href="./">
+        <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
+          <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
+          <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
+          <path d="M27 13h9" stroke="#171717" stroke-width="2"/>
+          <circle cx="41" cy="13" r="5.5" fill="#171717"/>
+        </svg>
+        <span>
+          <span class="brand-name">PPR-Solution</span>
+          <span class="brand-sub">assistance technique web</span>
+        </span>
+        <span class="sr-only">(accueil)</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
+        <span class="nav-icon" aria-hidden="true"></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+      <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
+        <a href="prestations.html">Prestations</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="a-propos.html">À propos</a>
+        <a class="btn btn-primary btn-sm" href="contact.html">Obtenir de l'aide</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="g-hebergement" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="12" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="10" y="26" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="51" cy="31" r="2.6" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-php" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M2.8 14h62.4" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="9" cy="8.6" r="2" fill="#F05B3F"/>
+        <rect x="9" y="21" width="20" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="19.5" width="22" height="8" rx="4" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.1"/>
+        <rect x="9" y="33" width="14" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="33" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-dns" viewBox="0 0 68 48">
+        <path d="M34 24 12 9M34 24 12 39M34 24h22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <circle cx="12" cy="9" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="39" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="58" cy="24" r="5.5" fill="#F05B3F" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="34" cy="24" r="9" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="g-https" viewBox="0 0 68 48">
+        <path d="M4 30h60" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <circle cx="6" cy="30" r="3" fill="currentColor"/>
+        <circle cx="62" cy="30" r="3" fill="currentColor"/>
+        <rect x="24" y="20" width="20" height="18" rx="4" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M28.5 20v-4.5a5.5 5.5 0 0 1 11 0V20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="34" cy="29" r="2.4" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-migration" viewBox="0 0 68 48">
+        <rect x="2" y="20" width="24" height="24" rx="7" fill="#F8F7F3" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="42" y="20" width="24" height="24" rx="7" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 18C16 6 52 6 54 17" fill="none" stroke="#B8391F" stroke-width="1.6"/>
+        <path d="m50 13.5 4 4.5 4-4.8" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="8" y="27" width="12" height="4" rx="2" fill="#B7B7B2"/>
+        <rect x="8" y="34" width="9" height="4" rx="2" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-configuration" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="16" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="31" y="12" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="10" y="22" width="12" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="27" y="22" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+        <rect x="10" y="32" width="18" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="33" y="32" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-bilan" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m10 15 3 3 5-6M10 27l3 3 5-6" fill="none" stroke="#1E6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="37" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <rect x="24" y="13" width="32" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="25" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="35" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 12 14">
+        <rect x="1" y="5.5" width="10" height="7.5" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M3.4 5.5V4a2.6 2.6 0 0 1 5.2 0v1.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main id="contenu">
+<section class="section page-intro" aria-labelledby="blog-title">
+      <div class="container">
+        <p class="tag-eyebrow" aria-hidden="true">blog</p>
+        <h1 id="blog-title">Comprendre ce qui se passe sur votre site</h1>
+        <p class="lead">Actualités vérifiées sur PHP, l'hébergement et la sécurité, et guides pour comprendre et vérifier vous-même ce qui peut l'être. Chaque article cite ses sources officielles.</p>
+      </div>
+    </section>
+    <section class="section section-tight" aria-label="Articles">
+      <div class="container">
+        <ul class="post-list post-list-full">
+        <li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-news">Actualité</span><time datetime="2026-11-01">1 novembre 2026</time></p>
+          <h3><a href="blog/failles-php-octobre-2026-php2shell/">Failles critiques de PHP (octobre 2026) : votre site est-il concerné ?</a></h3>
+          <p>Deux failles critiques de PHP, surnommées « PHP2Shell », ont été corrigées en urgence le 21 octobre 2026 et sont déjà exploitées. Ce qu&#39;il faut vérifier sur votre site, selon votre version de PHP.</p>
+          <p class="post-reading">5 min de lecture</p>
+        </li>
+        <li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-10-30">30 octobre 2026</time></p>
+          <h3><a href="blog/hebergeur-demande-mise-a-jour-php/">Votre hébergeur demande de mettre à jour PHP : que faire ?</a></h3>
+          <p>Un email annonce la fin de prise en charge de votre version de PHP ? Pourquoi c&#39;est important, ce que vous risquez à attendre, et comment préparer le changement sans casser votre site.</p>
+          <p class="post-reading">3 min de lecture</p>
+        </li>
+        <li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-10-28">28 octobre 2026</time></p>
+          <h3><a href="blog/domaine-hebergement-difference/">Domaine, DNS, hébergement : qui fait quoi pour votre site ?</a></h3>
+          <p>Le nom de domaine, le DNS et l&#39;hébergement sont trois choses différentes, parfois chez trois prestataires. Les distinguer permet de savoir où chercher quand le site ne répond plus.</p>
+          <p class="post-reading">2 min de lecture</p>
+        </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p><strong>PPR-Solution</strong><br>Assistance technique · Hébergement web · Configuration</p>
+        <p><a class="link" href="mailto:contact@ppr-solution.fr">contact@ppr-solution.fr</a></p>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul class="footer-links">
+          <li><a href="./">Accueil</a></li>
+          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul class="footer-links">
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

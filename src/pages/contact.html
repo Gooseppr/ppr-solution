@@ -1,0 +1,92 @@
+---
+title: "Contact · Obtenir de l'aide pour votre site · PPR-Solution"
+description: "Décrivez le problème de votre site ou la demande de votre hébergeur. Premier échange gratuit et sans engagement, devis avant toute intervention payante."
+output: contact.html
+nav: contact
+scripts: ["assets/js/contact.js"]
+---
+    <section class="section page-intro contact-intro" aria-labelledby="page-title">
+      <div class="container">
+        <h1 id="page-title">Obtenir de l'aide</h1>
+        <p class="lead">Vous ne connaissez pas les détails techniques&nbsp;? Aucun souci. Expliquez simplement ce que vous constatez ou ce que votre hébergeur vous demande.</p>
+      </div>
+    </section>
+
+    <section class="section section-tight" aria-label="Formulaire de contact">
+      <div class="container contact-layout">
+        <!-- data-endpoint : URL du déploiement Google Apps Script (voir apps-script/README.md).
+             Vide = formulaire désactivé, aucune donnée n'est envoyée. -->
+        <form class="contact-form" id="formulaire" data-contact-form data-endpoint="" novalidate>
+          <div class="field">
+            <label for="contact-name">Votre nom <span class="req">(obligatoire)</span></label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="contact-name-error">
+            <p class="field-error" id="contact-name-error"></p>
+          </div>
+          <div class="field">
+            <label for="contact-email">Votre adresse email <span class="req">(obligatoire)</span></label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" required maxlength="200" aria-describedby="contact-email-hint contact-email-error">
+            <p class="field-hint" id="contact-email-hint">Nous l'utilisons uniquement pour vous répondre.</p>
+            <p class="field-error" id="contact-email-error"></p>
+          </div>
+
+          <fieldset class="field topic-field">
+            <legend>Votre demande concerne plutôt…</legend>
+            <div class="topic-choices">
+              <label class="topic"><input type="radio" name="sujet" value="hebergement"><span>Problème d'hébergement</span></label>
+              <label class="topic"><input type="radio" name="sujet" value="php"><span>Mise à jour PHP</span></label>
+              <label class="topic"><input type="radio" name="sujet" value="dns"><span>Domaine ou DNS</span></label>
+              <label class="topic"><input type="radio" name="sujet" value="https"><span>HTTPS / certificat</span></label>
+              <label class="topic"><input type="radio" name="sujet" value="migration"><span>Migration</span></label>
+              <label class="topic"><input type="radio" name="sujet" value="configuration"><span>Configuration technique</span></label>
+              <label class="topic"><input type="radio" name="sujet" value="autre" checked><span>Autre / Je ne sais pas</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="contact-message">Que se passe-t-il&nbsp;? <span class="req">(obligatoire)</span></label>
+            <textarea id="contact-message" name="message" rows="7" required minlength="20" maxlength="5000" aria-describedby="contact-message-hint contact-message-error"></textarea>
+            <p class="field-hint" id="contact-message-hint">Ce que vous voyez, depuis quand, ce qui a changé récemment. Vous pouvez coller le message de votre hébergeur.</p>
+            <p class="field-error" id="contact-message-error"></p>
+          </div>
+
+          <div class="field-pair">
+            <div class="field">
+              <label for="contact-site">Adresse du site <span class="opt">(facultatif)</span></label>
+              <input id="contact-site" name="site" type="text" inputmode="url" autocomplete="url" maxlength="200" placeholder="votre-site.fr">
+            </div>
+            <div class="field">
+              <label for="contact-host">Hébergeur <span class="opt">(facultatif)</span></label>
+              <input id="contact-host" name="hebergeur" type="text" maxlength="120" aria-describedby="contact-host-hint">
+              <p class="field-hint" id="contact-host-hint">Si vous ne le savez pas, laissez vide.</p>
+            </div>
+          </div>
+
+          <p class="form-warning" role="note"><strong>Ne transmettez jamais de mot de passe</strong> ni d'identifiant dans ce formulaire. Si des accès sont nécessaires, nous conviendrons ensemble d'un moyen sûr.</p>
+
+          <div class="hp" aria-hidden="true">
+            <label for="contact-website">Ne pas remplir ce champ</label>
+            <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <p class="form-privacy">Vos informations servent uniquement à traiter votre demande. Voir la <a class="link" href="confidentialite.html">politique de confidentialité</a>.</p>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit"><span class="btn-node" aria-hidden="true"></span>Envoyer ma demande</button>
+          </div>
+          <div class="form-status" data-form-status role="status" aria-live="polite" tabindex="-1"></div>
+        </form>
+
+        <aside class="contact-aside" aria-labelledby="next-title">
+          <h2 id="next-title" class="h-small">Après l'envoi</h2>
+          <ol class="process process-compact">
+            <li><span class="process-num" aria-hidden="true">1</span><p>Nous lisons votre demande et revenons vers vous par email.</p></li>
+            <li><span class="process-num" aria-hidden="true">2</span><p>Premier échange gratuit pour comprendre la situation.</p></li>
+            <li><span class="process-num" aria-hidden="true">3</span><p>Si une intervention est utile, devis écrit avant toute action payante.</p></li>
+          </ol>
+          <div class="scope-note">
+            <h3>Vous préférez l'email&nbsp;?</h3>
+            <p><a class="link" href="mailto:contact@ppr-solution.fr">contact@ppr-solution.fr</a></p>
+          </div>
+        </aside>
+      </div>
+    </section>

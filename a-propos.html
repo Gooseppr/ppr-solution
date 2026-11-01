@@ -3,28 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>À propos · PPR-Solution</title>
-  <meta name="description" content="À propos — PPR-Solution, assistance technique pour sites internet et hébergement.">
-  <!-- Préproduction : ne pas indexer tant que la publication n'est pas validée. -->
+  <title>À propos · PPR-Solution, assistance technique indépendante</title>
+  <meta name="description" content="PPR-Solution est une marque indépendante d&#39;assistance technique pour sites internet : méthode prudente, explications claires, devis préalable et transparence sur les limites.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#F8F7F3">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PPR-Solution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="À propos · PPR-Solution, assistance technique indépendante">
+  <meta property="og:description" content="PPR-Solution est une marque indépendante d&#39;assistance technique pour sites internet : méthode prudente, explications claires, devis préalable et transparence sur les limites.">
+  <meta property="og:url" content="https://ppr-solution.fr/a-propos.html">
+  <meta name="twitter:card" content="summary">
   <script>document.documentElement.classList.replace("no-js", "js");</script>
   <script src="assets/js/main.js" defer></script>
+
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
-
-  <div class="preview-banner" role="note">
-    <div class="container">Préproduction — jalon de validation visuelle. Le formulaire n'envoie encore aucune demande.</div>
-  </div>
-
+  <div class="preview-banner" role="note"><div class="container">Préproduction — site non publié, aucune demande réelle n'est traitée.</div></div>
   <header class="site-header" data-header>
     <div class="container nav-inner">
-      <a class="brand" href="./" aria-label="PPR-Solution, accueil">
+      <a class="brand" href="./">
         <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
           <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
           <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
@@ -35,27 +38,148 @@
           <span class="brand-name">PPR-Solution</span>
           <span class="brand-sub">assistance technique web</span>
         </span>
+        <span class="sr-only">(accueil)</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
         <span class="nav-icon" aria-hidden="true"></span>
         <span class="sr-only">Ouvrir le menu</span>
       </button>
       <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
-        <a href="./#prestations">Prestations</a>
-        <a href="./#fonctionnement">Comment ça marche</a>
-        <a href="conseils.html">Conseils</a>
-        <a href="a-propos.html">À propos</a>
-        <a class="btn btn-primary btn-sm" href="contact.html">Décrire mon problème</a>
+        <a href="prestations.html">Prestations</a>
+        <a href="blog.html">Blog</a>
+        <a href="a-propos.html" aria-current="page">À propos</a>
+        <a class="btn btn-primary btn-sm" href="contact.html">Obtenir de l'aide</a>
       </nav>
     </div>
   </header>
+  <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="g-hebergement" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="12" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="10" y="26" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="51" cy="31" r="2.6" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-php" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M2.8 14h62.4" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="9" cy="8.6" r="2" fill="#F05B3F"/>
+        <rect x="9" y="21" width="20" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="19.5" width="22" height="8" rx="4" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.1"/>
+        <rect x="9" y="33" width="14" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="33" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-dns" viewBox="0 0 68 48">
+        <path d="M34 24 12 9M34 24 12 39M34 24h22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <circle cx="12" cy="9" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="39" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="58" cy="24" r="5.5" fill="#F05B3F" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="34" cy="24" r="9" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="g-https" viewBox="0 0 68 48">
+        <path d="M4 30h60" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <circle cx="6" cy="30" r="3" fill="currentColor"/>
+        <circle cx="62" cy="30" r="3" fill="currentColor"/>
+        <rect x="24" y="20" width="20" height="18" rx="4" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M28.5 20v-4.5a5.5 5.5 0 0 1 11 0V20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="34" cy="29" r="2.4" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-migration" viewBox="0 0 68 48">
+        <rect x="2" y="20" width="24" height="24" rx="7" fill="#F8F7F3" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="42" y="20" width="24" height="24" rx="7" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 18C16 6 52 6 54 17" fill="none" stroke="#B8391F" stroke-width="1.6"/>
+        <path d="m50 13.5 4 4.5 4-4.8" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="8" y="27" width="12" height="4" rx="2" fill="#B7B7B2"/>
+        <rect x="8" y="34" width="9" height="4" rx="2" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-configuration" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="16" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="31" y="12" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="10" y="22" width="12" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="27" y="22" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+        <rect x="10" y="32" width="18" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="33" y="32" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-bilan" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m10 15 3 3 5-6M10 27l3 3 5-6" fill="none" stroke="#1E6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="37" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <rect x="24" y="13" width="32" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="25" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="35" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 12 14">
+        <rect x="1" y="5.5" width="10" height="7.5" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M3.4 5.5V4a2.6 2.6 0 0 1 5.2 0v1.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+    </defs>
+  </svg>
 
   <main id="contenu">
-    <section class="section">
-      <div class="container section-head">
-        <h1>À propos</h1>
-        <p class="lead">La présentation de PPR-Solution, de sa méthode et de ses limites sera rédigée en phase C.</p>
-        <p><a class="link" href="./">Retour à l'accueil</a></p>
+<section class="section page-intro" aria-labelledby="page-title">
+      <div class="container">
+        <p class="tag-eyebrow" aria-hidden="true">a-propos</p>
+        <h1 id="page-title">Un interlocuteur technique, pas une agence</h1>
+        <p class="lead">PPR-Solution est une marque indépendante qui s'occupe des petits problèmes techniques des sites internet&nbsp;: ceux qui bloquent leur propriétaire, mais qui ne justifient ni une agence, ni un contrat de maintenance.</p>
+      </div>
+    </section>
+
+    <section class="section plate" aria-labelledby="method-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="method-title">Notre façon de travailler</h2>
+        </div>
+        <ul class="principles">
+          <li>
+            <h3>Comprendre avant d'agir</h3>
+            <p>Chaque demande commence par une étude de la situation. Une mise à jour PHP, par exemple, n'est jamais lancée sans vérifier ce qu'elle peut casser.</p>
+          </li>
+          <li>
+            <h3>Expliquer avec des mots simples</h3>
+            <p>Vous savez ce qui se passe, ce qui va être fait et pourquoi. Un compte rendu clair accompagne chaque intervention.</p>
+          </li>
+          <li>
+            <h3>Adapter l'intervention au besoin</h3>
+            <p>Une petite intervention reste une petite intervention. Pas d'abonnement imposé, pas de prestation gonflée.</p>
+          </li>
+          <li>
+            <h3>Être prudent</h3>
+            <p>Sauvegarde préalable lorsque c'est possible, retour arrière prévu quand c'est applicable, accès utilisés uniquement pour ce qui a été convenu.</p>
+          </li>
+          <li>
+            <h3>Être transparent sur les limites</h3>
+            <p>Si votre demande dépasse notre périmètre, nous vous le disons dès le premier échange, plutôt que de promettre un résultat incertain.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="commitments-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="commitments-title">Ce sur quoi vous pouvez compter</h2>
+        </div>
+        <ul class="commitments">
+          <li class="capsule"><span class="capsule-dot" aria-hidden="true"></span>Premier échange gratuit</li>
+          <li class="capsule"><span class="capsule-dot" aria-hidden="true"></span>Demande sans engagement</li>
+          <li class="capsule"><span class="capsule-dot" aria-hidden="true"></span>Étude préalable du problème</li>
+          <li class="capsule"><span class="capsule-dot" aria-hidden="true"></span>Devis avant toute intervention payante</li>
+          <li class="capsule"><span class="capsule-dot" aria-hidden="true"></span>Explications compréhensibles</li>
+          <li class="capsule"><span class="capsule-dot" aria-hidden="true"></span>Périmètre clarifié par écrit</li>
+        </ul>
+        <p class="about-note">PPR-Solution n'est le partenaire officiel d'aucun hébergeur et n'en représente aucun. Nous intervenons pour votre compte, avec les accès que vous choisissez de nous confier.</p>
+      </div>
+    </section>
+
+    <section class="section plate" aria-labelledby="closing-title">
+      <div class="container closing">
+        <div>
+          <h2 id="closing-title">Parlons de votre site</h2>
+          <p>Décrivez-nous la situation&nbsp;: nous vous répondons avec une première analyse et, si une intervention est utile, un devis.</p>
+        </div>
+        <a class="btn btn-primary" href="contact.html">Nous présenter votre situation</a>
       </div>
     </section>
   </main>
@@ -69,8 +193,9 @@
       <div>
         <h2>Le site</h2>
         <ul class="footer-links">
-          <li><a href="./#prestations">Prestations</a></li>
-          <li><a href="conseils.html">Conseils</a></li>
+          <li><a href="./">Accueil</a></li>
+          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="blog.html">Blog</a></li>
           <li><a href="a-propos.html">À propos</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>

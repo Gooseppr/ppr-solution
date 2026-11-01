@@ -17,6 +17,13 @@ Concept : **l'atelier visuel du web**. Le site explique et situe les problèmes 
 
 ## Exactitude technique
 
-- PHP 8.1 : fin du support de sécurité le 31/12/2025 → exemple réaliste en novembre 2026. Versions proposées 8.3 / 8.4 (supportées à cette date).
+- Hero : PHP 7.4 (fin des mises à jour le 28/11/2022, source php.net/eol.php), ton volontairement plus alarmant à la demande du propriétaire. Versions proposées 8.4 / 8.5 (maintenues jusqu'en 2028 / 2029).
 - La compatibilité est présentée comme « à vérifier » ; l'étape suivante est une étude préalable puis un devis, jamais une réparation automatique.
 - Exemple DNS du guide de style : adresse IP de documentation `203.0.113.10` (RFC 5737).
+
+## Retours du propriétaire intégrés (1er novembre 2026)
+
+- Direction artistique validée.
+- Cinq parties : Accueil, Prestations, Blog, À propos, Contact.
+- Menu : « Obtenir de l'aide » ; « Décrire mon problème » réservé au hero ; libellés d'action adaptés à chaque contexte (voir le guide de style).
+- Ton plus alarmant sur les anciennes versions de PHP (7, 5, 4) : tableau des fins de support sur la page Prestations.
