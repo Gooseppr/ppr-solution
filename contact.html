@@ -128,8 +128,8 @@
     <section class="section section-tight" aria-label="Formulaire de contact">
       <div class="container contact-layout">
         <!-- data-endpoint : URL du déploiement Google Apps Script (voir apps-script/README.md).
-             Vide = formulaire désactivé, aucune donnée n'est envoyée. -->
-        <form class="contact-form" id="formulaire" data-contact-form data-endpoint="" novalidate>
+             Vide = formulaire désactivé. Côté script, ACCEPT_REQUESTS = false refuse aussi les envois. -->
+        <form class="contact-form" id="formulaire" data-contact-form data-endpoint="https://script.google.com/macros/s/AKfycbyIYyaL4oRou9AuwiklYtmmGjjhtFqBHFZ-HO2XxrGBK0Thoa86oMTvjuAUdCzSG6OPMw/exec" novalidate>
           <div class="field">
             <label for="contact-name">Votre nom <span class="req">(obligatoire)</span></label>
             <input id="contact-name" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="contact-name-error">

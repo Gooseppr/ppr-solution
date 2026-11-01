@@ -66,7 +66,7 @@ test("CTA : « Décrire mon problème » réservé au hero, « Obtenir de l'aide
 test("aucune référence obsolète à l'ancien site XML ni secret", () => {
   for (const file of htmlFiles) {
     const html = outputs.get(file);
-    assert.doesNotMatch(html, /gooseppr\.github\.io|S1000D|script\.google\.com\/macros\/s\/AKfy/i, file);
+    assert.doesNotMatch(html, /gooseppr\.github\.io|S1000D|script\.google\.com\/macros\/s\/AKfycbxF8eV/i, file);
     assert.doesNotMatch(html, /gregoire\.elmacin@/i, file);
   }
 });
