@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-tlTtfpdsMQSdcfX3DLM1fgx/y++BLw+48vFj+5cTJa0='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>« Trop de redirections » après le passage en HTTPS : quand Nginx et Apache tournent en boucle · PPR-Solution</title>
-  <meta name="description" content="Erreur ERR_TOO_MANY_REDIRECTS après l&#39;activation de HTTPS avec Nginx devant Apache (ou Cloudflare) : pourquoi la redirection du .htaccess tourne en boucle et comment la corriger.">
+  <title>ERR_TOO_MANY_REDIRECTS après le passage en HTTPS : quand Nginx et Apache tournent en boucle · PPR-Solution</title>
+  <meta name="description" content="ERR_TOO_MANY_REDIRECTS, « redirected you too many times », « La page n&#39;est pas redirigée correctement » : pourquoi Nginx devant Apache ou Cloudflare crée une boucle HTTPS, et comment la corriger.">
   <link rel="canonical" href="https://ppr-solution.fr/blog/trop-de-redirections-https-nginx-apache/">
   <meta name="theme-color" content="#F8F7F3">
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
@@ -16,8 +16,8 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="PPR-Solution">
   <meta property="og:locale" content="fr_FR">
-  <meta property="og:title" content="« Trop de redirections » après le passage en HTTPS : quand Nginx et Apache tournent en boucle · PPR-Solution">
-  <meta property="og:description" content="Erreur ERR_TOO_MANY_REDIRECTS après l&#39;activation de HTTPS avec Nginx devant Apache (ou Cloudflare) : pourquoi la redirection du .htaccess tourne en boucle et comment la corriger.">
+  <meta property="og:title" content="ERR_TOO_MANY_REDIRECTS après le passage en HTTPS : quand Nginx et Apache tournent en boucle · PPR-Solution">
+  <meta property="og:description" content="ERR_TOO_MANY_REDIRECTS, « redirected you too many times », « La page n&#39;est pas redirigée correctement » : pourquoi Nginx devant Apache ou Cloudflare crée une boucle HTTPS, et comment la corriger.">
   <meta property="og:url" content="https://ppr-solution.fr/blog/trop-de-redirections-https-nginx-apache/">
   <meta property="og:image" content="https://ppr-solution.fr/assets/img/og-default.png">
   <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
   <meta name="twitter:image" content="https://ppr-solution.fr/assets/img/og-default.png">
   <meta property="article:published_time" content="2026-11-02">
   <meta property="article:modified_time" content="2026-11-02">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"« Trop de redirections » après le passage en HTTPS : quand Nginx et Apache tournent en boucle","description":"Erreur ERR_TOO_MANY_REDIRECTS après l'activation de HTTPS avec Nginx devant Apache (ou Cloudflare) : pourquoi la redirection du .htaccess tourne en boucle et comment la corriger.","datePublished":"2026-11-02","dateModified":"2026-11-02","inLanguage":"fr-FR","mainEntityOfPage":"https://ppr-solution.fr/blog/trop-de-redirections-https-nginx-apache/","author":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution","url":"https://ppr-solution.fr/"},"publisher":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ppr-solution.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ppr-solution.fr/blog.html"},{"@type":"ListItem","position":3,"name":"« Trop de redirections » après le passage en HTTPS : quand Nginx et Apache tournent en boucle","item":"https://ppr-solution.fr/blog/trop-de-redirections-https-nginx-apache/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"ERR_TOO_MANY_REDIRECTS après le passage en HTTPS : quand Nginx et Apache tournent en boucle","description":"ERR_TOO_MANY_REDIRECTS, « redirected you too many times », « La page n'est pas redirigée correctement » : pourquoi Nginx devant Apache ou Cloudflare crée une boucle HTTPS, et comment la corriger.","datePublished":"2026-11-02","dateModified":"2026-11-02","inLanguage":"fr-FR","mainEntityOfPage":"https://ppr-solution.fr/blog/trop-de-redirections-https-nginx-apache/","author":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution","url":"https://ppr-solution.fr/"},"publisher":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ppr-solution.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ppr-solution.fr/blog.html"},{"@type":"ListItem","position":3,"name":"ERR_TOO_MANY_REDIRECTS après le passage en HTTPS : quand Nginx et Apache tournent en boucle","item":"https://ppr-solution.fr/blog/trop-de-redirections-https-nginx-apache/"}]}]}</script>
   <script>document.documentElement.classList.replace("no-js", "js");</script>
   <script src="../../assets/js/main.js" defer></script>
 
@@ -131,24 +131,46 @@
       <header class="article-header">
         <div class="container article-narrow">
           <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
-          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-02">2 novembre 2026</time></span> · <span>5 min de lecture</span></p>
-          <h1>« Trop de redirections » après le passage en HTTPS : quand Nginx et Apache tournent en boucle</h1>
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-02">2 novembre 2026</time></span> · <span>6 min de lecture</span></p>
+          <h1>ERR_TOO_MANY_REDIRECTS après le passage en HTTPS : quand Nginx et Apache tournent en boucle</h1>
         </div>
       </header>
       <div class="container article-layout">
-        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#ce-que-signifie-trop-de-redirections">Ce que signifie « trop de redirections »</a></li><li><a href="#nginx-et-apache-qui-fait-quoi">Nginx et Apache : qui fait quoi ?</a></li><li><a href="#pourquoi-la-boucle-se-forme">Pourquoi la boucle se forme</a></li><li><a href="#comment-corriger">Comment corriger</a></li><li><a href="#verifier-que-c-est-regle">Vérifier que c&#39;est réglé</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
+        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#le-message-que-vous-voyez">Le message que vous voyez</a></li><li><a href="#ce-que-signifie-ce-message">Ce que signifie ce message</a></li><li><a href="#nginx-et-apache-qui-fait-quoi">Nginx et Apache : qui fait quoi ?</a></li><li><a href="#pourquoi-la-boucle-se-forme">Pourquoi la boucle se forme</a></li><li><a href="#comment-corriger">Comment corriger</a></li><li><a href="#verifier-que-c-est-regle">Vérifier que c&#39;est réglé</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
         <div class="article-body prose">
-<p class="lead">Votre site affichait bien ses pages, vous avez installé un certificat HTTPS, et depuis le navigateur indique « Cette page ne fonctionne pas : trop de redirections ». Dans beaucoup de cas, ce n'est pas le certificat qui est en cause, mais une règle de redirection placée au mauvais endroit. C'est particulièrement fréquent quand le site tourne avec deux logiciels serveur l'un derrière l'autre, Nginx devant Apache. La correction est rapide une fois le mécanisme compris.</p>
+<p class="lead">Votre site affichait bien ses pages, vous avez installé un certificat HTTPS, et depuis le navigateur indique « Cette page ne fonctionne pas : votre-site.fr vous a redirigé à de trop nombreuses reprises », avec le code ERR_TOO_MANY_REDIRECTS. Dans beaucoup de cas, ce n'est pas le certificat qui est en cause, mais une règle de redirection placée au mauvais endroit. C'est particulièrement fréquent quand le site tourne avec deux logiciels serveur l'un derrière l'autre, Nginx devant Apache. La correction est rapide une fois le mécanisme compris.</p>
 <div class="note note-summary"><strong>En bref</strong><ul>
-<li>Le message « trop de redirections » (ERR_TOO_MANY_REDIRECTS) signifie que le site renvoie le visiteur d'une adresse à l'autre sans jamais s'arrêter.</li>
+<li>Le message « vous a redirigé à de trop nombreuses reprises » (en anglais « redirected you too many times », code ERR_TOO_MANY_REDIRECTS) signifie que le site renvoie le visiteur d'une adresse à l'autre sans jamais s'arrêter.</li>
 <li>Quand Nginx reçoit les visiteurs en HTTPS puis transmet la demande à Apache en HTTP, Apache croit que la visite n'est pas sécurisée.</li>
 <li>Si le fichier .htaccess d'Apache contient une règle « rediriger vers HTTPS », il redirige à chaque fois : c'est la boucle.</li>
 <li>Solution : faire la redirection vers HTTPS à un seul endroit, ou indiquer à Apache que le visiteur est déjà en HTTPS.</li>
 <li>Après la correction, testez dans une fenêtre de navigation privée : les navigateurs gardent les anciennes redirections en mémoire.</li>
 </ul>
 </div>
-<h2 id="ce-que-signifie-trop-de-redirections">Ce que signifie « trop de redirections »</h2>
+<h2 id="le-message-que-vous-voyez">Le message que vous voyez</h2>
+<p>Selon votre navigateur et sa langue, l'erreur ne s'affiche pas avec les mêmes mots, mais elle désigne toujours le même problème.</p>
+<ul>
+<li><strong>Google Chrome</strong>
+<ul>
+<li>En français : « Cette page ne fonctionne pas. votre-site.fr vous a redirigé à de trop nombreuses reprises. Essayez de supprimer vos cookies. ERR_TOO_MANY_REDIRECTS »</li>
+<li>En anglais : « This page isn't working. votre-site.fr redirected you too many times. Try deleting your cookies. ERR_TOO_MANY_REDIRECTS »</li>
+</ul>
+</li>
+<li><strong>Firefox</strong>
+<ul>
+<li>En français : « La page n'est pas redirigée correctement »</li>
+<li>En anglais : « The page isn't redirecting properly »</li>
+</ul>
+</li>
+<li><strong>Safari</strong>
+<ul>
+<li>En anglais : « Safari can't open the page because too many redirects occurred »</li>
+</ul>
+</li>
+</ul>
+<h2 id="ce-que-signifie-ce-message">Ce que signifie ce message</h2>
 <p>Une redirection, c'est une adresse qui renvoie automatiquement vers une autre, par exemple de <code>http://votre-site.fr</code> vers <code>https://votre-site.fr</code>. C'est normal et utile. Le problème survient quand la deuxième adresse renvoie à son tour vers la première : le navigateur tourne en rond, puis abandonne au bout d'une vingtaine d'allers-retours et affiche le message d'erreur.</p>
+<p>Supprimer ses cookies, comme le suggère Chrome, règle parfois le problème pour un visiteur. Mais quand la boucle vient de la configuration du serveur, elle revient aussitôt, et pour tous les visiteurs : c'est le serveur qu'il faut corriger.</p>
 <h2 id="nginx-et-apache-qui-fait-quoi">Nginx et Apache : qui fait quoi ?</h2>
 <aside class="note note-definition"><strong>Définition — serveur web</strong><p>Le logiciel qui reçoit les visites d'un site et renvoie les pages. Nginx et Apache sont les deux plus répandus.</p>
 </aside>

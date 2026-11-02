@@ -1,11 +1,11 @@
 ---
-title: "« Trop de redirections » après le passage en HTTPS : quand Nginx et Apache tournent en boucle"
+title: "ERR_TOO_MANY_REDIRECTS après le passage en HTTPS : quand Nginx et Apache tournent en boucle"
 slug: "trop-de-redirections-https-nginx-apache"
-description: "Votre site affiche « trop de redirections » depuis l'installation du certificat HTTPS ? Avec Nginx placé devant Apache, une règle de redirection mal placée suffit à créer une boucle sans fin. Explications et solutions."
-meta_description: "Erreur ERR_TOO_MANY_REDIRECTS après l'activation de HTTPS avec Nginx devant Apache (ou Cloudflare) : pourquoi la redirection du .htaccess tourne en boucle et comment la corriger."
+description: "Votre site affiche « vous a redirigé à de trop nombreuses reprises » (ERR_TOO_MANY_REDIRECTS) depuis l'installation du certificat HTTPS ? Avec Nginx placé devant Apache, une règle de redirection mal placée suffit à créer une boucle sans fin. Explications et solutions."
+meta_description: "ERR_TOO_MANY_REDIRECTS, « redirected you too many times », « La page n'est pas redirigée correctement » : pourquoi Nginx devant Apache ou Cloudflare crée une boucle HTTPS, et comment la corriger."
 date: "2026-11-02"
 category: "Guide"
-tags: ["HTTPS", "Nginx", "Apache"]
+tags: ["HTTPS", "Nginx", "Apache", "ERR_TOO_MANY_REDIRECTS"]
 service:
   url: "prestations.html#https"
   label: "Prestation : certificat HTTPS / SSL"
@@ -15,19 +15,34 @@ contact:
   sujet: "https"
 ---
 
-Votre site affichait bien ses pages, vous avez installé un certificat HTTPS, et depuis le navigateur indique « Cette page ne fonctionne pas : trop de redirections ». Dans beaucoup de cas, ce n'est pas le certificat qui est en cause, mais une règle de redirection placée au mauvais endroit. C'est particulièrement fréquent quand le site tourne avec deux logiciels serveur l'un derrière l'autre, Nginx devant Apache. La correction est rapide une fois le mécanisme compris.
+Votre site affichait bien ses pages, vous avez installé un certificat HTTPS, et depuis le navigateur indique « Cette page ne fonctionne pas : votre-site.fr vous a redirigé à de trop nombreuses reprises », avec le code ERR_TOO_MANY_REDIRECTS. Dans beaucoup de cas, ce n'est pas le certificat qui est en cause, mais une règle de redirection placée au mauvais endroit. C'est particulièrement fréquent quand le site tourne avec deux logiciels serveur l'un derrière l'autre, Nginx devant Apache. La correction est rapide une fois le mécanisme compris.
 
 > **En bref**
 >
-> - Le message « trop de redirections » (ERR_TOO_MANY_REDIRECTS) signifie que le site renvoie le visiteur d'une adresse à l'autre sans jamais s'arrêter.
+> - Le message « vous a redirigé à de trop nombreuses reprises » (en anglais « redirected you too many times », code ERR_TOO_MANY_REDIRECTS) signifie que le site renvoie le visiteur d'une adresse à l'autre sans jamais s'arrêter.
 > - Quand Nginx reçoit les visiteurs en HTTPS puis transmet la demande à Apache en HTTP, Apache croit que la visite n'est pas sécurisée.
 > - Si le fichier .htaccess d'Apache contient une règle « rediriger vers HTTPS », il redirige à chaque fois : c'est la boucle.
 > - Solution : faire la redirection vers HTTPS à un seul endroit, ou indiquer à Apache que le visiteur est déjà en HTTPS.
 > - Après la correction, testez dans une fenêtre de navigation privée : les navigateurs gardent les anciennes redirections en mémoire.
 
-## Ce que signifie « trop de redirections »
+## Le message que vous voyez
+
+Selon votre navigateur et sa langue, l'erreur ne s'affiche pas avec les mêmes mots, mais elle désigne toujours le même problème.
+
+- **Google Chrome**
+  - En français : « Cette page ne fonctionne pas. votre-site.fr vous a redirigé à de trop nombreuses reprises. Essayez de supprimer vos cookies. ERR_TOO_MANY_REDIRECTS »
+  - En anglais : « This page isn't working. votre-site.fr redirected you too many times. Try deleting your cookies. ERR_TOO_MANY_REDIRECTS »
+- **Firefox**
+  - En français : « La page n'est pas redirigée correctement »
+  - En anglais : « The page isn't redirecting properly »
+- **Safari**
+  - En anglais : « Safari can't open the page because too many redirects occurred »
+
+## Ce que signifie ce message
 
 Une redirection, c'est une adresse qui renvoie automatiquement vers une autre, par exemple de `http://votre-site.fr` vers `https://votre-site.fr`. C'est normal et utile. Le problème survient quand la deuxième adresse renvoie à son tour vers la première : le navigateur tourne en rond, puis abandonne au bout d'une vingtaine d'allers-retours et affiche le message d'erreur.
+
+Supprimer ses cookies, comme le suggère Chrome, règle parfois le problème pour un visiteur. Mais quand la boucle vient de la configuration du serveur, elle revient aussitôt, et pour tous les visiteurs : c'est le serveur qu'il faut corriger.
 
 ## Nginx et Apache : qui fait quoi ?
 

@@ -928,3 +928,6 @@ code { font-family: var(--font-mono); font-size: 0.88em; background: var(--ivory
   .config-row, .config-window-stacked .config-row { grid-template-columns: minmax(0, 1fr); }
   .config-help { grid-column: 1 / -1; }
 }
+
+/* 24 MOTS TRÈS LONGS (codes d'erreur, noms de fichiers) : coupure plutôt que débordement */
+.article-header h1, .prose, .post-card h3 { overflow-wrap: break-word; }
