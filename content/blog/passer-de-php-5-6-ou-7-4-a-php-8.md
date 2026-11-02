@@ -15,15 +15,15 @@ contact:
   sujet: "php"
 ---
 
-Un site encore en PHP 5.6 ou 7.4 fonctionne peut-être très bien en apparence, mais il tourne sur une version qui ne reçoit plus de mises à jour de sécurité officielles depuis des années. Passer à PHP 8 est donc urgent. Ce n'est pas pour autant un simple réglage : plus l'écart est grand, plus il y a de chances que quelque chose casse. La bonne méthode tient en trois mots : vérifier, tester, puis basculer.
+Un site encore en PHP 5.6 ou 7.4 fonctionne peut-être très bien en apparence, mais il tourne sur une version qui ne reçoit plus de mises à jour de sécurité officielles depuis des années. Passer à PHP 8 est donc urgent. Ce n'est pas pour autant un simple réglage : plus l'écart est grand, plus il y a de chances que quelque chose casse. La bonne méthode : faire le point, sauvegarder, préparer le code, puis changer de version au bon moment.
 
 > **En bref**
 >
 > - PHP 5.6 ne reçoit plus de mises à jour de sécurité depuis fin 2018, PHP 7.4 depuis fin 2022.
 > - Entre ces versions et PHP 8, certaines instructions ont été supprimées : un site ancien peut afficher une erreur ou une page blanche.
-> - On commence par mettre à jour le logiciel du site (WordPress, PrestaShop…), ses thèmes et ses extensions.
-> - On teste sur une copie du site avant de toucher au site réel.
-> - Le jour du changement, on sauvegarde, on met le site en maintenance, on bascule et on vérifie.
+> - On commence par un état des lieux et une sauvegarde complète.
+> - On prépare le code du site avant de toucher à PHP : mises à jour de WordPress et des extensions, ou corrections pour un site plus ancien.
+> - Le jour J, on met le site en maintenance, on change la version de PHP, on installe le code adapté, puis on vérifie.
 
 ## Pourquoi c'est plus délicat qu'un simple changement de version
 
@@ -59,41 +59,38 @@ Concrètement, un site incompatible peut :
 
 ### 1. Faire l'état des lieux
 
-Notez la version de PHP actuelle (dans l'espace client de votre hébergeur), le logiciel utilisé par le site et sa version, ainsi que la liste des thèmes et extensions installés. Pour WordPress, le site officiel recommande aujourd'hui PHP 8.3 ou plus récent.
+Notez la version de PHP actuelle (dans l'espace client de votre hébergeur), le logiciel utilisé par le site et sa version, ainsi que la liste des thèmes et extensions installés. Une extension abandonnée par son auteur depuis plusieurs années est un signal d'alerte : il faudra probablement la remplacer.
 
-### 2. Mettre à jour le site lui-même
+### 2. Sauvegarder
 
-Avant de changer PHP, mettez à jour WordPress, PrestaShop ou Joomla, puis les thèmes et extensions. Les versions récentes sont généralement prévues pour PHP 8. Une extension abandonnée par son auteur depuis plusieurs années est un signal d'alerte : il faudra probablement la remplacer.
+Sauvegardez les fichiers du site et sa base de données, puis vérifiez que la sauvegarde est complète. Tant qu'elle n'existe pas, on ne touche à rien : c'est elle qui permet de revenir en arrière si quelque chose se passe mal.
 
-### 3. Tester sur une copie du site
+### 3. Préparer le code du site
 
-> **Définition : site de test**
->
-> Une copie de votre site, invisible du public, sur laquelle on peut essayer une mise à jour sans risque. Beaucoup d'hébergeurs proposent d'en créer une en quelques clics, parfois sous le nom de « staging » ou « préproduction ».
+Avant de changer PHP, il faut que le site soit prêt à fonctionner avec la nouvelle version. Deux cas se présentent.
 
-Sur cette copie, passez à PHP 8 et parcourez les pages importantes : accueil, formulaires, panier, espace d'administration. Partant de PHP 5.6, il est souvent plus simple de procéder par paliers (d'abord PHP 7.4, puis PHP 8) pour savoir à quelle étape un problème apparaît.
+- **Le site utilise WordPress, PrestaShop ou Joomla, assez récent.** On met à jour le logiciel, puis les thèmes et extensions. Leurs versions récentes acceptent généralement à la fois l'ancienne et la nouvelle version de PHP : le site continue de fonctionner normalement après cette mise à jour, et il est prêt pour PHP 8. Pour WordPress, le site officiel recommande aujourd'hui PHP 8.3 ou plus récent.
+- **Le site est très ancien ou fait sur mesure.** Partant de PHP 5.6, cette passerelle n'existe souvent pas : WordPress, par exemple, ne fonctionne plus en dessous de PHP 7.4. Les corrections du code sont alors préparées à l'avance, puis installées le jour même du changement de version.
 
-### 4. Préparer le jour J
-
-- **Sauvegardez** les fichiers et la base de données, et vérifiez que la sauvegarde est complète.
-- **Choisissez le moment le plus calme** pour votre activité.
-- **Notez comment revenir en arrière** : chez la plupart des hébergeurs, il suffit de rechoisir l'ancienne version de PHP dans l'espace client, à condition que le site n'ait pas été modifié entre-temps.
-
-### 5. Mettre le site en maintenance pendant l'intervention
+### 4. Choisir le jour J et mettre le site en maintenance
 
 > **Définition : mode maintenance**
 >
 > Une page temporaire qui indique aux visiteurs que le site est en cours d'intervention et revient bientôt, au lieu de leur montrer une page cassée.
 
-WordPress affiche automatiquement une page de maintenance pendant ses propres mises à jour. Pour un changement de version PHP, on l'active soi-même : avec une extension de maintenance, ou avec l'outil proposé par certains hébergeurs. Prévenez aussi vos clients réguliers si le site a une boutique.
+Choisissez le moment le plus calme pour votre activité et prévenez vos clients réguliers si le site a une boutique. Le moment venu, activez la page de maintenance : avec une extension de maintenance, ou avec l'outil proposé par certains hébergeurs.
 
-### 6. Basculer, vérifier, surveiller
+### 5. Changer la version de PHP et installer le code adapté
 
-Changez la version de PHP dans l'espace client, désactivez la maintenance et refaites le tour des pages importantes. Dans les jours qui suivent, surveillez les messages d'erreur et les retours de vos visiteurs.
+Changez la version de PHP dans l'espace client de votre hébergeur. Si des corrections ont été préparées à l'étape 3, c'est le moment de les installer. Désactivez ensuite la maintenance.
+
+### 6. Vérifier, surveiller, et revenir en arrière si besoin
+
+Refaites le tour des pages importantes : accueil, formulaires, panier, espace d'administration. Dans les jours qui suivent, surveillez les messages d'erreur et les retours de vos visiteurs. En cas de problème grave, remettez l'ancienne version de PHP dans l'espace client et restaurez la sauvegarde de l'étape 2.
 
 > **À retenir**
 >
-> Passer de PHP 5.6 ou 7.4 à PHP 8 est urgent, mais se prépare : on met à jour le site, on teste sur une copie, puis on bascule avec une sauvegarde et un plan de retour. Si votre hébergeur vous propose une protection temporaire de votre ancienne version, voyez [ce qu'elle couvre vraiment](blog/hebergeur-protege-anciennes-versions-php/).
+> Passer de PHP 5.6 ou 7.4 à PHP 8 est urgent, mais se prépare : état des lieux, sauvegarde, code prêt pour la nouvelle version, puis changement au bon moment, site en maintenance. Si votre hébergeur vous propose une protection temporaire de votre ancienne version, voyez [ce qu'elle couvre vraiment](blog/hebergeur-protege-anciennes-versions-php/).
 
 ## Sources
 
