@@ -117,12 +117,15 @@ function renderMarkdown(body, filename, siteRoot) {
     if (match[1] === "config") {
       // Fenêtre de configuration : « réglage = valeur | explication en français », une ligne par réglage.
       if (!match[2] || !inner) fail(filename, ":::config expects a file name and at least one setting");
+      let longValue = false;
       const rows = inner.split(/\r?\n/).filter((row) => row.trim()).map((row) => {
         const parts = row.match(/^\s*([^=|]+?)\s*=\s*([^|]+?)\s*\|\s*(.+?)\s*$/);
         if (!parts) fail(filename, ":::config line must be 'setting = value | explanation': " + row.trim());
+        // Une valeur longue (adresse, règle de réécriture) ne tient pas dans une colonne : fenêtre empilée.
+        if (parts[2].length > 16) longValue = true;
         return '<li class="config-row"><span class="config-key">' + escape(parts[1]) + '</span><span class="config-value">' + escape(parts[2]) + '</span><span class="config-help">' + escape(parts[3]) + "</span></li>";
       });
-      html = '<figure class="config-window"><figcaption class="config-window-bar"><span class="config-file">' + escape(match[2]) + '</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows">' + rows.join("") + "</ul></figure>\n";
+      html = '<figure class="config-window' + (longValue ? " config-window-stacked" : "") + '"><figcaption class="config-window-bar"><span class="config-file">' + escape(match[2]) + '</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows">' + rows.join("") + "</ul></figure>\n";
     } else {
       if (!match[2] || inner.includes(":::")) fail(filename, "table expects a caption and a single Markdown table");
       const tokens = md.parse(inner, state.env);

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-tlTtfpdsMQSdcfX3DLM1fgx/y++BLw+48vFj+5cTJa0='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>« Trop de redirections » après le passage en HTTPS : quand Nginx et Apache tournent en boucle · PPR-Solution</title>
+  <meta name="description" content="Erreur ERR_TOO_MANY_REDIRECTS après l&#39;activation de HTTPS avec Nginx devant Apache (ou Cloudflare) : pourquoi la redirection du .htaccess tourne en boucle et comment la corriger.">
+  <link rel="canonical" href="https://ppr-solution.fr/blog/trop-de-redirections-https-nginx-apache/">
+  <meta name="theme-color" content="#F8F7F3">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="PPR-Solution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="« Trop de redirections » après le passage en HTTPS : quand Nginx et Apache tournent en boucle · PPR-Solution">
+  <meta property="og:description" content="Erreur ERR_TOO_MANY_REDIRECTS après l&#39;activation de HTTPS avec Nginx devant Apache (ou Cloudflare) : pourquoi la redirection du .htaccess tourne en boucle et comment la corriger.">
+  <meta property="og:url" content="https://ppr-solution.fr/blog/trop-de-redirections-https-nginx-apache/">
+  <meta property="og:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PPR-Solution — assistance technique pour votre site et son hébergement">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="article:published_time" content="2026-11-02">
+  <meta property="article:modified_time" content="2026-11-02">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"« Trop de redirections » après le passage en HTTPS : quand Nginx et Apache tournent en boucle","description":"Erreur ERR_TOO_MANY_REDIRECTS après l'activation de HTTPS avec Nginx devant Apache (ou Cloudflare) : pourquoi la redirection du .htaccess tourne en boucle et comment la corriger.","datePublished":"2026-11-02","dateModified":"2026-11-02","inLanguage":"fr-FR","mainEntityOfPage":"https://ppr-solution.fr/blog/trop-de-redirections-https-nginx-apache/","author":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution","url":"https://ppr-solution.fr/"},"publisher":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ppr-solution.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ppr-solution.fr/blog.html"},{"@type":"ListItem","position":3,"name":"« Trop de redirections » après le passage en HTTPS : quand Nginx et Apache tournent en boucle","item":"https://ppr-solution.fr/blog/trop-de-redirections-https-nginx-apache/"}]}]}</script>
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <script src="../../assets/js/main.js" defer></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header" data-header>
+    <div class="container nav-inner">
+      <a class="brand" href="../../">
+        <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
+          <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
+          <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
+          <path d="M27 13h9" stroke="#171717" stroke-width="2"/>
+          <circle cx="41" cy="13" r="5.5" fill="#171717"/>
+        </svg>
+        <span>
+          <span class="brand-name">PPR-Solution</span>
+          <span class="brand-sub">assistance technique web</span>
+        </span>
+        <span class="sr-only">(accueil)</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
+        <span class="nav-icon" aria-hidden="true"></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+      <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
+        <a href="../../prestations.html">Prestations</a>
+        <a href="../../blog.html" aria-current="page">Blog</a>
+        <a href="../../a-propos.html">À propos</a>
+        <a class="btn btn-primary btn-sm" href="../../contact.html">Obtenir de l'aide</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="g-hebergement" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="12" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="10" y="26" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="51" cy="31" r="2.6" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-php" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M2.8 14h62.4" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="9" cy="8.6" r="2" fill="#F05B3F"/>
+        <rect x="9" y="21" width="20" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="19.5" width="22" height="8" rx="4" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.1"/>
+        <rect x="9" y="33" width="14" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="33" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-dns" viewBox="0 0 68 48">
+        <path d="M34 24 12 9M34 24 12 39M34 24h22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <circle cx="12" cy="9" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="39" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="58" cy="24" r="5.5" fill="#F05B3F" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="34" cy="24" r="9" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="g-https" viewBox="0 0 68 48">
+        <path d="M4 30h60" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <circle cx="6" cy="30" r="3" fill="currentColor"/>
+        <circle cx="62" cy="30" r="3" fill="currentColor"/>
+        <rect x="24" y="20" width="20" height="18" rx="4" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M28.5 20v-4.5a5.5 5.5 0 0 1 11 0V20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="34" cy="29" r="2.4" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-migration" viewBox="0 0 68 48">
+        <rect x="2" y="20" width="24" height="24" rx="7" fill="#F8F7F3" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="42" y="20" width="24" height="24" rx="7" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 18C16 6 52 6 54 17" fill="none" stroke="#B8391F" stroke-width="1.6"/>
+        <path d="m50 13.5 4 4.5 4-4.8" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="8" y="27" width="12" height="4" rx="2" fill="#B7B7B2"/>
+        <rect x="8" y="34" width="9" height="4" rx="2" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-configuration" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="16" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="31" y="12" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="10" y="22" width="12" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="27" y="22" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+        <rect x="10" y="32" width="18" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="33" y="32" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-bilan" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m10 15 3 3 5-6M10 27l3 3 5-6" fill="none" stroke="#1E6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="37" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <rect x="24" y="13" width="32" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="25" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="35" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 12 14">
+        <rect x="1" y="5.5" width="10" height="7.5" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M3.4 5.5V4a2.6 2.6 0 0 1 5.2 0v1.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main id="contenu">
+<article class="article">
+      <header class="article-header">
+        <div class="container article-narrow">
+          <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-02">2 novembre 2026</time></span> · <span>5 min de lecture</span></p>
+          <h1>« Trop de redirections » après le passage en HTTPS : quand Nginx et Apache tournent en boucle</h1>
+        </div>
+      </header>
+      <div class="container article-layout">
+        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#ce-que-signifie-trop-de-redirections">Ce que signifie « trop de redirections »</a></li><li><a href="#nginx-et-apache-qui-fait-quoi">Nginx et Apache : qui fait quoi ?</a></li><li><a href="#pourquoi-la-boucle-se-forme">Pourquoi la boucle se forme</a></li><li><a href="#comment-corriger">Comment corriger</a></li><li><a href="#verifier-que-c-est-regle">Vérifier que c&#39;est réglé</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
+        <div class="article-body prose">
+<p class="lead">Votre site affichait bien ses pages, vous avez installé un certificat HTTPS, et depuis le navigateur indique « Cette page ne fonctionne pas : trop de redirections ». Dans beaucoup de cas, ce n'est pas le certificat qui est en cause, mais une règle de redirection placée au mauvais endroit. C'est particulièrement fréquent quand le site tourne avec deux logiciels serveur l'un derrière l'autre, Nginx devant Apache. La correction est rapide une fois le mécanisme compris.</p>
+<div class="note note-summary"><strong>En bref</strong><ul>
+<li>Le message « trop de redirections » (ERR_TOO_MANY_REDIRECTS) signifie que le site renvoie le visiteur d'une adresse à l'autre sans jamais s'arrêter.</li>
+<li>Quand Nginx reçoit les visiteurs en HTTPS puis transmet la demande à Apache en HTTP, Apache croit que la visite n'est pas sécurisée.</li>
+<li>Si le fichier .htaccess d'Apache contient une règle « rediriger vers HTTPS », il redirige à chaque fois : c'est la boucle.</li>
+<li>Solution : faire la redirection vers HTTPS à un seul endroit, ou indiquer à Apache que le visiteur est déjà en HTTPS.</li>
+<li>Après la correction, testez dans une fenêtre de navigation privée : les navigateurs gardent les anciennes redirections en mémoire.</li>
+</ul>
+</div>
+<h2 id="ce-que-signifie-trop-de-redirections">Ce que signifie « trop de redirections »</h2>
+<p>Une redirection, c'est une adresse qui renvoie automatiquement vers une autre, par exemple de <code>http://votre-site.fr</code> vers <code>https://votre-site.fr</code>. C'est normal et utile. Le problème survient quand la deuxième adresse renvoie à son tour vers la première : le navigateur tourne en rond, puis abandonne au bout d'une vingtaine d'allers-retours et affiche le message d'erreur.</p>
+<h2 id="nginx-et-apache-qui-fait-quoi">Nginx et Apache : qui fait quoi ?</h2>
+<aside class="note note-definition"><strong>Définition — serveur web</strong><p>Le logiciel qui reçoit les visites d'un site et renvoie les pages. Nginx et Apache sont les deux plus répandus.</p>
+</aside>
+<p>Certains serveurs utilisent les deux à la fois. Nginx se place à l'entrée : il reçoit les visiteurs, gère le chiffrement HTTPS grâce au certificat, puis transmet chaque demande à Apache, qui fait fonctionner le site (PHP, fichier .htaccess…).</p>
+<aside class="note note-definition"><strong>Définition — proxy inverse</strong><p>Un serveur placé devant un autre, qui reçoit les visites à sa place et les lui transmet. Ici, Nginx joue ce rôle devant Apache.</p>
+</aside>
+<p>C'est un peu comme un hôtel : la réception (Nginx) accueille les clients et vérifie leur identité, puis transmet la demande au service d'étage (Apache) par le téléphone intérieur. Le service d'étage ne voit jamais le client arriver : il ne sait que ce que la réception lui dit.</p>
+<h2 id="pourquoi-la-boucle-se-forme">Pourquoi la boucle se forme</h2>
+<ol>
+<li>Le visiteur arrive en <strong>HTTPS</strong> sur Nginx, qui possède le certificat (souvent un certificat gratuit Let's Encrypt).</li>
+<li>Nginx transmet la demande à Apache en <strong>HTTP</strong>, à l'intérieur du serveur : le chiffrement n'est pas utile sur ce trajet interne.</li>
+<li>Le fichier .htaccess d'Apache contient une règle classique : « si la visite n'est pas en HTTPS, renvoyer vers l'adresse en HTTPS ». Apache voit une demande en HTTP, il applique la règle.</li>
+<li>Le navigateur revient donc en HTTPS sur Nginx… qui transmet à nouveau en HTTP à Apache, qui redirige encore. Et ainsi de suite.</li>
+</ol>
+<aside class="note note-definition"><strong>Définition — .htaccess</strong><p>Un fichier placé dans le dossier du site, qui permet de donner des consignes à Apache : redirections, protections, réécriture des adresses. Nginx, lui, ne le lit pas.</p>
+</aside>
+<p>Ces lignes sont souvent ajoutées de bonne foi, parce qu'elles figurent dans de nombreux tutoriels. Elles fonctionnent parfaitement quand Apache est seul. Derrière Nginx, elles créent la boucle.</p>
+<figure class="config-window config-window-stacked"><figcaption class="config-window-bar"><span class="config-file">.htaccess</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">RewriteEngine</span><span class="config-value">On</span><span class="config-help">Active les règles de réécriture d'adresses d'Apache.</span></li><li class="config-row"><span class="config-key">RewriteCond %{HTTPS}</span><span class="config-value">off</span><span class="config-help">« Si la demande n'est pas en HTTPS… » Derrière Nginx, c'est toujours le cas.</span></li><li class="config-row"><span class="config-key">RewriteRule ^(.*)$</span><span class="config-value">https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</span><span class="config-help">« …renvoyer vers la même adresse en HTTPS. » D'où la boucle.</span></li></ul></figure>
+<div class="note"><strong>Note</strong><p>Le même problème se produit avec Cloudflare réglé en mode « Flexible » : Cloudflare reçoit le visiteur en HTTPS, mais contacte votre serveur en HTTP. Cloudflare recommande alors de retirer la redirection de votre serveur, ou de passer en mode « Full » (complet), qui suppose un certificat installé sur votre serveur.</p>
+</div>
+<h2 id="comment-corriger">Comment corriger</h2>
+<p>Il existe deux bonnes solutions. Dans les deux cas, gardez une copie des fichiers avant de les modifier.</p>
+<h3 id="solution-1-rediriger-vers-https-a-un-seul-endroit-dans-nginx">Solution 1 : rediriger vers HTTPS à un seul endroit, dans Nginx</h3>
+<p>C'est la plus simple. Nginx étant à l'entrée, c'est lui qui renvoie les visiteurs arrivés en HTTP vers HTTPS. On <strong>retire alors les lignes de redirection du fichier .htaccess</strong>, qui ne servent plus à rien.</p>
+<figure class="config-window config-window-stacked"><figcaption class="config-window-bar"><span class="config-file">nginx — bloc qui reçoit les visites en HTTP</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">listen</span><span class="config-value">80</span><span class="config-help">Ce bloc reçoit les visites qui arrivent sans chiffrement.</span></li><li class="config-row"><span class="config-key">return</span><span class="config-value">301 https://$host$request_uri</span><span class="config-help">Renvoie le visiteur, une seule fois, vers la même adresse en HTTPS.</span></li></ul></figure>
+<h3 id="solution-2-indiquer-a-apache-que-le-visiteur-est-deja-en-https">Solution 2 : indiquer à Apache que le visiteur est déjà en HTTPS</h3>
+<p>Si vous préférez garder la règle dans Apache, Nginx peut lui transmettre une information supplémentaire : « ce visiteur est arrivé en HTTPS ». La règle du .htaccess se base alors sur cette information, et plus sur le trajet interne.</p>
+<figure class="config-window"><figcaption class="config-window-bar"><span class="config-file">nginx — bloc qui transmet à Apache</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">proxy_set_header X-Forwarded-Proto</span><span class="config-value">$scheme</span><span class="config-help">Indique à Apache si le visiteur est arrivé en HTTP ou en HTTPS.</span></li><li class="config-row"><span class="config-key">proxy_set_header Host</span><span class="config-value">$host</span><span class="config-help">Transmet le nom du site demandé.</span></li></ul></figure>
+<figure class="config-window config-window-stacked"><figcaption class="config-window-bar"><span class="config-file">.htaccess — règle adaptée</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">RewriteCond %{HTTP:X-Forwarded-Proto}</span><span class="config-value">!https</span><span class="config-help">Ne redirige que si Nginx signale une visite qui n'est pas en HTTPS.</span></li><li class="config-row"><span class="config-key">RewriteRule ^(.*)$</span><span class="config-value">https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</span><span class="config-help">Renvoie alors vers l'adresse en HTTPS.</span></li></ul></figure>
+<div class="note note-warning"><strong>Attention</strong><p>Cette information peut être falsifiée si Apache est joignable directement depuis Internet. Dans cette installation, Apache ne doit accepter que les demandes venant de Nginx, sur le même serveur.</p>
+</div>
+<h3 id="et-si-le-site-est-un-wordpress">Et si le site est un WordPress ?</h3>
+<p>WordPress peut, lui aussi, rediriger vers HTTPS de son côté. Sa documentation officielle signale le même risque de boucle derrière un proxy inverse et indique comment lui faire lire l'information transmise par Nginx. Si la boucle persiste après avoir corrigé le .htaccess, c'est la piste suivante.</p>
+<h2 id="verifier-que-c-est-regle">Vérifier que c'est réglé</h2>
+<ul>
+<li><strong>Ouvrez une fenêtre de navigation privée</strong> : les navigateurs gardent en mémoire les redirections « 301 » déjà rencontrées, et peuvent continuer d'afficher l'erreur alors que le problème est corrigé.</li>
+<li>Testez l'adresse en <code>http://</code> et en <code>https://</code>, avec et sans <code>www</code>.</li>
+<li>Vérifiez quelques pages internes, pas seulement l'accueil.</li>
+</ul>
+<div class="note"><strong>À retenir</strong><p>Une boucle de redirection après le passage en HTTPS vient souvent d'une redirection faite au mauvais étage. Avec Nginx devant Apache, ou Cloudflare devant votre serveur, la redirection vers HTTPS se fait à l'entrée, ou s'appuie sur l'information transmise par l'entrée. Jamais sur le trajet interne.</p>
+</div>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/">Cloudflare — ERR_TOO_MANY_REDIRECTS</a></li>
+<li><a href="https://developer.wordpress.org/advanced-administration/security/https/">WordPress — HTTPS et proxy inverse (documentation d'administration)</a></li>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_set_header">Nginx — module proxy, directive proxy_set_header</a></li>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#variables">Nginx — variables du module principal ($scheme)</a></li>
+<li><a href="https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html">Apache — documentation de mod_rewrite</a></li>
+</ul>
+
+          <aside class="article-cta" aria-labelledby="article-cta-title">
+            <h2 id="article-cta-title">Besoin d'un coup de main&nbsp;?</h2>
+            <p>Votre site tourne en boucle depuis le passage en HTTPS et vous ne savez pas quelle règle modifier ? Décrivez-nous votre installation : le premier échange est gratuit.</p>
+            <div class="article-cta-actions">
+              <a class="btn btn-primary" href="../../contact.html?sujet=https">Faire corriger ma boucle de redirection</a>
+              <a class="link" href="../../prestations.html#https">Prestation : certificat HTTPS / SSL</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+      <section class="section section-tight" aria-labelledby="related-title"><div class="container"><h2 id="related-title" class="h-small">À lire aussi</h2><ul class="post-list"><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-02">2 novembre 2026</time></p>
+          <h3><a href="../../blog/hebergeur-protege-anciennes-versions-php/">Ancienne version de PHP : votre hébergeur peut-il encore protéger votre site ?</a></h3>
+          <p>Certains hébergeurs continuent de corriger les failles de PHP 5.6 ou 7.4 alors que le projet PHP ne le fait plus. Comment c&#39;est possible, ce que cela couvre vraiment, et les questions à leur poser.</p>
+          <p class="post-reading">4 min de lecture</p>
+        </li><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-02">2 novembre 2026</time></p>
+          <h3><a href="../../blog/passer-de-php-5-6-ou-7-4-a-php-8/">Passer de PHP 5.6 ou 7.4 à PHP 8 : comment s&#39;y prendre sans casser son site</a></h3>
+          <p>Votre site tourne encore en PHP 5.6 ou 7.4 ? Ce qui risque de casser en passant à PHP 8, dans quel ordre procéder, et comment mettre le site en maintenance le temps de l&#39;opération.</p>
+          <p class="post-reading">5 min de lecture</p>
+        </li></ul></div></section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p><strong>PPR-Solution</strong><br>Assistance technique · Hébergement web · Configuration</p>
+        <p><a class="link" href="mailto:contact@ppr-solution.fr">contact@ppr-solution.fr</a></p>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul class="footer-links">
+          <li><a href="../../">Accueil</a></li>
+          <li><a href="../../prestations.html">Prestations</a></li>
+          <li><a href="../../blog.html">Blog</a></li>
+          <li><a href="../../a-propos.html">À propos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul class="footer-links">
+          <li><a href="../../mentions-legales.html">Mentions légales</a></li>
+          <li><a href="../../confidentialite.html">Confidentialité</a></li>
+          <li><a href="../../cgv.html">Conditions générales de vente</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
