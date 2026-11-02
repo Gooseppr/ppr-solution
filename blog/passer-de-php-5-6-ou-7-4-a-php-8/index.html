@@ -131,19 +131,19 @@
       <header class="article-header">
         <div class="container article-narrow">
           <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
-          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-02">2 novembre 2026</time></span> · <span>5 min de lecture</span></p>
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-02">2 novembre 2026</time></span> · <span>6 min de lecture</span></p>
           <h1>Passer de PHP 5.6 ou 7.4 à PHP 8 : comment s&#39;y prendre sans casser son site</h1>
         </div>
       </header>
       <div class="container article-layout">
-        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#pourquoi-c-est-plus-delicat-qu-un-simple-changement-de-version">Pourquoi c&#39;est plus délicat qu&#39;un simple changement de version</a></li><li><a href="#ce-qui-change-entre-ces-versions">Ce qui change entre ces versions</a></li><li><a href="#les-etapes-dans-l-ordre">Les étapes, dans l&#39;ordre</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
+        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#pourquoi-c-est-plus-delicat-qu-un-simple-changement-de-version">Pourquoi c&#39;est plus délicat qu&#39;un simple changement de version</a></li><li><a href="#ce-qui-change-entre-ces-versions">Ce qui change entre ces versions</a></li><li><a href="#avant-de-commencer-dans-quel-cas-etes-vous">Avant de commencer : dans quel cas êtes-vous ?</a></li><li><a href="#les-etapes-dans-l-ordre">Les étapes, dans l&#39;ordre</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
         <div class="article-body prose">
 <p class="lead">Un site encore en PHP 5.6 ou 7.4 fonctionne peut-être très bien en apparence, mais il tourne sur une version qui ne reçoit plus de mises à jour de sécurité officielles depuis des années. Passer à PHP 8 est donc urgent. Ce n'est pas pour autant un simple réglage : plus l'écart est grand, plus il y a de chances que quelque chose casse. La bonne méthode : faire le point, sauvegarder, préparer le code, puis changer de version au bon moment.</p>
 <div class="note note-summary"><strong>En bref</strong><ul>
 <li>PHP 5.6 ne reçoit plus de mises à jour de sécurité depuis fin 2018, PHP 7.4 depuis fin 2022.</li>
 <li>Entre ces versions et PHP 8, certaines instructions ont été supprimées : un site ancien peut afficher une erreur ou une page blanche.</li>
 <li>On commence par un état des lieux et une sauvegarde complète.</li>
-<li>On prépare le code du site avant de toucher à PHP : mises à jour de WordPress et des extensions, ou corrections pour un site plus ancien.</li>
+<li>Selon votre site, on prépare le code de deux façons : mise à jour de WordPress et des extensions, ou corrections préparées par un développeur.</li>
 <li>Le jour J, on met le site en maintenance, on change la version de PHP, on installe le code adapté, puis on vérifie.</li>
 </ul>
 </div>
@@ -180,24 +180,48 @@
 </ul>
 <div class="note note-warning"><strong>Attention</strong><p>Si votre site part de PHP 5.6, il y a de fortes chances qu'une partie de l'application doive être modifiée ou remplacée, et pas seulement mise à jour. Mieux vaut le savoir avant de commencer.</p>
 </div>
+<h2 id="avant-de-commencer-dans-quel-cas-etes-vous">Avant de commencer : dans quel cas êtes-vous ?</h2>
+<p>La méthode est la même pour tous les sites, sauf pour une étape : la préparation du code. Elle dépend de votre situation.</p>
+<div class="table-wrap"><table class="article-table"><caption>Repérez votre cas</caption>
+<thead>
+<tr>
+<th scope="col">Votre situation</th>
+<th scope="col">Votre cas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Votre site utilise WordPress, PrestaShop ou Joomla, et il a été mis à jour ces dernières années</strong> (souvent en PHP 7)</td>
+<td>Cas 1</td>
+</tr>
+<tr>
+<td><strong>Votre site est fait sur mesure, ou il n'a pas été mis à jour depuis longtemps</strong> (souvent en PHP 4 ou 5)</td>
+<td>Cas 2</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si vous ne savez pas, partez du cas 2 : c'est le plus prudent.</p>
 <h2 id="les-etapes-dans-l-ordre">Les étapes, dans l'ordre</h2>
-<h3 id="1-faire-l-etat-des-lieux">1. Faire l'état des lieux</h3>
-<p>Notez la version de PHP actuelle (dans l'espace client de votre hébergeur), le logiciel utilisé par le site et sa version, ainsi que la liste des thèmes et extensions installés. Une extension abandonnée par son auteur depuis plusieurs années est un signal d'alerte : il faudra probablement la remplacer.</p>
-<h3 id="2-sauvegarder">2. Sauvegarder</h3>
+<h3 id="1-faire-l-etat-des-lieux-tous-les-sites">1. Faire l'état des lieux (tous les sites)</h3>
+<p>Notez la version de PHP actuelle (dans l'espace client de votre hébergeur), le logiciel utilisé par le site s'il y en a un, et sa version. Pour WordPress, PrestaShop ou Joomla, listez aussi les thèmes et extensions installés : une extension abandonnée par son auteur depuis plusieurs années devra probablement être remplacée.</p>
+<h3 id="2-sauvegarder-tous-les-sites">2. Sauvegarder (tous les sites)</h3>
 <p>Sauvegardez les fichiers du site et sa base de données, puis vérifiez que la sauvegarde est complète. Tant qu'elle n'existe pas, on ne touche à rien : c'est elle qui permet de revenir en arrière si quelque chose se passe mal.</p>
-<h3 id="3-preparer-le-code-du-site">3. Préparer le code du site</h3>
-<p>Avant de changer PHP, il faut que le site soit prêt à fonctionner avec la nouvelle version. Deux cas se présentent.</p>
-<ul>
-<li><strong>Le site utilise WordPress, PrestaShop ou Joomla, assez récent.</strong> On met à jour le logiciel, puis les thèmes et extensions. Leurs versions récentes acceptent généralement à la fois l'ancienne et la nouvelle version de PHP : le site continue de fonctionner normalement après cette mise à jour, et il est prêt pour PHP 8. Pour WordPress, le site officiel recommande aujourd'hui PHP 8.3 ou plus récent.</li>
-<li><strong>Le site est très ancien ou fait sur mesure.</strong> Partant de PHP 5.6, cette passerelle n'existe souvent pas : WordPress, par exemple, ne fonctionne plus en dessous de PHP 7.4. Les corrections du code sont alors préparées à l'avance, puis installées le jour même du changement de version.</li>
-</ul>
-<h3 id="4-choisir-le-jour-j-et-mettre-le-site-en-maintenance">4. Choisir le jour J et mettre le site en maintenance</h3>
+<h3 id="3-preparer-le-code-du-site-selon-votre-cas">3. Préparer le code du site (selon votre cas)</h3>
+<p>Le but de cette étape : que le code de votre site soit prêt à fonctionner avec PHP 8 avant le changement.</p>
+<p><strong>Cas 1 : mettre à jour le logiciel et ses extensions, sans changer PHP.</strong> Mettez à jour WordPress (ou PrestaShop, Joomla), puis les thèmes et extensions, pendant que le site tourne encore sur l'ancienne version de PHP. Leurs versions récentes fonctionnent à la fois avec l'ancienne et la nouvelle version : le site continue de marcher normalement, et il est prêt pour PHP 8. Vérifiez ensuite que tout fonctionne avant de passer à la suite.</p>
+<p><strong>Cas 2 : faire préparer les corrections par un développeur.</strong> Ici, le code ne peut pas fonctionner avec les deux versions à la fois : WordPress, par exemple, ne fonctionne plus en dessous de PHP 7.4, et un site sur mesure écrit pour PHP 5 utilise des instructions supprimées depuis. Les corrections sont donc préparées et vérifiées à l'avance par la personne qui s'occupe du code, sans toucher au site en ligne. Elles seront installées le jour du changement de version. Selon l'âge du site, cela peut demander une vraie remise à niveau, voire une partie de reconstruction.</p>
+<h3 id="4-choisir-le-jour-j-et-mettre-le-site-en-maintenance-tous-les-sites">4. Choisir le jour J et mettre le site en maintenance (tous les sites)</h3>
 <aside class="note note-definition"><strong>Définition — mode maintenance</strong><p>Une page temporaire qui indique aux visiteurs que le site est en cours d'intervention et revient bientôt, au lieu de leur montrer une page cassée.</p>
 </aside>
 <p>Choisissez le moment le plus calme pour votre activité et prévenez vos clients réguliers si le site a une boutique. Le moment venu, activez la page de maintenance : avec une extension de maintenance, ou avec l'outil proposé par certains hébergeurs.</p>
-<h3 id="5-changer-la-version-de-php-et-installer-le-code-adapte">5. Changer la version de PHP et installer le code adapté</h3>
-<p>Changez la version de PHP dans l'espace client de votre hébergeur. Si des corrections ont été préparées à l'étape 3, c'est le moment de les installer. Désactivez ensuite la maintenance.</p>
-<h3 id="6-verifier-surveiller-et-revenir-en-arriere-si-besoin">6. Vérifier, surveiller, et revenir en arrière si besoin</h3>
+<h3 id="5-changer-la-version-de-php-tous-les-sites">5. Changer la version de PHP (tous les sites)</h3>
+<p>Changez la version de PHP dans l'espace client de votre hébergeur.</p>
+<ul>
+<li><strong>Cas 1</strong> : rien d'autre à faire, le code est déjà prêt.</li>
+<li><strong>Cas 2</strong> : installez juste après les corrections préparées à l'étape 3.</li>
+</ul>
+<p>Désactivez ensuite la maintenance.</p>
+<h3 id="6-verifier-surveiller-et-revenir-en-arriere-si-besoin-tous-les-sites">6. Vérifier, surveiller, et revenir en arrière si besoin (tous les sites)</h3>
 <p>Refaites le tour des pages importantes : accueil, formulaires, panier, espace d'administration. Dans les jours qui suivent, surveillez les messages d'erreur et les retours de vos visiteurs. En cas de problème grave, remettez l'ancienne version de PHP dans l'espace client et restaurez la sauvegarde de l'étape 2.</p>
 <div class="note"><strong>À retenir</strong><p>Passer de PHP 5.6 ou 7.4 à PHP 8 est urgent, mais se prépare : état des lieux, sauvegarde, code prêt pour la nouvelle version, puis changement au bon moment, site en maintenance. Si votre hébergeur vous propose une protection temporaire de votre ancienne version, voyez <a href="../../blog/hebergeur-protege-anciennes-versions-php/">ce qu'elle couvre vraiment</a>.</p>
 </div>
