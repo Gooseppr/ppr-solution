@@ -80,6 +80,8 @@ Chaque nouvelle version de PHP retire ou modifie certaines instructions. Un thè
 6. **Changer la version**, puis vérifier les pages importantes : formulaires, panier, espace d'administration.
 7. **Surveiller** les journaux d'erreurs (le fichier où le serveur note les problèmes qu'il rencontre) dans les jours suivants.
 
+Pour un site encore en PHP 5.6 ou 7.4, voyez notre guide détaillé : [passer de PHP 5.6 ou 7.4 à PHP 8](blog/passer-de-php-5-6-ou-7-4-a-php-8/). Et si votre hébergeur vous dit que votre ancienne version reste « sécurisée », voyez [ce que cette protection couvre vraiment](blog/hebergeur-protege-anciennes-versions-php/).
+
 > **À retenir**
 >
 > Si votre site est très ancien ou a été développé sur mesure, la mise à jour de PHP peut nécessiter de corriger ou de remplacer une partie de l'application. Mieux vaut le savoir avant de changer de version.
