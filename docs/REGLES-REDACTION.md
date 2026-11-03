@@ -14,7 +14,7 @@ Objectif : qu'il **comprenne sa situation** et **sache quoi faire** après la le
 2. **Chapô** (premier paragraphe) : la réponse courte, en 2 à 4 phrases.
 3. **Encadré « En bref »** : 3 à 5 points à retenir, juste après le chapô.
 4. **Explication** : ce qui se passe, avec des mots simples et au moins une image du quotidien.
-5. **Ce que vous pouvez faire** : étapes numérotées, concrètes, vérifiables par le lecteur.
+5. **Ce que vous pouvez vérifier** : les contrôles sans risque à la portée du lecteur, et ce qu'implique une correction (voir § 6).
 6. Si nécessaire, une partie **« Pour les personnes qui gèrent un serveur »**, clairement séparée, pour les détails techniques.
 7. **Encadré « À retenir »** en conclusion.
 8. **Sources** (obligatoire pour une actualité, recommandé pour un guide).
@@ -50,13 +50,19 @@ Objectif : qu'il **comprenne sa situation** et **sache quoi faire** après la le
 - On n'invente ni événement, ni chiffre, ni témoignage. En cas de doute, on l'écrit.
 - On date l'article et on le met à jour (`updated`) si la situation évolue.
 
-## 6. Honnêteté commerciale
+## 6. Expliquer plutôt qu'outiller, sans retenir l'utile
 
-- L'article donne réellement l'information utile, y compris ce que le lecteur peut faire seul.
+- L'article fait **comprendre** le problème : ce qui se passe, comment le reconnaître, pourquoi il arrive. Il sépare clairement les différents types de problèmes.
+- Les **vérifications sans risque** que le lecteur peut faire seul sont données (par exemple : ouvrir la page en navigation privée, regarder une version de PHP dans l'espace client).
+- Les **interventions techniques risquées** (modifier un `.htaccess`, une configuration serveur, des fichiers d'un thème…) sont décrites dans ce qu'elles impliquent et dans leurs risques, sans tutoriel pas à pas. Exception : une partie clairement réservée « aux personnes qui gèrent un serveur » peut détailler des réglages, lorsque le sujet s'adresse aussi à elles.
+- On ne cache jamais une information utile simple dans le seul but de pousser à demander de l'aide : la confiance vient de la clarté.
+
+## 7. Honnêteté commerciale
+
 - L'appel à l'action est en fin d'article (bloc généré) avec un libellé lié au sujet (« Faire vérifier ma version PHP »), jamais « Achetez ».
 - Pas de promesse de résultat garanti.
 
-## 7. Liste de contrôle avant publication
+## 8. Liste de contrôle avant publication
 
 - [ ] Le chapô répond à la question du titre.
 - [ ] Encadré « En bref » présent.

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-tlTtfpdsMQSdcfX3DLM1fgx/y++BLw+48vFj+5cTJa0='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>J&#39;ai envoyé mes fichiers en FTP mais mon site n&#39;a pas changé : d&#39;où vient le problème ? · PPR-Solution</title>
+  <meta name="description" content="Fichiers envoyés en FTP (FileZilla) mais site inchangé : modifications invisibles, ancienne version affichée. Les 4 causes possibles (envoi, emplacement, lecture, cache) expliquées simplement.">
+  <link rel="canonical" href="https://ppr-solution.fr/blog/fichiers-envoyes-ftp-site-pas-change/">
+  <meta name="theme-color" content="#F8F7F3">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="PPR-Solution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="J&#39;ai envoyé mes fichiers en FTP mais mon site n&#39;a pas changé : d&#39;où vient le problème ? · PPR-Solution">
+  <meta property="og:description" content="Fichiers envoyés en FTP (FileZilla) mais site inchangé : modifications invisibles, ancienne version affichée. Les 4 causes possibles (envoi, emplacement, lecture, cache) expliquées simplement.">
+  <meta property="og:url" content="https://ppr-solution.fr/blog/fichiers-envoyes-ftp-site-pas-change/">
+  <meta property="og:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PPR-Solution — assistance technique pour votre site et son hébergement">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="article:published_time" content="2026-11-03">
+  <meta property="article:modified_time" content="2026-11-03">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"J'ai envoyé mes fichiers en FTP mais mon site n'a pas changé : d'où vient le problème ?","description":"Fichiers envoyés en FTP (FileZilla) mais site inchangé : modifications invisibles, ancienne version affichée. Les 4 causes possibles (envoi, emplacement, lecture, cache) expliquées simplement.","datePublished":"2026-11-03","dateModified":"2026-11-03","inLanguage":"fr-FR","mainEntityOfPage":"https://ppr-solution.fr/blog/fichiers-envoyes-ftp-site-pas-change/","author":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution","url":"https://ppr-solution.fr/"},"publisher":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ppr-solution.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ppr-solution.fr/blog.html"},{"@type":"ListItem","position":3,"name":"J'ai envoyé mes fichiers en FTP mais mon site n'a pas changé : d'où vient le problème ?","item":"https://ppr-solution.fr/blog/fichiers-envoyes-ftp-site-pas-change/"}]}]}</script>
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <script src="../../assets/js/main.js" defer></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header" data-header>
+    <div class="container nav-inner">
+      <a class="brand" href="../../">
+        <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
+          <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
+          <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
+          <path d="M27 13h9" stroke="#171717" stroke-width="2"/>
+          <circle cx="41" cy="13" r="5.5" fill="#171717"/>
+        </svg>
+        <span>
+          <span class="brand-name">PPR-Solution</span>
+          <span class="brand-sub">assistance technique web</span>
+        </span>
+        <span class="sr-only">(accueil)</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
+        <span class="nav-icon" aria-hidden="true"></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+      <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
+        <a href="../../prestations.html">Prestations</a>
+        <a href="../../blog.html" aria-current="page">Blog</a>
+        <a href="../../a-propos.html">À propos</a>
+        <a class="btn btn-primary btn-sm" href="../../contact.html">Obtenir de l'aide</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="g-hebergement" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="12" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="10" y="26" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="51" cy="31" r="2.6" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-php" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M2.8 14h62.4" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="9" cy="8.6" r="2" fill="#F05B3F"/>
+        <rect x="9" y="21" width="20" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="19.5" width="22" height="8" rx="4" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.1"/>
+        <rect x="9" y="33" width="14" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="33" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-dns" viewBox="0 0 68 48">
+        <path d="M34 24 12 9M34 24 12 39M34 24h22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <circle cx="12" cy="9" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="39" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="58" cy="24" r="5.5" fill="#F05B3F" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="34" cy="24" r="9" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="g-https" viewBox="0 0 68 48">
+        <path d="M4 30h60" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <circle cx="6" cy="30" r="3" fill="currentColor"/>
+        <circle cx="62" cy="30" r="3" fill="currentColor"/>
+        <rect x="24" y="20" width="20" height="18" rx="4" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M28.5 20v-4.5a5.5 5.5 0 0 1 11 0V20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="34" cy="29" r="2.4" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-migration" viewBox="0 0 68 48">
+        <rect x="2" y="20" width="24" height="24" rx="7" fill="#F8F7F3" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="42" y="20" width="24" height="24" rx="7" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 18C16 6 52 6 54 17" fill="none" stroke="#B8391F" stroke-width="1.6"/>
+        <path d="m50 13.5 4 4.5 4-4.8" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="8" y="27" width="12" height="4" rx="2" fill="#B7B7B2"/>
+        <rect x="8" y="34" width="9" height="4" rx="2" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-configuration" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="16" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="31" y="12" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="10" y="22" width="12" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="27" y="22" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+        <rect x="10" y="32" width="18" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="33" y="32" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-bilan" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m10 15 3 3 5-6M10 27l3 3 5-6" fill="none" stroke="#1E6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="37" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <rect x="24" y="13" width="32" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="25" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="35" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 12 14">
+        <rect x="1" y="5.5" width="10" height="7.5" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M3.4 5.5V4a2.6 2.6 0 0 1 5.2 0v1.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main id="contenu">
+<article class="article">
+      <header class="article-header">
+        <div class="container article-narrow">
+          <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-03">3 novembre 2026</time></span> · <span>7 min de lecture</span></p>
+          <h1>J&#39;ai envoyé mes fichiers en FTP mais mon site n&#39;a pas changé : d&#39;où vient le problème ?</h1>
+        </div>
+      </header>
+      <div class="container article-layout">
+        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#le-trajet-d-un-fichier-de-votre-ordinateur-a-l-ecran-du-visiteur">Le trajet d&#39;un fichier, de votre ordinateur à l&#39;écran du visiteur</a></li><li><a href="#probleme-1-le-fichier-n-est-jamais-vraiment-arrive">Problème 1 : le fichier n&#39;est jamais vraiment arrivé</a></li><li><a href="#probleme-2-le-fichier-est-arrive-mais-au-mauvais-endroit">Problème 2 : le fichier est arrivé, mais au mauvais endroit</a></li><li><a href="#probleme-3-le-fichier-est-au-bon-endroit-mais-le-site-ne-s-en-sert-pas">Problème 3 : le fichier est au bon endroit, mais le site ne s&#39;en sert pas</a></li><li><a href="#probleme-4-le-site-a-change-mais-on-vous-montre-l-ancienne-version">Problème 4 : le site a changé, mais on vous montre l&#39;ancienne version</a></li><li><a href="#pourquoi-il-vaut-mieux-ne-pas-tout-renvoyer-au-cas-ou">Pourquoi il vaut mieux ne pas tout renvoyer « au cas où »</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
+        <div class="article-body prose">
+<p class="lead">Vous avez modifié un fichier, vous l'avez envoyé sur votre hébergement avec FileZilla ou un autre logiciel de transfert, tout semble s'être bien passé… et votre site affiche toujours l'ancienne version. Rassurez-vous : dans la grande majorité des cas, rien n'est cassé. Entre votre ordinateur et l'écran de vos visiteurs, un fichier franchit quatre étapes, et il suffit qu'il se bloque à l'une d'elles pour que rien ne change. Comprendre laquelle, c'est déjà savoir où chercher.</p>
+<div class="note note-summary"><strong>En bref</strong><ul>
+<li>Un fichier passe par quatre étapes : l'envoi, l'emplacement sur le serveur, la lecture par le site, puis les caches.</li>
+<li>Le fichier n'est peut-être jamais vraiment arrivé : transfert interrompu, droits refusés, espace plein.</li>
+<li>Il est peut-être arrivé au mauvais endroit : le site ne lit qu'un dossier précis.</li>
+<li>Il est peut-être au bon endroit, mais le site ne s'en sert pas : contenu enregistré ailleurs, autre fichier chargé à sa place.</li>
+<li>Ou bien le site a changé, mais une copie de l'ancienne version vous est encore montrée.</li>
+</ul>
+</div>
+<h2 id="le-trajet-d-un-fichier-de-votre-ordinateur-a-l-ecran-du-visiteur">Le trajet d'un fichier, de votre ordinateur à l'écran du visiteur</h2>
+<p>Quand vous publiez une modification, votre fichier ne va pas directement sur l'écran des visiteurs. Il fait un voyage en quatre étapes.</p>
+<p><img src="../../assets/img/blog/trajet-fichier-ftp.svg" alt="Le trajet d'un fichier en quatre étapes : 1, l'envoi par FTP depuis votre ordinateur ; 2, l'emplacement dans le dossier lu par le site sur le serveur ; 3, la lecture par le site qui construit la page ; 4, les caches qui gardent des copies en mémoire avant l'arrivée chez le visiteur." width="400" height="640" loading="lazy"></p>
+<ol>
+<li><strong>L'envoi</strong> : le logiciel de transfert copie le fichier de votre ordinateur vers le serveur de votre hébergeur.</li>
+<li><strong>L'emplacement</strong> : le fichier est rangé dans un dossier du serveur. Le site, lui, ne lit qu'un dossier bien précis.</li>
+<li><strong>La lecture</strong> : à chaque visite, le site va chercher ses fichiers et, souvent, son contenu dans une base de données, pour construire la page.</li>
+<li><strong>Les caches</strong> : pour aller plus vite, des copies de la page sont gardées en mémoire à plusieurs endroits, jusqu'au navigateur du visiteur.</li>
+</ol>
+<p>Votre modification n'apparaît pas ? Le blocage se trouve forcément à l'une de ces étapes. Voici comment les distinguer.</p>
+<h2 id="probleme-1-le-fichier-n-est-jamais-vraiment-arrive">Problème 1 : le fichier n'est jamais vraiment arrivé</h2>
+<p><strong>Ce qui se passe.</strong> Vous avez lancé l'envoi, mais le fichier n'a pas été copié sur le serveur, ou seulement en partie. Le serveur garde donc l'ancienne version.</p>
+<p><strong>Comment le reconnaître.</strong></p>
+<ul>
+<li>Le logiciel de transfert signale des transferts en échec, souvent dans un onglet à part que l'on ne regarde pas.</li>
+<li>Un message mentionne un refus de droits, par exemple une erreur « 550 ».</li>
+<li>Le fichier présent sur le serveur a une date de modification ancienne.</li>
+</ul>
+<p><strong>Pourquoi ça arrive.</strong> La connexion a été coupée pendant l'envoi, le serveur refuse l'écriture dans ce dossier, l'espace disque de l'hébergement est plein, ou bien vous avez envoyé une autre copie du fichier que celle que vous aviez modifiée sur votre ordinateur.</p>
+<h2 id="probleme-2-le-fichier-est-arrive-mais-au-mauvais-endroit">Problème 2 : le fichier est arrivé, mais au mauvais endroit</h2>
+<p><strong>Ce qui se passe.</strong> Le fichier est bien sur le serveur, mais pas dans le dossier que lit votre site. C'est comme une lettre déposée dans la mauvaise boîte aux lettres d'un immeuble : elle est bien arrivée, mais personne ne l'ouvrira.</p>
+<aside class="note note-definition"><strong>Définition — dossier racine</strong><p>Le dossier du serveur dans lequel votre site va chercher ses fichiers. Son nom dépend de l'hébergeur et de la configuration : <code>public_html</code>, <code>www</code>, <code>htdocs</code>… Un fichier placé en dehors de ce dossier n'est pas visible sur le site.</p>
+</aside>
+<p><strong>Comment le reconnaître.</strong> Votre fichier existe bien sur le serveur, mais à un emplacement inhabituel, ou en double : une version là où vous l'avez envoyé, une autre ailleurs.</p>
+<p><strong>Pourquoi ça arrive.</strong></p>
+<ul>
+<li>Le fichier a été déposé à la racine du compte FTP, à côté du dossier du site, et non dedans.</li>
+<li>Un dossier de trop s'est glissé dans le chemin, par exemple en glissant le dossier entier au lieu de son contenu.</li>
+<li>Le domaine ou le sous-domaine concerné lit un autre dossier que celui que vous pensiez.</li>
+<li>Après un changement d'hébergeur, le logiciel de transfert se connecte encore à l'ancien serveur, alors que le site est désormais servi par le nouveau.</li>
+</ul>
+<h2 id="probleme-3-le-fichier-est-au-bon-endroit-mais-le-site-ne-s-en-sert-pas">Problème 3 : le fichier est au bon endroit, mais le site ne s'en sert pas</h2>
+<p><strong>Ce qui se passe.</strong> Le fichier est arrivé dans le bon dossier, mais le site construit la page à partir d'autre chose.</p>
+<p><strong>Pourquoi ça arrive.</strong></p>
+<ul>
+<li><strong>Le contenu n'est pas dans les fichiers.</strong> Sur WordPress et la plupart des gestionnaires de sites, les textes, les pages et les réglages sont enregistrés dans une base de données. Modifier un fichier ne change pas un texte écrit depuis l'administration du site.</li>
+<li><strong>Ce n'est pas le fichier qui est chargé.</strong> Vous avez modifié le thème installé mais pas celui qui est actif, ou un fichier remplacé par un thème enfant.</li>
+<li><strong>Le site charge une autre version du fichier.</strong> Beaucoup de sites utilisent une version compressée d'un fichier (par exemple <code>style.min.css</code>) plutôt que l'original (<code>style.css</code>).</li>
+<li><strong>Deux pages d'accueil coexistent.</strong> Si <code>index.html</code> et <code>index.php</code> sont tous deux présents, le serveur n'en affiche qu'un, selon l'ordre défini dans sa configuration.</li>
+<li><strong>Les majuscules comptent.</strong> Pour un serveur sous Linux, <code>Logo.png</code> et <code>logo.png</code> sont deux fichiers différents. Une image peut donc s'afficher sur votre ordinateur, qui ne fait pas la différence, mais pas en ligne.</li>
+</ul>
+<aside class="note note-definition"><strong>Définition — thème enfant</strong><p>Un thème WordPress qui s'appuie sur un autre thème, dit « parent », pour en modifier une partie. Quand un même fichier existe dans les deux, c'est souvent la version du thème enfant qui est utilisée.</p>
+</aside>
+<h2 id="probleme-4-le-site-a-change-mais-on-vous-montre-l-ancienne-version">Problème 4 : le site a changé, mais on vous montre l'ancienne version</h2>
+<p><strong>Ce qui se passe.</strong> Votre modification est bien en ligne, mais ce que vous voyez est une copie de la page, enregistrée avant votre changement.</p>
+<aside class="note note-definition"><strong>Définition — cache</strong><p>Une copie d'une page ou d'un fichier, gardée en mémoire pour l'afficher plus vite la fois suivante. Tant que cette copie n'est pas renouvelée, c'est elle qui s'affiche, même si l'original a changé.</p>
+</aside>
+<p>C'est un peu comme des photocopies distribuées à l'avance : tant qu'on ne les a pas refaites, tout le monde lit l'ancienne version du document.</p>
+<p><strong>Où se trouvent ces copies.</strong> À plusieurs étages, et chacune se renouvelle à sa façon :</p>
+<ul>
+<li>dans votre <strong>navigateur</strong> ;</li>
+<li>dans une <strong>extension de cache</strong> du site, fréquente sur WordPress ;</li>
+<li>chez votre <strong>hébergeur</strong>, qui peut garder des copies des pages ;</li>
+<li>chez un <strong>intermédiaire</strong> comme Cloudflare, s'il est placé devant votre site.</li>
+</ul>
+<p><strong>La seule vérification à faire vous-même.</strong> Ouvrez la page dans une fenêtre de navigation privée, ou sur votre téléphone en coupant le Wi-Fi. Si la modification y apparaît, c'est le cache de votre navigateur qui vous montrait l'ancienne version : le site, lui, est à jour.</p>
+<div class="table-wrap"><table class="article-table"><caption>Ce que vous constatez, et le problème probable</caption>
+<thead>
+<tr>
+<th scope="col">Ce que vous constatez</th>
+<th scope="col">Problème probable</th>
+</tr>
+</thead>
+<tbody>
+<tr><th scope="row">Le logiciel de transfert affiche des échecs ou un refus</th>
+<td>1. L'envoi</td>
+</tr>
+<tr><th scope="row">Le fichier se trouve en double, ou dans un dossier inhabituel</th>
+<td>2. L'emplacement</td>
+</tr>
+<tr><th scope="row">Le changement concerne un texte, une page ou un thème WordPress</th>
+<td>3. La lecture</td>
+</tr>
+<tr><th scope="row">Une image s'affiche sur votre ordinateur mais pas en ligne</th>
+<td>3. La lecture (majuscules)</td>
+</tr>
+<tr><th scope="row">La modification apparaît en navigation privée, pas dans votre navigateur habituel</th>
+<td>4. Le cache du navigateur</td>
+</tr>
+<tr><th scope="row">La modification n'apparaît nulle part, même en navigation privée</th>
+<td>2, 3 ou 4 : un cache côté site, ou l'emplacement</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="pourquoi-il-vaut-mieux-ne-pas-tout-renvoyer-au-cas-ou">Pourquoi il vaut mieux ne pas tout renvoyer « au cas où »</h2>
+<p>Face à un site qui ne change pas, le premier réflexe est souvent de tout renvoyer, d'écraser, de supprimer. C'est là que les vrais dégâts arrivent.</p>
+<ul>
+<li><strong>Certains fichiers sont invisibles</strong> dans les logiciels de transfert, tant qu'on n'a pas demandé à afficher les fichiers cachés. C'est le cas du fichier <code>.htaccess</code>, qui règle les redirections et une partie de la sécurité : on peut l'écraser ou l'oublier sans s'en rendre compte.</li>
+<li><strong>Des fichiers de configuration</strong> contiennent les accès à la base de données. En écraser un par une ancienne version peut rendre tout le site inaccessible.</li>
+<li><strong>Vider un cache au mauvais endroit</strong> ne règle rien, et peut ralentir le site pour tout le monde le temps qu'il se reconstruise.</li>
+<li><strong>Plusieurs corrections faites à l'aveugle</strong> se superposent, et il devient difficile de savoir laquelle a réglé ou aggravé le problème.</li>
+</ul>
+<p>Identifier l'étape qui bloque, puis intervenir à ce seul endroit, avec une sauvegarde préalable : c'est ce qui fait la différence entre une correction de quelques minutes et une panne de plusieurs heures.</p>
+<div class="note"><strong>À retenir</strong><p>Un fichier envoyé qui « ne change rien » s'est bloqué à l'une de ces quatre étapes : l'envoi, l'emplacement, la lecture ou le cache. Avant de tout renvoyer, vérifiez en navigation privée : si la modification y apparaît, votre site est déjà à jour.</p>
+</div>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://httpd.apache.org/docs/2.4/mod/mod_dir.html#directoryindex">Apache — Choix de la page d'accueil d'un dossier (DirectoryIndex)</a></li>
+<li><a href="https://developer.wordpress.org/themes/advanced-topics/child-themes/">WordPress — Thèmes enfants</a></li>
+<li><a href="https://developers.cloudflare.com/cache/how-to/purge-cache/">Cloudflare — Vider le cache</a></li>
+</ul>
+
+          <aside class="article-cta" aria-labelledby="article-cta-title">
+            <h2 id="article-cta-title">Besoin d'un coup de main&nbsp;?</h2>
+            <p>Vos modifications n&#39;apparaissent toujours pas et vous ne savez pas à quelle étape le fichier se perd ? Décrivez-nous ce que vous avez envoyé et ce que vous voyez : le premier échange est gratuit.</p>
+            <div class="article-cta-actions">
+              <a class="btn btn-primary" href="../../contact.html?sujet=configuration">Faire vérifier l&#39;envoi de mes fichiers</a>
+              <a class="link" href="../../prestations.html#configuration">Prestation : configuration et fichiers</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+      <section class="section section-tight" aria-labelledby="related-title"><div class="container"><h2 id="related-title" class="h-small">À lire aussi</h2><ul class="post-list"><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-03">3 novembre 2026</time></p>
+          <h3><a href="../../blog/cloudflare-adresses-ip-pare-feu-serveur/">Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs</a></h3>
+          <p>Cloudflare gère votre domaine, et pourtant votre serveur ne voit que ses adresses à lui, et on vous demande de les autoriser dans votre pare-feu. Pourquoi, ce que cela change pour vos réglages, et les erreurs 521 et 522 à éviter.</p>
+          <p class="post-reading">7 min de lecture</p>
+        </li><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-02">2 novembre 2026</time></p>
+          <h3><a href="../../blog/hebergeur-protege-anciennes-versions-php/">Ancienne version de PHP : votre hébergeur peut-il encore protéger votre site ?</a></h3>
+          <p>Certains hébergeurs continuent de corriger les failles de PHP 5.6 ou 7.4 alors que le projet PHP ne le fait plus. Comment c&#39;est possible, ce que cela couvre vraiment, et les questions à leur poser.</p>
+          <p class="post-reading">4 min de lecture</p>
+        </li></ul></div></section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p><strong>PPR-Solution</strong><br>Assistance technique · Hébergement web · Configuration</p>
+        <p><a class="link" href="mailto:contact@ppr-solution.fr">contact@ppr-solution.fr</a></p>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul class="footer-links">
+          <li><a href="../../">Accueil</a></li>
+          <li><a href="../../prestations.html">Prestations</a></li>
+          <li><a href="../../blog.html">Blog</a></li>
+          <li><a href="../../a-propos.html">À propos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul class="footer-links">
+          <li><a href="../../mentions-legales.html">Mentions légales</a></li>
+          <li><a href="../../confidentialite.html">Confidentialité</a></li>
+          <li><a href="../../cgv.html">Conditions générales de vente</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
