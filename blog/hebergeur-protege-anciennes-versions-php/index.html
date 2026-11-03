@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-tlTtfpdsMQSdcfX3DLM1fgx/y++BLw+48vFj+5cTJa0='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Ancienne version de PHP : votre hébergeur peut-il encore protéger votre site ? · PPR-Solution</title>
+  <title>Ancienne version de PHP : votre hébergeur peut-il encore protéger votre site ? · PPR-Solution</title>
   <meta name="description" content="PHP 5.6, 7.4 ou 8.1 sans mise à jour officielle : comment certains hébergeurs protègent encore ces versions (support étendu, correctifs rétroportés), leurs limites et quoi leur demander.">
   <link rel="canonical" href="https://ppr-solution.fr/blog/hebergeur-protege-anciennes-versions-php/">
   <meta name="theme-color" content="#F8F7F3">
@@ -132,54 +132,54 @@
         <div class="container article-narrow">
           <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
           <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-02">2 novembre 2026</time></span> · <span>4 min de lecture</span></p>
-          <h1>Ancienne version de PHP : votre hébergeur peut-il encore protéger votre site ?</h1>
+          <h1>Ancienne version de PHP : votre hébergeur peut-il encore protéger votre site ?</h1>
         </div>
       </header>
       <div class="container article-layout">
         <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#pourquoi-la-question-se-pose">Pourquoi la question se pose</a></li><li><a href="#les-trois-facons-dont-une-ancienne-version-peut-etre-corrigee">Les trois façons dont une ancienne version peut être corrigée</a></li><li><a href="#ce-que-cette-protection-ne-couvre-pas">Ce que cette protection ne couvre pas</a></li><li><a href="#les-questions-a-poser-a-votre-hebergeur">Les questions à poser à votre hébergeur</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
         <div class="article-body prose">
-<p class="lead">Oui, dans certains cas, votre hébergeur peut continuer à corriger les failles d'une ancienne version de PHP, même quand le projet PHP ne le fait plus. Il s'appuie pour cela sur des services spécialisés, souvent payants. C'est une vraie protection, mais elle est partielle et temporaire : elle laisse le temps de préparer la mise à jour, elle ne la remplace pas.</p>
+<p class="lead">Oui, dans certains cas, votre hébergeur peut continuer à corriger les failles d'une ancienne version de PHP, même quand le projet PHP ne le fait plus. Il s'appuie pour cela sur des services spécialisés, souvent payants. C'est une vraie protection, mais elle est partielle et temporaire : elle laisse le temps de préparer la mise à jour, elle ne la remplace pas.</p>
 <div class="note note-summary"><strong>En bref</strong><ul>
 <li>Le projet PHP ne corrige plus les versions anciennes (PHP 8.1 et antérieures).</li>
 <li>Des entreprises spécialisées continuent de le faire pour les hébergeurs qui s'abonnent à leur service.</li>
-<li>Cette protection ne concerne que PHP : votre site lui-même (WordPress, extensions, thème) reste ancien.</li>
-<li>Elle n'existe pas chez tous les hébergeurs, et vous ne pouvez pas la vérifier vous-même : il faut le leur demander.</li>
+<li>Cette protection ne concerne que PHP : votre site lui-même (WordPress, extensions, thème) reste ancien.</li>
+<li>Elle n'existe pas chez tous les hébergeurs, et vous ne pouvez pas la vérifier vous-même : il faut le leur demander.</li>
 <li>C'est un sursis utile pour préparer le passage à une version récente.</li>
 </ul>
 </div>
 <h2 id="pourquoi-la-question-se-pose">Pourquoi la question se pose</h2>
 <p>Chaque version de PHP reçoit des corrections de sécurité pendant quelques années, puis plus rien. PHP 5.6 n'est plus corrigé depuis fin 2018, PHP 7.4 depuis fin 2022, PHP 8.1 depuis fin 2025. En théorie, un site resté sur ces versions est donc exposé à toutes les failles découvertes depuis.</p>
-<p>En pratique, c'est un peu plus nuancé, et c'est ce qui explique que certains hébergeurs annoncent que vos anciennes versions sont « sécurisées ».</p>
+<p>En pratique, c'est un peu plus nuancé, et c'est ce qui explique que certains hébergeurs annoncent que vos anciennes versions sont « sécurisées ».</p>
 <h2 id="les-trois-facons-dont-une-ancienne-version-peut-etre-corrigee">Les trois façons dont une ancienne version peut être corrigée</h2>
 <h3 id="1-exceptionnellement-par-le-projet-php-lui-meme">1. Exceptionnellement, par le projet PHP lui-même</h3>
-<p>Pour les failles critiques d'octobre 2026, le projet PHP a fourni, à titre exceptionnel, des correctifs minimaux pour PHP 7.4, 8.0 et 8.1. Ils ne sont pas livrés sous forme de nouvelle version : c'est à l'hébergeur de les appliquer. Rien de tel n'a été annoncé pour PHP 5.6. Voir notre article sur <a href="../../blog/failles-php-octobre-2026-php2shell/">les failles critiques de PHP d'octobre 2026</a>.</p>
+<p>Pour les failles critiques d'octobre 2026, le projet PHP a fourni, à titre exceptionnel, des correctifs minimaux pour PHP 7.4, 8.0 et 8.1. Ils ne sont pas livrés sous forme de nouvelle version : c'est à l'hébergeur de les appliquer. Rien de tel n'a été annoncé pour PHP 5.6. Voir notre article sur <a href="../../blog/failles-php-octobre-2026-php2shell/">les failles critiques de PHP d'octobre 2026</a>.</p>
 <h3 id="2-par-les-distributions-linux">2. Par les distributions Linux</h3>
-<p>Le projet PHP le rappelle lui-même : certaines distributions Linux et certains prestataires de support à long terme fournissent des correctifs pour des versions qu'il ne maintient plus.</p>
-<aside class="note note-definition"><strong>Définition — correctif rétroporté</strong><p>Une correction de sécurité écrite pour une version récente, puis adaptée et appliquée à une version plus ancienne. On parle aussi de « backport ».</p>
+<p>Le projet PHP le rappelle lui-même : certaines distributions Linux et certains prestataires de support à long terme fournissent des correctifs pour des versions qu'il ne maintient plus.</p>
+<aside class="note note-definition"><strong>Définition — correctif rétroporté</strong><p>Une correction de sécurité écrite pour une version récente, puis adaptée et appliquée à une version plus ancienne. On parle aussi de « backport ».</p>
 </aside>
 <h3 id="3-par-un-service-de-support-etendu-souvent-payant">3. Par un service de support étendu, souvent payant</h3>
-<p>Des entreprises spécialisées vendent aux hébergeurs des versions de PHP « sécurisées » : les anciennes versions continuent de recevoir des correctifs de sécurité. C'est par exemple le cas de TuxCare, dont le service est intégré à des panneaux d'administration très répandus chez les hébergeurs, comme Plesk ou cPanel. D'après la documentation de Plesk, ce service couvre PHP 5.6 et les versions plus récentes arrivées en fin de vie, et vise une correction des failles graves sous 14 jours après leur publication.</p>
+<p>Des entreprises spécialisées vendent aux hébergeurs des versions de PHP « sécurisées » : les anciennes versions continuent de recevoir des correctifs de sécurité. C'est par exemple le cas de TuxCare, dont le service est intégré à des panneaux d'administration très répandus chez les hébergeurs, comme Plesk ou cPanel. D'après la documentation de Plesk, ce service couvre PHP 5.6 et les versions plus récentes arrivées en fin de vie, et vise une correction des failles graves sous 14 jours après leur publication.</p>
 <aside class="note note-definition"><strong>Définition — support étendu</strong><p>Un service qui prolonge, contre abonnement, les corrections de sécurité d'un logiciel au-delà de la date où ses créateurs arrêtent de le maintenir.</p>
 </aside>
 <h2 id="ce-que-cette-protection-ne-couvre-pas">Ce que cette protection ne couvre pas</h2>
 <ul>
 <li><strong>Votre site lui-même.</strong> Seul PHP est corrigé. Si votre site tourne en PHP 5.6, son logiciel (WordPress, PrestaShop…), ses extensions et son thème sont presque toujours anciens, eux aussi. Or c'est souvent par une extension non mise à jour que les pirates entrent.</li>
-<li><strong>Tous les hébergeurs.</strong> Le service est payant pour l'hébergeur : certains le proposent, parfois avec un supplément, d'autres non.</li>
+<li><strong>Tous les hébergeurs.</strong> Le service est payant pour l'hébergeur : certains le proposent, parfois avec un supplément, d'autres non.</li>
 <li><strong>Tous les systèmes.</strong> La couverture dépend de la façon dont PHP est installé sur le serveur. Une version installée autrement que par le service n'est pas corrigée.</li>
-<li><strong>L'avenir.</strong> Les extensions et thèmes récents ne fonctionnent plus avec les vieilles versions de PHP : votre site ne pourra plus évoluer.</li>
+<li><strong>L'avenir.</strong> Les extensions et thèmes récents ne fonctionnent plus avec les vieilles versions de PHP : votre site ne pourra plus évoluer.</li>
 <li><strong>La vérification par vous-même.</strong> Le numéro de version affiché dans votre espace client ne dit pas, à lui seul, si cette version reçoit encore des correctifs.</li>
 </ul>
-<div class="note note-warning"><strong>Attention</strong><p>Une ancienne version « sécurisée » réduit le risque, elle ne le supprime pas. Elle ne justifie pas de repousser indéfiniment la mise à jour de votre site.</p>
+<div class="note note-warning"><strong>Attention</strong><p>Une ancienne version « sécurisée » réduit le risque, elle ne le supprime pas. Elle ne justifie pas de repousser indéfiniment la mise à jour de votre site.</p>
 </div>
 <h2 id="les-questions-a-poser-a-votre-hebergeur">Les questions à poser à votre hébergeur</h2>
 <ol>
-<li><strong>Ma version de PHP reçoit-elle encore des correctifs de sécurité ?</strong> Si oui, par quel moyen et jusqu'à quand ?</li>
-<li><strong>Les failles critiques d'octobre 2026 sont-elles corrigées sur ma version ?</strong></li>
-<li><strong>Ce service est-il inclus dans mon offre ou facturé en supplément ?</strong></li>
-<li><strong>Jusqu'à quelle date pourrai-je garder cette version ?</strong> Beaucoup d'hébergeurs finissent par imposer le changement.</li>
+<li><strong>Ma version de PHP reçoit-elle encore des correctifs de sécurité ?</strong> Si oui, par quel moyen et jusqu'à quand ?</li>
+<li><strong>Les failles critiques d'octobre 2026 sont-elles corrigées sur ma version ?</strong></li>
+<li><strong>Ce service est-il inclus dans mon offre ou facturé en supplément ?</strong></li>
+<li><strong>Jusqu'à quelle date pourrai-je garder cette version ?</strong> Beaucoup d'hébergeurs finissent par imposer le changement.</li>
 </ol>
 <p>Leurs réponses vous diront de combien de temps vous disposez pour préparer la mise à jour, en suivant par exemple notre guide pour <a href="../../blog/passer-de-php-5-6-ou-7-4-a-php-8/">passer de PHP 5.6 ou 7.4 à PHP 8</a>.</p>
-<div class="note"><strong>À retenir</strong><p>Un hébergeur peut prolonger la protection d'une ancienne version de PHP, et c'est une bonne chose. Mais ce n'est qu'un sursis : il protège PHP, pas votre site, et il a un coût. Profitez-en pour préparer le passage à une version maintenue.</p>
+<div class="note"><strong>À retenir</strong><p>Un hébergeur peut prolonger la protection d'une ancienne version de PHP, et c'est une bonne chose. Mais ce n'est qu'un sursis : il protège PHP, pas votre site, et il a un coût. Profitez-en pour préparer le passage à une version maintenue.</p>
 </div>
 <h2 id="sources">Sources</h2>
 <ul>
@@ -192,22 +192,22 @@
 
           <aside class="article-cta" aria-labelledby="article-cta-title">
             <h2 id="article-cta-title">Besoin d'un coup de main&nbsp;?</h2>
-            <p>Votre hébergeur vous dit que votre ancienne version de PHP est « sécurisée » et vous ne savez pas quoi en penser ? Nous pouvons vous aider à y voir clair et à préparer la suite.</p>
+            <p>Votre hébergeur vous dit que votre ancienne version de PHP est « sécurisée » et vous ne savez pas quoi en penser ? Nous pouvons vous aider à y voir clair et à préparer la suite.</p>
             <div class="article-cta-actions">
               <a class="btn btn-primary" href="../../contact.html?sujet=php">Faire le point sur ma version PHP</a>
-              <a class="link" href="../../prestations.html#php">Prestation : PHP et compatibilité</a>
+              <a class="link" href="../../prestations.html#php">Prestation : PHP et compatibilité</a>
             </div>
           </aside>
         </div>
       </div>
       <section class="section section-tight" aria-labelledby="related-title"><div class="container"><h2 id="related-title" class="h-small">À lire aussi</h2><ul class="post-list"><li class="post-card">
           <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-03">3 novembre 2026</time></p>
-          <h3><a href="../../blog/cloudflare-adresses-ip-pare-feu-serveur/">Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs</a></h3>
+          <h3><a href="../../blog/cloudflare-adresses-ip-pare-feu-serveur/">Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs</a></h3>
           <p>Cloudflare gère votre domaine, et pourtant votre serveur ne voit que ses adresses à lui, et on vous demande de les autoriser dans votre pare-feu. Pourquoi, ce que cela change pour vos réglages, et les erreurs 521 et 522 à éviter.</p>
           <p class="post-reading">7 min de lecture</p>
         </li><li class="post-card">
           <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-03">3 novembre 2026</time></p>
-          <h3><a href="../../blog/fichiers-envoyes-ftp-site-pas-change/">J&#39;ai envoyé mes fichiers en FTP mais mon site n&#39;a pas changé : d&#39;où vient le problème ?</a></h3>
+          <h3><a href="../../blog/fichiers-envoyes-ftp-site-pas-change/">J&#39;ai envoyé mes fichiers en FTP mais mon site n&#39;a pas changé : d&#39;où vient le problème ?</a></h3>
           <p>Vous avez envoyé vos fichiers avec FileZilla, le transfert semble réussi, et pourtant votre site affiche toujours l&#39;ancienne version. Les quatre endroits où le problème peut se situer, et comment les reconnaître.</p>
           <p class="post-reading">7 min de lecture</p>
         </li></ul></div></section>

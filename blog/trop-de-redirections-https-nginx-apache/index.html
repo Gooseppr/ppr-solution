@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-tlTtfpdsMQSdcfX3DLM1fgx/y++BLw+48vFj+5cTJa0='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>ERR_TOO_MANY_REDIRECTS après le passage en HTTPS : quand Nginx et Apache tournent en boucle · PPR-Solution</title>
+  <title>ERR_TOO_MANY_REDIRECTS après le passage en HTTPS : quand Nginx et Apache tournent en boucle · PPR-Solution</title>
   <meta name="description" content="ERR_TOO_MANY_REDIRECTS, « redirected you too many times », « La page n&#39;est pas redirigée correctement » : pourquoi Nginx devant Apache ou Cloudflare crée une boucle HTTPS, et comment la corriger.">
   <link rel="canonical" href="https://ppr-solution.fr/blog/trop-de-redirections-https-nginx-apache/">
   <meta name="theme-color" content="#F8F7F3">
@@ -132,19 +132,19 @@
         <div class="container article-narrow">
           <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
           <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-02">2 novembre 2026</time></span> · <span>6 min de lecture</span></p>
-          <h1>ERR_TOO_MANY_REDIRECTS après le passage en HTTPS : quand Nginx et Apache tournent en boucle</h1>
+          <h1>ERR_TOO_MANY_REDIRECTS après le passage en HTTPS : quand Nginx et Apache tournent en boucle</h1>
         </div>
       </header>
       <div class="container article-layout">
-        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#le-message-que-vous-voyez">Le message que vous voyez</a></li><li><a href="#ce-que-signifie-ce-message">Ce que signifie ce message</a></li><li><a href="#nginx-et-apache-qui-fait-quoi">Nginx et Apache : qui fait quoi ?</a></li><li><a href="#pourquoi-la-boucle-se-forme">Pourquoi la boucle se forme</a></li><li><a href="#comment-corriger">Comment corriger</a></li><li><a href="#verifier-que-c-est-regle">Vérifier que c&#39;est réglé</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
+        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#le-message-que-vous-voyez">Le message que vous voyez</a></li><li><a href="#ce-que-signifie-ce-message">Ce que signifie ce message</a></li><li><a href="#nginx-et-apache-qui-fait-quoi">Nginx et Apache : qui fait quoi ?</a></li><li><a href="#pourquoi-la-boucle-se-forme">Pourquoi la boucle se forme</a></li><li><a href="#comment-corriger">Comment corriger</a></li><li><a href="#verifier-que-c-est-regle">Vérifier que c&#39;est réglé</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
         <div class="article-body prose">
-<p class="lead">Votre site affichait bien ses pages, vous avez installé un certificat HTTPS, et depuis le navigateur indique « Cette page ne fonctionne pas : votre-site.fr vous a redirigé à de trop nombreuses reprises », avec le code ERR_TOO_MANY_REDIRECTS. Dans beaucoup de cas, ce n'est pas le certificat qui est en cause, mais une règle de redirection placée au mauvais endroit. C'est particulièrement fréquent quand le site tourne avec deux logiciels serveur l'un derrière l'autre, Nginx devant Apache. La correction est rapide une fois le mécanisme compris.</p>
+<p class="lead">Votre site affichait bien ses pages, vous avez installé un certificat HTTPS, et depuis le navigateur indique « Cette page ne fonctionne pas : votre-site.fr vous a redirigé à de trop nombreuses reprises », avec le code ERR_TOO_MANY_REDIRECTS. Dans beaucoup de cas, ce n'est pas le certificat qui est en cause, mais une règle de redirection placée au mauvais endroit. C'est particulièrement fréquent quand le site tourne avec deux logiciels serveur l'un derrière l'autre, Nginx devant Apache. La correction est rapide une fois le mécanisme compris.</p>
 <div class="note note-summary"><strong>En bref</strong><ul>
-<li>Le message « vous a redirigé à de trop nombreuses reprises » (en anglais « redirected you too many times », code ERR_TOO_MANY_REDIRECTS) signifie que le site renvoie le visiteur d'une adresse à l'autre sans jamais s'arrêter.</li>
+<li>Le message « vous a redirigé à de trop nombreuses reprises » (en anglais « redirected you too many times », code ERR_TOO_MANY_REDIRECTS) signifie que le site renvoie le visiteur d'une adresse à l'autre sans jamais s'arrêter.</li>
 <li>Quand Nginx reçoit les visiteurs en HTTPS puis transmet la demande à Apache en HTTP, Apache croit que la visite n'est pas sécurisée.</li>
-<li>Si le fichier .htaccess d'Apache contient une règle « rediriger vers HTTPS », il redirige à chaque fois : c'est la boucle.</li>
-<li>Solution : faire la redirection vers HTTPS à un seul endroit, ou indiquer à Apache que le visiteur est déjà en HTTPS.</li>
-<li>Après la correction, testez dans une fenêtre de navigation privée : les navigateurs gardent les anciennes redirections en mémoire.</li>
+<li>Si le fichier .htaccess d'Apache contient une règle « rediriger vers HTTPS », il redirige à chaque fois : c'est la boucle.</li>
+<li>Solution : faire la redirection vers HTTPS à un seul endroit, ou indiquer à Apache que le visiteur est déjà en HTTPS.</li>
+<li>Après la correction, testez dans une fenêtre de navigation privée : les navigateurs gardent les anciennes redirections en mémoire.</li>
 </ul>
 </div>
 <h2 id="le-message-que-vous-voyez">Le message que vous voyez</h2>
@@ -152,61 +152,61 @@
 <ul>
 <li><strong>Google Chrome</strong>
 <ul>
-<li>En français : « Cette page ne fonctionne pas. votre-site.fr vous a redirigé à de trop nombreuses reprises. Essayez de supprimer vos cookies. ERR_TOO_MANY_REDIRECTS »</li>
-<li>En anglais : « This page isn't working. votre-site.fr redirected you too many times. Try deleting your cookies. ERR_TOO_MANY_REDIRECTS »</li>
+<li>En français : « Cette page ne fonctionne pas. votre-site.fr vous a redirigé à de trop nombreuses reprises. Essayez de supprimer vos cookies. ERR_TOO_MANY_REDIRECTS »</li>
+<li>En anglais : « This page isn't working. votre-site.fr redirected you too many times. Try deleting your cookies. ERR_TOO_MANY_REDIRECTS »</li>
 </ul>
 </li>
 <li><strong>Firefox</strong>
 <ul>
-<li>En français : « La page n'est pas redirigée correctement »</li>
-<li>En anglais : « The page isn't redirecting properly »</li>
+<li>En français : « La page n'est pas redirigée correctement »</li>
+<li>En anglais : « The page isn't redirecting properly »</li>
 </ul>
 </li>
 <li><strong>Safari</strong>
 <ul>
-<li>En anglais : « Safari can't open the page because too many redirects occurred »</li>
+<li>En anglais : « Safari can't open the page because too many redirects occurred »</li>
 </ul>
 </li>
 </ul>
 <h2 id="ce-que-signifie-ce-message">Ce que signifie ce message</h2>
-<p>Une redirection, c'est une adresse qui renvoie automatiquement vers une autre, par exemple de <code>http://votre-site.fr</code> vers <code>https://votre-site.fr</code>. C'est normal et utile. Le problème survient quand la deuxième adresse renvoie à son tour vers la première : le navigateur tourne en rond, puis abandonne au bout d'une vingtaine d'allers-retours et affiche le message d'erreur.</p>
-<p>Supprimer ses cookies, comme le suggère Chrome, règle parfois le problème pour un visiteur. Mais quand la boucle vient de la configuration du serveur, elle revient aussitôt, et pour tous les visiteurs : c'est le serveur qu'il faut corriger.</p>
-<h2 id="nginx-et-apache-qui-fait-quoi">Nginx et Apache : qui fait quoi ?</h2>
+<p>Une redirection, c'est une adresse qui renvoie automatiquement vers une autre, par exemple de <code>http://votre-site.fr</code> vers <code>https://votre-site.fr</code>. C'est normal et utile. Le problème survient quand la deuxième adresse renvoie à son tour vers la première : le navigateur tourne en rond, puis abandonne au bout d'une vingtaine d'allers-retours et affiche le message d'erreur.</p>
+<p>Supprimer ses cookies, comme le suggère Chrome, règle parfois le problème pour un visiteur. Mais quand la boucle vient de la configuration du serveur, elle revient aussitôt, et pour tous les visiteurs : c'est le serveur qu'il faut corriger.</p>
+<h2 id="nginx-et-apache-qui-fait-quoi">Nginx et Apache : qui fait quoi ?</h2>
 <aside class="note note-definition"><strong>Définition — serveur web</strong><p>Le logiciel qui reçoit les visites d'un site et renvoie les pages. Nginx et Apache sont les deux plus répandus.</p>
 </aside>
-<p>Certains serveurs utilisent les deux à la fois. Nginx se place à l'entrée : il reçoit les visiteurs, gère le chiffrement HTTPS grâce au certificat, puis transmet chaque demande à Apache, qui fait fonctionner le site (PHP, fichier .htaccess…).</p>
+<p>Certains serveurs utilisent les deux à la fois. Nginx se place à l'entrée : il reçoit les visiteurs, gère le chiffrement HTTPS grâce au certificat, puis transmet chaque demande à Apache, qui fait fonctionner le site (PHP, fichier .htaccess…).</p>
 <aside class="note note-definition"><strong>Définition — proxy inverse</strong><p>Un serveur placé devant un autre, qui reçoit les visites à sa place et les lui transmet. Ici, Nginx joue ce rôle devant Apache.</p>
 </aside>
-<p>C'est un peu comme un hôtel : la réception (Nginx) accueille les clients et vérifie leur identité, puis transmet la demande au service d'étage (Apache) par le téléphone intérieur. Le service d'étage ne voit jamais le client arriver : il ne sait que ce que la réception lui dit.</p>
+<p>C'est un peu comme un hôtel : la réception (Nginx) accueille les clients et vérifie leur identité, puis transmet la demande au service d'étage (Apache) par le téléphone intérieur. Le service d'étage ne voit jamais le client arriver : il ne sait que ce que la réception lui dit.</p>
 <h2 id="pourquoi-la-boucle-se-forme">Pourquoi la boucle se forme</h2>
 <ol>
 <li>Le visiteur arrive en <strong>HTTPS</strong> sur Nginx, qui possède le certificat (souvent un certificat gratuit Let's Encrypt).</li>
-<li>Nginx transmet la demande à Apache en <strong>HTTP</strong>, à l'intérieur du serveur : le chiffrement n'est pas utile sur ce trajet interne.</li>
-<li>Le fichier .htaccess d'Apache contient une règle classique : « si la visite n'est pas en HTTPS, renvoyer vers l'adresse en HTTPS ». Apache voit une demande en HTTP, il applique la règle.</li>
+<li>Nginx transmet la demande à Apache en <strong>HTTP</strong>, à l'intérieur du serveur : le chiffrement n'est pas utile sur ce trajet interne.</li>
+<li>Le fichier .htaccess d'Apache contient une règle classique : « si la visite n'est pas en HTTPS, renvoyer vers l'adresse en HTTPS ». Apache voit une demande en HTTP, il applique la règle.</li>
 <li>Le navigateur revient donc en HTTPS sur Nginx… qui transmet à nouveau en HTTP à Apache, qui redirige encore. Et ainsi de suite.</li>
 </ol>
-<aside class="note note-definition"><strong>Définition — .htaccess</strong><p>Un fichier placé dans le dossier du site, qui permet de donner des consignes à Apache : redirections, protections, réécriture des adresses. Nginx, lui, ne le lit pas.</p>
+<aside class="note note-definition"><strong>Définition — .htaccess</strong><p>Un fichier placé dans le dossier du site, qui permet de donner des consignes à Apache : redirections, protections, réécriture des adresses. Nginx, lui, ne le lit pas.</p>
 </aside>
 <p>Ces lignes sont souvent ajoutées de bonne foi, parce qu'elles figurent dans de nombreux tutoriels. Elles fonctionnent parfaitement quand Apache est seul. Derrière Nginx, elles créent la boucle.</p>
-<figure class="config-window config-window-stacked"><figcaption class="config-window-bar"><span class="config-file">.htaccess</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">RewriteEngine</span><span class="config-value">On</span><span class="config-help">Active les règles de réécriture d'adresses d'Apache.</span></li><li class="config-row"><span class="config-key">RewriteCond %{HTTPS}</span><span class="config-value">off</span><span class="config-help">« Si la demande n'est pas en HTTPS… » Derrière Nginx, c'est toujours le cas.</span></li><li class="config-row"><span class="config-key">RewriteRule ^(.*)$</span><span class="config-value">https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</span><span class="config-help">« …renvoyer vers la même adresse en HTTPS. » D'où la boucle.</span></li></ul></figure>
-<div class="note"><strong>Note</strong><p>Le même problème se produit avec Cloudflare réglé en mode « Flexible » : Cloudflare reçoit le visiteur en HTTPS, mais contacte votre serveur en HTTP. Cloudflare recommande alors de retirer la redirection de votre serveur, ou de passer en mode « Full » (complet), qui suppose un certificat installé sur votre serveur.</p>
+<figure class="config-window config-window-stacked"><figcaption class="config-window-bar"><span class="config-file">.htaccess</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">RewriteEngine</span><span class="config-value">On</span><span class="config-help">Active les règles de réécriture d'adresses d'Apache.</span></li><li class="config-row"><span class="config-key">RewriteCond %{HTTPS}</span><span class="config-value">off</span><span class="config-help">« Si la demande n'est pas en HTTPS… » Derrière Nginx, c'est toujours le cas.</span></li><li class="config-row"><span class="config-key">RewriteRule ^(.*)$</span><span class="config-value">https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</span><span class="config-help">« …renvoyer vers la même adresse en HTTPS. » D'où la boucle.</span></li></ul></figure>
+<div class="note"><strong>Note</strong><p>Le même problème se produit avec Cloudflare réglé en mode « Flexible » : Cloudflare reçoit le visiteur en HTTPS, mais contacte votre serveur en HTTP. Cloudflare recommande alors de retirer la redirection de votre serveur, ou de passer en mode « Full » (complet), qui suppose un certificat installé sur votre serveur.</p>
 </div>
 <h2 id="comment-corriger">Comment corriger</h2>
 <p>Il existe deux bonnes solutions. Dans les deux cas, gardez une copie des fichiers avant de les modifier.</p>
-<h3 id="solution-1-rediriger-vers-https-a-un-seul-endroit-dans-nginx">Solution 1 : rediriger vers HTTPS à un seul endroit, dans Nginx</h3>
+<h3 id="solution-1-rediriger-vers-https-a-un-seul-endroit-dans-nginx">Solution 1 : rediriger vers HTTPS à un seul endroit, dans Nginx</h3>
 <p>C'est la plus simple. Nginx étant à l'entrée, c'est lui qui renvoie les visiteurs arrivés en HTTP vers HTTPS. On <strong>retire alors les lignes de redirection du fichier .htaccess</strong>, qui ne servent plus à rien.</p>
 <figure class="config-window config-window-stacked"><figcaption class="config-window-bar"><span class="config-file">nginx — bloc qui reçoit les visites en HTTP</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">listen</span><span class="config-value">80</span><span class="config-help">Ce bloc reçoit les visites qui arrivent sans chiffrement.</span></li><li class="config-row"><span class="config-key">return</span><span class="config-value">301 https://$host$request_uri</span><span class="config-help">Renvoie le visiteur, une seule fois, vers la même adresse en HTTPS.</span></li></ul></figure>
-<h3 id="solution-2-indiquer-a-apache-que-le-visiteur-est-deja-en-https">Solution 2 : indiquer à Apache que le visiteur est déjà en HTTPS</h3>
-<p>Si vous préférez garder la règle dans Apache, Nginx peut lui transmettre une information supplémentaire : « ce visiteur est arrivé en HTTPS ». La règle du .htaccess se base alors sur cette information, et plus sur le trajet interne.</p>
+<h3 id="solution-2-indiquer-a-apache-que-le-visiteur-est-deja-en-https">Solution 2 : indiquer à Apache que le visiteur est déjà en HTTPS</h3>
+<p>Si vous préférez garder la règle dans Apache, Nginx peut lui transmettre une information supplémentaire : « ce visiteur est arrivé en HTTPS ». La règle du .htaccess se base alors sur cette information, et plus sur le trajet interne.</p>
 <figure class="config-window"><figcaption class="config-window-bar"><span class="config-file">nginx — bloc qui transmet à Apache</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">proxy_set_header X-Forwarded-Proto</span><span class="config-value">$scheme</span><span class="config-help">Indique à Apache si le visiteur est arrivé en HTTP ou en HTTPS.</span></li><li class="config-row"><span class="config-key">proxy_set_header Host</span><span class="config-value">$host</span><span class="config-help">Transmet le nom du site demandé.</span></li></ul></figure>
 <figure class="config-window config-window-stacked"><figcaption class="config-window-bar"><span class="config-file">.htaccess — règle adaptée</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">RewriteCond %{HTTP:X-Forwarded-Proto}</span><span class="config-value">!https</span><span class="config-help">Ne redirige que si Nginx signale une visite qui n'est pas en HTTPS.</span></li><li class="config-row"><span class="config-key">RewriteRule ^(.*)$</span><span class="config-value">https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</span><span class="config-help">Renvoie alors vers l'adresse en HTTPS.</span></li></ul></figure>
 <div class="note note-warning"><strong>Attention</strong><p>Cette information peut être falsifiée si Apache est joignable directement depuis Internet. Dans cette installation, Apache ne doit accepter que les demandes venant de Nginx, sur le même serveur.</p>
 </div>
-<h3 id="et-si-le-site-est-un-wordpress">Et si le site est un WordPress ?</h3>
+<h3 id="et-si-le-site-est-un-wordpress">Et si le site est un WordPress ?</h3>
 <p>WordPress peut, lui aussi, rediriger vers HTTPS de son côté. Sa documentation officielle signale le même risque de boucle derrière un proxy inverse et indique comment lui faire lire l'information transmise par Nginx. Si la boucle persiste après avoir corrigé le .htaccess, c'est la piste suivante.</p>
 <h2 id="verifier-que-c-est-regle">Vérifier que c'est réglé</h2>
 <ul>
-<li><strong>Ouvrez une fenêtre de navigation privée</strong> : les navigateurs gardent en mémoire les redirections « 301 » déjà rencontrées, et peuvent continuer d'afficher l'erreur alors que le problème est corrigé.</li>
+<li><strong>Ouvrez une fenêtre de navigation privée</strong> : les navigateurs gardent en mémoire les redirections « 301 » déjà rencontrées, et peuvent continuer d'afficher l'erreur alors que le problème est corrigé.</li>
 <li>Testez l'adresse en <code>http://</code> et en <code>https://</code>, avec et sans <code>www</code>.</li>
 <li>Vérifiez quelques pages internes, pas seulement l'accueil.</li>
 </ul>
@@ -223,22 +223,22 @@
 
           <aside class="article-cta" aria-labelledby="article-cta-title">
             <h2 id="article-cta-title">Besoin d'un coup de main&nbsp;?</h2>
-            <p>Votre site tourne en boucle depuis le passage en HTTPS et vous ne savez pas quelle règle modifier ? Décrivez-nous votre installation : le premier échange est gratuit.</p>
+            <p>Votre site tourne en boucle depuis le passage en HTTPS et vous ne savez pas quelle règle modifier ? Décrivez-nous votre installation : le premier échange est gratuit.</p>
             <div class="article-cta-actions">
               <a class="btn btn-primary" href="../../contact.html?sujet=https">Faire corriger ma boucle de redirection</a>
-              <a class="link" href="../../prestations.html#https">Prestation : certificat HTTPS / SSL</a>
+              <a class="link" href="../../prestations.html#https">Prestation : certificat HTTPS / SSL</a>
             </div>
           </aside>
         </div>
       </div>
       <section class="section section-tight" aria-labelledby="related-title"><div class="container"><h2 id="related-title" class="h-small">À lire aussi</h2><ul class="post-list"><li class="post-card">
           <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-03">3 novembre 2026</time></p>
-          <h3><a href="../../blog/cloudflare-adresses-ip-pare-feu-serveur/">Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs</a></h3>
+          <h3><a href="../../blog/cloudflare-adresses-ip-pare-feu-serveur/">Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs</a></h3>
           <p>Cloudflare gère votre domaine, et pourtant votre serveur ne voit que ses adresses à lui, et on vous demande de les autoriser dans votre pare-feu. Pourquoi, ce que cela change pour vos réglages, et les erreurs 521 et 522 à éviter.</p>
           <p class="post-reading">7 min de lecture</p>
         </li><li class="post-card">
           <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-03">3 novembre 2026</time></p>
-          <h3><a href="../../blog/fichiers-envoyes-ftp-site-pas-change/">J&#39;ai envoyé mes fichiers en FTP mais mon site n&#39;a pas changé : d&#39;où vient le problème ?</a></h3>
+          <h3><a href="../../blog/fichiers-envoyes-ftp-site-pas-change/">J&#39;ai envoyé mes fichiers en FTP mais mon site n&#39;a pas changé : d&#39;où vient le problème ?</a></h3>
           <p>Vous avez envoyé vos fichiers avec FileZilla, le transfert semble réussi, et pourtant votre site affiche toujours l&#39;ancienne version. Les quatre endroits où le problème peut se situer, et comment les reconnaître.</p>
           <p class="post-reading">7 min de lecture</p>
         </li></ul></div></section>

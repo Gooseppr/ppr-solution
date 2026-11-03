@@ -148,9 +148,18 @@ function footer(prefix) {
   </footer>`;
 }
 
+// Typographie française : espace insécable avant « : ; ! ? » et après « (évite qu'un signe
+// se retrouve seul en début de ligne). Le code, les scripts et les attributs ne sont pas touchés.
+function frenchSpacing(html) {
+  return html.replace(/(<(script|style|code|pre|textarea)\b[\s\S]*?<\/\2>)|(<[^>]+>)|([^<]+)/g,
+    (match, block, blockTag, tag, text) => block || tag || text
+      .replace(/ ([:;!?»])/g, "\u00a0$1")
+      .replace(/« /g, "«\u00a0"));
+}
+
 function renderPage({ meta, body, prefix = "" }) {
   const scripts = (meta.scripts || []).map((src) => `  <script src="${prefix}${src}" defer></script>`).join("\n");
-  return `<!DOCTYPE html>
+  const html = `<!DOCTYPE html>
 <html lang="fr" class="no-js">
 <head>
 ${head({ ...meta, prefix })}
@@ -167,7 +176,8 @@ ${body.trim()}
 ${footer(prefix)}
 </body>
 </html>
-`.replace(/\n\s*\n(\s*\n)+/g, "\n\n");
+`;
+  return frenchSpacing(html.replace(/\n\s*\n(\s*\n)+/g, "\n\n"));
 }
 
-module.exports = { SITE, NAV, escapeHtml, absoluteUrl, renderPage };
+module.exports = { SITE, NAV, escapeHtml, absoluteUrl, renderPage, frenchSpacing };

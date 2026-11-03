@@ -123,3 +123,13 @@ test("articles : blocs de code refusés, fenêtre :::config rendue et échappée
   assert.match(html, /<span class="config-key">memory_limit<\/span><span class="config-value">256M<\/span>/);
   assert.match(html, /Mémoire &lt;maximale&gt;/);
 });
+
+test("typographie : pas d'espace sécable avant : ; ! ? » dans le texte des pages", () => {
+  for (const file of htmlFiles) {
+    const text = outputs.get(file)
+      .replace(/<(script|style|code|pre|textarea)\b[\s\S]*?<\/\1>/g, "")
+      .replace(/<[^>]+>/g, "");
+    const bad = text.match(/.{0,20} [:;!?»]/);
+    assert.ok(!bad, `${file} : espace sécable dans « ${bad && bad[0]} »`);
+  }
+});

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-tlTtfpdsMQSdcfX3DLM1fgx/y++BLw+48vFj+5cTJa0='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Failles critiques de PHP (octobre 2026) : votre site est-il concerné ? · PPR-Solution</title>
+  <title>Failles critiques de PHP (octobre 2026) : votre site est-il concerné ? · PPR-Solution</title>
   <meta name="description" content="CVE-2026-109618 et CVE-2026-109619 (PHP2Shell) : failles critiques de PHP exploitées, versions corrigées 8.2.35 à 8.5.12, situation des versions 7.4, 8.0 et 8.1, et vérifications à faire.">
   <link rel="canonical" href="https://ppr-solution.fr/blog/failles-php-octobre-2026-php2shell/">
   <meta name="theme-color" content="#F8F7F3">
@@ -132,43 +132,43 @@
         <div class="container article-narrow">
           <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
           <p class="post-meta"><span class="post-kind post-kind-news">Actualité</span><span>Publié le <time datetime="2026-11-01">1 novembre 2026</time></span> · <span>Mis à jour le <time datetime="2026-11-03">3 novembre 2026</time></span> · <span>6 min de lecture</span></p>
-          <h1>Failles critiques de PHP (octobre 2026) : votre site est-il concerné ?</h1>
+          <h1>Failles critiques de PHP (octobre 2026) : votre site est-il concerné ?</h1>
         </div>
       </header>
       <div class="container article-layout">
-        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#de-quoi-parle-t-on">De quoi parle-t-on ?</a></li><li><a href="#ce-qui-s-est-passe">Ce qui s&#39;est passé</a></li><li><a href="#pourquoi-c-est-grave">Pourquoi c&#39;est grave</a></li><li><a href="#votre-site-est-il-concerne">Votre site est-il concerné ?</a></li><li><a href="#ce-que-vous-pouvez-faire">Ce que vous pouvez faire</a></li><li><a href="#pour-les-personnes-qui-gerent-un-serveur">Pour les personnes qui gèrent un serveur</a></li><li><a href="#a-ne-pas-confondre-la-troisieme-faille">À ne pas confondre : la troisième faille</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
+        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#de-quoi-parle-t-on">De quoi parle-t-on ?</a></li><li><a href="#ce-qui-s-est-passe">Ce qui s&#39;est passé</a></li><li><a href="#pourquoi-c-est-grave">Pourquoi c&#39;est grave</a></li><li><a href="#votre-site-est-il-concerne">Votre site est-il concerné ?</a></li><li><a href="#ce-que-vous-pouvez-faire">Ce que vous pouvez faire</a></li><li><a href="#pour-les-personnes-qui-gerent-un-serveur">Pour les personnes qui gèrent un serveur</a></li><li><a href="#a-ne-pas-confondre-la-troisieme-faille">À ne pas confondre : la troisième faille</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
         <div class="article-body prose">
-<p class="lead">Le 21 octobre 2026, le projet PHP a publié en urgence des mises à jour de sécurité pour corriger deux failles très graves, surnommées « PHP2Shell ». Elles permettent à un inconnu de prendre le contrôle du serveur qui fait fonctionner un site, sans mot de passe. Des pirates s'en servaient déjà avant la publication des correctifs. Si votre site utilise PHP, il faut vérifier que votre version est à jour, ou quitter une version qui ne l'est plus.</p>
+<p class="lead">Le 21 octobre 2026, le projet PHP a publié en urgence des mises à jour de sécurité pour corriger deux failles très graves, surnommées « PHP2Shell ». Elles permettent à un inconnu de prendre le contrôle du serveur qui fait fonctionner un site, sans mot de passe. Des pirates s'en servaient déjà avant la publication des correctifs. Si votre site utilise PHP, il faut vérifier que votre version est à jour, ou quitter une version qui ne l'est plus.</p>
 <div class="note note-summary"><strong>En bref</strong><ul>
-<li>Deux failles critiques de PHP ont été corrigées le 21 octobre 2026 ; elles sont déjà exploitées par des pirates.</li>
+<li>Deux failles critiques de PHP ont été corrigées le 21 octobre 2026 ; elles sont déjà exploitées par des pirates.</li>
 <li>Presque tous les sites qui utilisent PHP sont concernés, y compris ceux construits avec WordPress ou PrestaShop.</li>
 <li>Les versions corrigées sont PHP 8.2.35, 8.3.36, 8.4.27 et 8.5.12.</li>
-<li>Les anciennes versions (PHP 8.1, 7, 5 et 4) ne reçoivent plus de mises à jour officielles : les quitter devient urgent.</li>
-<li>Sur un hébergement mutualisé, c'est votre hébergeur qui installe la correction : demandez-lui confirmation.</li>
+<li>Les anciennes versions (PHP 8.1, 7, 5 et 4) ne reçoivent plus de mises à jour officielles : les quitter devient urgent.</li>
+<li>Sur un hébergement mutualisé, c'est votre hébergeur qui installe la correction : demandez-lui confirmation.</li>
 </ul>
 </div>
-<h2 id="de-quoi-parle-t-on">De quoi parle-t-on ?</h2>
+<h2 id="de-quoi-parle-t-on">De quoi parle-t-on ?</h2>
 <p>PHP est le langage informatique qui fabrique les pages d'une grande partie des sites internet. À chaque visite, le serveur de votre hébergeur exécute le programme PHP de votre site pour construire la page affichée.</p>
-<p>Une faille, c'est une erreur dans ce programme qu'un pirate peut utiliser à son avantage. Celles découvertes en octobre sont particulièrement graves : elles permettent d'envoyer au serveur une demande piégée qui lui fait exécuter des instructions choisies par le pirate. C'est comme si quelqu'un pouvait glisser ses propres ordres dans le courrier d'une entreprise et les faire appliquer sans signature.</p>
-<aside class="note note-definition"><strong>Définition — CVE</strong><p>Un numéro d'identification unique attribué à chaque faille de sécurité connue, pour que tout le monde parle de la même. Ici : CVE-2026-109618 et CVE-2026-109619.</p>
+<p>Une faille, c'est une erreur dans ce programme qu'un pirate peut utiliser à son avantage. Celles découvertes en octobre sont particulièrement graves : elles permettent d'envoyer au serveur une demande piégée qui lui fait exécuter des instructions choisies par le pirate. C'est comme si quelqu'un pouvait glisser ses propres ordres dans le courrier d'une entreprise et les faire appliquer sans signature.</p>
+<aside class="note note-definition"><strong>Définition — CVE</strong><p>Un numéro d'identification unique attribué à chaque faille de sécurité connue, pour que tout le monde parle de la même. Ici : CVE-2026-109618 et CVE-2026-109619.</p>
 </aside>
 <h2 id="ce-qui-s-est-passe">Ce qui s'est passé</h2>
 <ul>
-<li><strong>17 octobre</strong> : des tentatives d'attaque sont repérées sur des serveurs-pièges d'Amazon Web Services, quatre jours avant l'annonce publique (selon l'analyse de Datadog Security Labs).</li>
-<li><strong>20 octobre</strong> : le projet PHP prévient qu'une mise à jour de sécurité critique arrive le lendemain.</li>
-<li><strong>21 octobre</strong> : publication des versions corrigées. L'agence américaine de cybersécurité (CISA) demande le jour même de les installer immédiatement.</li>
-<li><strong>23 octobre</strong> : le projet PHP signale une troisième faille, beaucoup moins probable (voir plus bas).</li>
-<li><strong>26 octobre</strong> : la CISA ajoute les deux failles à sa liste officielle des failles activement exploitées.</li>
+<li><strong>17 octobre</strong> : des tentatives d'attaque sont repérées sur des serveurs-pièges d'Amazon Web Services, quatre jours avant l'annonce publique (selon l'analyse de Datadog Security Labs).</li>
+<li><strong>20 octobre</strong> : le projet PHP prévient qu'une mise à jour de sécurité critique arrive le lendemain.</li>
+<li><strong>21 octobre</strong> : publication des versions corrigées. L'agence américaine de cybersécurité (CISA) demande le jour même de les installer immédiatement.</li>
+<li><strong>23 octobre</strong> : le projet PHP signale une troisième faille, beaucoup moins probable (voir plus bas).</li>
+<li><strong>26 octobre</strong> : la CISA ajoute les deux failles à sa liste officielle des failles activement exploitées.</li>
 </ul>
 <h2 id="pourquoi-c-est-grave">Pourquoi c'est grave</h2>
-<p>Les deux failles sont notées 9,2 sur 10 sur l'échelle de gravité utilisée par les spécialistes. Trois raisons :</p>
+<p>Les deux failles sont notées 9,2 sur 10 sur l'échelle de gravité utilisée par les spécialistes. Trois raisons :</p>
 <ul>
-<li><strong>Aucun mot de passe n'est nécessaire</strong> : une simple visite piégée du site suffit.</li>
-<li><strong>L'attaque a lieu avant que votre site ne démarre</strong> : un mot de passe solide ou une extension de sécurité WordPress ne l'arrêtent pas.</li>
+<li><strong>Aucun mot de passe n'est nécessaire</strong> : une simple visite piégée du site suffit.</li>
+<li><strong>L'attaque a lieu avant que votre site ne démarre</strong> : un mot de passe solide ou une extension de sécurité WordPress ne l'arrêtent pas.</li>
 <li><strong>Presque tous les hébergements sont concernés</strong>, quelle que soit la manière dont le serveur fait tourner PHP.</li>
 </ul>
 <p>Un pirate qui contrôle le serveur peut modifier votre site, y cacher des pages d'arnaque, lire votre base de données (par exemple les comptes de vos clients) ou s'en servir pour envoyer du spam à votre nom.</p>
-<h2 id="votre-site-est-il-concerne">Votre site est-il concerné ?</h2>
+<h2 id="votre-site-est-il-concerne">Votre site est-il concerné ?</h2>
 <p>Tout dépend de la version de PHP utilisée et de la personne qui entretient le serveur.</p>
 <div class="table-wrap"><table class="article-table"><caption>Situation selon la version de PHP</caption>
 <thead>
@@ -193,27 +193,27 @@
 </div>
 <h2 id="ce-que-vous-pouvez-faire">Ce que vous pouvez faire</h2>
 <ol>
-<li><strong>Trouver votre version de PHP.</strong> Elle est indiquée dans l'espace client de votre hébergeur, dans une rubrique « PHP », « Configuration PHP » ou « Version PHP ». Notez le numéro complet si possible (par exemple 8.3.36, et pas seulement 8.3).</li>
+<li><strong>Trouver votre version de PHP.</strong> Elle est indiquée dans l'espace client de votre hébergeur, dans une rubrique « PHP », « Configuration PHP » ou « Version PHP ». Notez le numéro complet si possible (par exemple 8.3.36, et pas seulement 8.3).</li>
 <li><strong>Vérifier qui entretient votre serveur.</strong> Dans la grande majorité des cas, votre site est sur un hébergement mutualisé.</li>
 <li><strong>Si vous êtes sur un hébergement mutualisé</strong>, consultez les annonces de votre hébergeur ou écrivez-lui pour lui demander si les versions corrigées sont installées.</li>
 <li><strong>Si votre site utilise PHP 8.1 ou plus ancien</strong>, demandez à votre hébergeur comment il traite ces failles et prévoyez de passer à une version maintenue. Plus la version est ancienne, plus ce passage demande de vérifications.</li>
 </ol>
-<aside class="note note-definition"><strong>Définition — hébergement mutualisé</strong><p>Une formule où votre site partage un serveur avec d'autres sites. L'hébergeur s'occupe du serveur et de ses mises à jour ; vous ne gérez que votre site.</p>
+<aside class="note note-definition"><strong>Définition — hébergement mutualisé</strong><p>Une formule où votre site partage un serveur avec d'autres sites. L'hébergeur s'occupe du serveur et de ses mises à jour ; vous ne gérez que votre site.</p>
 </aside>
 <h2 id="pour-les-personnes-qui-gerent-un-serveur">Pour les personnes qui gèrent un serveur</h2>
 <p>Cette partie concerne celles et ceux qui administrent eux-mêmes un serveur privé (VPS), un serveur dédié ou des conteneurs.</p>
-<aside class="note note-definition"><strong>Définition — VPS</strong><p>Un serveur privé virtuel : une part de machine louée et administrée par vous-même, y compris ses mises à jour.</p>
+<aside class="note note-definition"><strong>Définition — VPS</strong><p>Un serveur privé virtuel : une part de machine louée et administrée par vous-même, y compris ses mises à jour.</p>
 </aside>
 <ul>
 <li>Installez les paquets corrigés de votre distribution, reconstruisez vos images de conteneurs, puis <strong>redémarrez tous les processus PHP</strong> (PHP-FPM, Apache). Tant qu'un processus lancé avant la mise à jour tourne, l'ancienne version reste active.</li>
 <li>Si la mise à jour doit attendre, le projet PHP propose des réglages temporaires, à placer dans la configuration du serveur (fichier <code>php.ini</code> ou configuration PHP-FPM), puis à activer en redémarrant les processus PHP.</li>
 </ul>
-<figure class="config-window"><figcaption class="config-window-bar"><span class="config-file">php.ini</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">memory_limit</span><span class="config-value">-1</span><span class="config-help">Supprime la limite de mémoire de PHP. À compléter par une limite au niveau du serveur ou du conteneur.</span></li><li class="config-row"><span class="config-key">post_max_size</span><span class="config-value">8M</span><span class="config-help">Taille maximale d'une requête envoyée au site. 32M si le site accepte des envois de fichiers.</span></li><li class="config-row"><span class="config-key">upload_max_filesize</span><span class="config-value">8M</span><span class="config-help">Taille maximale d'un fichier envoyé. Doit rester inférieure à post_max_size.</span></li><li class="config-row"><span class="config-key">session.upload_progress.enabled</span><span class="config-value">0</span><span class="config-help">Désactive le suivi de progression des envois de fichiers, utilisé par l'une des failles.</span></li><li class="config-row"><span class="config-key">fatal_error_backtraces</span><span class="config-value">0</span><span class="config-help">PHP 8.5 uniquement : n'ajoute plus le détail technique aux erreurs graves.</span></li></ul></figure>
+<figure class="config-window"><figcaption class="config-window-bar"><span class="config-file">php.ini</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">memory_limit</span><span class="config-value">-1</span><span class="config-help">Supprime la limite de mémoire de PHP. À compléter par une limite au niveau du serveur ou du conteneur.</span></li><li class="config-row"><span class="config-key">post_max_size</span><span class="config-value">8M</span><span class="config-help">Taille maximale d'une requête envoyée au site. 32M si le site accepte des envois de fichiers.</span></li><li class="config-row"><span class="config-key">upload_max_filesize</span><span class="config-value">8M</span><span class="config-help">Taille maximale d'un fichier envoyé. Doit rester inférieure à post_max_size.</span></li><li class="config-row"><span class="config-key">session.upload_progress.enabled</span><span class="config-value">0</span><span class="config-help">Désactive le suivi de progression des envois de fichiers, utilisé par l'une des failles.</span></li><li class="config-row"><span class="config-key">fatal_error_backtraces</span><span class="config-value">0</span><span class="config-help">PHP 8.5 uniquement : n'ajoute plus le détail technique aux erreurs graves.</span></li></ul></figure>
 <div class="note note-warning"><strong>Attention</strong><p>Ces réglages réduisent le risque sans le supprimer, et ils ont des effets de bord, par exemple sur la taille des fichiers que le site accepte. Seule la mise à jour de PHP corrige réellement les failles.</p>
 </div>
-<h2 id="a-ne-pas-confondre-la-troisieme-faille">À ne pas confondre : la troisième faille</h2>
-<p>Deux jours après les correctifs, le projet PHP a signalé une troisième faille (CVE-2026-115560). Elle ne concerne qu'un réglage rare, qu'un site classique n'utilise pas. Le projet PHP la juge peu probable et la corrigera lors d'une mise à jour ordinaire : elle n'appelle pas d'action d'urgence pour la plupart des sites.</p>
-<p>C'est un bon réflexe à garder : une faille annoncée ne concerne pas forcément tous les sites de la même façon. Ici, en revanche, les failles PHP2Shell touchent presque tout le monde.</p>
+<h2 id="a-ne-pas-confondre-la-troisieme-faille">À ne pas confondre : la troisième faille</h2>
+<p>Deux jours après les correctifs, le projet PHP a signalé une troisième faille (CVE-2026-115560). Elle ne concerne qu'un réglage rare, qu'un site classique n'utilise pas. Le projet PHP la juge peu probable et la corrigera lors d'une mise à jour ordinaire : elle n'appelle pas d'action d'urgence pour la plupart des sites.</p>
+<p>C'est un bon réflexe à garder : une faille annoncée ne concerne pas forcément tous les sites de la même façon. Ici, en revanche, les failles PHP2Shell touchent presque tout le monde.</p>
 <div class="note"><strong>À retenir</strong><p>Vérifiez votre version de PHP et demandez à votre hébergeur si la correction est installée. Si votre site tourne sur une version qui n'est plus maintenue, c'est le moment de prévoir sa mise à jour.</p>
 </div>
 <h2 id="sources">Sources</h2>
@@ -227,22 +227,22 @@
 
           <aside class="article-cta" aria-labelledby="article-cta-title">
             <h2 id="article-cta-title">Besoin d'un coup de main&nbsp;?</h2>
-            <p>Vous ne savez pas quelle version de PHP utilise votre site, ou votre hébergeur vous demande de la changer ? Décrivez-nous la situation : le premier échange est gratuit.</p>
+            <p>Vous ne savez pas quelle version de PHP utilise votre site, ou votre hébergeur vous demande de la changer ? Décrivez-nous la situation : le premier échange est gratuit.</p>
             <div class="article-cta-actions">
               <a class="btn btn-primary" href="../../contact.html?sujet=php">Faire vérifier ma version PHP</a>
-              <a class="link" href="../../prestations.html#php">Prestation : PHP et compatibilité</a>
+              <a class="link" href="../../prestations.html#php">Prestation : PHP et compatibilité</a>
             </div>
           </aside>
         </div>
       </div>
       <section class="section section-tight" aria-labelledby="related-title"><div class="container"><h2 id="related-title" class="h-small">À lire aussi</h2><ul class="post-list"><li class="post-card">
           <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-03">3 novembre 2026</time></p>
-          <h3><a href="../../blog/cloudflare-adresses-ip-pare-feu-serveur/">Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs</a></h3>
+          <h3><a href="../../blog/cloudflare-adresses-ip-pare-feu-serveur/">Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs</a></h3>
           <p>Cloudflare gère votre domaine, et pourtant votre serveur ne voit que ses adresses à lui, et on vous demande de les autoriser dans votre pare-feu. Pourquoi, ce que cela change pour vos réglages, et les erreurs 521 et 522 à éviter.</p>
           <p class="post-reading">7 min de lecture</p>
         </li><li class="post-card">
           <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-03">3 novembre 2026</time></p>
-          <h3><a href="../../blog/fichiers-envoyes-ftp-site-pas-change/">J&#39;ai envoyé mes fichiers en FTP mais mon site n&#39;a pas changé : d&#39;où vient le problème ?</a></h3>
+          <h3><a href="../../blog/fichiers-envoyes-ftp-site-pas-change/">J&#39;ai envoyé mes fichiers en FTP mais mon site n&#39;a pas changé : d&#39;où vient le problème ?</a></h3>
           <p>Vous avez envoyé vos fichiers avec FileZilla, le transfert semble réussi, et pourtant votre site affiche toujours l&#39;ancienne version. Les quatre endroits où le problème peut se situer, et comment les reconnaître.</p>
           <p class="post-reading">7 min de lecture</p>
         </li></ul></div></section>
