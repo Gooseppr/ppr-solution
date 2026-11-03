@@ -131,35 +131,35 @@
       <header class="article-header">
         <div class="container article-narrow">
           <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
-          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-03">3 novembre 2026</time></span> · <span>6 min de lecture</span></p>
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-03">3 novembre 2026</time></span> · <span>7 min de lecture</span></p>
           <h1>Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs</h1>
         </div>
       </header>
       <div class="container article-layout">
-        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#nuage-gris-nuage-orange-deux-roles-tres-differents">Nuage gris, nuage orange : deux rôles très différents</a></li><li><a href="#ce-que-cela-change-pour-votre-serveur">Ce que cela change pour votre serveur</a></li><li><a href="#pour-les-personnes-qui-gerent-un-serveur">Pour les personnes qui gèrent un serveur</a></li><li><a href="#cloudflare-n-est-pas-le-seul-service-a-fonctionner-ainsi">Cloudflare n&#39;est pas le seul service à fonctionner ainsi</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
+        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#les-deux-roles-possibles-de-cloudflare">Les deux rôles possibles de Cloudflare</a></li><li><a href="#ce-qui-change-quand-cloudflare-sert-d-intermediaire">Ce qui change quand Cloudflare sert d&#39;intermédiaire</a></li><li><a href="#comment-configurer-votre-serveur">Comment configurer votre serveur</a></li><li><a href="#les-services-qui-fonctionnent-comme-cloudflare">Les services qui fonctionnent comme Cloudflare</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
         <div class="article-body prose">
 <p class="lead">Votre domaine passe par Cloudflare, et une question revient souvent : « Cloudflare gère mon domaine. Pourquoi faut-il autoriser ses adresses IP dans le pare-feu de mon serveur, et pourquoi mes statistiques ne montrent-elles que ses adresses ? » La réponse tient à une distinction simple : Cloudflare peut se contenter d'indiquer où se trouve votre site, ou se placer entre vos visiteurs et votre serveur. Dans le second cas, votre serveur ne parle plus qu'à Cloudflare, et ses réglages doivent en tenir compte.</p>
 <div class="note note-summary"><strong>En bref</strong><ul>
-<li>Avec le « nuage gris », Cloudflare ne fait qu'indiquer l'adresse de votre serveur ; les visiteurs s'y connectent directement.</li>
-<li>Avec le « nuage orange », Cloudflare reçoit les visiteurs à la place de votre serveur, puis le contacte lui-même : votre serveur voit donc les adresses de Cloudflare.</li>
+<li>Cloudflare peut jouer deux rôles : simple annuaire, qui indique l'adresse de votre serveur, ou intermédiaire, qui se place entre vos visiteurs et votre serveur.</li>
+<li>Quand Cloudflare sert d'intermédiaire, il reçoit les visiteurs à la place de votre serveur, puis le contacte lui-même : votre serveur voit donc les adresses de Cloudflare.</li>
 <li>L'adresse réelle du visiteur reste disponible dans un en-tête appelé CF-Connecting-IP, à condition de configurer le serveur pour la lire.</li>
 <li>Si votre pare-feu bloque les adresses de Cloudflare, votre site affiche une erreur 521 ou 522.</li>
 <li>Autoriser uniquement Cloudflare protège mieux votre serveur, mais ne suffit pas seul : on le complète par d'autres vérifications.</li>
 </ul>
 </div>
-<h2 id="nuage-gris-nuage-orange-deux-roles-tres-differents">Nuage gris, nuage orange : deux rôles très différents</h2>
-<p>Dans l'interface de Cloudflare, chaque enregistrement DNS porte un petit nuage.</p>
+<h2 id="les-deux-roles-possibles-de-cloudflare">Les deux rôles possibles de Cloudflare</h2>
+<p>Cloudflare peut gérer votre domaine de deux façons. Dans son interface, on les reconnaît à la couleur du petit nuage affiché à côté de chaque enregistrement DNS.</p>
 <ul>
-<li><strong>Nuage gris (« DNS only »).</strong> Cloudflare joue l'annuaire : quand un visiteur cherche <code>votre-site.fr</code>, il reçoit l'adresse de votre serveur et s'y connecte directement.</li>
-<li><strong>Nuage orange (« Proxied »).</strong> Cloudflare donne sa propre adresse à la place de celle de votre serveur. Le visiteur se connecte à Cloudflare, qui filtre la demande, sert ce qu'il a en cache, et contacte votre serveur quand c'est nécessaire.</li>
+<li><strong>Cloudflare simple annuaire</strong> (nuage gris, « DNS only »). Cloudflare indique seulement où se trouve votre site : quand un visiteur cherche <code>votre-site.fr</code>, il reçoit l'adresse de votre serveur et s'y connecte directement.</li>
+<li><strong>Cloudflare intermédiaire</strong> (nuage orange, « Proxied »). Cloudflare donne sa propre adresse à la place de celle de votre serveur. Le visiteur se connecte à Cloudflare, qui filtre la demande, sert ce qu'il a en cache, et contacte votre serveur quand c'est nécessaire.</li>
 </ul>
-<aside class="note note-definition"><strong>Définition — proxy inverse</strong><p>Un service placé devant votre serveur, qui reçoit les visites à sa place et les lui transmet. Avec le nuage orange, Cloudflare joue ce rôle. C'est le même principe que <a href="../../blog/trop-de-redirections-https-nginx-apache/">Nginx placé devant Apache</a>.</p>
+<aside class="note note-definition"><strong>Définition — proxy inverse</strong><p>Un service placé devant votre serveur, qui reçoit les visites à sa place et les lui transmet. Quand Cloudflare sert d'intermédiaire, il joue ce rôle. C'est le même principe que <a href="../../blog/trop-de-redirections-https-nginx-apache/">Nginx placé devant Apache</a>.</p>
 </aside>
 <p><img src="../../assets/img/blog/cloudflare-proxy.svg" alt="Le chemin d'une visite, avec et sans le proxy Cloudflare : sans proxy, votre serveur voit l'adresse du visiteur ; avec Cloudflare, il voit l'adresse de Cloudflare, et celle du visiteur voyage dans l'en-tête CF-Connecting-IP." width="400" height="560" loading="lazy"></p>
 <p>C'est un peu comme un standard téléphonique : vos clients appellent le standard, qui vous transfère l'appel. Sur votre téléphone s'affiche le numéro du standard, pas celui du client. Le standard peut en revanche vous dire qui appelle.</p>
-<h2 id="ce-que-cela-change-pour-votre-serveur">Ce que cela change pour votre serveur</h2>
+<h2 id="ce-qui-change-quand-cloudflare-sert-d-intermediaire">Ce qui change quand Cloudflare sert d'intermédiaire</h2>
 <h3 id="1-vos-journaux-voient-cloudflare-pas-vos-visiteurs">1. Vos journaux voient Cloudflare, pas vos visiteurs</h3>
-<p>Avec le nuage orange, toutes les visites arrivent sur votre serveur depuis des adresses de Cloudflare. Par défaut, ce sont elles qui apparaissent dans les journaux du serveur, dans certaines statistiques, et dans les outils qui se fient à l'adresse du visiteur.</p>
+<p>Quand Cloudflare sert d'intermédiaire, toutes les visites arrivent sur votre serveur depuis des adresses de Cloudflare. Par défaut, ce sont elles qui apparaissent dans les journaux du serveur, dans certaines statistiques, et dans les outils qui se fient à l'adresse du visiteur.</p>
 <p>Cela pose un vrai problème de sécurité : un outil qui bloque automatiquement les adresses suspectes peut bloquer une adresse de Cloudflare, et donc couper l'accès à de nombreux visiteurs légitimes à la fois.</p>
 <p>Cloudflare transmet heureusement l'adresse réelle du visiteur dans un en-tête de la demande, <code>CF-Connecting-IP</code>. Il suffit de configurer le serveur pour la lire, comme expliqué plus bas.</p>
 <div class="note note-warning"><strong>Attention</strong><p>Cet en-tête ne doit être cru que s'il vient réellement de Cloudflare. N'importe qui peut fabriquer une demande avec un faux en-tête : le serveur ne doit le lire que pour les connexions venant des adresses officielles de Cloudflare.</p>
@@ -179,7 +179,7 @@
 <li><strong>Les autres accès ne passent pas par Cloudflare.</strong> L'administration du serveur (SSH), la messagerie ou les outils de supervision gardent leurs propres règles : ne les ouvrez pas aux adresses de Cloudflare, mais aux seules adresses qui en ont besoin.</li>
 <li><strong>Les adresses de Cloudflare ne sont pas les vôtres.</strong> Le réseau de Cloudflare sert de nombreux clients. Cloudflare classe lui-même cette restriction par adresses comme « moyennement sûre » et propose des protections plus fortes, comme l'authentification du serveur d'origine décrite plus bas.</li>
 </ul>
-<h2 id="pour-les-personnes-qui-gerent-un-serveur">Pour les personnes qui gèrent un serveur</h2>
+<h2 id="comment-configurer-votre-serveur">Comment configurer votre serveur</h2>
 <p>Cette partie s'adresse à celles et ceux qui administrent eux-mêmes un serveur privé, un serveur dédié ou une instance cloud.</p>
 <h3 id="recuperer-l-adresse-reelle-des-visiteurs">Récupérer l'adresse réelle des visiteurs</h3>
 <p>On indique au serveur web de lire <code>CF-Connecting-IP</code>, uniquement pour les connexions venant des plages officielles de Cloudflare, publiées sur cloudflare.com/ips. Il faut une ligne par plage, et tenir cette liste à jour.</p>
@@ -187,7 +187,7 @@
 <figure class="config-window config-window-stacked"><figcaption class="config-window-bar"><span class="config-file">apache — module mod_remoteip</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">RemoteIPHeader</span><span class="config-value">CF-Connecting-IP</span><span class="config-help">Utilise l'adresse transmise par Cloudflare comme adresse du visiteur.</span></li><li class="config-row"><span class="config-key">RemoteIPTrustedProxy</span><span class="config-value">une plage de Cloudflare</span><span class="config-help">À répéter pour chaque plage : seules ces adresses sont crues.</span></li></ul></figure>
 <h3 id="restreindre-le-pare-feu-sans-couper-le-site">Restreindre le pare-feu sans couper le site</h3>
 <ol>
-<li><strong>Listez les enregistrements DNS en nuage orange</strong> : seuls ceux-là passent par Cloudflare. Un sous-domaine en nuage gris doit rester joignable directement.</li>
+<li><strong>Repérez les adresses qui passent par Cloudflare</strong> : ce sont les enregistrements DNS en nuage orange. Un sous-domaine en nuage gris ne passe pas par Cloudflare et doit rester joignable directement.</li>
 <li><strong>Listez les autres accès</strong> au serveur (administration, messagerie, supervision) et les adresses qui en ont besoin.</li>
 <li><strong>Récupérez les plages officielles</strong> de Cloudflare, en IPv4 et en IPv6, sur cloudflare.com/ips.</li>
 <li><strong>Gardez un accès de secours</strong> au serveur, par la console de votre hébergeur ou une règle d'administration distincte, avant de modifier les règles.</li>
@@ -197,14 +197,14 @@
 </ol>
 <h3 id="aller-plus-loin-authentifier-les-connexions-de-cloudflare">Aller plus loin : authentifier les connexions de Cloudflare</h3>
 <p>Pour que votre serveur n'accepte que les connexions de Cloudflare, Cloudflare propose l'« Authenticated Origin Pulls » : il présente un certificat à votre serveur, qui le vérifie. Cette option demande le mode de chiffrement « Full » ou « Full (strict) ». Selon sa documentation, le certificat fourni par défaut garantit seulement que la demande vient du réseau Cloudflare : pour une protection plus stricte, on utilise son propre certificat. Cloudflare propose aussi d'autres méthodes, comme Cloudflare Tunnel.</p>
-<h2 id="cloudflare-n-est-pas-le-seul-service-a-fonctionner-ainsi">Cloudflare n'est pas le seul service à fonctionner ainsi</h2>
+<h2 id="les-services-qui-fonctionnent-comme-cloudflare">Les services qui fonctionnent comme Cloudflare</h2>
 <p>D'autres réseaux placés devant les serveurs suivent le même principe, chacun avec ses outils :</p>
 <ul>
 <li><strong>Amazon CloudFront</strong> fournit des listes d'adresses gérées par AWS (<code>com.amazonaws.global.cloudfront.origin-facing</code>), utilisables directement dans un Security Group et tenues à jour par AWS.</li>
 <li><strong>Azure Front Door</strong> fournit l'étiquette de service <code>AzureFrontDoor.Backend</code>. Microsoft précise que ce filtrage par adresses ne suffit pas, car d'autres clients d'Azure utilisent les mêmes adresses, et recommande de vérifier en plus l'en-tête <code>X-Azure-FDID</code>, propre à chaque profil.</li>
 </ul>
 <p>Il n'existe donc pas de règle de pare-feu universelle : chaque service a sa méthode, à suivre dans sa documentation officielle.</p>
-<div class="note"><strong>À retenir</strong><p>Avec le nuage orange, Cloudflare se place entre vos visiteurs et votre serveur. Votre serveur ne voit plus que lui : il faut lui apprendre à lire l'adresse réelle des visiteurs, et autoriser Cloudflare dans le pare-feu, sans oublier les autres accès. Un proxy devant votre serveur ne dispense pas de protéger le serveur lui-même.</p>
+<div class="note"><strong>À retenir</strong><p>Quand Cloudflare sert d'intermédiaire, il se place entre vos visiteurs et votre serveur. Votre serveur ne voit plus que lui : il faut lui apprendre à lire l'adresse réelle des visiteurs, et autoriser Cloudflare dans le pare-feu, sans oublier les autres accès. Un proxy devant votre serveur ne dispense pas de protéger le serveur lui-même.</p>
 </div>
 <h2 id="sources">Sources</h2>
 <ul>

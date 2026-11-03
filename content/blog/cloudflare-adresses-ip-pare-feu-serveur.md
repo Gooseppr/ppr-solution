@@ -19,32 +19,32 @@ Votre domaine passe par Cloudflare, et une question revient souvent : « Cloudfl
 
 > **En bref**
 >
-> - Avec le « nuage gris », Cloudflare ne fait qu'indiquer l'adresse de votre serveur ; les visiteurs s'y connectent directement.
-> - Avec le « nuage orange », Cloudflare reçoit les visiteurs à la place de votre serveur, puis le contacte lui-même : votre serveur voit donc les adresses de Cloudflare.
+> - Cloudflare peut jouer deux rôles : simple annuaire, qui indique l'adresse de votre serveur, ou intermédiaire, qui se place entre vos visiteurs et votre serveur.
+> - Quand Cloudflare sert d'intermédiaire, il reçoit les visiteurs à la place de votre serveur, puis le contacte lui-même : votre serveur voit donc les adresses de Cloudflare.
 > - L'adresse réelle du visiteur reste disponible dans un en-tête appelé CF-Connecting-IP, à condition de configurer le serveur pour la lire.
 > - Si votre pare-feu bloque les adresses de Cloudflare, votre site affiche une erreur 521 ou 522.
 > - Autoriser uniquement Cloudflare protège mieux votre serveur, mais ne suffit pas seul : on le complète par d'autres vérifications.
 
-## Nuage gris, nuage orange : deux rôles très différents
+## Les deux rôles possibles de Cloudflare
 
-Dans l'interface de Cloudflare, chaque enregistrement DNS porte un petit nuage.
+Cloudflare peut gérer votre domaine de deux façons. Dans son interface, on les reconnaît à la couleur du petit nuage affiché à côté de chaque enregistrement DNS.
 
-- **Nuage gris (« DNS only »).** Cloudflare joue l'annuaire : quand un visiteur cherche `votre-site.fr`, il reçoit l'adresse de votre serveur et s'y connecte directement.
-- **Nuage orange (« Proxied »).** Cloudflare donne sa propre adresse à la place de celle de votre serveur. Le visiteur se connecte à Cloudflare, qui filtre la demande, sert ce qu'il a en cache, et contacte votre serveur quand c'est nécessaire.
+- **Cloudflare simple annuaire** (nuage gris, « DNS only »). Cloudflare indique seulement où se trouve votre site : quand un visiteur cherche `votre-site.fr`, il reçoit l'adresse de votre serveur et s'y connecte directement.
+- **Cloudflare intermédiaire** (nuage orange, « Proxied »). Cloudflare donne sa propre adresse à la place de celle de votre serveur. Le visiteur se connecte à Cloudflare, qui filtre la demande, sert ce qu'il a en cache, et contacte votre serveur quand c'est nécessaire.
 
 > **Définition : proxy inverse**
 >
-> Un service placé devant votre serveur, qui reçoit les visites à sa place et les lui transmet. Avec le nuage orange, Cloudflare joue ce rôle. C'est le même principe que [Nginx placé devant Apache](blog/trop-de-redirections-https-nginx-apache/).
+> Un service placé devant votre serveur, qui reçoit les visites à sa place et les lui transmet. Quand Cloudflare sert d'intermédiaire, il joue ce rôle. C'est le même principe que [Nginx placé devant Apache](blog/trop-de-redirections-https-nginx-apache/).
 
 ![Le chemin d'une visite, avec et sans le proxy Cloudflare : sans proxy, votre serveur voit l'adresse du visiteur ; avec Cloudflare, il voit l'adresse de Cloudflare, et celle du visiteur voyage dans l'en-tête CF-Connecting-IP.](assets/img/blog/cloudflare-proxy.svg)
 
 C'est un peu comme un standard téléphonique : vos clients appellent le standard, qui vous transfère l'appel. Sur votre téléphone s'affiche le numéro du standard, pas celui du client. Le standard peut en revanche vous dire qui appelle.
 
-## Ce que cela change pour votre serveur
+## Ce qui change quand Cloudflare sert d'intermédiaire
 
 ### 1. Vos journaux voient Cloudflare, pas vos visiteurs
 
-Avec le nuage orange, toutes les visites arrivent sur votre serveur depuis des adresses de Cloudflare. Par défaut, ce sont elles qui apparaissent dans les journaux du serveur, dans certaines statistiques, et dans les outils qui se fient à l'adresse du visiteur.
+Quand Cloudflare sert d'intermédiaire, toutes les visites arrivent sur votre serveur depuis des adresses de Cloudflare. Par défaut, ce sont elles qui apparaissent dans les journaux du serveur, dans certaines statistiques, et dans les outils qui se fient à l'adresse du visiteur.
 
 Cela pose un vrai problème de sécurité : un outil qui bloque automatiquement les adresses suspectes peut bloquer une adresse de Cloudflare, et donc couper l'accès à de nombreux visiteurs légitimes à la fois.
 
@@ -74,7 +74,7 @@ Il faut seulement garder deux choses en tête :
 - **Les autres accès ne passent pas par Cloudflare.** L'administration du serveur (SSH), la messagerie ou les outils de supervision gardent leurs propres règles : ne les ouvrez pas aux adresses de Cloudflare, mais aux seules adresses qui en ont besoin.
 - **Les adresses de Cloudflare ne sont pas les vôtres.** Le réseau de Cloudflare sert de nombreux clients. Cloudflare classe lui-même cette restriction par adresses comme « moyennement sûre » et propose des protections plus fortes, comme l'authentification du serveur d'origine décrite plus bas.
 
-## Pour les personnes qui gèrent un serveur
+## Comment configurer votre serveur
 
 Cette partie s'adresse à celles et ceux qui administrent eux-mêmes un serveur privé, un serveur dédié ou une instance cloud.
 
@@ -94,7 +94,7 @@ RemoteIPTrustedProxy = une plage de Cloudflare | À répéter pour chaque plage 
 
 ### Restreindre le pare-feu sans couper le site
 
-1. **Listez les enregistrements DNS en nuage orange** : seuls ceux-là passent par Cloudflare. Un sous-domaine en nuage gris doit rester joignable directement.
+1. **Repérez les adresses qui passent par Cloudflare** : ce sont les enregistrements DNS en nuage orange. Un sous-domaine en nuage gris ne passe pas par Cloudflare et doit rester joignable directement.
 2. **Listez les autres accès** au serveur (administration, messagerie, supervision) et les adresses qui en ont besoin.
 3. **Récupérez les plages officielles** de Cloudflare, en IPv4 et en IPv6, sur cloudflare.com/ips.
 4. **Gardez un accès de secours** au serveur, par la console de votre hébergeur ou une règle d'administration distincte, avant de modifier les règles.
@@ -106,7 +106,7 @@ RemoteIPTrustedProxy = une plage de Cloudflare | À répéter pour chaque plage 
 
 Pour que votre serveur n'accepte que les connexions de Cloudflare, Cloudflare propose l'« Authenticated Origin Pulls » : il présente un certificat à votre serveur, qui le vérifie. Cette option demande le mode de chiffrement « Full » ou « Full (strict) ». Selon sa documentation, le certificat fourni par défaut garantit seulement que la demande vient du réseau Cloudflare : pour une protection plus stricte, on utilise son propre certificat. Cloudflare propose aussi d'autres méthodes, comme Cloudflare Tunnel.
 
-## Cloudflare n'est pas le seul service à fonctionner ainsi
+## Les services qui fonctionnent comme Cloudflare
 
 D'autres réseaux placés devant les serveurs suivent le même principe, chacun avec ses outils :
 
@@ -117,7 +117,7 @@ Il n'existe donc pas de règle de pare-feu universelle : chaque service a sa mé
 
 > **À retenir**
 >
-> Avec le nuage orange, Cloudflare se place entre vos visiteurs et votre serveur. Votre serveur ne voit plus que lui : il faut lui apprendre à lire l'adresse réelle des visiteurs, et autoriser Cloudflare dans le pare-feu, sans oublier les autres accès. Un proxy devant votre serveur ne dispense pas de protéger le serveur lui-même.
+> Quand Cloudflare sert d'intermédiaire, il se place entre vos visiteurs et votre serveur. Votre serveur ne voit plus que lui : il faut lui apprendre à lire l'adresse réelle des visiteurs, et autoriser Cloudflare dans le pare-feu, sans oublier les autres accès. Un proxy devant votre serveur ne dispense pas de protéger le serveur lui-même.
 
 ## Sources
 

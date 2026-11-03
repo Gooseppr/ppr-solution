@@ -12,8 +12,8 @@
   <rect width="400" height="560" rx="28" fill="#F8F7F3"/>
 
   <!-- 1. Sans proxy -->
-  <text x="24" y="44" font-size="15" font-weight="600" fill="#171717">Sans proxy (nuage gris)</text>
-  <text x="24" y="64" font-size="12.5" fill="#5C5B56">Le DNS donne l'adresse de votre serveur.</text>
+  <text x="24" y="44" font-size="15" font-weight="600" fill="#171717">Cloudflare simple annuaire</text>
+  <text x="24" y="64" font-size="12.5" fill="#5C5B56">Le visiteur reçoit l'adresse de votre serveur.</text>
 
   <rect x="24" y="86" width="112" height="56" rx="14" fill="#fff" stroke="#171717" stroke-width="1.5"/>
   <text x="80" y="110" font-size="13.5" font-weight="600" fill="#171717" text-anchor="middle">Visiteur</text>
@@ -31,8 +31,8 @@
   <path d="M24 186H376" stroke="#DCDAD3" stroke-width="1" stroke-dasharray="4 5"/>
 
   <!-- 2. Avec proxy -->
-  <text x="24" y="226" font-size="15" font-weight="600" fill="#171717">Avec Cloudflare (nuage orange)</text>
-  <text x="24" y="246" font-size="12.5" fill="#5C5B56">Le DNS donne une adresse de Cloudflare.</text>
+  <text x="24" y="226" font-size="15" font-weight="600" fill="#171717">Cloudflare intermédiaire</text>
+  <text x="24" y="246" font-size="12.5" fill="#5C5B56">Le visiteur reçoit une adresse de Cloudflare.</text>
 
   <rect x="24" y="268" width="112" height="56" rx="14" fill="#fff" stroke="#171717" stroke-width="1.5"/>
   <text x="80" y="292" font-size="13.5" font-weight="600" fill="#171717" text-anchor="middle">Visiteur</text>
