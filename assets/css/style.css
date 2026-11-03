@@ -931,3 +931,7 @@ code { font-family: var(--font-mono); font-size: 0.88em; background: var(--ivory
 
 /* 24 MOTS TRÈS LONGS (codes d'erreur, noms de fichiers) : coupure plutôt que débordement */
 .article-header h1, .prose, .post-card h3 { overflow-wrap: break-word; }
+
+/* 25 ILLUSTRATIONS DANS LES ARTICLES */
+.prose img { width: 100%; max-width: 30rem; height: auto; margin-inline: auto; }
+.prose code { overflow-wrap: anywhere; }

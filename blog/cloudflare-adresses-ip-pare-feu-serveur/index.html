@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-tlTtfpdsMQSdcfX3DLM1fgx/y++BLw+48vFj+5cTJa0='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs · PPR-Solution</title>
+  <meta name="description" content="Cloudflare en mode proxy : pourquoi le serveur voit les IP Cloudflare, comment récupérer l&#39;IP réelle des visiteurs (CF-Connecting-IP) et autoriser Cloudflare dans le pare-feu sans erreur 521 ou 522.">
+  <link rel="canonical" href="https://ppr-solution.fr/blog/cloudflare-adresses-ip-pare-feu-serveur/">
+  <meta name="theme-color" content="#F8F7F3">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="PPR-Solution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs · PPR-Solution">
+  <meta property="og:description" content="Cloudflare en mode proxy : pourquoi le serveur voit les IP Cloudflare, comment récupérer l&#39;IP réelle des visiteurs (CF-Connecting-IP) et autoriser Cloudflare dans le pare-feu sans erreur 521 ou 522.">
+  <meta property="og:url" content="https://ppr-solution.fr/blog/cloudflare-adresses-ip-pare-feu-serveur/">
+  <meta property="og:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PPR-Solution — assistance technique pour votre site et son hébergement">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="article:published_time" content="2026-11-03">
+  <meta property="article:modified_time" content="2026-11-03">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs","description":"Cloudflare en mode proxy : pourquoi le serveur voit les IP Cloudflare, comment récupérer l'IP réelle des visiteurs (CF-Connecting-IP) et autoriser Cloudflare dans le pare-feu sans erreur 521 ou 522.","datePublished":"2026-11-03","dateModified":"2026-11-03","inLanguage":"fr-FR","mainEntityOfPage":"https://ppr-solution.fr/blog/cloudflare-adresses-ip-pare-feu-serveur/","author":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution","url":"https://ppr-solution.fr/"},"publisher":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ppr-solution.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ppr-solution.fr/blog.html"},{"@type":"ListItem","position":3,"name":"Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs","item":"https://ppr-solution.fr/blog/cloudflare-adresses-ip-pare-feu-serveur/"}]}]}</script>
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <script src="../../assets/js/main.js" defer></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header" data-header>
+    <div class="container nav-inner">
+      <a class="brand" href="../../">
+        <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
+          <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
+          <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
+          <path d="M27 13h9" stroke="#171717" stroke-width="2"/>
+          <circle cx="41" cy="13" r="5.5" fill="#171717"/>
+        </svg>
+        <span>
+          <span class="brand-name">PPR-Solution</span>
+          <span class="brand-sub">assistance technique web</span>
+        </span>
+        <span class="sr-only">(accueil)</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
+        <span class="nav-icon" aria-hidden="true"></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+      <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
+        <a href="../../prestations.html">Prestations</a>
+        <a href="../../blog.html" aria-current="page">Blog</a>
+        <a href="../../a-propos.html">À propos</a>
+        <a class="btn btn-primary btn-sm" href="../../contact.html">Obtenir de l'aide</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="g-hebergement" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="12" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="10" y="26" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="51" cy="31" r="2.6" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-php" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M2.8 14h62.4" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="9" cy="8.6" r="2" fill="#F05B3F"/>
+        <rect x="9" y="21" width="20" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="19.5" width="22" height="8" rx="4" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.1"/>
+        <rect x="9" y="33" width="14" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="33" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-dns" viewBox="0 0 68 48">
+        <path d="M34 24 12 9M34 24 12 39M34 24h22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <circle cx="12" cy="9" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="39" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="58" cy="24" r="5.5" fill="#F05B3F" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="34" cy="24" r="9" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="g-https" viewBox="0 0 68 48">
+        <path d="M4 30h60" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <circle cx="6" cy="30" r="3" fill="currentColor"/>
+        <circle cx="62" cy="30" r="3" fill="currentColor"/>
+        <rect x="24" y="20" width="20" height="18" rx="4" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M28.5 20v-4.5a5.5 5.5 0 0 1 11 0V20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="34" cy="29" r="2.4" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-migration" viewBox="0 0 68 48">
+        <rect x="2" y="20" width="24" height="24" rx="7" fill="#F8F7F3" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="42" y="20" width="24" height="24" rx="7" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 18C16 6 52 6 54 17" fill="none" stroke="#B8391F" stroke-width="1.6"/>
+        <path d="m50 13.5 4 4.5 4-4.8" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="8" y="27" width="12" height="4" rx="2" fill="#B7B7B2"/>
+        <rect x="8" y="34" width="9" height="4" rx="2" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-configuration" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="16" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="31" y="12" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="10" y="22" width="12" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="27" y="22" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+        <rect x="10" y="32" width="18" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="33" y="32" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-bilan" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m10 15 3 3 5-6M10 27l3 3 5-6" fill="none" stroke="#1E6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="37" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <rect x="24" y="13" width="32" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="25" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="35" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 12 14">
+        <rect x="1" y="5.5" width="10" height="7.5" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M3.4 5.5V4a2.6 2.6 0 0 1 5.2 0v1.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main id="contenu">
+<article class="article">
+      <header class="article-header">
+        <div class="container article-narrow">
+          <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-03">3 novembre 2026</time></span> · <span>6 min de lecture</span></p>
+          <h1>Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs</h1>
+        </div>
+      </header>
+      <div class="container article-layout">
+        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#nuage-gris-nuage-orange-deux-roles-tres-differents">Nuage gris, nuage orange : deux rôles très différents</a></li><li><a href="#ce-que-cela-change-pour-votre-serveur">Ce que cela change pour votre serveur</a></li><li><a href="#pour-les-personnes-qui-gerent-un-serveur">Pour les personnes qui gèrent un serveur</a></li><li><a href="#cloudflare-n-est-pas-le-seul-service-a-fonctionner-ainsi">Cloudflare n&#39;est pas le seul service à fonctionner ainsi</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
+        <div class="article-body prose">
+<p class="lead">Votre domaine passe par Cloudflare, et une question revient souvent : « Cloudflare gère mon domaine. Pourquoi faut-il autoriser ses adresses IP dans le pare-feu de mon serveur, et pourquoi mes statistiques ne montrent-elles que ses adresses ? » La réponse tient à une distinction simple : Cloudflare peut se contenter d'indiquer où se trouve votre site, ou se placer entre vos visiteurs et votre serveur. Dans le second cas, votre serveur ne parle plus qu'à Cloudflare, et ses réglages doivent en tenir compte.</p>
+<div class="note note-summary"><strong>En bref</strong><ul>
+<li>Avec le « nuage gris », Cloudflare ne fait qu'indiquer l'adresse de votre serveur ; les visiteurs s'y connectent directement.</li>
+<li>Avec le « nuage orange », Cloudflare reçoit les visiteurs à la place de votre serveur, puis le contacte lui-même : votre serveur voit donc les adresses de Cloudflare.</li>
+<li>L'adresse réelle du visiteur reste disponible dans un en-tête appelé CF-Connecting-IP, à condition de configurer le serveur pour la lire.</li>
+<li>Si votre pare-feu bloque les adresses de Cloudflare, votre site affiche une erreur 521 ou 522.</li>
+<li>Autoriser uniquement Cloudflare protège mieux votre serveur, mais ne suffit pas seul : on le complète par d'autres vérifications.</li>
+</ul>
+</div>
+<h2 id="nuage-gris-nuage-orange-deux-roles-tres-differents">Nuage gris, nuage orange : deux rôles très différents</h2>
+<p>Dans l'interface de Cloudflare, chaque enregistrement DNS porte un petit nuage.</p>
+<ul>
+<li><strong>Nuage gris (« DNS only »).</strong> Cloudflare joue l'annuaire : quand un visiteur cherche <code>votre-site.fr</code>, il reçoit l'adresse de votre serveur et s'y connecte directement.</li>
+<li><strong>Nuage orange (« Proxied »).</strong> Cloudflare donne sa propre adresse à la place de celle de votre serveur. Le visiteur se connecte à Cloudflare, qui filtre la demande, sert ce qu'il a en cache, et contacte votre serveur quand c'est nécessaire.</li>
+</ul>
+<aside class="note note-definition"><strong>Définition — proxy inverse</strong><p>Un service placé devant votre serveur, qui reçoit les visites à sa place et les lui transmet. Avec le nuage orange, Cloudflare joue ce rôle. C'est le même principe que <a href="../../blog/trop-de-redirections-https-nginx-apache/">Nginx placé devant Apache</a>.</p>
+</aside>
+<p><img src="../../assets/img/blog/cloudflare-proxy.svg" alt="Le chemin d'une visite, avec et sans le proxy Cloudflare : sans proxy, votre serveur voit l'adresse du visiteur ; avec Cloudflare, il voit l'adresse de Cloudflare, et celle du visiteur voyage dans l'en-tête CF-Connecting-IP." width="400" height="560" loading="lazy"></p>
+<p>C'est un peu comme un standard téléphonique : vos clients appellent le standard, qui vous transfère l'appel. Sur votre téléphone s'affiche le numéro du standard, pas celui du client. Le standard peut en revanche vous dire qui appelle.</p>
+<h2 id="ce-que-cela-change-pour-votre-serveur">Ce que cela change pour votre serveur</h2>
+<h3 id="1-vos-journaux-voient-cloudflare-pas-vos-visiteurs">1. Vos journaux voient Cloudflare, pas vos visiteurs</h3>
+<p>Avec le nuage orange, toutes les visites arrivent sur votre serveur depuis des adresses de Cloudflare. Par défaut, ce sont elles qui apparaissent dans les journaux du serveur, dans certaines statistiques, et dans les outils qui se fient à l'adresse du visiteur.</p>
+<p>Cela pose un vrai problème de sécurité : un outil qui bloque automatiquement les adresses suspectes peut bloquer une adresse de Cloudflare, et donc couper l'accès à de nombreux visiteurs légitimes à la fois.</p>
+<p>Cloudflare transmet heureusement l'adresse réelle du visiteur dans un en-tête de la demande, <code>CF-Connecting-IP</code>. Il suffit de configurer le serveur pour la lire, comme expliqué plus bas.</p>
+<div class="note note-warning"><strong>Attention</strong><p>Cet en-tête ne doit être cru que s'il vient réellement de Cloudflare. N'importe qui peut fabriquer une demande avec un faux en-tête : le serveur ne doit le lire que pour les connexions venant des adresses officielles de Cloudflare.</p>
+</div>
+<h3 id="2-votre-pare-feu-doit-laisser-passer-cloudflare">2. Votre pare-feu doit laisser passer Cloudflare</h3>
+<aside class="note note-definition"><strong>Définition — pare-feu</strong><p>Le filtre qui décide quelles connexions peuvent atteindre votre serveur. Chez les fournisseurs cloud, il porte souvent un autre nom : « Security Group » chez AWS, « groupe de sécurité réseau » chez Azure.</p>
+</aside>
+<p>Puisque toutes les visites arrivent de Cloudflare, c'est lui que votre pare-feu doit laisser entrer sur les ports du site web (443 pour HTTPS, 80 pour HTTP). Si ses adresses sont bloquées, les visiteurs voient une page d'erreur de Cloudflare :</p>
+<ul>
+<li><strong>« Error 521: Web server is down »</strong> quand votre serveur refuse les connexions de Cloudflare ;</li>
+<li><strong>« Error 522: Connection timed out »</strong> quand elles restent sans réponse, ce qui arrive souvent lorsqu'un pare-feu les ignore au lieu de les refuser.</li>
+</ul>
+<h3 id="3-pourquoi-ne-pas-tout-laisser-ouvert">3. Pourquoi ne pas tout laisser ouvert ?</h3>
+<p>Si votre serveur accepte les connexions de tout Internet, une personne qui connaît son adresse peut le contacter directement, en passant à côté de Cloudflare et de ses protections. Restreindre les ports web aux seules adresses de Cloudflare ferme cette porte de côté.</p>
+<p>Il faut seulement garder deux choses en tête :</p>
+<ul>
+<li><strong>Les autres accès ne passent pas par Cloudflare.</strong> L'administration du serveur (SSH), la messagerie ou les outils de supervision gardent leurs propres règles : ne les ouvrez pas aux adresses de Cloudflare, mais aux seules adresses qui en ont besoin.</li>
+<li><strong>Les adresses de Cloudflare ne sont pas les vôtres.</strong> Le réseau de Cloudflare sert de nombreux clients. Cloudflare classe lui-même cette restriction par adresses comme « moyennement sûre » et propose des protections plus fortes, comme l'authentification du serveur d'origine décrite plus bas.</li>
+</ul>
+<h2 id="pour-les-personnes-qui-gerent-un-serveur">Pour les personnes qui gèrent un serveur</h2>
+<p>Cette partie s'adresse à celles et ceux qui administrent eux-mêmes un serveur privé, un serveur dédié ou une instance cloud.</p>
+<h3 id="recuperer-l-adresse-reelle-des-visiteurs">Récupérer l'adresse réelle des visiteurs</h3>
+<p>On indique au serveur web de lire <code>CF-Connecting-IP</code>, uniquement pour les connexions venant des plages officielles de Cloudflare, publiées sur cloudflare.com/ips. Il faut une ligne par plage, et tenir cette liste à jour.</p>
+<figure class="config-window config-window-stacked"><figcaption class="config-window-bar"><span class="config-file">nginx — module realip</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">set_real_ip_from</span><span class="config-value">une plage de Cloudflare</span><span class="config-help">À répéter pour chaque plage IPv4 et IPv6 publiée par Cloudflare.</span></li><li class="config-row"><span class="config-key">real_ip_header</span><span class="config-value">CF-Connecting-IP</span><span class="config-help">Utilise l'adresse transmise par Cloudflare comme adresse du visiteur.</span></li></ul></figure>
+<figure class="config-window config-window-stacked"><figcaption class="config-window-bar"><span class="config-file">apache — module mod_remoteip</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">RemoteIPHeader</span><span class="config-value">CF-Connecting-IP</span><span class="config-help">Utilise l'adresse transmise par Cloudflare comme adresse du visiteur.</span></li><li class="config-row"><span class="config-key">RemoteIPTrustedProxy</span><span class="config-value">une plage de Cloudflare</span><span class="config-help">À répéter pour chaque plage : seules ces adresses sont crues.</span></li></ul></figure>
+<h3 id="restreindre-le-pare-feu-sans-couper-le-site">Restreindre le pare-feu sans couper le site</h3>
+<ol>
+<li><strong>Listez les enregistrements DNS en nuage orange</strong> : seuls ceux-là passent par Cloudflare. Un sous-domaine en nuage gris doit rester joignable directement.</li>
+<li><strong>Listez les autres accès</strong> au serveur (administration, messagerie, supervision) et les adresses qui en ont besoin.</li>
+<li><strong>Récupérez les plages officielles</strong> de Cloudflare, en IPv4 et en IPv6, sur cloudflare.com/ips.</li>
+<li><strong>Gardez un accès de secours</strong> au serveur, par la console de votre hébergeur ou une règle d'administration distincte, avant de modifier les règles.</li>
+<li><strong>Autorisez les plages de Cloudflare</strong> sur les ports 80 et 443, puis retirez l'ouverture à tout Internet sur ces ports.</li>
+<li><strong>Testez</strong> : le site doit répondre par son nom de domaine, et la connexion directe à l'adresse du serveur doit échouer.</li>
+<li><strong>Prévoyez la mise à jour</strong> de la liste : Cloudflare peut ajouter des plages.</li>
+</ol>
+<h3 id="aller-plus-loin-authentifier-les-connexions-de-cloudflare">Aller plus loin : authentifier les connexions de Cloudflare</h3>
+<p>Pour que votre serveur n'accepte que les connexions de Cloudflare, Cloudflare propose l'« Authenticated Origin Pulls » : il présente un certificat à votre serveur, qui le vérifie. Cette option demande le mode de chiffrement « Full » ou « Full (strict) ». Selon sa documentation, le certificat fourni par défaut garantit seulement que la demande vient du réseau Cloudflare : pour une protection plus stricte, on utilise son propre certificat. Cloudflare propose aussi d'autres méthodes, comme Cloudflare Tunnel.</p>
+<h2 id="cloudflare-n-est-pas-le-seul-service-a-fonctionner-ainsi">Cloudflare n'est pas le seul service à fonctionner ainsi</h2>
+<p>D'autres réseaux placés devant les serveurs suivent le même principe, chacun avec ses outils :</p>
+<ul>
+<li><strong>Amazon CloudFront</strong> fournit des listes d'adresses gérées par AWS (<code>com.amazonaws.global.cloudfront.origin-facing</code>), utilisables directement dans un Security Group et tenues à jour par AWS.</li>
+<li><strong>Azure Front Door</strong> fournit l'étiquette de service <code>AzureFrontDoor.Backend</code>. Microsoft précise que ce filtrage par adresses ne suffit pas, car d'autres clients d'Azure utilisent les mêmes adresses, et recommande de vérifier en plus l'en-tête <code>X-Azure-FDID</code>, propre à chaque profil.</li>
+</ul>
+<p>Il n'existe donc pas de règle de pare-feu universelle : chaque service a sa méthode, à suivre dans sa documentation officielle.</p>
+<div class="note"><strong>À retenir</strong><p>Avec le nuage orange, Cloudflare se place entre vos visiteurs et votre serveur. Votre serveur ne voit plus que lui : il faut lui apprendre à lire l'adresse réelle des visiteurs, et autoriser Cloudflare dans le pare-feu, sans oublier les autres accès. Un proxy devant votre serveur ne dispense pas de protéger le serveur lui-même.</p>
+</div>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://developers.cloudflare.com/dns/proxy-status/">Cloudflare — Fonctionnement du proxy et statut des enregistrements DNS</a></li>
+<li><a href="https://www.cloudflare.com/ips/">Cloudflare — Plages d'adresses IP officielles</a></li>
+<li><a href="https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/">Cloudflare — Protéger son serveur d'origine</a></li>
+<li><a href="https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/">Cloudflare — Restaurer l'adresse IP réelle des visiteurs</a></li>
+<li><a href="https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-521/">Cloudflare — Erreur 521</a></li>
+<li><a href="https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/">Cloudflare — Erreur 522</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/LocationsOfEdgeServers.html">AWS — Adresses de CloudFront et liste de préfixes gérée</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/frontdoor/origin-security">Microsoft — Sécuriser les origines d'Azure Front Door</a></li>
+</ul>
+
+          <aside class="article-cta" aria-labelledby="article-cta-title">
+            <h2 id="article-cta-title">Besoin d'un coup de main&nbsp;?</h2>
+            <p>Vous utilisez Cloudflare et vous voulez restreindre l&#39;accès à votre serveur sans risquer de couper votre site ? Décrivez-nous votre installation : le premier échange est gratuit.</p>
+            <div class="article-cta-actions">
+              <a class="btn btn-primary" href="../../contact.html?sujet=configuration">Faire vérifier ma configuration Cloudflare</a>
+              <a class="link" href="../../prestations.html#hebergement">Prestation : assistance à l&#39;hébergement</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+      <section class="section section-tight" aria-labelledby="related-title"><div class="container"><h2 id="related-title" class="h-small">À lire aussi</h2><ul class="post-list"><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-02">2 novembre 2026</time></p>
+          <h3><a href="../../blog/hebergeur-protege-anciennes-versions-php/">Ancienne version de PHP : votre hébergeur peut-il encore protéger votre site ?</a></h3>
+          <p>Certains hébergeurs continuent de corriger les failles de PHP 5.6 ou 7.4 alors que le projet PHP ne le fait plus. Comment c&#39;est possible, ce que cela couvre vraiment, et les questions à leur poser.</p>
+          <p class="post-reading">4 min de lecture</p>
+        </li><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-02">2 novembre 2026</time></p>
+          <h3><a href="../../blog/passer-de-php-5-6-ou-7-4-a-php-8/">Passer de PHP 5.6 ou 7.4 à PHP 8 : comment s&#39;y prendre sans casser son site</a></h3>
+          <p>Votre site tourne encore en PHP 5.6 ou 7.4 ? Ce qui risque de casser en passant à PHP 8, dans quel ordre procéder, et comment mettre le site en maintenance le temps de l&#39;opération.</p>
+          <p class="post-reading">6 min de lecture</p>
+        </li></ul></div></section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p><strong>PPR-Solution</strong><br>Assistance technique · Hébergement web · Configuration</p>
+        <p><a class="link" href="mailto:contact@ppr-solution.fr">contact@ppr-solution.fr</a></p>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul class="footer-links">
+          <li><a href="../../">Accueil</a></li>
+          <li><a href="../../prestations.html">Prestations</a></li>
+          <li><a href="../../blog.html">Blog</a></li>
+          <li><a href="../../a-propos.html">À propos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul class="footer-links">
+          <li><a href="../../mentions-legales.html">Mentions légales</a></li>
+          <li><a href="../../confidentialite.html">Confidentialité</a></li>
+          <li><a href="../../cgv.html">Conditions générales de vente</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

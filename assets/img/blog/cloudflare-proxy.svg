@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 560" width="400" height="560" role="img" aria-labelledby="t d" font-family="IBM Plex Sans, Segoe UI, Helvetica, Arial, sans-serif">
+  <title id="t">Le chemin d'une visite, avec et sans le proxy Cloudflare</title>
+  <desc id="d">Sans proxy, le visiteur se connecte directement au serveur, qui voit son adresse IP. Avec Cloudflare en mode proxy, le visiteur se connecte à Cloudflare, qui se connecte à son tour au serveur : le serveur voit l'adresse de Cloudflare, et l'adresse du visiteur est transmise dans l'en-tête CF-Connecting-IP.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 9 5 1 9" fill="none" stroke="#171717" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="av" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 9 5 1 9" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="400" height="560" rx="28" fill="#F8F7F3"/>
+
+  <!-- 1. Sans proxy -->
+  <text x="24" y="44" font-size="15" font-weight="600" fill="#171717">Sans proxy (nuage gris)</text>
+  <text x="24" y="64" font-size="12.5" fill="#5C5B56">Le DNS donne l'adresse de votre serveur.</text>
+
+  <rect x="24" y="86" width="112" height="56" rx="14" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="80" y="110" font-size="13.5" font-weight="600" fill="#171717" text-anchor="middle">Visiteur</text>
+  <text x="80" y="128" font-size="11.5" fill="#5C5B56" text-anchor="middle" font-family="IBM Plex Mono, Menlo, monospace">IP du visiteur</text>
+
+  <path d="M140 114H256" stroke="#171717" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <text x="198" y="105" font-size="11.5" fill="#5C5B56" text-anchor="middle">HTTPS</text>
+
+  <rect x="262" y="80" width="114" height="68" rx="16" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="319" y="106" font-size="13.5" font-weight="600" fill="#171717" text-anchor="middle">Votre serveur</text>
+  <text x="319" y="125" font-size="11.5" fill="#5C5B56" text-anchor="middle">voit l'IP</text>
+  <text x="319" y="140" font-size="11.5" fill="#5C5B56" text-anchor="middle">du visiteur</text>
+
+  <!-- séparation -->
+  <path d="M24 186H376" stroke="#DCDAD3" stroke-width="1" stroke-dasharray="4 5"/>
+
+  <!-- 2. Avec proxy -->
+  <text x="24" y="226" font-size="15" font-weight="600" fill="#171717">Avec Cloudflare (nuage orange)</text>
+  <text x="24" y="246" font-size="12.5" fill="#5C5B56">Le DNS donne une adresse de Cloudflare.</text>
+
+  <rect x="24" y="268" width="112" height="56" rx="14" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="80" y="292" font-size="13.5" font-weight="600" fill="#171717" text-anchor="middle">Visiteur</text>
+  <text x="80" y="310" font-size="11.5" fill="#5C5B56" text-anchor="middle" font-family="IBM Plex Mono, Menlo, monospace">IP du visiteur</text>
+
+  <path d="M140 296H250" stroke="#171717" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <text x="195" y="287" font-size="11.5" fill="#5C5B56" text-anchor="middle">HTTPS</text>
+
+  <rect x="256" y="262" width="120" height="68" rx="34" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.5"/>
+  <text x="316" y="291" font-size="13.5" font-weight="600" fill="#171717" text-anchor="middle">Cloudflare</text>
+  <text x="316" y="309" font-size="11.5" fill="#5C5B56" text-anchor="middle">proxy inverse</text>
+
+  <path d="M316 334V398" stroke="#B8391F" stroke-width="1.5" fill="none" marker-end="url(#av)"/>
+  <text x="304" y="364" font-size="11.5" fill="#5C5B56" text-anchor="end">nouvelle connexion</text>
+  <text x="304" y="380" font-size="11.5" fill="#5C5B56" text-anchor="end">depuis une IP Cloudflare</text>
+
+  <rect x="196" y="404" width="180" height="68" rx="16" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="286" y="430" font-size="13.5" font-weight="600" fill="#171717" text-anchor="middle">Votre serveur</text>
+  <text x="286" y="449" font-size="11.5" fill="#5C5B56" text-anchor="middle">voit l'IP de Cloudflare</text>
+  <text x="286" y="464" font-size="11.5" fill="#5C5B56" text-anchor="middle">pour chaque visite</text>
+
+  <rect x="24" y="492" width="352" height="44" rx="12" fill="#fff" stroke="#DCDAD3" stroke-width="1"/>
+  <circle cx="44" cy="514" r="5" fill="#F05B3F"/>
+  <text x="58" y="510" font-size="11.5" fill="#171717">L'adresse du visiteur voyage dans l'en-tête</text>
+  <text x="58" y="526" font-size="11.5" fill="#171717" font-family="IBM Plex Mono, Menlo, monospace">CF-Connecting-IP</text>
+</svg>
