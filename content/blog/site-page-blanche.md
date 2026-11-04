@@ -20,7 +20,7 @@ Votre site n'affiche plus qu'une page vide. Ou bien un court message d'erreur, t
 > **En bref**
 >
 > - Une page blanche signifie que le programme du site s'est arrêté avant d'avoir construit la page.
-> - Le domaine, le certificat HTTPS et l'hébergement peuvent fonctionner parfaitement pendant ce temps.
+> - Le domaine, le certificat HTTPS et l'hébergement peuvent fonctionner parfaitement pendant ce temps : le navigateur n'affiche alors aucune erreur, et les outils de vérification déclarent le site en ligne.
 > - Les causes les plus fréquentes : un code devenu incompatible avec la version de PHP, une extension ou un thème défaillant, une base de données injoignable.
 > - La première erreur en cache souvent d'autres : la réparation se fait par étapes.
 > - Une page blanche se répare souvent sans refaire tout le site.
@@ -33,7 +33,20 @@ Selon le site et le navigateur, le même problème prend plusieurs visages :
 - **Sur un site WordPress** : « Il y a eu une erreur critique sur ce site. » (en anglais : « There has been a critical error on this website. »), parfois suivi d'une invitation à consulter la boîte de réception de l'adresse email d'administration.
 - **Dans Google Chrome** : « Cette page ne fonctionne pas. Impossible de traiter cette demande via votre-site.fr à l'heure actuelle. », avec le code « HTTP ERROR 500 » (en anglais : « This page isn't working. votre-site.fr is currently unable to handle this request. »).
 
-Ces trois messages ont généralement la même origine : une erreur qui interrompt le programme du site.
+Ces trois situations ont généralement la même origine : une erreur qui interrompt le programme du site.
+
+## Pourquoi la page blanche est si trompeuse
+
+Le cas le plus déroutant est celui de la page blanche sans aucun message. Le navigateur n'affiche pas d'erreur, parce que, de son point de vue, il n'y en a pas : le serveur lui a répondu « tout va bien » (le code « 200 OK »), simplement avec une page vide.
+
+Même les vérifications techniques s'y laissent prendre. Le domaine pointe vers le bon serveur, la connexion sécurisée s'établit, le certificat est valide, le serveur répond aussitôt : chaque contrôle, pris isolément, est au vert. Les outils en ligne qui vérifient si un site est « en ligne » le déclarent donc disponible. Seul le contenu manque : ce que le serveur renvoie ne contient aucune page à afficher.
+
+C'est pour cela qu'une page blanche ne se diagnostique pas depuis l'extérieur. La réponse se trouve à l'intérieur de l'hébergement, dans le journal des erreurs du site.
+
+> **Définition : code « 200 OK »**
+>
+> La réponse qu'un serveur envoie au navigateur pour dire que la demande a réussi. Elle concerne l'échange entre les deux, pas le contenu de la page : un serveur peut répondre « 200 OK » et renvoyer une page vide.
+
 
 ## Ce qui fonctionne encore, et ce qui s'arrête
 
