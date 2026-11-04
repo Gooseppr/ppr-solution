@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600" role="img" aria-labelledby="t d" font-family="IBM Plex Sans, Segoe UI, Helvetica, Arial, sans-serif">
+  <title id="t">Une page blanche : tout fonctionne, sauf le programme du site</title>
+  <desc id="d">Le nom de domaine répond, la connexion HTTPS est valide, le serveur de l'hébergeur répond et les fichiers du site sont présents. C'est le programme du site, exécuté en PHP, qui s'arrête avant d'avoir construit la page : le visiteur reçoit une page vide ou un message d'erreur générique.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 9 5 1 9" fill="none" stroke="#171717" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="400" height="600" rx="28" fill="#F8F7F3"/>
+
+  <text x="28" y="44" font-size="15" font-weight="600" fill="#171717">Ce qui fonctionne</text>
+
+  <g font-size="13.5" fill="#171717">
+    <rect x="28" y="60" width="344" height="44" rx="12" fill="#fff" stroke="#DCDAD3"/>
+    <circle cx="52" cy="82" r="10" fill="#DCEFE3" stroke="#1E6B45" stroke-width="1.5"/>
+    <path d="m47 82 3.5 3.5 6-7" fill="none" stroke="#1E6B45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="74" y="87">Le nom de domaine répond</text>
+
+    <rect x="28" y="112" width="344" height="44" rx="12" fill="#fff" stroke="#DCDAD3"/>
+    <circle cx="52" cy="134" r="10" fill="#DCEFE3" stroke="#1E6B45" stroke-width="1.5"/>
+    <path d="m47 134 3.5 3.5 6-7" fill="none" stroke="#1E6B45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="74" y="139">Le certificat HTTPS est valide</text>
+
+    <rect x="28" y="164" width="344" height="44" rx="12" fill="#fff" stroke="#DCDAD3"/>
+    <circle cx="52" cy="186" r="10" fill="#DCEFE3" stroke="#1E6B45" stroke-width="1.5"/>
+    <path d="m47 186 3.5 3.5 6-7" fill="none" stroke="#1E6B45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="74" y="191">Le serveur de l'hébergeur répond</text>
+
+    <rect x="28" y="216" width="344" height="44" rx="12" fill="#fff" stroke="#DCDAD3"/>
+    <circle cx="52" cy="238" r="10" fill="#DCEFE3" stroke="#1E6B45" stroke-width="1.5"/>
+    <path d="m47 238 3.5 3.5 6-7" fill="none" stroke="#1E6B45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="74" y="243">Les fichiers du site sont présents</text>
+  </g>
+
+  <path d="M200 268V300" stroke="#171717" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <text x="28" y="326" font-size="15" font-weight="600" fill="#171717">Ce qui s'arrête</text>
+  <rect x="28" y="342" width="344" height="92" rx="18" fill="#F6DCE5" stroke="#A3194A" stroke-width="1.5"/>
+  <circle cx="56" cy="372" r="12" fill="#fff" stroke="#A3194A" stroke-width="1.5"/>
+  <path d="m51 367 10 10m0-10-10 10" stroke="#A3194A" stroke-width="2" stroke-linecap="round"/>
+  <text x="80" y="370" font-size="14" font-weight="600" fill="#171717">Le programme du site (PHP)</text>
+  <text x="80" y="391" font-size="12" fill="#3A3A37">s'interrompt sur une erreur bloquante,</text>
+  <text x="80" y="408" font-size="12" fill="#3A3A37">avant d'avoir construit la page.</text>
+
+  <path d="M200 442V474" stroke="#171717" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <text x="28" y="500" font-size="15" font-weight="600" fill="#171717">Ce que voit le visiteur</text>
+  <rect x="96" y="514" width="208" height="64" rx="12" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <path d="M96.75 534h206.5" stroke="#DCDAD3"/>
+  <circle cx="110" cy="524" r="3" fill="#F05B3F"/>
+  <text x="200" y="560" font-size="12" fill="#5C5B56" text-anchor="middle">une page vide</text>
+</svg>

@@ -43,6 +43,12 @@ Objectif : qu'il **comprenne sa situation** et **sache quoi faire** après la le
 - Les tableaux servent à comparer (versions, symptômes) ; ils ont toujours une légende.
 - **Jamais de bloc de code** (fond noir, syntaxe brute) : le build le refuse. Pour montrer des réglages, utiliser une fenêtre `:::config`, où chaque ligne est expliquée en français. Un nom de fichier ou de réglage isolé peut s'écrire en `code` dans la phrase.
 
+## 4 bis. Messages d'erreur et cas réels
+
+- **Citer les messages que le lecteur voit réellement** : ceux du navigateur (Chrome, Firefox, Safari), de Google, de WordPress, de l'espace client de l'hébergeur, d'un logiciel comme FileZilla. Pas les messages techniques internes (journaux PHP, traces de code) qu'un non-spécialiste ne voit jamais : ils n'amènent ni lecteurs, ni compréhension.
+- Les textes de ces messages sont vérifiés mot pour mot (sources officielles, fichiers de traduction), en français et en anglais quand c'est utile.
+- **Un cas réel est toujours anonymisé** : ni nom, ni domaine, ni chemin de fichier, ni chiffre permettant de le recouper, et jamais de faille de sécurité propre à un site identifiable. On décrit un scénario générique.
+
 ## 5. Exactitude (actualités)
 
 - Chaque fait (date, version, numéro CVE, gravité) est vérifié sur la **source primaire** : php.net, CERT-FR, CISA, annonce officielle de l'éditeur ou de l'hébergeur. Les articles de presse servent seulement à repérer l'information.
