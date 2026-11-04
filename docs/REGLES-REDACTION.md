@@ -45,7 +45,7 @@ Objectif : qu'il **comprenne sa situation** et **sache quoi faire** après la le
 
 ## 4 bis. Messages d'erreur et cas réels
 
-- **Citer les messages que le lecteur voit réellement** : ceux du navigateur (Chrome, Firefox, Safari), de Google, de WordPress, de l'espace client de l'hébergeur, d'un logiciel comme FileZilla. Pas les messages techniques internes (journaux PHP, traces de code) qu'un non-spécialiste ne voit jamais : ils n'amènent ni lecteurs, ni compréhension.
+- **Citer les messages que voient le visiteur ou le propriétaire du site**, pas le développeur. Visiteur : messages du navigateur (Chrome, Firefox, Safari) ou de Google. Propriétaire : messages de WordPress (pages et emails d'administration), de l'espace client de l'hébergeur, d'un logiciel comme FileZilla. Les messages réservés aux développeurs (journaux PHP, traces de code, erreurs internes) ne sont pas cités : ils n'amènent ni lecteurs, ni compréhension.
 - Les textes de ces messages sont vérifiés mot pour mot (sources officielles, fichiers de traduction), en français et en anglais quand c'est utile.
 - **Un cas réel est toujours anonymisé** : ni nom, ni domaine, ni chemin de fichier, ni chiffre permettant de le recouper, et jamais de faille de sécurité propre à un site identifiable. On décrit un scénario générique.
 
