@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600" role="img" aria-labelledby="t d" font-family="IBM Plex Sans, Segoe UI, Helvetica, Arial, sans-serif">
+  <title id="t">Un nom de domaine, plusieurs prestataires</title>
+  <desc id="d">Le nom de domaine est loué chez un registraire. Il indique quel prestataire DNS tient son annuaire. Cet annuaire envoie les visiteurs vers l'hébergeur du site et les emails vers le fournisseur de messagerie. Un sous-domaine, par exemple boutique, peut être confié à un autre prestataire DNS : c'est une délégation.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 9 5 1 9" fill="none" stroke="#171717" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="av" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 9 5 1 9" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="400" height="600" rx="28" fill="#F8F7F3"/>
+
+  <!-- Registraire -->
+  <rect x="80" y="28" width="240" height="62" rx="31" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <circle cx="108" cy="59" r="7" fill="#F05B3F" stroke="#171717" stroke-width="1.5"/>
+  <text x="124" y="54" font-size="14" font-weight="600" fill="#171717">votre-site.fr</text>
+  <text x="124" y="73" font-size="11.5" fill="#5C5B56">loué chez le registraire  · A</text>
+
+  <path d="M200 94V134" stroke="#171717" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="212" y="118" font-size="11.5" fill="#5C5B56">« mon annuaire est chez B »</text>
+
+  <!-- DNS -->
+  <rect x="60" y="140" width="280" height="96" rx="20" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="200" y="166" font-size="14" font-weight="600" fill="#171717" text-anchor="middle">L'annuaire DNS · B</text>
+  <text x="200" y="185" font-size="11.5" fill="#5C5B56" text-anchor="middle">la zone qui fait foi pour le domaine</text>
+  <rect x="84" y="198" width="104" height="26" rx="13" fill="#F8F7F3" stroke="#8A8983"/>
+  <text x="136" y="215" font-size="11.5" fill="#171717" text-anchor="middle">site → C</text>
+  <rect x="212" y="198" width="104" height="26" rx="13" fill="#F8F7F3" stroke="#8A8983"/>
+  <text x="264" y="215" font-size="11.5" fill="#171717" text-anchor="middle">emails → D</text>
+
+  <path d="M136 240C136 270 100 270 100 298" stroke="#171717" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M264 240C264 270 300 270 300 298" stroke="#171717" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+
+  <!-- Hébergeur / emails -->
+  <rect x="28" y="304" width="150" height="64" rx="16" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="103" y="331" font-size="13.5" font-weight="600" fill="#171717" text-anchor="middle">Hébergeur · C</text>
+  <text x="103" y="350" font-size="11.5" fill="#5C5B56" text-anchor="middle">le site</text>
+  <rect x="222" y="304" width="150" height="64" rx="16" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="297" y="331" font-size="13.5" font-weight="600" fill="#171717" text-anchor="middle">Messagerie · D</text>
+  <text x="297" y="350" font-size="11.5" fill="#5C5B56" text-anchor="middle">les emails</text>
+
+  <!-- Délégation -->
+  <path d="M28 396H372" stroke="#DCDAD3" stroke-dasharray="4 5"/>
+  <text x="28" y="424" font-size="13.5" font-weight="600" fill="#171717">Et parfois, un sous-domaine délégué</text>
+  <rect x="28" y="440" width="150" height="64" rx="16" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="103" y="467" font-size="12.5" font-weight="600" fill="#171717" text-anchor="middle">boutique.votre-site.fr</text>
+  <text x="103" y="486" font-size="11.5" fill="#5C5B56" text-anchor="middle">déclaré dans B</text>
+  <path d="M182 472H216" stroke="#B8391F" stroke-width="1.5" fill="none" marker-end="url(#av)"/>
+  <rect x="222" y="440" width="150" height="64" rx="16" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.5"/>
+  <text x="297" y="467" font-size="12.5" font-weight="600" fill="#171717" text-anchor="middle">Autre annuaire · E</text>
+  <text x="297" y="486" font-size="11.5" fill="#5C5B56" text-anchor="middle">gère ce sous-domaine</text>
+
+  <rect x="28" y="522" width="344" height="52" rx="12" fill="#fff" stroke="#DCDAD3"/>
+  <circle cx="48" cy="548" r="5" fill="#F05B3F"/>
+  <text x="62" y="544" font-size="11.5" fill="#171717">Chaque flèche est une dépendance : si un maillon</text>
+  <text x="62" y="561" font-size="11.5" fill="#171717">change ou disparaît, ce qui est en dessous s'arrête.</text>
+</svg>

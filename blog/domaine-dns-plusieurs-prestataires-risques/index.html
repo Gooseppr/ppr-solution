@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-tlTtfpdsMQSdcfX3DLM1fgx/y++BLw+48vFj+5cTJa0='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Domaine chez l&#39;un, DNS chez l&#39;autre : les erreurs qui coupent un site ou des emails · PPR-Solution</title>
+  <meta name="description" content="Domaine, DNS, hébergement et emails chez plusieurs prestataires : « j&#39;ai modifié mes DNS mais rien ne change », emails perdus après une migration, sous-domaine ou zone supprimés. Les risques et comment les éviter.">
+  <link rel="canonical" href="https://ppr-solution.fr/blog/domaine-dns-plusieurs-prestataires-risques/">
+  <meta name="theme-color" content="#F8F7F3">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="PPR-Solution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Domaine chez l&#39;un, DNS chez l&#39;autre : les erreurs qui coupent un site ou des emails · PPR-Solution">
+  <meta property="og:description" content="Domaine, DNS, hébergement et emails chez plusieurs prestataires : « j&#39;ai modifié mes DNS mais rien ne change », emails perdus après une migration, sous-domaine ou zone supprimés. Les risques et comment les éviter.">
+  <meta property="og:url" content="https://ppr-solution.fr/blog/domaine-dns-plusieurs-prestataires-risques/">
+  <meta property="og:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PPR-Solution — assistance technique pour votre site et son hébergement">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="article:published_time" content="2026-11-05">
+  <meta property="article:modified_time" content="2026-11-05">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Domaine chez l'un, DNS chez l'autre : les erreurs qui coupent un site ou des emails","description":"Domaine, DNS, hébergement et emails chez plusieurs prestataires : « j'ai modifié mes DNS mais rien ne change », emails perdus après une migration, sous-domaine ou zone supprimés. Les risques et comment les éviter.","datePublished":"2026-11-05","dateModified":"2026-11-05","inLanguage":"fr-FR","mainEntityOfPage":"https://ppr-solution.fr/blog/domaine-dns-plusieurs-prestataires-risques/","author":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution","url":"https://ppr-solution.fr/"},"publisher":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ppr-solution.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ppr-solution.fr/blog.html"},{"@type":"ListItem","position":3,"name":"Domaine chez l'un, DNS chez l'autre : les erreurs qui coupent un site ou des emails","item":"https://ppr-solution.fr/blog/domaine-dns-plusieurs-prestataires-risques/"}]}]}</script>
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <script src="../../assets/js/main.js" defer></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header" data-header>
+    <div class="container nav-inner">
+      <a class="brand" href="../../">
+        <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
+          <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
+          <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
+          <path d="M27 13h9" stroke="#171717" stroke-width="2"/>
+          <circle cx="41" cy="13" r="5.5" fill="#171717"/>
+        </svg>
+        <span>
+          <span class="brand-name">PPR-Solution</span>
+          <span class="brand-sub">assistance technique web</span>
+        </span>
+        <span class="sr-only">(accueil)</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
+        <span class="nav-icon" aria-hidden="true"></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+      <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
+        <a href="../../prestations.html">Prestations</a>
+        <a href="../../blog.html" aria-current="page">Blog</a>
+        <a href="../../a-propos.html">À propos</a>
+        <a class="btn btn-primary btn-sm" href="../../contact.html">Obtenir de l'aide</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="g-hebergement" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="12" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="10" y="26" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="51" cy="31" r="2.6" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-php" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M2.8 14h62.4" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="9" cy="8.6" r="2" fill="#F05B3F"/>
+        <rect x="9" y="21" width="20" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="19.5" width="22" height="8" rx="4" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.1"/>
+        <rect x="9" y="33" width="14" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="33" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-dns" viewBox="0 0 68 48">
+        <path d="M34 24 12 9M34 24 12 39M34 24h22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <circle cx="12" cy="9" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="39" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="58" cy="24" r="5.5" fill="#F05B3F" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="34" cy="24" r="9" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="g-https" viewBox="0 0 68 48">
+        <path d="M4 30h60" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <circle cx="6" cy="30" r="3" fill="currentColor"/>
+        <circle cx="62" cy="30" r="3" fill="currentColor"/>
+        <rect x="24" y="20" width="20" height="18" rx="4" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M28.5 20v-4.5a5.5 5.5 0 0 1 11 0V20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="34" cy="29" r="2.4" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-migration" viewBox="0 0 68 48">
+        <rect x="2" y="20" width="24" height="24" rx="7" fill="#F8F7F3" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="42" y="20" width="24" height="24" rx="7" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 18C16 6 52 6 54 17" fill="none" stroke="#B8391F" stroke-width="1.6"/>
+        <path d="m50 13.5 4 4.5 4-4.8" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="8" y="27" width="12" height="4" rx="2" fill="#B7B7B2"/>
+        <rect x="8" y="34" width="9" height="4" rx="2" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-configuration" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="16" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="31" y="12" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="10" y="22" width="12" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="27" y="22" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+        <rect x="10" y="32" width="18" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="33" y="32" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-bilan" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m10 15 3 3 5-6M10 27l3 3 5-6" fill="none" stroke="#1E6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="37" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <rect x="24" y="13" width="32" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="25" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="35" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 12 14">
+        <rect x="1" y="5.5" width="10" height="7.5" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M3.4 5.5V4a2.6 2.6 0 0 1 5.2 0v1.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main id="contenu">
+<article class="article">
+      <header class="article-header">
+        <div class="container article-narrow">
+          <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-05">5 novembre 2026</time></span> · <span>6 min de lecture</span></p>
+          <h1>Domaine chez l&#39;un, DNS chez l&#39;autre : les erreurs qui coupent un site ou des emails</h1>
+        </div>
+      </header>
+      <div class="container article-layout">
+        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#un-domaine-plusieurs-prestataires-c-est-normal">Un domaine, plusieurs prestataires : c&#39;est normal</a></li><li><a href="#les-sous-domaines-peuvent-etre-confies-a-quelqu-un-d-autre">Les sous-domaines peuvent être confiés à quelqu&#39;un d&#39;autre</a></li><li><a href="#les-situations-qui-coupent-un-site-ou-des-emails">Les situations qui coupent un site ou des emails</a></li><li><a href="#ce-que-vous-pouvez-verifier-sans-risque">Ce que vous pouvez vérifier sans risque</a></li><li><a href="#ce-qu-implique-un-changement-de-prestataire">Ce qu&#39;implique un changement de prestataire</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
+        <div class="article-body prose">
+<p class="lead">Votre site fonctionne, vos emails arrivent, votre certificat HTTPS se renouvelle. Pourtant, savez-vous précisément qui gère votre nom de domaine, et qui tient l'annuaire qui dirige vos visiteurs et vos emails ? Il est courant que ces rôles soient répartis entre plusieurs prestataires. Cette organisation n'a rien d'anormal, mais elle crée des dépendances invisibles : une configuration peut fonctionner depuis des mois et s'arrêter le jour d'une modification, d'un changement de prestataire ou d'une simple opération administrative.</p>
+<div class="note note-summary"><strong>En bref</strong><ul>
+<li>Un même domaine peut dépendre de quatre prestataires ou plus : registraire, DNS, hébergement, messagerie.</li>
+<li>Le DNS est l'annuaire qui relie tout : c'est lui qui envoie les visiteurs vers le site et les emails vers la messagerie.</li>
+<li>Les pannes viennent souvent d'une modification faite au mauvais endroit, d'un élément oublié lors d'un changement de prestataire ou d'une zone supprimée trop vite.</li>
+<li>Un DNS qui fonctionne aujourd'hui n'est pas forcément à l'abri : chaque prestataire a ses propres règles de gestion.</li>
+<li>Une simple fiche d'inventaire évite la plupart de ces erreurs.</li>
+</ul>
+</div>
+<h2 id="un-domaine-plusieurs-prestataires-c-est-normal">Un domaine, plusieurs prestataires : c'est normal</h2>
+<p>Le nom de domaine se loue chez un <strong>registraire</strong>. L'<strong>annuaire DNS</strong> peut être tenu par ce même registraire ou par un autre prestataire. Le <strong>site</strong> est hébergé ailleurs, et les <strong>emails</strong> peuvent passer par un quatrième service. Nous détaillons le rôle de chacun dans <a href="../../blog/domaine-hebergement-difference/">Domaine, DNS, hébergement : qui fait quoi pour votre site ?</a>.</p>
+<p><img src="../../assets/img/blog/domaine-plusieurs-prestataires.svg" alt="Le nom de domaine est loué chez un registraire, qui indique quel prestataire tient l'annuaire DNS. Cet annuaire envoie les visiteurs vers l'hébergeur du site et les emails vers la messagerie. Un sous-domaine peut être confié à un autre annuaire : c'est une délégation. Chaque flèche est une dépendance." width="400" height="600" loading="lazy"></p>
+<p>Ce découpage a de vrais avantages : choisir le meilleur service pour chaque besoin, changer d'hébergeur sans toucher à ses emails, confier une partie du domaine à une équipe ou à une plateforme spécialisée. Le risque ne vient pas du découpage lui-même, mais du fait qu'on ne sait plus, au bout de quelque temps, qui gère quoi.</p>
+<aside class="note note-definition"><strong>Définition — zone DNS</strong><p>L'ensemble des réglages DNS d'un domaine : l'adresse du site, celle des serveurs de messagerie, les vérifications de sécurité… C'est le contenu de l'annuaire, rangé chez un prestataire.</p>
+</aside>
+<h2 id="les-sous-domaines-peuvent-etre-confies-a-quelqu-un-d-autre">Les sous-domaines peuvent être confiés à quelqu'un d'autre</h2>
+<p>Un domaine comme <code>votre-site.fr</code> peut avoir des sous-domaines : <code>www.votre-site.fr</code>, <code>boutique.votre-site.fr</code>, <code>app.votre-site.fr</code>. Le plus souvent, tous sont réglés dans la même zone, chez le même prestataire.</p>
+<p>Mais on peut aussi confier un sous-domaine à un autre prestataire DNS, qui en gère alors seul les réglages. C'est fréquent pour une boutique en ligne, une application ou un outil externe.</p>
+<aside class="note note-definition"><strong>Définition — délégation</strong><p>Le fait de confier la gestion d'un sous-domaine à un autre annuaire DNS. La zone principale indique simplement : « pour ce sous-domaine, adressez-vous à tel prestataire ».</p>
+</aside>
+<p>C'est un peu comme un immeuble dont le syndic gère toutes les boîtes aux lettres, sauf celles d'un étage, confiées à un autre gestionnaire. Tout fonctionne, tant que chacun sait qui s'occupe de quoi.</p>
+<h2 id="les-situations-qui-coupent-un-site-ou-des-emails">Les situations qui coupent un site ou des emails</h2>
+<h3 id="j-ai-modifie-mes-dns-mais-rien-ne-change">« J'ai modifié mes DNS mais rien ne change »</h3>
+<p>C'est la situation la plus fréquente. Le domaine a été acheté chez un registraire, qui propose une page de réglages DNS. Mais l'annuaire officiel du domaine se trouve chez un autre prestataire. Les modifications faites chez le registraire sont enregistrées… dans une zone que personne ne consulte.</p>
+<p>Le seul annuaire qui compte est celui désigné par les <strong>serveurs DNS</strong> (« nameservers ») déclarés pour le domaine chez le registraire.</p>
+<h3 id="changement-de-prestataire-le-site-marche-les-emails-ne-passent-plus">Changement de prestataire : le site marche, les emails ne passent plus</h3>
+<p>Lors d'un changement de prestataire DNS, il faut recréer tous les réglages dans le nouvel annuaire. On pense au site ; on oublie souvent les réglages de la messagerie et ceux qui authentifient les emails. Résultat : le site s'affiche normalement, mais les emails n'arrivent plus, ou finissent en courrier indésirable chez les destinataires.</p>
+<p>Certains domaines utilisent aussi une signature de sécurité de l'annuaire (DNSSEC). Si elle est active, un changement de prestataire mal mené peut rendre le domaine injoignable pour une partie des internautes, alors que tous les réglages semblent en place.</p>
+<h3 id="un-sous-domaine-qui-ne-repond-plus">Un sous-domaine qui ne répond plus</h3>
+<p>La zone principale confie un sous-domaine à un autre prestataire, mais celui-ci ne le gère plus : abonnement arrêté, compte fermé, zone jamais créée. Les visiteurs de ce sous-domaine sont envoyés vers un annuaire qui ne sait pas répondre, et le service correspondant devient injoignable, même si le site principal fonctionne.</p>
+<h3 id="une-zone-supprimee-parce-qu-elle-ne-servait-plus">Une zone supprimée parce qu'elle « ne servait plus »</h3>
+<p>Une ancienne zone peut sembler inutile, par exemple après un changement de prestataire. Mais elle sert parfois encore un sous-domaine, une vérification de messagerie ou une automatisation. La supprimer sans inventaire préalable coupe ces services d'un coup.</p>
+<h3 id="une-alerte-du-prestataire-ignoree">Une alerte du prestataire ignorée</h3>
+<p>Le DNS lui-même peut être parfaitement réglé, et le prestataire qui l'héberge peut avoir ses propres conditions : vérification que vous contrôlez bien le domaine, étape d'activation à terminer, rattachement d'un sous-domaine à son domaine principal dans votre compte. Si l'une de ces conditions n'est pas remplie, une zone qui fonctionne peut être désactivée ou supprimée selon ses règles, parfois avec les sous-domaines qui en dépendent.</p>
+<p>Ces règles varient d'un prestataire à l'autre. D'où l'importance de lire les emails qui annoncent une désactivation, une expiration ou une suppression, même quand tout semble marcher.</p>
+<h3 id="le-certificat-https-qui-ne-se-renouvelle-plus">Le certificat HTTPS qui ne se renouvelle plus</h3>
+<p>Certains certificats HTTPS se renouvellent automatiquement en publiant une preuve temporaire dans l'annuaire DNS. Si la zone a été déplacée ou supprimée, ou si l'accès automatique à l'annuaire ne fonctionne plus, le renouvellement échoue sans bruit. Le certificat actuel reste valide jusqu'à sa date d'expiration… puis les visiteurs voient apparaître « Votre connexion n'est pas privée ».</p>
+<div class="table-wrap"><table class="article-table"><caption>Ce que vous constatez, et la piste la plus probable</caption>
+<thead>
+<tr>
+<th scope="col">Ce que vous constatez</th>
+<th scope="col">Piste la plus probable</th>
+</tr>
+</thead>
+<tbody>
+<tr><th scope="row">Une modification DNS n'a aucun effet</th>
+<td>Réglage fait dans une zone qui n'est pas l'annuaire officiel</td>
+</tr>
+<tr><th scope="row">Les emails ne passent plus depuis un changement de prestataire</th>
+<td>Réglages de messagerie non recopiés dans le nouvel annuaire</td>
+</tr>
+<tr><th scope="row">Un seul sous-domaine est injoignable</th>
+<td>Sous-domaine confié à un prestataire qui ne le gère plus</td>
+</tr>
+<tr><th scope="row">Un email annonce la désactivation d'une zone</th>
+<td>Condition du prestataire non remplie : à traiter avant l'échéance</td>
+</tr>
+<tr><th scope="row">Le cadenas disparaît sans raison apparente</th>
+<td>Renouvellement automatique du certificat bloqué</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="ce-que-vous-pouvez-verifier-sans-risque">Ce que vous pouvez vérifier sans risque</h2>
+<ul>
+<li><strong>Où est loué votre domaine.</strong> Cherchez la facture ou l'email de renouvellement : le nom du registraire y figure.</li>
+<li><strong>Qui tient l'annuaire.</strong> Dans l'espace client du registraire, la rubrique « serveurs DNS » ou « nameservers » indique le prestataire dont l'annuaire fait foi. C'est chez lui, et seulement chez lui, que les réglages doivent être modifiés.</li>
+<li><strong>Les emails de vos prestataires.</strong> Une alerte d'expiration, de vérification ou de suppression mérite toujours d'être lue, même quand tout fonctionne.</li>
+<li><strong>Votre fiche d'inventaire.</strong> Remplissez-la une fois, et gardez-la à jour :</li>
+</ul>
+<div class="table-wrap"><table class="article-table"><caption>Fiche d'inventaire de votre domaine</caption>
+<thead>
+<tr>
+<th scope="col">Élément</th>
+<th scope="col">À noter</th>
+</tr>
+</thead>
+<tbody>
+<tr><th scope="row">Nom de domaine</th>
+<td>Registraire, date de renouvellement, compte utilisé</td>
+</tr>
+<tr><th scope="row">Annuaire DNS</th>
+<td>Prestataire, compte utilisé</td>
+</tr>
+<tr><th scope="row">Sous-domaines</th>
+<td>Lesquels, à quoi ils servent, qui les gère</td>
+</tr>
+<tr><th scope="row">Site</th>
+<td>Hébergeur, compte utilisé</td>
+</tr>
+<tr><th scope="row">Emails</th>
+<td>Fournisseur de messagerie, compte utilisé</td>
+</tr>
+<tr><th scope="row">Certificat HTTPS</th>
+<td>Qui le fournit, renouvellement automatique ou non</td>
+</tr>
+</tbody>
+</table></div>
+<p>Ne notez jamais de mot de passe dans cette fiche : indiquez seulement quel compte permet d'accéder à chaque service.</p>
+<h2 id="ce-qu-implique-un-changement-de-prestataire">Ce qu'implique un changement de prestataire</h2>
+<p>Changer d'annuaire DNS, d'hébergeur ou de messagerie est une opération qui touche plusieurs services à la fois. Elle se prépare : inventaire complet des réglages existants, recréation de la zone chez le nouveau prestataire avant toute bascule, attention particulière à la messagerie et à la signature DNSSEC, ancienne zone conservée pendant la période de transition, puis vérification de chaque service, sous-domaines compris. C'est ce travail de préparation, plus que la bascule elle-même, qui évite les coupures.</p>
+<div class="note"><strong>À retenir</strong><p>Un domaine réparti entre plusieurs prestataires fonctionne très bien, tant que l'on sait qui gère quoi. Trois questions résument la solidité de votre configuration : fonctionne-t-elle aujourd'hui ? Restera-t-elle active selon les règles de chaque prestataire ? Saurait-on la reconstruire en cas de problème ?</p>
+</div>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://www.rfc-editor.org/rfc/rfc1034">RFC 1034 — Concepts du DNS, zones et délégation</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc4033">RFC 4033 — Introduction à DNSSEC</a></li>
+<li><a href="https://letsencrypt.org/docs/challenge-types/">Let's Encrypt — Types de validation, dont la validation par DNS</a></li>
+</ul>
+
+          <aside class="article-cta" aria-labelledby="article-cta-title">
+            <h2 id="article-cta-title">Besoin d'un coup de main&nbsp;?</h2>
+            <p>Vous ne savez plus qui gère votre domaine, vos DNS ou vos emails, ou vous préparez un changement de prestataire ? Nous pouvons dresser l&#39;inventaire avec vous avant toute modification.</p>
+            <div class="article-cta-actions">
+              <a class="btn btn-primary" href="../../contact.html?sujet=dns">Faire le point sur mon domaine</a>
+              <a class="link" href="../../prestations.html#dns">Prestation : domaine et DNS</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+      <section class="section section-tight" aria-labelledby="related-title"><div class="container"><h2 id="related-title" class="h-small">À lire aussi</h2><ul class="post-list"><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-04">4 novembre 2026</time></p>
+          <h3><a href="../../blog/site-page-blanche/">Votre site affiche une page blanche : ce que cela signifie</a></h3>
+          <p>Votre site n&#39;affiche plus qu&#39;une page vide, ou « Il y a eu une erreur critique sur ce site », ou encore « HTTP ERROR 500 ». Ce qui se passe réellement, les causes les plus fréquentes et ce que vous pouvez vérifier sans risque.</p>
+          <p class="post-reading">7 min de lecture</p>
+        </li><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-03">3 novembre 2026</time></p>
+          <h3><a href="../../blog/cloudflare-adresses-ip-pare-feu-serveur/">Cloudflare : pourquoi votre serveur voit ses adresses IP au lieu de celles de vos visiteurs</a></h3>
+          <p>Cloudflare gère votre domaine, et pourtant votre serveur ne voit que ses adresses à lui, et on vous demande de les autoriser dans votre pare-feu. Pourquoi, ce que cela change pour vos réglages, et les erreurs 521 et 522 à éviter.</p>
+          <p class="post-reading">7 min de lecture</p>
+        </li></ul></div></section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p><strong>PPR-Solution</strong><br>Assistance technique · Hébergement web · Configuration</p>
+        <p><a class="link" href="mailto:contact@ppr-solution.fr">contact@ppr-solution.fr</a></p>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul class="footer-links">
+          <li><a href="../../">Accueil</a></li>
+          <li><a href="../../prestations.html">Prestations</a></li>
+          <li><a href="../../blog.html">Blog</a></li>
+          <li><a href="../../a-propos.html">À propos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul class="footer-links">
+          <li><a href="../../mentions-legales.html">Mentions légales</a></li>
+          <li><a href="../../confidentialite.html">Confidentialité</a></li>
+          <li><a href="../../cgv.html">Conditions générales de vente</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
