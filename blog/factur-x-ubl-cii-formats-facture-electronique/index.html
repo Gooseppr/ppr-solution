@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-tlTtfpdsMQSdcfX3DLM1fgx/y++BLw+48vFj+5cTJa0='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Factur-X, UBL et CII : comprendre les trois formats de la facture électronique · PPR-Solution</title>
+  <meta name="description" content="Factur-X, UBL, CII : les trois formats de la facture électronique expliqués simplement, avec la même facture dans chaque format. Reconnaître un fichier, convertir, choisir.">
+  <link rel="canonical" href="https://ppr-solution.fr/blog/factur-x-ubl-cii-formats-facture-electronique/">
+  <meta name="theme-color" content="#F8F7F3">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="PPR-Solution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Factur-X, UBL et CII : comprendre les trois formats de la facture électronique · PPR-Solution">
+  <meta property="og:description" content="Factur-X, UBL, CII : les trois formats de la facture électronique expliqués simplement, avec la même facture dans chaque format. Reconnaître un fichier, convertir, choisir.">
+  <meta property="og:url" content="https://ppr-solution.fr/blog/factur-x-ubl-cii-formats-facture-electronique/">
+  <meta property="og:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PPR-Solution — assistance technique pour votre site et son hébergement">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="article:published_time" content="2026-11-20">
+  <meta property="article:modified_time" content="2026-11-20">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Factur-X, UBL et CII : comprendre les trois formats de la facture électronique","description":"Factur-X, UBL, CII : les trois formats de la facture électronique expliqués simplement, avec la même facture dans chaque format. Reconnaître un fichier, convertir, choisir.","datePublished":"2026-11-20","dateModified":"2026-11-20","inLanguage":"fr-FR","mainEntityOfPage":"https://ppr-solution.fr/blog/factur-x-ubl-cii-formats-facture-electronique/","author":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution","url":"https://ppr-solution.fr/"},"publisher":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ppr-solution.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ppr-solution.fr/blog.html"},{"@type":"ListItem","position":3,"name":"Factur-X, UBL et CII : comprendre les trois formats de la facture électronique","item":"https://ppr-solution.fr/blog/factur-x-ubl-cii-formats-facture-electronique/"}]}]}</script>
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <script src="../../assets/js/main.js" defer></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header" data-header>
+    <div class="container nav-inner">
+      <a class="brand" href="../../">
+        <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
+          <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
+          <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
+          <path d="M27 13h9" stroke="#171717" stroke-width="2"/>
+          <circle cx="41" cy="13" r="5.5" fill="#171717"/>
+        </svg>
+        <span>
+          <span class="brand-name">PPR-Solution</span>
+          <span class="brand-sub">assistance technique web</span>
+        </span>
+        <span class="sr-only">(accueil)</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
+        <span class="nav-icon" aria-hidden="true"></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+      <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
+        <a href="../../prestations.html">Prestations</a>
+        <a href="../../blog.html" aria-current="page">Blog</a>
+        <a href="../../a-propos.html">À propos</a>
+        <a class="btn btn-primary btn-sm" href="../../contact.html">Obtenir de l'aide</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="g-hebergement" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="12" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="10" y="26" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="51" cy="31" r="2.6" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-php" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M2.8 14h62.4" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="9" cy="8.6" r="2" fill="#F05B3F"/>
+        <rect x="9" y="21" width="20" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="19.5" width="22" height="8" rx="4" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.1"/>
+        <rect x="9" y="33" width="14" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="33" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-dns" viewBox="0 0 68 48">
+        <path d="M34 24 12 9M34 24 12 39M34 24h22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <circle cx="12" cy="9" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="39" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="58" cy="24" r="5.5" fill="#F05B3F" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="34" cy="24" r="9" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="g-https" viewBox="0 0 68 48">
+        <path d="M4 30h60" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <circle cx="6" cy="30" r="3" fill="currentColor"/>
+        <circle cx="62" cy="30" r="3" fill="currentColor"/>
+        <rect x="24" y="20" width="20" height="18" rx="4" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M28.5 20v-4.5a5.5 5.5 0 0 1 11 0V20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="34" cy="29" r="2.4" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-migration" viewBox="0 0 68 48">
+        <rect x="2" y="20" width="24" height="24" rx="7" fill="#F8F7F3" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="42" y="20" width="24" height="24" rx="7" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 18C16 6 52 6 54 17" fill="none" stroke="#B8391F" stroke-width="1.6"/>
+        <path d="m50 13.5 4 4.5 4-4.8" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="8" y="27" width="12" height="4" rx="2" fill="#B7B7B2"/>
+        <rect x="8" y="34" width="9" height="4" rx="2" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-configuration" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="16" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="31" y="12" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="10" y="22" width="12" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="27" y="22" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+        <rect x="10" y="32" width="18" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="33" y="32" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-bilan" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m10 15 3 3 5-6M10 27l3 3 5-6" fill="none" stroke="#1E6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="37" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <rect x="24" y="13" width="32" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="25" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="35" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 12 14">
+        <rect x="1" y="5.5" width="10" height="7.5" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M3.4 5.5V4a2.6 2.6 0 0 1 5.2 0v1.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main id="contenu">
+<article class="article">
+      <header class="article-header">
+        <div class="container article-narrow">
+          <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-20">20 novembre 2026</time></span> · <span>8 min de lecture</span></p>
+          <h1>Factur-X, UBL et CII : comprendre les trois formats de la facture électronique</h1>
+        </div>
+      </header>
+      <div class="container article-layout">
+        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#pourquoi-plusieurs-formats">Pourquoi plusieurs formats ?</a></li><li><a href="#le-xml-explique-sans-jargon">Le XML expliqué sans jargon</a></li><li><a href="#ubl-cii-factur-x-qui-est-quoi">UBL, CII, Factur-X : qui est quoi</a></li><li><a href="#la-facture-d-atelier-martin-dans-chaque-format">La facture d&#39;Atelier Martin dans chaque format</a></li><li><a href="#comment-reconnaitre-le-format-d-un-fichier">Comment reconnaître le format d&#39;un fichier</a></li><li><a href="#peut-on-convertir-d-un-format-a-l-autre">Peut-on convertir d&#39;un format à l&#39;autre ?</a></li><li><a href="#que-faire-si-deux-outils-n-utilisent-pas-le-meme-format">Que faire si deux outils n&#39;utilisent pas le même format</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
+        <div class="article-body prose">
+<p class="lead">Une facture électronique peut s'écrire dans trois formats : UBL, CII ou Factur-X. Les deux premiers sont des fichiers de données, lisibles par un logiciel. Le troisième, Factur-X, est un PDF qu'une personne peut lire, accompagné d'un fichier de données au format CII. Les trois peuvent porter exactement la même facture : ils rangent et nomment les informations différemment. Le bon format est d'abord celui qu'acceptent votre logiciel et votre plateforme.</p>
+<div class="note note-summary"><strong>En bref</strong><ul>
+<li>UBL et CII sont deux façons d'écrire une facture sous forme de fichier de données XML.</li>
+<li>Factur-X est un PDF lisible qui contient, en pièce jointe, un fichier de données au format CII.</li>
+<li>Les trois s'appuient sur un même modèle européen de facture, la norme EN 16931.</li>
+<li>On reconnaît le format d'un fichier sans outil spécial : pièce jointe du PDF, ou première balise du fichier.</li>
+<li>Convertir un format en un autre, ce n'est pas renommer : il faut faire correspondre chaque information, puis contrôler le résultat.</li>
+</ul>
+</div>
+<p>Cet article fait suite à <a href="../../blog/facturation-electronique-tpe-2026-2027/">Facturation électronique : ce qui change pour les TPE en 2026 et 2027</a>, qui présente le calendrier de la réforme et le rôle des plateformes agréées.</p>
+<h2 id="pourquoi-plusieurs-formats">Pourquoi plusieurs formats ?</h2>
+<p>Les entreprises échangent des factures entre logiciels depuis bien avant la réforme. Plusieurs familles de formats se sont développées en parallèle, portées par des organismes différents : UBL par un consortium international de normalisation (OASIS), CII par l'organisme des Nations unies chargé de faciliter les échanges commerciaux (UN/CEFACT). Factur-X est né plus tard, d'une initiative franco-allemande, pour les entreprises qui voulaient garder un PDF lisible tout en ajoutant des données exploitables.</p>
+<p>Plutôt que d'en imposer un seul, la réforme française retient un « socle » de trois formats. Le choix ne relève donc pas du « meilleur » format, mais de ce que vos outils savent produire et lire.</p>
+<h2 id="le-xml-explique-sans-jargon">Le XML expliqué sans jargon</h2>
+<p>UBL, CII et la partie données de Factur-X sont écrits en XML.</p>
+<aside class="note note-definition"><strong>Définition — XML</strong><p>Une façon d'écrire des informations dans un fichier texte en les entourant d'étiquettes, appelées balises, qui disent ce qu'elles sont. Un logiciel retrouve ainsi chaque information sans avoir à deviner.</p>
+</aside>
+<p>Sur une facture PDF, le montant « 1 200,00 € » est écrit quelque part sur la page : une personne le repère, un logiciel doit le chercher. Dans un fichier XML, ce montant est rangé dans une balise dont le nom dit « montant total toutes taxes comprises ». C'est ce qu'on appelle des <strong>données structurées</strong>.</p>
+<p>Image du quotidien : le PDF est une lettre ; le fichier XML est un formulaire administratif où chaque case porte un intitulé. Deux formulaires différents peuvent demander les mêmes informations avec des cases nommées et placées autrement : c'est toute la différence entre UBL et CII.</p>
+<h2 id="ubl-cii-factur-x-qui-est-quoi">UBL, CII, Factur-X : qui est quoi</h2>
+<p><img src="../../assets/img/blog/facture-trois-formats.svg" alt="Schéma. La même facture fictive d'Atelier Martin, FAC-2026-001, 1 000 euros hors taxes, 200 euros de TVA, 1 200 euros toutes taxes comprises, peut s'écrire en UBL, fichier de données XML où le numéro est dans la balise cbc:ID ; en CII, autre fichier de données XML où le numéro est dans la balise ram:ID ; ou en Factur-X, une page PDF pour la personne qui contient en pièce jointe un fichier factur-x.xml au format CII pour le logiciel." width="400" height="660" loading="lazy"></p>
+<ul>
+<li><strong>UBL</strong> (Universal Business Language) : un fichier XML. Une facture commence par la balise <code>Invoice</code>, un avoir par <code>CreditNote</code>. Ce format est très utilisé dans les échanges entre entreprises en Europe.</li>
+<li><strong>CII</strong> (Cross Industry Invoice) : un autre fichier XML, avec d'autres noms de balises et une autre organisation. Une facture commence par la balise <code>rsm:CrossIndustryInvoice</code>.</li>
+<li><strong>Factur-X</strong> : un <strong>PDF</strong> au format d'archivage (dit PDF/A-3), qui affiche la facture comme d'habitude et qui contient, en pièce jointe, un fichier de données au <strong>format CII</strong>, en général nommé <code>factur-x.xml</code>. Factur-X n'est donc pas un troisième langage indépendant : sa partie données, c'est du CII.</li>
+</ul>
+<h3 id="un-modele-commun-la-norme-en-16931">Un modèle commun : la norme EN 16931</h3>
+<p>Si ces formats peuvent porter la même facture, c'est qu'ils s'appuient sur une même liste européenne des informations d'une facture et de leurs règles.</p>
+<aside class="note note-definition"><strong>Définition — norme EN 16931</strong><p>La norme européenne qui décrit le contenu d'une facture électronique (vendeur, acheteur, montants, TVA…) et les règles que ces informations doivent respecter, indépendamment du format de fichier utilisé.</p>
+</aside>
+<p>La norme donne à chaque information un identifiant : le numéro de facture est le terme métier BT-1, le montant toutes taxes comprises le BT-112. UBL et CII disent ensuite chacun, à leur façon, dans quelle balise ranger ce BT-1 ou ce BT-112. Un prochain article de la série détaillera ce modèle et ses règles.</p>
+<h3 id="les-profils">Les profils</h3>
+<aside class="note note-definition"><strong>Définition — profil</strong><p>Une variante d'un format qui fixe la quantité d'informations attendues : certains profils se limitent à l'essentiel, d'autres contiennent le détail de chaque ligne de la facture.</p>
+</aside>
+<p>Factur-X, par exemple, existe en plusieurs profils, du plus léger (MINIMUM, BASIC WL), qui ne décrit pas les lignes de la facture, au plus complet (EXTENDED). Le profil compte autant que le format : deux fichiers Factur-X peuvent ne pas contenir les mêmes informations. Les profils acceptés dans le cadre de la réforme française sont fixés par ses spécifications officielles.</p>
+<h2 id="la-facture-d-atelier-martin-dans-chaque-format">La facture d'Atelier Martin dans chaque format</h2>
+<p>Reprenons la facture fictive de la série : Atelier Martin facture une prestation de 1 000 € hors taxes, avec 200 € de TVA, soit 1 200 € toutes taxes comprises. Voici où se trouvent six informations de cette facture.</p>
+<div class="table-wrap"><table class="article-table"><caption>Une même information, deux emplacements</caption>
+<thead>
+<tr>
+<th scope="col">Information (terme de la norme)</th>
+<th scope="col">Balise en UBL</th>
+<th scope="col">Balise en CII (et donc dans Factur-X)</th>
+</tr>
+</thead>
+<tbody>
+<tr><th scope="row">Numéro de facture (BT-1)</th>
+<td><code>cbc:ID</code></td>
+<td><code>ram:ID</code>, dans le bloc du document</td>
+</tr>
+<tr><th scope="row">Date d'émission (BT-2)</th>
+<td><code>cbc:IssueDate</code></td>
+<td><code>udt:DateTimeString</code>, dans <code>ram:IssueDateTime</code></td>
+</tr>
+<tr><th scope="row">Devise (BT-5)</th>
+<td><code>cbc:DocumentCurrencyCode</code></td>
+<td><code>ram:InvoiceCurrencyCode</code></td>
+</tr>
+<tr><th scope="row">Total hors taxes (BT-109)</th>
+<td><code>cbc:TaxExclusiveAmount</code></td>
+<td><code>ram:TaxBasisTotalAmount</code></td>
+</tr>
+<tr><th scope="row">Total de la TVA (BT-110)</th>
+<td><code>cbc:TaxAmount</code>, dans le bloc des taxes</td>
+<td><code>ram:TaxTotalAmount</code></td>
+</tr>
+<tr><th scope="row">Total toutes taxes comprises (BT-112)</th>
+<td><code>cbc:TaxInclusiveAmount</code></td>
+<td><code>ram:GrandTotalAmount</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Les deux extraits ci-dessous montrent les mêmes valeurs dans chaque format. Chaque ligne indique la balise, la valeur, puis ce qu'elle signifie.</p>
+<figure class="config-window"><figcaption class="config-window-bar"><span class="config-file">facture-atelier-martin-ubl.xml</span><span class="config-kind">extrait illustratif</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">cbc:ID</span><span class="config-value">FAC-2026-001</span><span class="config-help">Numéro de la facture, unique chez le vendeur.</span></li><li class="config-row"><span class="config-key">cbc:IssueDate</span><span class="config-value">2026-11-20</span><span class="config-help">Date d'émission, écrite année-mois-jour avec des tirets.</span></li><li class="config-row"><span class="config-key">cbc:DocumentCurrencyCode</span><span class="config-value">EUR</span><span class="config-help">Devise de la facture : l'euro.</span></li><li class="config-row"><span class="config-key">cbc:TaxExclusiveAmount</span><span class="config-value">1000.00</span><span class="config-help">Total hors taxes, dans le bloc des totaux de la facture.</span></li><li class="config-row"><span class="config-key">cbc:TaxAmount</span><span class="config-value">200.00</span><span class="config-help">Montant total de la TVA, dans le bloc des taxes.</span></li><li class="config-row"><span class="config-key">cbc:TaxInclusiveAmount</span><span class="config-value">1200.00</span><span class="config-help">Total toutes taxes comprises.</span></li></ul></figure>
+<figure class="config-window"><figcaption class="config-window-bar"><span class="config-file">facture-atelier-martin-cii.xml</span><span class="config-kind">extrait illustratif</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">ram:ID</span><span class="config-value">FAC-2026-001</span><span class="config-help">Le même numéro, dans le bloc qui décrit le document.</span></li><li class="config-row"><span class="config-key">udt:DateTimeString</span><span class="config-value">20261120</span><span class="config-help">La même date, écrite sans tirets : le code de format 102 l'indique.</span></li><li class="config-row"><span class="config-key">ram:InvoiceCurrencyCode</span><span class="config-value">EUR</span><span class="config-help">La même devise, dans le bloc du règlement.</span></li><li class="config-row"><span class="config-key">ram:TaxBasisTotalAmount</span><span class="config-value">1000.00</span><span class="config-help">Le même total hors taxes.</span></li><li class="config-row"><span class="config-key">ram:TaxTotalAmount</span><span class="config-value">200.00</span><span class="config-help">Le même montant de TVA, accompagné de sa devise.</span></li><li class="config-row"><span class="config-key">ram:GrandTotalAmount</span><span class="config-value">1200.00</span><span class="config-help">Le même total toutes taxes comprises.</span></li></ul></figure>
+<div class="note"><strong>Limite</strong><p>Ces extraits sont volontairement incomplets : une vraie facture contient aussi le vendeur, l'acheteur, leurs identifiants, les lignes, la catégorie de TVA, les nouvelles mentions obligatoires… Ils montrent comment les informations sont rangées, mais ne constituent pas des fichiers valides à transmettre. Les versions exactes des formats et des règles de contrôle applicables en France sont fixées par les spécifications officielles de la réforme : elles ne sont pas reprises ici et doivent être vérifiées avant toute mise en œuvre.</p>
+</div>
+<p>On voit déjà deux pièges classiques : la date ne s'écrit pas de la même façon dans les deux formats, et le total de TVA ne se trouve pas au même endroit. Un logiciel qui « recopie » simplement les valeurs d'un format à l'autre produirait un fichier faux.</p>
+<h2 id="comment-reconnaitre-le-format-d-un-fichier">Comment reconnaître le format d'un fichier</h2>
+<p>Vous avez reçu ou exporté un fichier de facture et vous ne savez pas de quel format il s'agit ? Deux vérifications sans risque suffisent, sans rien modifier.</p>
+<p><img src="../../assets/img/blog/reconnaitre-format-facture.svg" alt="Arbre de décision. Si le fichier se termine par .pdf, ouvrez le panneau des pièces jointes du lecteur PDF : une pièce jointe factur-x.xml indique du Factur-X ; aucune pièce jointe indique un PDF ordinaire, qui n'est pas une facture électronique. Si le fichier se termine par .xml, ouvrez-le avec un éditeur de texte et regardez la première balise : Invoice indique de l'UBL ; rsm:CrossIndustryInvoice indique du CII. Un avoir UBL commence par CreditNote. Ce repérage donne le format, pas le profil ni la validité du fichier." width="400" height="560" loading="lazy"></p>
+<ul>
+<li><strong>Le fichier se termine par .pdf.</strong> Ouvrez-le dans votre lecteur PDF habituel et affichez le panneau des pièces jointes (souvent une icône de trombone). Une pièce jointe nommée <code>factur-x.xml</code> indique une facture Factur-X. Sans pièce jointe, c'est un PDF ordinaire.</li>
+<li><strong>Le fichier se termine par .xml.</strong> Ouvrez-le avec un éditeur de texte (Bloc-notes, TextEdit en mode texte brut) sans l'enregistrer. Après une éventuelle première ligne technique, la première balise indique le format : <code>Invoice</code> ou <code>CreditNote</code> pour l'UBL, <code>rsm:CrossIndustryInvoice</code> pour le CII.</li>
+</ul>
+<p>Ce repérage indique le format, pas le profil ni la conformité du fichier : un fichier peut être au bon format et contenir une erreur.</p>
+<h2 id="peut-on-convertir-d-un-format-a-l-autre">Peut-on convertir d'un format à l'autre ?</h2>
+<p>Oui, c'est même fréquent : beaucoup de logiciels et de plateformes savent lire un format et en produire un autre. Mais une conversion n'est pas un changement de nom de fichier. Elle repose sur une <strong>table de correspondance</strong> (on parle de « mapping ») qui indique, pour chaque information, où la prendre dans le format de départ et où la ranger dans le format d'arrivée, en respectant ses règles d'écriture.</p>
+<p>Trois points de vigilance :</p>
+<ul>
+<li><strong>Une conversion ne crée pas d'information.</strong> Si le fichier de départ ne contient pas le SIREN du client, le fichier d'arrivée ne l'aura pas non plus.</li>
+<li><strong>Toutes les informations n'ont pas toujours d'équivalent exact</strong>, en particulier entre profils de niveaux différents. Une information peut se perdre en route.</li>
+<li><strong>Le résultat doit être contrôlé</strong>, comme un fichier produit directement : structure, informations obligatoires, cohérence des montants.</li>
+</ul>
+<h2 id="que-faire-si-deux-outils-n-utilisent-pas-le-meme-format">Que faire si deux outils n'utilisent pas le même format</h2>
+<p>La situation la plus courante : votre logiciel exporte un format, et votre plateforme ou un client en attend un autre. Avant de changer d'outil :</p>
+<ul>
+<li><strong>Demandez à votre plateforme agréée</strong> quels formats et quels profils elle accepte en entrée : elle peut souvent recevoir plusieurs formats et se charger de la transmission.</li>
+<li><strong>Demandez à l'éditeur de votre logiciel</strong> quels formats et profils il sait produire, et s'il est déjà relié à une plateforme agréée.</li>
+<li><strong>Notez précisément le message</strong> affiché en cas de refus ou de rejet : il indique souvent s'il s'agit d'un problème de format, de profil ou d'information manquante.</li>
+<li><strong>Évitez de modifier un fichier à la main</strong> pour le faire accepter : la correction doit se faire à la source, dans le logiciel ou ses réglages.</li>
+</ul>
+<div class="note"><strong>À retenir</strong><p>UBL et CII sont deux façons d'écrire une facture en données structurées ; Factur-X est un PDF lisible qui transporte des données CII. Tous trois reposent sur la même norme européenne, mais rangent et nomment les informations différemment. Avant de changer d'outil, vérifiez quel format et quel profil votre logiciel produit, et lesquels votre plateforme accepte.</p>
+</div>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/faq---fe_je-decouvre-la-facturation-electronique.pdf">DGFiP — Foire aux questions « Je découvre la facturation électronique » (version du 1er septembre 2026)</a></li>
+<li><a href="https://www.impots.gouv.fr/factures-norme-afnor">impots.gouv.fr — Normes AFNOR et spécifications externes de la facturation électronique</a></li>
+<li><a href="https://ec.europa.eu/newsroom/digital/items/930407/en">Commission européenne — Nouvelle version de la norme européenne de facturation électronique EN 16931</a></li>
+</ul>
+
+          <aside class="article-cta" aria-labelledby="article-cta-title">
+            <h2 id="article-cta-title">Besoin d'un coup de main&nbsp;?</h2>
+            <p>Votre logiciel produit un format, votre plateforme ou votre client en attend un autre ? Décrivez la situation et, si possible, le message affiché : nous vous dirons si la question est technique et comment l&#39;aborder.</p>
+            <div class="article-cta-actions">
+              <a class="btn btn-primary" href="../../contact.html?sujet=autre">Poser une question sur un format de facture</a>
+              <a class="link" href="../../prestations.html">Toutes les prestations</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+      <section class="section section-tight" aria-labelledby="related-title"><div class="container"><h2 id="related-title" class="h-small">À lire aussi</h2><ul class="post-list"><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-20">20 novembre 2026</time></p>
+          <h3><a href="../../blog/facturation-electronique-tpe-2026-2027/">Facturation électronique : ce qui change pour les TPE en 2026 et 2027</a></h3>
+          <p>Depuis le 1er septembre 2026, toute entreprise doit pouvoir recevoir des factures électroniques. Les TPE devront les émettre au plus tard en septembre 2027. Ce que cela veut dire concrètement, et ce que vous pouvez préparer dès maintenant.</p>
+          <p class="post-reading">9 min de lecture</p>
+        </li><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-05">5 novembre 2026</time></p>
+          <h3><a href="../../blog/domaine-dns-plusieurs-prestataires-risques/">Domaine chez l&#39;un, DNS chez l&#39;autre : les erreurs qui coupent un site ou des emails</a></h3>
+          <p>Votre domaine, vos DNS, votre site et vos emails sont gérés par des prestataires différents ? C&#39;est courant, mais ces dépendances expliquent beaucoup de pannes. Les situations à risque, et comment garder la main.</p>
+          <p class="post-reading">6 min de lecture</p>
+        </li></ul></div></section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p><strong>PPR-Solution</strong><br>Assistance technique · Hébergement web · Configuration</p>
+        <p><a class="link" href="mailto:contact@ppr-solution.fr">contact@ppr-solution.fr</a></p>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul class="footer-links">
+          <li><a href="../../">Accueil</a></li>
+          <li><a href="../../prestations.html">Prestations</a></li>
+          <li><a href="../../blog.html">Blog</a></li>
+          <li><a href="../../a-propos.html">À propos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul class="footer-links">
+          <li><a href="../../mentions-legales.html">Mentions légales</a></li>
+          <li><a href="../../confidentialite.html">Confidentialité</a></li>
+          <li><a href="../../cgv.html">Conditions générales de vente</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

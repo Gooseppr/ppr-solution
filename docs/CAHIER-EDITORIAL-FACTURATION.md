@@ -11,6 +11,7 @@ Spécification de rédaction de cinq articles du blog sur la facturation électr
 5. **Normes** : ne pas confondre la norme sémantique EN 16931-1:2026 avec les versions des syntaxes (UBL, CII) et des règles de validation effectivement utilisées. Chaque exemple technique indique ses versions de référence et est vérifié avec les artefacts correspondants (voir § 5).
 6. **Prestations** : aucune offre promettant une validation, une conversion ou une intégration non testée. Les articles présentent les problèmes et les solutions possibles, sans promettre de capacités indisponibles. Pas de modification des CGV pour l'instant.
 7. Ce cahier sert de spécification ; il est tenu à jour quand une décision ou une version change.
+8. **Article 2 sans numéros de version (décision du 20 novembre 2026, « option 3 »)** : les sources officielles (spécifications DGFiP, FNFE-MPE, artefacts de validation) n'étant pas consultables depuis l'environnement de rédaction, l'article 2 est rédigé sans numéro de version de format, de profil ni de règle. Les extraits sont annoncés comme illustratifs et incomplets, et un encadré « Limite » renvoie aux spécifications officielles. À réviser dès que les sources sont accessibles : ajout des versions de référence et validation d'exemples complets.
 
 ## 2. Principes communs aux cinq articles
 
@@ -182,7 +183,7 @@ Les extraits restent courts et pédagogiques ; ils ne sont jamais présentés co
 | **Calendrier et obligations (DGFiP)** | FAQ « Je découvre » du 01/09/2026 ; fiche 1 juin 2026 ; fiche 3 octobre 2026 ; guide de démarrage juillet 2026 | 20/11/2026 | impots.gouv.fr | Article 1 |
 | **Franchise en base** | question impots.gouv.fr modifiée le 28/09/2026 | 20/11/2026 | impots.gouv.fr | Article 1 |
 | **Norme sémantique EN 16931-1** | 2026 approuvée par le CEN au printemps 2026 ; calendrier de transition à confirmer | — | CEN / Commission européenne | Articles 2, 3 |
-| **Syntaxes UBL et CII** | à déterminer (version imposée par les spécifications françaises en vigueur) | — | spécifications externes DGFiP, XP Z12-012 | Articles 2, 4, 5 |
+| **Syntaxes UBL et CII** | à déterminer ; article 2 publié sans version (décision 8), extraits limités à des éléments stables : `cbc:ID`, `cbc:IssueDate`, `cbc:DocumentCurrencyCode`, `cbc:TaxExclusiveAmount`, `cbc:TaxAmount`, `cbc:TaxInclusiveAmount` (UBL) ; `ram:ID`, `udt:DateTimeString`, `ram:InvoiceCurrencyCode`, `ram:TaxBasisTotalAmount`, `ram:TaxTotalAmount`, `ram:GrandTotalAmount` (CII) ; termes BT-1, BT-2, BT-5, BT-109, BT-110, BT-112 | — | spécifications externes DGFiP, XP Z12-012 | Articles 2, 4, 5 |
 | **Factur-X** | à déterminer | — | FNFE-MPE | Article 2 |
 | **Règles de validation** | à déterminer (artefacts correspondant aux versions ci-dessus) | — | publication officielle des artefacts | Articles 3, 4 |
 | **Spécifications externes DGFiP** | version 3.2 du 30/04/2026 mentionnée sur impots.gouv.fr (à lire avant l'article 2) | — | impots.gouv.fr | Articles 2 à 5 |

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 560" width="400" height="560" role="img" aria-labelledby="t d" font-family="IBM Plex Sans, Segoe UI, Helvetica, Arial, sans-serif">
+  <title id="t">Reconnaître le format d'un fichier de facture</title>
+  <desc id="d">Si le fichier est un PDF, ouvrez le panneau des pièces jointes de votre lecteur PDF : un fichier nommé factur-x.xml indique une facture Factur-X ; sans pièce jointe, c'est un PDF ordinaire. Si le fichier se termine par .xml, ouvrez-le avec un éditeur de texte : un début en Invoice ou CreditNote indique de l'UBL ; un début en rsm:CrossIndustryInvoice indique du CII.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 9 5 1 9" fill="none" stroke="#171717" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="400" height="560" rx="28" fill="#F8F7F3"/>
+
+  <rect x="90" y="26" width="220" height="56" rx="28" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="200" y="59" font-size="14" font-weight="600" fill="#171717" text-anchor="middle">Le fichier reçu</text>
+
+  <path d="M150 86L100 126" stroke="#171717" stroke-width="1.5" marker-end="url(#a)"/>
+  <path d="M250 86L300 126" stroke="#171717" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- branche PDF -->
+  <rect x="20" y="132" width="172" height="62" rx="16" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="106" y="158" font-size="13" font-weight="600" fill="#171717" text-anchor="middle">…se termine par .pdf</text>
+  <text x="106" y="178" font-size="11" fill="#5C5B56" text-anchor="middle">panneau « pièces jointes »</text>
+
+  <path d="M106 194V206H30V388" fill="none" stroke="#171717" stroke-width="1.5"/>
+  <path d="M30 272H38" stroke="#171717" stroke-width="1.5" marker-end="url(#a)"/>
+  <path d="M30 388H38" stroke="#171717" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="34" y="334" font-size="11" font-weight="600" fill="#5C5B56">ou</text>
+  <rect x="44" y="234" width="148" height="76" rx="16" fill="#DCEFE3" stroke="#1E6B45" stroke-width="1.5"/>
+  <text x="118" y="258" font-size="11.5" fill="#1E6B45" text-anchor="middle">pièce jointe</text>
+  <text x="118" y="276" font-family="IBM Plex Mono, Consolas, monospace" font-size="11.5" fill="#171717" text-anchor="middle">factur-x.xml</text>
+  <text x="118" y="298" font-size="12.5" font-weight="600" fill="#171717" text-anchor="middle">→ Factur-X</text>
+
+  <rect x="44" y="350" width="148" height="76" rx="16" fill="#F6E7C4" stroke="#8A5A00" stroke-width="1.5"/>
+  <text x="118" y="374" font-size="11.5" fill="#8A5A00" text-anchor="middle">aucune pièce jointe</text>
+  <text x="118" y="394" font-size="12.5" font-weight="600" fill="#171717" text-anchor="middle">→ PDF ordinaire</text>
+  <text x="118" y="413" font-size="10" fill="#5C5B56" text-anchor="middle">pas une facture électronique</text>
+
+  <!-- branche XML -->
+  <rect x="208" y="132" width="172" height="62" rx="16" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="294" y="158" font-size="13" font-weight="600" fill="#171717" text-anchor="middle">…se termine par .xml</text>
+  <text x="294" y="178" font-size="11" fill="#5C5B56" text-anchor="middle">éditeur de texte, 1re balise</text>
+
+  <path d="M294 194V206H218V388" fill="none" stroke="#171717" stroke-width="1.5"/>
+  <path d="M218 272H226" stroke="#171717" stroke-width="1.5" marker-end="url(#a)"/>
+  <path d="M218 388H226" stroke="#171717" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="222" y="334" font-size="11" font-weight="600" fill="#5C5B56">ou</text>
+  <rect x="232" y="234" width="148" height="76" rx="16" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="306" y="258" font-size="11.5" fill="#5C5B56" text-anchor="middle">commence par</text>
+  <text x="306" y="276" font-family="IBM Plex Mono, Consolas, monospace" font-size="11.5" fill="#171717" text-anchor="middle">&lt;Invoice</text>
+  <text x="306" y="298" font-size="12.5" font-weight="600" fill="#171717" text-anchor="middle">→ UBL</text>
+
+  <rect x="232" y="350" width="148" height="76" rx="16" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="306" y="374" font-size="11.5" fill="#5C5B56" text-anchor="middle">commence par</text>
+  <text x="306" y="392" font-family="IBM Plex Mono, Consolas, monospace" font-size="8.8" fill="#171717" text-anchor="middle">&lt;rsm:CrossIndustryInvoice</text>
+  <text x="306" y="413" font-size="12.5" font-weight="600" fill="#171717" text-anchor="middle">→ CII</text>
+
+  <rect x="20" y="450" width="360" height="86" rx="16" fill="#EFEDE6"/>
+  <text x="38" y="476" font-size="11.5" fill="#3A3A37">Un avoir s'écrit avec une autre balise de départ</text>
+  <text x="38" y="494" font-size="11.5" fill="#3A3A37">en UBL (&lt;CreditNote). Ce repérage donne le</text>
+  <text x="38" y="512" font-size="11.5" fill="#3A3A37">format, pas le profil ni la validité du fichier.</text>
+</svg>
