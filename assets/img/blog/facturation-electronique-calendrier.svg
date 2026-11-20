@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 576" width="400" height="576" role="img" aria-labelledby="t d" font-family="IBM Plex Sans, Segoe UI, Helvetica, Arial, sans-serif">
+  <title id="t">Calendrier de la facturation électronique</title>
+  <desc id="d">Depuis le 1er septembre 2026, toutes les entreprises doivent pouvoir recevoir des factures électroniques par une plateforme agréée ; les grandes entreprises et les entreprises de taille intermédiaire doivent aussi les émettre. Au plus tard le 1er septembre 2027, les PME, les TPE et les micro-entreprises, y compris en franchise en base de TVA, devront à leur tour émettre leurs factures électroniques. Le e-reporting suit le même calendrier.</desc>
+  <rect width="400" height="576" rx="28" fill="#F8F7F3"/>
+
+  <!-- Axe -->
+  <path d="M52 64V538" stroke="#171717" stroke-width="1.5"/>
+
+  <!-- 1er septembre 2026 -->
+  <circle cx="52" cy="64" r="10" fill="#1E6B45" stroke="#171717" stroke-width="1.5"/>
+  <text x="76" y="58" font-size="15" font-weight="600" fill="#171717">1er septembre 2026</text>
+  <rect x="76" y="68" width="92" height="22" rx="11" fill="#DCEFE3"/>
+  <text x="122" y="83" font-size="11.5" font-weight="600" fill="#1E6B45" text-anchor="middle">en vigueur</text>
+
+  <rect x="76" y="104" width="296" height="118" rx="18" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="96" y="132" font-size="13.5" font-weight="600" fill="#171717">Toutes les entreprises</text>
+  <text x="96" y="153" font-size="12.5" fill="#3A3A37">doivent pouvoir recevoir</text>
+  <text x="96" y="172" font-size="12.5" fill="#3A3A37">des factures électroniques</text>
+  <text x="96" y="191" font-size="12.5" fill="#3A3A37">par une plateforme agréée.</text>
+  <text x="96" y="210" font-size="11.5" fill="#5C5B56">TPE et micro-entreprises comprises</text>
+
+  <rect x="76" y="236" width="296" height="80" rx="18" fill="#fff" stroke="#8A8983" stroke-width="1.2"/>
+  <text x="96" y="262" font-size="13.5" font-weight="600" fill="#171717">Grandes entreprises et ETI</text>
+  <text x="96" y="283" font-size="12.5" fill="#3A3A37">émettent leurs factures</text>
+  <text x="96" y="302" font-size="12.5" fill="#3A3A37">électroniques + e-reporting.</text>
+
+  <!-- 1er septembre 2027 -->
+  <circle cx="52" cy="370" r="10" fill="#E0A21B" stroke="#171717" stroke-width="1.5"/>
+  <text x="76" y="364" font-size="15" font-weight="600" fill="#171717">1er septembre 2027</text>
+  <rect x="76" y="374" width="104" height="22" rx="11" fill="#F6E7C4"/>
+  <text x="128" y="389" font-size="11.5" font-weight="600" fill="#8A5A00" text-anchor="middle">au plus tard</text>
+
+  <rect x="76" y="410" width="296" height="128" rx="18" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="96" y="438" font-size="13.5" font-weight="600" fill="#171717">PME, TPE, micro-entreprises</text>
+  <text x="96" y="459" font-size="12.5" fill="#3A3A37">émettent à leur tour leurs</text>
+  <text x="96" y="478" font-size="12.5" fill="#3A3A37">factures électroniques</text>
+  <text x="96" y="497" font-size="12.5" fill="#3A3A37">+ e-reporting.</text>
+  <text x="96" y="520" font-size="11.5" fill="#5C5B56">franchise en base de TVA comprise</text>
+</svg>
