@@ -122,6 +122,13 @@ test("articles : blocs de code refusés, fenêtre :::config rendue et échappée
   assert.match(html, /class="config-window"/);
   assert.match(html, /<span class="config-key">memory_limit<\/span><span class="config-value">256M<\/span>/);
   assert.match(html, /Mémoire &lt;maximale&gt;/);
+  assert.match(html, /<span class="config-kind">exemple de réglages<\/span>/);
+  // Extrait de fichier : libellé facultatif, balises XML échappées, jamais interprétées.
+  const extrait = renderMarkdown("Intro.\n\n:::config facture.xml | extrait de fichier\n<cbc:ID> = FAC-2026-001 | Numéro <unique> de la facture\n:::\n", "t.md", ROOT).html;
+  assert.match(extrait, /<span class="config-file">facture\.xml<\/span><span class="config-kind">extrait de fichier<\/span>/);
+  assert.match(extrait, /<span class="config-key">&lt;cbc:ID&gt;<\/span>/);
+  assert.doesNotMatch(extrait, /<cbc:ID>/);
+  assert.throws(() => renderMarkdown("Intro.\n\n:::config a.xml | b | c\nx = 1 | y\n:::\n", "t.md", ROOT), /:::config header/);
 });
 
 test("typographie : pas d'espace sécable avant : ; ! ? » dans le texte des pages", () => {

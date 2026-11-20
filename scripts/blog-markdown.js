@@ -116,7 +116,10 @@ function renderMarkdown(body, filename, siteRoot) {
     let html;
     if (match[1] === "config") {
       // Fenêtre de configuration : « réglage = valeur | explication en français », une ligne par réglage.
+      // Libellé facultatif après le nom de fichier : « :::config facture.xml | extrait de fichier ».
       if (!match[2] || !inner) fail(filename, ":::config expects a file name and at least one setting");
+      const [file, kind = "exemple de réglages", ...extra] = match[2].split(/\s+\|\s+/);
+      if (extra.length || !file.trim() || !kind.trim()) fail(filename, ":::config header must be 'file name' or 'file name | label'");
       let longValue = false;
       const rows = inner.split(/\r?\n/).filter((row) => row.trim()).map((row) => {
         const parts = row.match(/^\s*([^=|]+?)\s*=\s*([^|]+?)\s*\|\s*(.+?)\s*$/);
@@ -125,7 +128,7 @@ function renderMarkdown(body, filename, siteRoot) {
         if (parts[2].length > 16) longValue = true;
         return '<li class="config-row"><span class="config-key">' + escape(parts[1]) + '</span><span class="config-value">' + escape(parts[2]) + '</span><span class="config-help">' + escape(parts[3]) + "</span></li>";
       });
-      html = '<figure class="config-window' + (longValue ? " config-window-stacked" : "") + '"><figcaption class="config-window-bar"><span class="config-file">' + escape(match[2]) + '</span><span class="config-kind">exemple de réglages</span></figcaption><ul class="config-rows">' + rows.join("") + "</ul></figure>\n";
+      html = '<figure class="config-window' + (longValue ? " config-window-stacked" : "") + '"><figcaption class="config-window-bar"><span class="config-file">' + escape(file.trim()) + '</span><span class="config-kind">' + escape(kind.trim()) + '</span></figcaption><ul class="config-rows">' + rows.join("") + "</ul></figure>\n";
     } else {
       if (!match[2] || inner.includes(":::")) fail(filename, "table expects a caption and a single Markdown table");
       const tokens = md.parse(inner, state.env);
