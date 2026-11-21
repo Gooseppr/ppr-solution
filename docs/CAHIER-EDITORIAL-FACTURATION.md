@@ -186,6 +186,7 @@ Les extraits restent courts et pédagogiques ; ils ne sont jamais présentés co
 | **Syntaxes UBL et CII** | à déterminer ; article 2 publié sans version (décision 8), extraits limités à des éléments stables : `cbc:ID`, `cbc:IssueDate`, `cbc:DocumentCurrencyCode`, `cbc:TaxExclusiveAmount`, `cbc:TaxAmount`, `cbc:TaxInclusiveAmount` (UBL) ; `ram:ID`, `udt:DateTimeString`, `ram:InvoiceCurrencyCode`, `ram:TaxBasisTotalAmount`, `ram:TaxTotalAmount`, `ram:GrandTotalAmount` (CII) ; termes BT-1, BT-2, BT-5, BT-109, BT-110, BT-112 | — | spécifications externes DGFiP, XP Z12-012 | Articles 2, 4, 5 |
 | **Factur-X** | à déterminer | — | FNFE-MPE | Article 2 |
 | **Règles de validation** | à déterminer (artefacts correspondant aux versions ci-dessus) ; article 4 : la règle de cohérence des totaux (total TTC = total HT + TVA) est décrite en mots, sans identifiant de règle, celui-ci n'ayant pas pu être vérifié sur les artefacts | — | publication officielle des artefacts | Articles 3, 4 |
+| **Solution compatible, logiciels existants** | FAQ DGFiP du 01/09/2026 (questions 2.3, 3.4) ; fiches 1 (juin 2026) et 3 (octobre 2026) | 21/11/2026 | impots.gouv.fr (texte extrait des PDF) | Article 5 |
 | **Rejet, refus, doublons, traces** | guide pratique de démarrage DGFiP (juillet 2026), questions 10 à 16, 19, 25 ; FAQ 3.2 | 21/11/2026 | impots.gouv.fr (texte extrait du PDF) | Article 4 |
 | **Spécifications externes DGFiP** | version 3.2 du 30/04/2026 mentionnée sur impots.gouv.fr (à lire avant l'article 2) | — | impots.gouv.fr | Articles 2 à 5 |
 :::

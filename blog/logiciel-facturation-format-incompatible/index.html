@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-tlTtfpdsMQSdcfX3DLM1fgx/y++BLw+48vFj+5cTJa0='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Votre logiciel de facturation ne produit pas le bon format : faut-il le changer ? · PPR-Solution</title>
+  <meta name="description" content="Logiciel de facturation incompatible avec la facture électronique : solution compatible, mise à jour, export CSV, transformation vers UBL ou CII, limites et maintenance.">
+  <link rel="canonical" href="https://ppr-solution.fr/blog/logiciel-facturation-format-incompatible/">
+  <meta name="theme-color" content="#F8F7F3">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="PPR-Solution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Votre logiciel de facturation ne produit pas le bon format : faut-il le changer ? · PPR-Solution">
+  <meta property="og:description" content="Logiciel de facturation incompatible avec la facture électronique : solution compatible, mise à jour, export CSV, transformation vers UBL ou CII, limites et maintenance.">
+  <meta property="og:url" content="https://ppr-solution.fr/blog/logiciel-facturation-format-incompatible/">
+  <meta property="og:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PPR-Solution — assistance technique pour votre site et son hébergement">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="article:published_time" content="2026-11-21">
+  <meta property="article:modified_time" content="2026-11-21">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Votre logiciel de facturation ne produit pas le bon format : faut-il le changer ?","description":"Logiciel de facturation incompatible avec la facture électronique : solution compatible, mise à jour, export CSV, transformation vers UBL ou CII, limites et maintenance.","datePublished":"2026-11-21","dateModified":"2026-11-21","inLanguage":"fr-FR","mainEntityOfPage":"https://ppr-solution.fr/blog/logiciel-facturation-format-incompatible/","author":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution","url":"https://ppr-solution.fr/"},"publisher":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ppr-solution.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ppr-solution.fr/blog.html"},{"@type":"ListItem","position":3,"name":"Votre logiciel de facturation ne produit pas le bon format : faut-il le changer ?","item":"https://ppr-solution.fr/blog/logiciel-facturation-format-incompatible/"}]}]}</script>
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <script src="../../assets/js/main.js" defer></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header" data-header>
+    <div class="container nav-inner">
+      <a class="brand" href="../../">
+        <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
+          <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
+          <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
+          <path d="M27 13h9" stroke="#171717" stroke-width="2"/>
+          <circle cx="41" cy="13" r="5.5" fill="#171717"/>
+        </svg>
+        <span>
+          <span class="brand-name">PPR-Solution</span>
+          <span class="brand-sub">assistance technique web</span>
+        </span>
+        <span class="sr-only">(accueil)</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
+        <span class="nav-icon" aria-hidden="true"></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+      <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
+        <a href="../../prestations.html">Prestations</a>
+        <a href="../../blog.html" aria-current="page">Blog</a>
+        <a href="../../a-propos.html">À propos</a>
+        <a class="btn btn-primary btn-sm" href="../../contact.html">Obtenir de l'aide</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="g-hebergement" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="12" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="10" y="26" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="51" cy="31" r="2.6" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-php" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M2.8 14h62.4" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="9" cy="8.6" r="2" fill="#F05B3F"/>
+        <rect x="9" y="21" width="20" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="19.5" width="22" height="8" rx="4" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.1"/>
+        <rect x="9" y="33" width="14" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="33" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-dns" viewBox="0 0 68 48">
+        <path d="M34 24 12 9M34 24 12 39M34 24h22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <circle cx="12" cy="9" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="39" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="58" cy="24" r="5.5" fill="#F05B3F" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="34" cy="24" r="9" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="g-https" viewBox="0 0 68 48">
+        <path d="M4 30h60" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <circle cx="6" cy="30" r="3" fill="currentColor"/>
+        <circle cx="62" cy="30" r="3" fill="currentColor"/>
+        <rect x="24" y="20" width="20" height="18" rx="4" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M28.5 20v-4.5a5.5 5.5 0 0 1 11 0V20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="34" cy="29" r="2.4" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-migration" viewBox="0 0 68 48">
+        <rect x="2" y="20" width="24" height="24" rx="7" fill="#F8F7F3" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="42" y="20" width="24" height="24" rx="7" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 18C16 6 52 6 54 17" fill="none" stroke="#B8391F" stroke-width="1.6"/>
+        <path d="m50 13.5 4 4.5 4-4.8" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="8" y="27" width="12" height="4" rx="2" fill="#B7B7B2"/>
+        <rect x="8" y="34" width="9" height="4" rx="2" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-configuration" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="16" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="31" y="12" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="10" y="22" width="12" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="27" y="22" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+        <rect x="10" y="32" width="18" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="33" y="32" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-bilan" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m10 15 3 3 5-6M10 27l3 3 5-6" fill="none" stroke="#1E6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="37" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <rect x="24" y="13" width="32" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="25" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="35" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 12 14">
+        <rect x="1" y="5.5" width="10" height="7.5" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M3.4 5.5V4a2.6 2.6 0 0 1 5.2 0v1.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main id="contenu">
+<article class="article">
+      <header class="article-header">
+        <div class="container article-narrow">
+          <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-21">21 novembre 2026</time></span> · <span>7 min de lecture</span></p>
+          <h1>Votre logiciel de facturation ne produit pas le bon format : faut-il le changer ?</h1>
+        </div>
+      </header>
+      <div class="container article-layout">
+        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#le-cas-des-logiciels-existants">Le cas des logiciels existants</a></li><li><a href="#les-questions-a-se-poser-dans-l-ordre">Les questions à se poser, dans l&#39;ordre</a></li><li><a href="#le-principe-de-la-transformation">Le principe de la transformation</a></li><li><a href="#ce-que-l-export-ne-contient-pas">Ce que l&#39;export ne contient pas</a></li><li><a href="#verifier-le-resultat">Vérifier le résultat</a></li><li><a href="#couts-et-maintenance">Coûts et maintenance</a></li><li><a href="#ce-que-vous-pouvez-faire-des-maintenant">Ce que vous pouvez faire dès maintenant</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
+        <div class="article-body prose">
+<p class="lead">Un logiciel de facturation qui ne produit pas encore de facture électronique n'est pas forcément à remplacer. Trois pistes existent : une mise à jour de l'éditeur, la connexion à une plateforme agréée, ou la transformation de ce que le logiciel sait déjà exporter vers un format accepté. Cette dernière piste a une limite importante : une transformation réorganise les informations, elle ne peut pas inventer celles que le logiciel ne connaît pas.</p>
+<div class="note note-summary"><strong>En bref</strong><ul>
+<li>Un logiciel peut rester en place s'il devient une « solution compatible » : fonctions adaptées à la réforme et connexion à au moins une plateforme agréée.</li>
+<li>Première démarche : demander à l'éditeur ce qu'il prévoit, et quand.</li>
+<li>À défaut, un export du logiciel (fichier CSV, XML, interface de programmation) peut parfois être transformé vers un format accepté.</li>
+<li>Une transformation ne crée pas d'information : si le SIREN du client n'est pas dans le logiciel, il ne sera pas dans la facture.</li>
+<li>Toute transformation se contrôle, se documente et s'entretient, car les règles évoluent.</li>
+</ul>
+</div>
+<p>Cet article fait partie d'une série sur la facturation électronique. Voir aussi <a href="../../blog/facturation-electronique-tpe-2026-2027/">ce qui change pour les TPE en 2026 et 2027</a>, <a href="../../blog/factur-x-ubl-cii-formats-facture-electronique/">les trois formats Factur-X, UBL et CII</a> et <a href="../../blog/facture-electronique-rejetee/">que faire quand une facture est rejetée</a>.</p>
+<h2 id="le-cas-des-logiciels-existants">Le cas des logiciels existants</h2>
+<p>Beaucoup de petites entreprises facturent avec un outil qui n'a pas été conçu pour la réforme : un logiciel métier ancien (garage, cabinet, atelier, commerce), un logiciel de caisse, un tableur, ou un logiciel de gestion installé depuis des années. Ces outils fonctionnent, l'équipe les connaît, et ils contiennent l'historique des clients.</p>
+<p>L'administration ne demande pas de les remplacer. Elle demande que les factures partent <strong>par une plateforme agréée</strong>, au bon format. La fiche de la DGFiP destinée aux TPE le dit ainsi : si vous disposez déjà d'un logiciel, « assurez-vous qu'il soit solution compatible, ainsi vous pourrez continuer à l'utiliser ».</p>
+<aside class="note note-definition"><strong>Définition — solution compatible</strong><p>Un logiciel (facturation, caisse, gestion…) qui remplit deux conditions cumulées : proposer les fonctions attendues par la réforme et être connecté à au moins une plateforme agréée.</p>
+</aside>
+<h2 id="les-questions-a-se-poser-dans-l-ordre">Les questions à se poser, dans l'ordre</h2>
+<p><img src="../../assets/img/blog/logiciel-facturation-que-faire.svg" alt="Arbre de décision en trois questions. 1 : votre logiciel est-il relié à une plateforme agréée et capable de produire une facture électronique ? Si oui, c'est une solution compatible : vérifier les réglages. Sinon, 2 : l'éditeur prévoit-il une mise à jour qui le rende compatible ? Si oui, obtenir une date. Sinon, 3 : que sait-il exporter ? Avec un export structuré, une transformation est possible si les informations nécessaires existent, avec des contrôles. Sans export exploitable : autre logiciel, ou création des factures sur la plateforme. Dans tous les cas, la facture part par une plateforme agréée." width="400" height="720" loading="lazy"></p>
+<h3 id="1-votre-logiciel-est-il-deja-une-solution-compatible">1. Votre logiciel est-il déjà une solution compatible ?</h3>
+<p>Posez la question à l'éditeur, par écrit : « Votre logiciel est-il connecté à une plateforme agréée ? Laquelle ? Peut-il émettre des factures électroniques et recevoir celles de mes fournisseurs ? » Si la réponse est oui, il reste à vérifier les réglages : coordonnées de l'entreprise, identifiants des clients, nouvelles mentions obligatoires.</p>
+<h3 id="2-une-mise-a-jour-est-elle-prevue">2. Une mise à jour est-elle prévue ?</h3>
+<p>Beaucoup d'éditeurs adaptent leurs logiciels à la réforme. Demandez une <strong>date</strong> et ce que la mise à jour couvrira : réception seulement, ou aussi émission ? Une TPE doit pouvoir émettre au plus tard le 1er septembre 2027 : une mise à jour annoncée « pour plus tard », sans date, ne suffit pas pour décider.</p>
+<h3 id="3-que-sait-exporter-votre-logiciel">3. Que sait exporter votre logiciel ?</h3>
+<p>Si le logiciel n'évolue plus, regardez ce qu'il sait produire comme fichiers. Les menus « Exporter », « Sauvegarde » ou « Comptabilité » proposent souvent :</p>
+<ul>
+<li>un <strong>fichier CSV</strong> ou un export pour tableur ;</li>
+<li>un fichier <strong>XML</strong> propre au logiciel ;</li>
+<li>parfois une <strong>interface de programmation</strong>, qui permet à un autre programme de lire les données.</li>
+</ul>
+<aside class="note note-definition"><strong>Définition — fichier CSV</strong><p>Un fichier texte en forme de tableau : une ligne par enregistrement (une facture, par exemple), et des colonnes séparées par des virgules ou des points-virgules. Il s'ouvre avec un tableur.</p>
+</aside>
+<aside class="note note-definition"><strong>Définition — interface de programmation (API)</strong><p>Une porte d'accès prévue par un logiciel pour qu'un autre programme puisse lire ou envoyer des données, sans passer par l'écran.</p>
+</aside>
+<p>Si votre logiciel ne propose aucun export exploitable, la transformation n'est pas possible. Il reste alors à changer d'outil, ou à créer les factures directement sur une plateforme agréée : pour les entreprises qui n'ont pas de logiciel, l'administration indique que les plateformes agréées proposent différents modes de création de facture.</p>
+<h2 id="le-principe-de-la-transformation">Le principe de la transformation</h2>
+<p>Transformer un export, c'est lire le fichier produit par le logiciel, puis ranger chaque information à la bonne place dans un format accepté (UBL, CII ou Factur-X). On s'appuie pour cela sur une <strong>table de correspondance</strong> : pour chaque colonne de l'export, l'information de la facture qu'elle contient et son emplacement dans le format d'arrivée.</p>
+<p>Reprenons la facture fictive d'Atelier Martin. Son ancien logiciel exporte un fichier CSV dont voici la ligne concernée :</p>
+<figure class="config-window"><figcaption class="config-window-bar"><span class="config-file">export-factures.csv</span><span class="config-kind">extrait du fichier, une colonne par ligne</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">numero</span><span class="config-value">FAC-2026-001</span><span class="config-help">Le numéro de la facture.</span></li><li class="config-row"><span class="config-key">date</span><span class="config-value">20/11/2026</span><span class="config-help">La date d'émission, écrite jour/mois/année.</span></li><li class="config-row"><span class="config-key">montant_ht</span><span class="config-value">1000,00</span><span class="config-help">Le total hors taxes, avec une virgule décimale.</span></li><li class="config-row"><span class="config-key">tva</span><span class="config-value">200,00</span><span class="config-help">Le montant de TVA.</span></li><li class="config-row"><span class="config-key">montant_ttc</span><span class="config-value">1200,00</span><span class="config-help">Le total toutes taxes comprises.</span></li></ul></figure>
+<div class="table-wrap"><table class="article-table"><caption>Table de correspondance pour cet export</caption>
+<thead>
+<tr>
+<th scope="col">Colonne de l'export</th>
+<th scope="col">Information de la facture (terme de la norme)</th>
+<th scope="col">Ce qu'il faut adapter</th>
+</tr>
+</thead>
+<tbody>
+<tr><th scope="row">numero</th>
+<td>numéro de facture (BT-1)</td>
+<td>rien</td>
+</tr>
+<tr><th scope="row">date</th>
+<td>date d'émission (BT-2)</td>
+<td>l'ordre et l'écriture de la date, selon le format d'arrivée</td>
+</tr>
+<tr><th scope="row">montant_ht</th>
+<td>total hors taxes (BT-109)</td>
+<td>la virgule décimale devient un point</td>
+</tr>
+<tr><th scope="row">tva</th>
+<td>total de la TVA (BT-110)</td>
+<td>la virgule décimale devient un point</td>
+</tr>
+<tr><th scope="row">montant_ttc</th>
+<td>total toutes taxes comprises (BT-112)</td>
+<td>la virgule décimale devient un point</td>
+</tr>
+</tbody>
+</table></div>
+<p>Déjà, sur cinq colonnes, trois pièges apparaissent : la date et les montants ne s'écrivent pas comme dans le fichier d'arrivée, et une conversion naïve produirait des valeurs fausses. Le <a href="../../blog/factur-x-ubl-cii-formats-facture-electronique/">deuxième article de la série</a> montre comment chaque format écrit ces informations.</p>
+<h2 id="ce-que-l-export-ne-contient-pas">Ce que l'export ne contient pas</h2>
+<p>Ces cinq colonnes suffisent pour un tableau de suivi, pas pour une facture électronique. Il manque notamment :</p>
+<ul>
+<li><strong>le vendeur</strong> : sa dénomination, son SIREN, son numéro de TVA, son adresse ;</li>
+<li><strong>l'acheteur</strong> : sa dénomination, son adresse et son <strong>SIREN</strong>, devenu une mention obligatoire ;</li>
+<li><strong>la devise</strong> de la facture ;</li>
+<li><strong>les lignes</strong> : ce qui a été vendu, en quelle quantité, à quel prix ;</li>
+<li><strong>la TVA détaillée</strong> : le taux appliqué et sa catégorie (taux normal, exonération…) ;</li>
+<li><strong>la catégorie de l'opération</strong> : livraison de biens, prestation de services, ou les deux ;</li>
+<li>le cas échéant, l'<strong>option pour le paiement de la TVA d'après les débits</strong> et l'<strong>adresse de livraison</strong>.</li>
+</ul>
+<p>Certaines de ces informations sont fixes et peuvent être ajoutées une fois pour toutes (les coordonnées d'Atelier Martin, la devise). D'autres changent à chaque facture et doivent venir du logiciel : si celui-ci ne les connaît pas, aucune transformation ne peut les deviner.</p>
+<div class="note note-warning"><strong>Attention</strong><p>C'est la limite principale d'une transformation : elle réorganise des informations, elle n'en crée pas. Compléter « à la main » des données manquantes dans un programme de transformation (un SIREN par défaut, une catégorie de TVA supposée) produit des factures fausses, avec des conséquences fiscales. Si une information manque dans le logiciel, il faut d'abord trouver comment l'y saisir ou l'exporter.</p>
+</div>
+<h2 id="verifier-le-resultat">Vérifier le résultat</h2>
+<p>Une facture produite par transformation passe par les mêmes contrôles qu'une autre : fichier lisible, structure conforme au format, règles de gestion (informations obligatoires, totaux cohérents), puis adressage au bon client. Avant toute mise en service :</p>
+<ul>
+<li>tester la transformation sur des factures variées : avec plusieurs lignes, plusieurs taux de TVA, un avoir, un client sans établissement secondaire…</li>
+<li>comparer chaque fichier obtenu à la facture d'origine, montant par montant ;</li>
+<li>faire un premier envoi réel par la plateforme et suivre son statut.</li>
+</ul>
+<p>Les erreurs les plus fréquentes et la façon de lire un message de rejet sont détaillées dans <a href="../../blog/facture-electronique-rejetee/">Facture électronique rejetée : comprendre le message et trouver la cause</a>.</p>
+<h2 id="couts-et-maintenance">Coûts et maintenance</h2>
+<p>Une transformation sur mesure n'est pas un achat ponctuel. Avant de la choisir, il faut prévoir :</p>
+<ul>
+<li><strong>les évolutions des règles</strong> : les formats, les profils et les règles de contrôle évoluent ; la norme européenne elle-même a été révisée en 2026. La transformation devra suivre ;</li>
+<li><strong>les évolutions du logiciel d'origine</strong> : une mise à jour peut changer l'export (nom ou ordre des colonnes) et casser la transformation sans prévenir ;</li>
+<li><strong>la documentation</strong> : la table de correspondance, les choix faits et les tests réalisés doivent être écrits, pour pouvoir être repris ;</li>
+<li><strong>une personne responsable</strong> du suivi, en interne ou chez un prestataire.</li>
+</ul>
+<p>Selon le volume de factures, une mise à jour de l'éditeur ou un changement d'outil peut finalement coûter moins cher qu'une transformation à entretenir. La comparaison mérite d'être faite avant de décider.</p>
+<h2 id="ce-que-vous-pouvez-faire-des-maintenant">Ce que vous pouvez faire dès maintenant</h2>
+<ul>
+<li><strong>Écrire à votre éditeur</strong> avec les questions de la partie 1, et conserver sa réponse.</li>
+<li><strong>Repérer les exports</strong> proposés par votre logiciel, sans rien modifier : menus « Exporter », « Sauvegarde », « Comptabilité ».</li>
+<li><strong>Ouvrir un export dans un tableur</strong> et cocher, dans la liste ci-dessus, les informations qui y figurent.</li>
+<li><strong>Vérifier que le SIREN de vos clients professionnels</strong> est saisi dans votre logiciel : c'est une mention obligatoire depuis le 1er septembre 2026.</li>
+<li><strong>Demander à votre plateforme agréée</strong> quels formats elle accepte et si elle propose un moyen d'importer ou de créer des factures.</li>
+</ul>
+<div class="note"><strong>À retenir</strong><p>Un logiciel existant peut rester en place s'il devient une solution compatible, par mise à jour ou par connexion à une plateforme agréée. Une transformation de ses exports est envisageable quand les informations nécessaires existent dans le logiciel ; elle doit alors être testée, documentée et entretenue. Avant d'investir, comparez avec une mise à jour ou un changement d'outil.</p>
+</div>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/faq---fe_je-decouvre-la-facturation-electronique.pdf">DGFiP — Foire aux questions « Je découvre la facturation électronique » (version du 1er septembre 2026), questions 2.3 (solution compatible) et 3.4 (nouvelles mentions)</a></li>
+<li><a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/fiche-1_que-va-t-il-se-passer-pour-mon-entreprise.pdf">DGFiP — Fiche 1 : que va-t-il se passer pour mon entreprise ? (juin 2026)</a></li>
+<li><a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/fiche-3_tpe_a-partir-de-quand-mon-entreprise-doit-etre-prete.pdf">DGFiP — Fiche 3 : à partir de quelle date mon entreprise doit-elle être prête ? (octobre 2026)</a></li>
+<li><a href="https://ec.europa.eu/newsroom/digital/items/930407/en">Commission européenne — Nouvelle version de la norme européenne de facturation électronique EN 16931</a></li>
+</ul>
+
+          <aside class="article-cta" aria-labelledby="article-cta-title">
+            <h2 id="article-cta-title">Besoin d'un coup de main&nbsp;?</h2>
+            <p>Indiquez le nom de votre logiciel et ce qu&#39;il sait exporter (fichier CSV, Excel, XML…), sans nous envoyer de factures : nous vous dirons si une adaptation paraît envisageable techniquement, ou s&#39;il vaut mieux voir avec l&#39;éditeur.</p>
+            <div class="article-cta-actions">
+              <a class="btn btn-primary" href="../../contact.html?sujet=autre">Poser une question sur les exports de mon logiciel</a>
+              <a class="link" href="../../prestations.html">Toutes les prestations</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+      <section class="section section-tight" aria-labelledby="related-title"><div class="container"><h2 id="related-title" class="h-small">À lire aussi</h2><ul class="post-list"><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-21">21 novembre 2026</time></p>
+          <h3><a href="../../blog/facture-electronique-rejetee/">Facture électronique rejetée : comprendre le message et trouver la cause</a></h3>
+          <p>Votre facture électronique a été rejetée ? Un rejet n&#39;est pas un refus du client : il signale un problème technique à corriger. Comment situer l&#39;étape qui bloque, lire le message, corriger sans créer de doublon et garder les bonnes traces.</p>
+          <p class="post-reading">8 min de lecture</p>
+        </li><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-20">20 novembre 2026</time></p>
+          <h3><a href="../../blog/factur-x-ubl-cii-formats-facture-electronique/">Factur-X, UBL et CII : comprendre les trois formats de la facture électronique</a></h3>
+          <p>Une même facture peut s&#39;écrire en UBL, en CII ou en Factur-X. Ce qui distingue ces trois formats, comment reconnaître un fichier, et pourquoi passer de l&#39;un à l&#39;autre n&#39;est pas un simple changement de nom.</p>
+          <p class="post-reading">8 min de lecture</p>
+        </li></ul></div></section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p><strong>PPR-Solution</strong><br>Assistance technique · Hébergement web · Configuration</p>
+        <p><a class="link" href="mailto:contact@ppr-solution.fr">contact@ppr-solution.fr</a></p>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul class="footer-links">
+          <li><a href="../../">Accueil</a></li>
+          <li><a href="../../prestations.html">Prestations</a></li>
+          <li><a href="../../blog.html">Blog</a></li>
+          <li><a href="../../a-propos.html">À propos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul class="footer-links">
+          <li><a href="../../mentions-legales.html">Mentions légales</a></li>
+          <li><a href="../../confidentialite.html">Confidentialité</a></li>
+          <li><a href="../../cgv.html">Conditions générales de vente</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
