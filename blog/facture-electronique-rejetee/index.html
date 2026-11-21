@@ -194,7 +194,7 @@
 <aside class="note note-definition"><strong>Définition — règle de gestion</strong><p>Une règle que doivent respecter les informations d'une facture, quel que soit son format : une information obligatoire présente, un code autorisé, des montants qui tombent juste.</p>
 </aside>
 <p>C'est le contrôle le plus instructif, car un fichier peut être parfaitement lisible et bien construit, et pourtant faux. Les règles viennent de la norme européenne EN 16931, complétée par des règles propres à la France. Un prochain article de la série les présentera en détail.</p>
-<div class="note"><strong>Exemple</strong><p>La facture fictive d'Atelier Martin porte sur 1 000 € hors taxes et 200 € de TVA. Le total toutes taxes comprises attendu est donc 1 200 €. Si le logiciel inscrit 1 250 € dans le fichier, celui-ci reste lisible et bien structuré, mais il échoue à la règle de cohérence des totaux : le total toutes taxes comprises doit être égal au total hors taxes augmenté de la TVA. Dans la norme européenne, cette règle porte l'identifiant BR-CO-15.</p>
+<div class="note"><strong>Exemple</strong><p>La facture fictive d'Atelier Martin porte sur 1 000 € hors taxes et 200 € de TVA. Le total toutes taxes comprises attendu est donc 1 200 €. Si le logiciel inscrit 1 250 € dans le fichier, celui-ci reste lisible et bien structuré, mais il échoue à la règle de cohérence des totaux : le total toutes taxes comprises doit être égal au total hors taxes augmenté de la TVA.</p>
 </div>
 <p>Au-delà de ces contrôles du fichier, la plateforme vérifie aussi qu'elle peut <strong>acheminer</strong> la facture : le client doit être identifiable dans l'annuaire, avec la plateforme qu'il a choisie.</p>
 <h2 id="les-causes-frequentes-d-un-rejet">Les causes fréquentes d'un rejet</h2>

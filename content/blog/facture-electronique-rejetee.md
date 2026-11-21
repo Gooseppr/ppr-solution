@@ -74,7 +74,7 @@ C'est le contrôle le plus instructif, car un fichier peut être parfaitement li
 
 > **Exemple**
 >
-> La facture fictive d'Atelier Martin porte sur 1 000 € hors taxes et 200 € de TVA. Le total toutes taxes comprises attendu est donc 1 200 €. Si le logiciel inscrit 1 250 € dans le fichier, celui-ci reste lisible et bien structuré, mais il échoue à la règle de cohérence des totaux : le total toutes taxes comprises doit être égal au total hors taxes augmenté de la TVA. Dans la norme européenne, cette règle porte l'identifiant BR-CO-15.
+> La facture fictive d'Atelier Martin porte sur 1 000 € hors taxes et 200 € de TVA. Le total toutes taxes comprises attendu est donc 1 200 €. Si le logiciel inscrit 1 250 € dans le fichier, celui-ci reste lisible et bien structuré, mais il échoue à la règle de cohérence des totaux : le total toutes taxes comprises doit être égal au total hors taxes augmenté de la TVA.
 
 Au-delà de ces contrôles du fichier, la plateforme vérifie aussi qu'elle peut **acheminer** la facture : le client doit être identifiable dans l'annuaire, avec la plateforme qu'il a choisie.
 
