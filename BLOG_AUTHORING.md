@@ -67,6 +67,10 @@ memory_limit = 256M | Mémoire maximale qu'un script PHP peut utiliser.
 - Les blocs de code (```` ``` ```` ou indentation de 4 espaces) sont **refusés** par le build : utiliser `:::config` ou du texte.
 - Le HTML brut est désactivé : il s'affiche comme du texte.
 
+## Séries d'articles
+
+Une série (par exemple « Facturation électronique ») est déclarée dans `scripts/build.js`, constante `SERIES`, par la liste de ses slugs **dans l'ordre de publication**. Chaque article de la série reçoit en fin de texte un encart « Dans cette série » avec l'article précédent et le suivant, **sans numéro** (l'ordre de publication peut différer du plan éditorial). Pour ajouter un article à une série, ajouter son slug à la fin de la liste. Un slug introuvable fait échouer le build.
+
 ## Règles éditoriales (articles d'actualité)
 
 1. Vérifier chaque fait sur la **source primaire** (php.net, CERT-FR, CISA, annonce officielle de l'hébergeur) et noter la date.

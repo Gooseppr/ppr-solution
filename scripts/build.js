@@ -12,6 +12,20 @@ const { SITE, escapeHtml, absoluteUrl, renderPage } = require("./layout");
 
 const ROOT = path.join(__dirname, "..");
 const WORDS_PER_MINUTE = 220;
+// Séries d'articles, dans l'ordre de publication (pas dans l'ordre du plan éditorial) :
+// l'encart « Dans cette série » propose seulement l'article précédent et le suivant, sans numéro.
+const SERIES = [
+  {
+    title: "Facturation électronique",
+    slugs: [
+      "facturation-electronique-tpe-2026-2027",
+      "factur-x-ubl-cii-formats-facture-electronique",
+      "facture-electronique-rejetee",
+      "logiciel-facturation-format-incompatible",
+    ],
+  },
+];
+
 const PAGE_FIELDS = new Set(["title", "description", "output", "nav", "robots", "scripts", "sitemap", "prefix", "schema"]);
 
 function formatDateFr(date) {
@@ -93,6 +107,32 @@ function renderBlogIndex(posts) {
   });
 }
 
+// Article précédent et suivant dans la série du post, d'après l'ordre de publication.
+function seriesNeighbours(post, posts) {
+  const series = SERIES.find((item) => item.slugs.includes(post.slug));
+  if (!series) return null;
+  const bySlug = new Map(posts.map((other) => [other.slug, other]));
+  for (const slug of series.slugs) {
+    if (!bySlug.has(slug)) throw new Error(`Série « ${series.title} » : article introuvable (${slug})`);
+  }
+  const index = series.slugs.indexOf(post.slug);
+  return {
+    title: series.title,
+    previous: index > 0 ? bySlug.get(series.slugs[index - 1]) : null,
+    next: index < series.slugs.length - 1 ? bySlug.get(series.slugs[index + 1]) : null,
+  };
+}
+
+function renderSeries(series, prefix) {
+  if (!series || (!series.previous && !series.next)) return "";
+  const link = (other, label, kind) =>
+    `<li class="article-series-${kind}"><span class="article-series-dir">${label}</span><a href="${prefix}blog/${other.slug}/">${escapeHtml(other.title)}</a></li>`;
+  return `<nav class="article-series" aria-labelledby="series-title">
+            <p id="series-title" class="article-series-title">Dans cette série&nbsp;: ${escapeHtml(series.title)}</p>
+            <ul>${series.previous ? link(series.previous, "Article précédent", "prev") : ""}${series.next ? link(series.next, "Article suivant", "next") : ""}</ul>
+          </nav>`;
+}
+
 function renderArticle(post, others) {
   const prefix = "../../";
   const output = `blog/${post.slug}/index.html`;
@@ -100,7 +140,10 @@ function renderArticle(post, others) {
   const toc = headings.length >= 3
     ? `<nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol>${headings.map((h) => `<li><a href="#${h.id}">${escapeHtml(h.label)}</a></li>`).join("")}</ol></nav>`
     : "";
-  const related = others.filter((other) => other.slug !== post.slug).slice(0, 2);
+  const series = seriesNeighbours(post, others);
+  // « À lire aussi » ne répète pas les articles déjà proposés par l'encart de série.
+  const inSeries = new Set([series?.previous?.slug, series?.next?.slug].filter(Boolean));
+  const related = others.filter((other) => other.slug !== post.slug && !inSeries.has(other.slug)).slice(0, 2);
   const updated = post.updated && post.updated !== post.date
     ? ` · <span>Mis à jour le <time datetime="${post.updated}">${formatDateFr(post.updated)}</time></span>` : "";
   const schema = {
@@ -126,6 +169,7 @@ function renderArticle(post, others) {
         ${toc ? `<aside class="article-aside">${toc}</aside>` : ""}
         <div class="article-body prose">
 ${content}
+          ${renderSeries(series, prefix)}
           <aside class="article-cta" aria-labelledby="article-cta-title">
             <h2 id="article-cta-title">Besoin d'un coup de main&nbsp;?</h2>
             <p>${escapeHtml(post.contact_context)}</p>

@@ -140,3 +140,21 @@ test("typographie : pas d'espace sécable avant : ; ! ? » dans le texte des pag
     assert.ok(!bad, `${file} : espace sécable dans « ${bad && bad[0]} »`);
   }
 });
+
+test("série facturation électronique : précédent et suivant dans l'ordre de publication, sans numéro", () => {
+  const html = (slug) => outputs.get(`blog/${slug}/index.html`);
+  const series = (slug) => html(slug).match(/<nav class="article-series"[\s\S]*?<\/nav>/)?.[0] || "";
+  const first = series("facturation-electronique-tpe-2026-2027");
+  assert.match(first, /Article suivant/);
+  assert.doesNotMatch(first, /Article précédent/);
+  assert.match(first, /href="\.\.\/\.\.\/blog\/factur-x-ubl-cii-formats-facture-electronique\/"/);
+  const middle = series("facture-electronique-rejetee");
+  assert.match(middle, /Article précédent<\/span><a href="\.\.\/\.\.\/blog\/factur-x-ubl-cii-formats-facture-electronique\/"/);
+  assert.match(middle, /Article suivant<\/span><a href="\.\.\/\.\.\/blog\/logiciel-facturation-format-incompatible\/"/);
+  const last = series("logiciel-facturation-format-incompatible");
+  assert.match(last, /Article précédent/);
+  assert.doesNotMatch(last, /Article suivant/);
+  for (const block of [first, middle, last]) assert.doesNotMatch(block, /\b\d+\s*(sur|\/)\s*\d+\b|article\s+\d/i);
+  // Hors série : pas d'encart.
+  assert.doesNotMatch(html("site-page-blanche"), /class="article-series"/);
+});
