@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 720" width="400" height="720" role="img" aria-labelledby="t d" font-family="IBM Plex Sans, Segoe UI, Helvetica, Arial, sans-serif">
+  <title id="t">Où une facture électronique peut-elle bloquer ?</title>
+  <desc id="d">Le trajet de la facture en cinq étapes, avec pour chacune la cause typique d'un blocage et l'interlocuteur. Un : l'export du logiciel ; fichier incomplet ou mal formé ; voir l'éditeur. Deux : les contrôles de votre plateforme ; format, donnée obligatoire absente ou incohérente, montants ; corriger à la source puis renvoyer. Trois : l'adressage par l'annuaire ; SIREN ou établissement du client incorrect ; voir la plateforme puis le client. Quatre : la plateforme du client ; contrôle ou indisponibilité ; voir votre plateforme. Cinq : le client ; refus motivé, qui n'est pas un rejet technique ; voir le client.</desc>
+  <rect width="400" height="720" rx="28" fill="#F8F7F3"/>
+
+  <!-- Axe -->
+  <path d="M44 74V632" stroke="#171717" stroke-width="1.5"/>
+
+  <!-- Étape 1 -->
+  <circle cx="44" cy="74" r="14" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="44" y="79" font-size="13" font-weight="600" fill="#171717" text-anchor="middle">1</text>
+  <text x="70" y="70" font-size="14" font-weight="600" fill="#171717">L'export de votre logiciel</text>
+  <rect x="70" y="80" width="310" height="52" rx="12" fill="#F6E7C4"/>
+  <text x="84" y="101" font-size="11.5" fill="#8A5A00">fichier incomplet, mal formé, mauvais format</text>
+  <text x="84" y="120" font-size="11.5" font-weight="600" fill="#171717">→ voir l'éditeur du logiciel</text>
+
+  <!-- Étape 2 -->
+  <circle cx="44" cy="192" r="14" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="44" y="197" font-size="13" font-weight="600" fill="#171717" text-anchor="middle">2</text>
+  <text x="70" y="188" font-size="14" font-weight="600" fill="#171717">Les contrôles de votre plateforme</text>
+  <rect x="70" y="198" width="310" height="70" rx="12" fill="#F6E7C4"/>
+  <text x="84" y="219" font-size="11.5" fill="#8A5A00">donnée obligatoire absente ou incohérente,</text>
+  <text x="84" y="236" font-size="11.5" fill="#8A5A00">montants qui ne tombent pas juste</text>
+  <text x="84" y="256" font-size="11.5" font-weight="600" fill="#171717">→ corriger à la source, puis renvoyer</text>
+
+  <!-- Étape 3 -->
+  <circle cx="44" cy="328" r="14" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="44" y="333" font-size="13" font-weight="600" fill="#171717" text-anchor="middle">3</text>
+  <text x="70" y="324" font-size="14" font-weight="600" fill="#171717">L'adressage par l'annuaire</text>
+  <rect x="70" y="334" width="310" height="70" rx="12" fill="#F6E7C4"/>
+  <text x="84" y="355" font-size="11.5" fill="#8A5A00">SIREN, SIRET ou établissement du client</text>
+  <text x="84" y="372" font-size="11.5" fill="#8A5A00">erroné, plateforme du client introuvable</text>
+  <text x="84" y="392" font-size="11.5" font-weight="600" fill="#171717">→ voir votre plateforme, puis le client</text>
+
+  <!-- Étape 4 -->
+  <circle cx="44" cy="464" r="14" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="44" y="469" font-size="13" font-weight="600" fill="#171717" text-anchor="middle">4</text>
+  <text x="70" y="460" font-size="14" font-weight="600" fill="#171717">La plateforme du client</text>
+  <rect x="70" y="470" width="310" height="52" rx="12" fill="#F6E7C4"/>
+  <text x="84" y="491" font-size="11.5" fill="#8A5A00">contrôle non conforme, indisponibilité</text>
+  <text x="84" y="510" font-size="11.5" font-weight="600" fill="#171717">→ voir votre plateforme</text>
+
+  <!-- Étape 5 -->
+  <circle cx="44" cy="582" r="14" fill="#fff" stroke="#171717" stroke-width="1.5"/>
+  <text x="44" y="587" font-size="13" font-weight="600" fill="#171717" text-anchor="middle">5</text>
+  <text x="70" y="578" font-size="14" font-weight="600" fill="#171717">Le client</text>
+  <rect x="70" y="588" width="310" height="70" rx="12" fill="#F6DCE5"/>
+  <text x="84" y="609" font-size="11.5" fill="#A3194A">refus motivé : ce n'est pas un rejet</text>
+  <text x="84" y="626" font-size="11.5" fill="#A3194A">technique, c'est une décision du client</text>
+  <text x="84" y="646" font-size="11.5" font-weight="600" fill="#171717">→ voir le client</text>
+
+  <text x="200" y="694" font-size="11.5" fill="#5C5B56" text-anchor="middle">Étapes 1 à 4 : problème technique (rejet). Étape 5 : refus.</text>
+</svg>

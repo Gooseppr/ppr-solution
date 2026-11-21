@@ -185,7 +185,8 @@ Les extraits restent courts et pédagogiques ; ils ne sont jamais présentés co
 | **Norme sémantique EN 16931-1** | 2026 approuvée par le CEN au printemps 2026 ; calendrier de transition à confirmer | — | CEN / Commission européenne | Articles 2, 3 |
 | **Syntaxes UBL et CII** | à déterminer ; article 2 publié sans version (décision 8), extraits limités à des éléments stables : `cbc:ID`, `cbc:IssueDate`, `cbc:DocumentCurrencyCode`, `cbc:TaxExclusiveAmount`, `cbc:TaxAmount`, `cbc:TaxInclusiveAmount` (UBL) ; `ram:ID`, `udt:DateTimeString`, `ram:InvoiceCurrencyCode`, `ram:TaxBasisTotalAmount`, `ram:TaxTotalAmount`, `ram:GrandTotalAmount` (CII) ; termes BT-1, BT-2, BT-5, BT-109, BT-110, BT-112 | — | spécifications externes DGFiP, XP Z12-012 | Articles 2, 4, 5 |
 | **Factur-X** | à déterminer | — | FNFE-MPE | Article 2 |
-| **Règles de validation** | à déterminer (artefacts correspondant aux versions ci-dessus) | — | publication officielle des artefacts | Articles 3, 4 |
+| **Règles de validation** | à déterminer (artefacts correspondant aux versions ci-dessus) ; article 4 : seule la règle de cohérence des totaux est citée (BR-CO-15, total TTC = total HT + TVA), identifiant stable de la norme, non vérifié sur les artefacts faute d'accès | — | publication officielle des artefacts | Articles 3, 4 |
+| **Rejet, refus, doublons, traces** | guide pratique de démarrage DGFiP (juillet 2026), questions 10 à 16, 19, 25 ; FAQ 3.2 | 21/11/2026 | impots.gouv.fr (texte extrait du PDF) | Article 4 |
 | **Spécifications externes DGFiP** | version 3.2 du 30/04/2026 mentionnée sur impots.gouv.fr (à lire avant l'article 2) | — | impots.gouv.fr | Articles 2 à 5 |
 :::
 

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-tlTtfpdsMQSdcfX3DLM1fgx/y++BLw+48vFj+5cTJa0='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Facture électronique rejetée : comprendre le message et trouver la cause · PPR-Solution</title>
+  <meta name="description" content="Facture électronique rejetée par la plateforme : différence entre rejet et refus, causes fréquentes, lecture du message, correction sans doublon. Méthode simple.">
+  <link rel="canonical" href="https://ppr-solution.fr/blog/facture-electronique-rejetee/">
+  <meta name="theme-color" content="#F8F7F3">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="PPR-Solution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Facture électronique rejetée : comprendre le message et trouver la cause · PPR-Solution">
+  <meta property="og:description" content="Facture électronique rejetée par la plateforme : différence entre rejet et refus, causes fréquentes, lecture du message, correction sans doublon. Méthode simple.">
+  <meta property="og:url" content="https://ppr-solution.fr/blog/facture-electronique-rejetee/">
+  <meta property="og:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PPR-Solution — assistance technique pour votre site et son hébergement">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ppr-solution.fr/assets/img/og-default.png">
+  <meta property="article:published_time" content="2026-11-21">
+  <meta property="article:modified_time" content="2026-11-21">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Facture électronique rejetée : comprendre le message et trouver la cause","description":"Facture électronique rejetée par la plateforme : différence entre rejet et refus, causes fréquentes, lecture du message, correction sans doublon. Méthode simple.","datePublished":"2026-11-21","dateModified":"2026-11-21","inLanguage":"fr-FR","mainEntityOfPage":"https://ppr-solution.fr/blog/facture-electronique-rejetee/","author":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution","url":"https://ppr-solution.fr/"},"publisher":{"@id":"https://ppr-solution.fr/#organisation","@type":"Organization","name":"PPR-Solution"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://ppr-solution.fr/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ppr-solution.fr/blog.html"},{"@type":"ListItem","position":3,"name":"Facture électronique rejetée : comprendre le message et trouver la cause","item":"https://ppr-solution.fr/blog/facture-electronique-rejetee/"}]}]}</script>
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+  <script src="../../assets/js/main.js" defer></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header" data-header>
+    <div class="container nav-inner">
+      <a class="brand" href="../../">
+        <svg class="brand-mark" viewBox="0 0 48 26" aria-hidden="true">
+          <rect x="1" y="5" width="26" height="16" rx="8" fill="#fff" stroke="#171717" stroke-width="2"/>
+          <circle cx="9" cy="13" r="3.2" fill="#F05B3F"/>
+          <path d="M27 13h9" stroke="#171717" stroke-width="2"/>
+          <circle cx="41" cy="13" r="5.5" fill="#171717"/>
+        </svg>
+        <span>
+          <span class="brand-name">PPR-Solution</span>
+          <span class="brand-sub">assistance technique web</span>
+        </span>
+        <span class="sr-only">(accueil)</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" data-nav-toggle>
+        <span class="nav-icon" aria-hidden="true"></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+      <nav class="primary-nav" id="navigation" aria-label="Navigation principale" data-nav-menu>
+        <a href="../../prestations.html">Prestations</a>
+        <a href="../../blog.html" aria-current="page">Blog</a>
+        <a href="../../a-propos.html">À propos</a>
+        <a class="btn btn-primary btn-sm" href="../../contact.html">Obtenir de l'aide</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Sprite du langage graphique : glyphes dessinés pour PPR-Solution -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="g-hebergement" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="12" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="10" y="26" width="48" height="10" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="51" cy="31" r="2.6" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-php" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M2.8 14h62.4" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="9" cy="8.6" r="2" fill="#F05B3F"/>
+        <rect x="9" y="21" width="20" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="19.5" width="22" height="8" rx="4" fill="#FBE3DC" stroke="#B8391F" stroke-width="1.1"/>
+        <rect x="9" y="33" width="14" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="35" y="33" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-dns" viewBox="0 0 68 48">
+        <path d="M34 24 12 9M34 24 12 39M34 24h22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <circle cx="12" cy="9" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="39" r="4.5" fill="#fff" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="58" cy="24" r="5.5" fill="#F05B3F" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="34" cy="24" r="9" fill="#F8F7F3" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="g-https" viewBox="0 0 68 48">
+        <path d="M4 30h60" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <circle cx="6" cy="30" r="3" fill="currentColor"/>
+        <circle cx="62" cy="30" r="3" fill="currentColor"/>
+        <rect x="24" y="20" width="20" height="18" rx="4" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M28.5 20v-4.5a5.5 5.5 0 0 1 11 0V20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="34" cy="29" r="2.4" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="g-migration" viewBox="0 0 68 48">
+        <rect x="2" y="20" width="24" height="24" rx="7" fill="#F8F7F3" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="42" y="20" width="24" height="24" rx="7" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 18C16 6 52 6 54 17" fill="none" stroke="#B8391F" stroke-width="1.6"/>
+        <path d="m50 13.5 4 4.5 4-4.8" fill="none" stroke="#B8391F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="8" y="27" width="12" height="4" rx="2" fill="#B7B7B2"/>
+        <rect x="8" y="34" width="9" height="4" rx="2" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-configuration" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="10" y="12" width="16" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="31" y="12" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="10" y="22" width="12" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="27" y="22" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+        <rect x="10" y="32" width="18" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="33" y="32" width="16" height="5" rx="2.5" fill="#B7B7B2"/>
+      </symbol>
+      <symbol id="g-bilan" viewBox="0 0 68 48">
+        <rect x="2" y="3" width="64" height="42" rx="9" fill="#fff" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m10 15 3 3 5-6M10 27l3 3 5-6" fill="none" stroke="#1E6B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="14" cy="37" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <rect x="24" y="13" width="32" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="25" width="26" height="5" rx="2.5" fill="#B7B7B2"/>
+        <rect x="24" y="35" width="20" height="5" rx="2.5" fill="#F05B3F"/>
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 12 14">
+        <rect x="1" y="5.5" width="10" height="7.5" rx="2" fill="#fff" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M3.4 5.5V4a2.6 2.6 0 0 1 5.2 0v1.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main id="contenu">
+<article class="article">
+      <header class="article-header">
+        <div class="container article-narrow">
+          <nav class="breadcrumbs" aria-label="Fil d'Ariane"><a href="../../">Accueil</a><span aria-hidden="true">/</span><a href="../../blog.html">Blog</a></nav>
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><span>Publié le <time datetime="2026-11-21">21 novembre 2026</time></span> · <span>8 min de lecture</span></p>
+          <h1>Facture électronique rejetée : comprendre le message et trouver la cause</h1>
+        </div>
+      </header>
+      <div class="container article-layout">
+        <aside class="article-aside"><nav class="article-toc" aria-labelledby="toc-title"><p id="toc-title" class="article-toc-title">Dans cet article</p><ol><li><a href="#rejet-refus-litige-trois-situations-differentes">Rejet, refus, litige : trois situations différentes</a></li><li><a href="#a-quelle-etape-le-probleme-est-il-apparu">À quelle étape le problème est-il apparu ?</a></li><li><a href="#les-controles-successifs-d-une-facture">Les contrôles successifs d&#39;une facture</a></li><li><a href="#les-causes-frequentes-d-un-rejet">Les causes fréquentes d&#39;un rejet</a></li><li><a href="#lire-un-message-de-rejet">Lire un message de rejet</a></li><li><a href="#corriger-sans-creer-de-doublon">Corriger sans créer de doublon</a></li><li><a href="#garder-une-trace">Garder une trace</a></li><li><a href="#qui-contacter">Qui contacter ?</a></li><li><a href="#si-vous-emettez-volontairement-avant-2027">Si vous émettez volontairement avant 2027</a></li><li><a href="#sources">Sources</a></li></ol></nav></aside>
+        <div class="article-body prose">
+<p class="lead">Une facture électronique rejetée n'est pas une facture refusée par votre client. Le rejet vient d'une plateforme : elle a détecté un problème technique, par exemple une information obligatoire absente, des montants incohérents ou un client introuvable dans l'annuaire. La bonne réaction consiste à repérer l'étape qui bloque, à corriger la cause à la source, puis à renvoyer la facture sans créer de doublon.</p>
+<div class="note note-summary"><strong>En bref</strong><ul>
+<li>Un rejet vient d'une plateforme et signale un problème technique ; un refus vient du client et doit être motivé.</li>
+<li>Situez d'abord l'étape qui bloque : export du logiciel, contrôles de votre plateforme, adressage, plateforme du client.</li>
+<li>Un fichier peut être lisible et bien construit, et échouer quand même à une règle de calcul.</li>
+<li>Corrigez à la source (logiciel, fiche client), jamais en retouchant le fichier à la main.</li>
+<li>Gardez une trace du rejet, de sa cause et de sa correction, et évitez d'envoyer la même facture deux fois.</li>
+</ul>
+</div>
+<p>Cet article fait partie d'une série sur la facturation électronique. Le calendrier de la réforme est présenté dans <a href="../../blog/facturation-electronique-tpe-2026-2027/">Facturation électronique : ce qui change pour les TPE en 2026 et 2027</a>, et les formats de fichier dans <a href="../../blog/factur-x-ubl-cii-formats-facture-electronique/">Factur-X, UBL et CII : comprendre les trois formats</a>.</p>
+<h2 id="rejet-refus-litige-trois-situations-differentes">Rejet, refus, litige : trois situations différentes</h2>
+<p>Chaque facture électronique a un <strong>statut</strong>, visible sur votre plateforme. C'est le premier endroit où regarder.</p>
+<aside class="note note-definition"><strong>Définition — statut de cycle de vie</strong><p>L'étape où en est une facture électronique, affichée par la plateforme et partagée entre le fournisseur et son client : par exemple rejetée, refusée ou encaissée.</p>
+</aside>
+<p>Trois situations sont souvent confondues :</p>
+<div class="table-wrap"><table class="article-table"><caption>Rejet, refus et litige</caption>
+<thead>
+<tr>
+<th scope="col">Situation</th>
+<th scope="col">Ce qu'elle signifie</th>
+<th scope="col">Ce qu'il faut faire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rejet</strong>, par une plateforme (la vôtre ou celle du client)</td>
+<td>un problème technique ou de contrôle a bloqué la facture</td>
+<td>trouver la cause, corriger, renvoyer la même facture</td>
+</tr>
+<tr>
+<td><strong>Refus</strong>, par le client</td>
+<td>il refuse la facture pour un motif prévu : erreur réglementaire, mauvais destinataire, conditions contractuelles</td>
+<td>analyser le motif ; si le refus est fondé, émettre une nouvelle facture avec un nouveau numéro</td>
+</tr>
+<tr>
+<td><strong>Litige</strong>, avec le client</td>
+<td>la facture est reçue, mais il conteste un point (prix, quantité, prestation)</td>
+<td>échanger avec le client ; des statuts provisoires permettent de signaler le désaccord</td>
+</tr>
+</tbody>
+</table></div>
+<p>L'administration le précise : le refus est « obligatoirement motivé » et ne doit pas servir à un simple désaccord commercial. Inversement, un rejet n'est jamais une décision de votre client : c'est un incident à corriger.</p>
+<h2 id="a-quelle-etape-le-probleme-est-il-apparu">À quelle étape le problème est-il apparu ?</h2>
+<p>Une facture électronique franchit plusieurs étapes avant d'arriver chez votre client. Repérer celle qui bloque indique déjà la cause probable, et la bonne personne à contacter.</p>
+<p><img src="../../assets/img/blog/facture-rejetee-diagnostic.svg" alt="Schéma en cinq étapes. 1 : l'export de votre logiciel ; si le fichier est incomplet, mal formé ou dans un mauvais format, voir l'éditeur du logiciel. 2 : les contrôles de votre plateforme ; si une donnée obligatoire est absente ou incohérente, ou si les montants ne tombent pas juste, corriger à la source puis renvoyer. 3 : l'adressage par l'annuaire ; si le SIREN, le SIRET ou l'établissement du client est erroné, voir votre plateforme puis le client. 4 : la plateforme du client ; en cas de contrôle non conforme ou d'indisponibilité, voir votre plateforme. 5 : le client ; un refus motivé n'est pas un rejet technique, voir le client. Les étapes 1 à 4 relèvent d'un problème technique, l'étape 5 d'un refus." width="400" height="720" loading="lazy"></p>
+<p>Cherchez d'abord, dans le statut ou le message, qui a rejeté la facture : votre propre plateforme, dès le dépôt, ou celle de votre client, plus tard. Un rejet immédiat au dépôt pointe plutôt vers le fichier lui-même ; un rejet après l'envoi pointe plutôt vers l'adressage ou les contrôles de la plateforme d'arrivée.</p>
+<h2 id="les-controles-successifs-d-une-facture">Les contrôles successifs d'une facture</h2>
+<p>Avant d'accepter une facture, une plateforme la soumet à plusieurs contrôles, du plus simple au plus fin. Comprendre leur ordre aide à lire un message de rejet.</p>
+<h3 id="le-fichier-est-il-lisible">Le fichier est-il lisible ?</h3>
+<p>Le fichier doit être correctement écrit : chaque balise ouverte est refermée, les caractères sont bien encodés. Un fichier tronqué ou abîmé échoue dès ce premier contrôle. Cette erreur vient presque toujours du logiciel qui a produit le fichier, ou d'une manipulation du fichier.</p>
+<h3 id="le-fichier-respecte-t-il-la-structure-attendue">Le fichier respecte-t-il la structure attendue ?</h3>
+<p>Chaque format (UBL, CII, Factur-X) a une structure officielle : quelles balises existent, dans quel ordre, avec quel type de contenu (une date, un montant, un code). Un montant écrit avec une virgule là où un point est attendu, ou une balise placée au mauvais endroit, fait échouer ce contrôle.</p>
+<h3 id="les-regles-de-gestion-sont-elles-respectees">Les règles de gestion sont-elles respectées ?</h3>
+<aside class="note note-definition"><strong>Définition — règle de gestion</strong><p>Une règle que doivent respecter les informations d'une facture, quel que soit son format : une information obligatoire présente, un code autorisé, des montants qui tombent juste.</p>
+</aside>
+<p>C'est le contrôle le plus instructif, car un fichier peut être parfaitement lisible et bien construit, et pourtant faux. Les règles viennent de la norme européenne EN 16931, complétée par des règles propres à la France. Un prochain article de la série les présentera en détail.</p>
+<div class="note"><strong>Exemple</strong><p>La facture fictive d'Atelier Martin porte sur 1 000 € hors taxes et 200 € de TVA. Le total toutes taxes comprises attendu est donc 1 200 €. Si le logiciel inscrit 1 250 € dans le fichier, celui-ci reste lisible et bien structuré, mais il échoue à la règle de cohérence des totaux : le total toutes taxes comprises doit être égal au total hors taxes augmenté de la TVA. Dans la norme européenne, cette règle porte l'identifiant BR-CO-15.</p>
+</div>
+<p>Au-delà de ces contrôles du fichier, la plateforme vérifie aussi qu'elle peut <strong>acheminer</strong> la facture : le client doit être identifiable dans l'annuaire, avec la plateforme qu'il a choisie.</p>
+<h2 id="les-causes-frequentes-d-un-rejet">Les causes fréquentes d'un rejet</h2>
+<p>L'administration en donne la liste dans son guide de démarrage : « erreur de format, donnée obligatoire absente ou incohérente, identification incorrecte d'une partie, difficulté de routage, anomalie bloquante ou contrôle non conforme ». Concrètement :</p>
+<ul>
+<li><strong>Format ou profil non accepté</strong> : le logiciel produit un format ou une variante que la plateforme n'accepte pas.</li>
+<li><strong>Donnée obligatoire absente</strong> : SIREN du client, catégorie de l'opération (biens, services ou les deux), identifiants du vendeur…</li>
+<li><strong>Donnée incohérente</strong> : totaux qui ne tombent pas juste, taux de TVA et montant de TVA qui ne correspondent pas, date impossible.</li>
+<li><strong>Client mal identifié</strong> : SIREN erroné, mauvais établissement, client absent de l'annuaire ou pas encore rattaché à une plateforme.</li>
+<li><strong>Numéro de facture déjà utilisé</strong> : renvoyer une facture refusée sous le même numéro peut provoquer un rejet ; après un refus, l'administration demande un nouveau numéro.</li>
+<li><strong>Incident technique</strong> : plateforme temporairement indisponible, raccordement du logiciel interrompu.</li>
+</ul>
+<h2 id="lire-un-message-de-rejet">Lire un message de rejet</h2>
+<p>Le contenu exact d'un message dépend de votre plateforme. On y retrouve en général les mêmes éléments : la facture concernée, le contrôle qui a échoué, l'information en cause, et parfois la valeur trouvée et la valeur attendue.</p>
+<figure class="config-window"><figcaption class="config-window-bar"><span class="config-file">rejet-FAC-2026-001</span><span class="config-kind">message reconstitué, illustratif</span></figcaption><ul class="config-rows"><li class="config-row"><span class="config-key">Facture</span><span class="config-value">FAC-2026-001</span><span class="config-help">La facture concernée : vérifiez d'abord qu'il s'agit bien de la bonne.</span></li><li class="config-row"><span class="config-key">Étape</span><span class="config-value">dépôt</span><span class="config-help">La facture a été bloquée par votre propre plateforme, dès l'envoi.</span></li><li class="config-row"><span class="config-key">Contrôle</span><span class="config-value">règle de gestion</span><span class="config-help">Le fichier est lisible et bien structuré ; c'est une règle sur les données qui échoue.</span></li><li class="config-row"><span class="config-key">Information</span><span class="config-value">total TTC</span><span class="config-help">L'information en cause : le montant total toutes taxes comprises.</span></li><li class="config-row"><span class="config-key">Valeur trouvée</span><span class="config-value">1250.00</span><span class="config-help">Le montant inscrit dans le fichier.</span></li><li class="config-row"><span class="config-key">Valeur attendue</span><span class="config-value">1200.00</span><span class="config-help">Le montant qui respecterait la règle : 1 000 € hors taxes + 200 € de TVA.</span></li></ul></figure>
+<p>Ce message est reconstitué pour l'exemple : il ne reproduit pas le message d'une plateforme réelle. Lu ainsi, il oriente directement vers la cause : le calcul du total dans le logiciel, ou une saisie erronée.</p>
+<h2 id="corriger-sans-creer-de-doublon">Corriger sans créer de doublon</h2>
+<p><strong>Corrigez à la source.</strong> Si l'erreur vient de vos données (fiche client, montant, mention manquante), corrigez-la dans votre logiciel et produisez à nouveau la facture. Modifier le fichier à la main pour le faire passer est risqué : une valeur peut en contredire une autre, et le logiciel garderait sa version erronée.</p>
+<p><strong>Après un rejet, renvoyez la même facture une fois corrigée.</strong> L'administration demande de traiter le rejet comme un incident : la facture corrigée est transmise de nouveau par le circuit électronique. Elle ne doit pas être enregistrée comme une nouvelle vente.</p>
+<p><strong>Après un refus fondé, émettez une nouvelle facture avec un nouveau numéro</strong>, et neutralisez la facture refusée dans votre gestion. Si vous contestez le refus, ne créez pas automatiquement une nouvelle facture ou un avoir : réglez d'abord le désaccord avec le client.</p>
+<p><strong>N'envoyez pas de double par réflexe.</strong> Si le blocage empêche le client de disposer de la facture et risque de retarder un paiement, un envoi par un autre canal (email, PDF) est possible, mais il doit être clairement rattaché à la facture d'origine, par exemple avec la mention « duplicata » ou « copie », et ne doit pas être traité comme une nouvelle facture. Quand les statuts montrent que la facture a bien été transmise, un double est inutile et peut provoquer un double paiement.</p>
+<div class="note note-warning"><strong>Attention</strong><p>Une même opération ne doit jamais être payée, comptabilisée ou déclarée deux fois. C'est le principal risque d'une correction précipitée : deux factures pour une seule prestation, ou une facture renvoyée par deux canaux sans lien entre elles.</p>
+</div>
+<h2 id="garder-une-trace">Garder une trace</h2>
+<p>L'administration recommande de conserver les éléments qui permettent de comprendre le rejet et sa correction : la facture concernée, le statut ou le message de rejet, la cause lorsqu'elle est connue, les démarches engagées, la facture corrigée, et les échanges avec la plateforme, l'éditeur ou le client. Pendant la phase de démarrage, ces traces montrent que vous traitez les difficultés au lieu de les subir.</p>
+<p>Une capture d'écran du message, datée, et un court historique dans un fichier ou un dossier par facture suffisent dans la plupart des cas.</p>
+<h2 id="qui-contacter">Qui contacter ?</h2>
+<ul>
+<li><strong>L'éditeur de votre logiciel</strong>, quand le fichier produit est incomplet, mal construit ou faux (montants, mentions) alors que vos données sont justes.</li>
+<li><strong>Votre plateforme agréée</strong>, quand le blocage concerne l'acheminement, l'annuaire, un format non accepté, ou quand elle est indisponible. Elle peut aussi vous dire précisément quel contrôle a échoué.</li>
+<li><strong>Votre client</strong>, pour confirmer son SIREN, son établissement ou la plateforme qu'il a choisie, ou pour traiter un refus.</li>
+<li><strong>Votre expert-comptable</strong>, pour les questions de TVA ou de traitement comptable (avoir, régularisation).</li>
+</ul>
+<h2 id="si-vous-emettez-volontairement-avant-2027">Si vous émettez volontairement avant 2027</h2>
+<p>Une TPE n'est obligée d'émettre ses factures électroniques qu'au 1er septembre 2027. Si vous avez commencé plus tôt et qu'un envoi échoue, l'administration admet que vous reveniez temporairement à vos modalités habituelles (PDF, papier) pour la facture concernée, le temps de régler le problème avec votre plateforme ou votre éditeur. Prévenez alors le client, évitez la double facturation, et gardez une trace de l'échec et de sa correction.</p>
+<div class="note"><strong>À retenir</strong><p>Un rejet est un incident technique, pas une décision du client. Repérez l'étape qui bloque, lisez quel contrôle a échoué, corrigez la cause dans votre logiciel ou vos données, puis renvoyez la même facture. Évitez les doubles envois non maîtrisés et conservez une trace de chaque étape.</p>
+</div>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/guide_pratique_facturation_electronique.pdf">DGFiP — Guide pratique de démarrage au 1er septembre 2026 (juillet 2026), questions 10 à 16, 19 et 25</a></li>
+<li><a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/faq---fe_je-decouvre-la-facturation-electronique.pdf">DGFiP — Foire aux questions « Je découvre la facturation électronique » (version du 1er septembre 2026), question 3.2 sur le refus et les statuts</a></li>
+<li><a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/fiches_reforme/fiche-pdp.pdf">DGFiP — Les plateformes agréées</a></li>
+</ul>
+
+          <aside class="article-cta" aria-labelledby="article-cta-title">
+            <h2 id="article-cta-title">Besoin d'un coup de main&nbsp;?</h2>
+            <p>Décrivez le message de rejet affiché par votre plateforme, sans nous envoyer la facture elle-même : nous vous dirons si la cause paraît technique et à qui s&#39;adresser en priorité.</p>
+            <div class="article-cta-actions">
+              <a class="btn btn-primary" href="../../contact.html?sujet=autre">Poser une question sur un rejet de facture</a>
+              <a class="link" href="../../prestations.html">Toutes les prestations</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+      <section class="section section-tight" aria-labelledby="related-title"><div class="container"><h2 id="related-title" class="h-small">À lire aussi</h2><ul class="post-list"><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-20">20 novembre 2026</time></p>
+          <h3><a href="../../blog/factur-x-ubl-cii-formats-facture-electronique/">Factur-X, UBL et CII : comprendre les trois formats de la facture électronique</a></h3>
+          <p>Une même facture peut s&#39;écrire en UBL, en CII ou en Factur-X. Ce qui distingue ces trois formats, comment reconnaître un fichier, et pourquoi passer de l&#39;un à l&#39;autre n&#39;est pas un simple changement de nom.</p>
+          <p class="post-reading">8 min de lecture</p>
+        </li><li class="post-card">
+          <p class="post-meta"><span class="post-kind post-kind-guide">Guide</span><time datetime="2026-11-20">20 novembre 2026</time></p>
+          <h3><a href="../../blog/facturation-electronique-tpe-2026-2027/">Facturation électronique : ce qui change pour les TPE en 2026 et 2027</a></h3>
+          <p>Depuis le 1er septembre 2026, toute entreprise doit pouvoir recevoir des factures électroniques. Les TPE devront les émettre au plus tard en septembre 2027. Ce que cela veut dire concrètement, et ce que vous pouvez préparer dès maintenant.</p>
+          <p class="post-reading">9 min de lecture</p>
+        </li></ul></div></section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p><strong>PPR-Solution</strong><br>Assistance technique · Hébergement web · Configuration</p>
+        <p><a class="link" href="mailto:contact@ppr-solution.fr">contact@ppr-solution.fr</a></p>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul class="footer-links">
+          <li><a href="../../">Accueil</a></li>
+          <li><a href="../../prestations.html">Prestations</a></li>
+          <li><a href="../../blog.html">Blog</a></li>
+          <li><a href="../../a-propos.html">À propos</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul class="footer-links">
+          <li><a href="../../mentions-legales.html">Mentions légales</a></li>
+          <li><a href="../../confidentialite.html">Confidentialité</a></li>
+          <li><a href="../../cgv.html">Conditions générales de vente</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
